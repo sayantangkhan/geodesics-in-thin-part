@@ -7,4 +7,11 @@
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \thispagestyle{empty}
 
-* Introduction
+* Outline
+
+What should the main theorems/constructions in the paper be?
+- The weak convex core, and proof of how it's weak convex.
+- Geodesics that spend an appreciable amount of time in the thin part are exponentially rare. Compare this to similar results for measures induced by random walks.
+- Equality of lattice point entropy and net point entropy. Can think of this as a very weak version of ABEM, but proven without using dynamics.
+- (Optional, might only be in thesis) Application to Patterson-Sullivan theory.
+- (Appendix) HHS structure for non-orientable Teichmüller spaces.
