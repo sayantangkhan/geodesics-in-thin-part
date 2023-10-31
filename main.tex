@@ -50,6 +50,192 @@
 
 %% Start with this section
 
+In this, and the following section, we will prove that $\hLP = \hNP$, which will let us upgrade the {\color{red} theorem from the previous section}.
+\begin{theorem}[Entropy equality]
+  For any surface $S$ of finite type, the following relationship holds between the $\hNP$ and $\hLP$.
+  \begin{align*}
+    \hNP(\mathrm{core}(\teich(S))) = \hLP(S)
+  \end{align*}
+\end{theorem}
+
+\begin{rem}
+  In the case where $S$ is an orientable surface, the theorem is a corollary of \textcite[Theorem 1.2]{10.1215/00127094-1548443}.
+  However, the proof of the stronger theorem in the orientable setting uses facts about the dynamics of the geodesic flow on the moduli space, which we don't have in the non-orientable setting.
+  The proof of the weaker theorem only uses topological methods, and works equally well for orientable and non-orientable surfaces.
+\end{rem}
+
+We will prove this theorem by inducting on the Euler characteristic of the surface $S$.
+The $4$ base cases we need to check are the $3$ non-orientable surfaces of Euler characteristic $-1$, and one orientable surface with Euler characteristic $-1$.
+\begin{itemize}
+\item $\os_{1,1,0}$: This is the torus with $1$ boundary component and $0$ crosscaps attached.
+\item $\os_{1,0,1}$: This is a torus with $0$ boundary components, and $1$ crosscap attached.
+\item $\os_{0,2,1}$: This is a sphere with $2$ boundary components, and $1$ crosscap attached.
+\item $\os_{0,1,2}$: This is a sphere with $1$ boundary component, and $2$ crosscaps attached.
+\end{itemize}
+
+\todo[inline]{Have some helper lemma here about various cases where we have entropy equality.}
+
+\begin{lemma}[Entropy equality: base case]
+  For a surface $S$ in $\left\{ \os_{1,1,0}, \os_{1,0,1}, \os_{0,2,1}, \os_{0,1,2} \right\}$, the following relationship holds between the $\hNP$ and $\hLP$.
+  \begin{align*}
+    \hNP(\mathrm{core}(\teich(S))) = \hLP(S)
+  \end{align*}
+\end{lemma}
+
+\begin{proof}
+  For $S = \os_{1,1,0}$, we will directly prove the lemma, and for the remaining three non-orientable surfaces, we will use a description of their Teichmüller spaces and mapping class groups from \textcite{gendulphe2017whats} to reduce to the first case, or show that the result follows trivially.
+  \begin{itemize}
+  \item $\os_{1,1,0}$: Since $\os_{1,1,0}$ is orientable, we have that $\mathrm{core(\teich(\os_{1,1,0}))} = \teich(\os_{1,1,0})$, so it suffices to look at the full Teichmüller space.
+    The Teichmüller space of $\os_{1,1,0}$ is the upper half plane $\HH^2$, and the mapping class group is $\mathrm{SL}(2, \mathbb{Z})$.
+    In this case, the number of lattice points in a ball of radius $R$ grows like $\exp(R)$.
+    More precisely, we have the following inequality for some constants $c$ and $c^\prime$.
+    \begin{align}
+      c \leq \frac{\#\left( B_R(p) \cap p \cdot \mathrm{SL}(2, \mathbb{Z}) \right)}{\exp(R)} \leq c^{\prime} \label{eq:lattice-point-count}
+    \end{align}
+    Here, $p$ is a lattice point, and $B_R(p)$ is the ball of radius $R$ centered at $p$.
+
+    To count the net points in the ball of radius, we parameterize the net points by how for from the orbit of $p$ they lie. Since we're looking for net points in a ball of radius $R$, the furthest away they can be from the orbit is $R$.
+    We thus get a following sum decomposition for the cardinality of the net points.
+    \begin{align*}
+      \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \#\left( B_R(p) \cap N_i \right)
+    \end{align*}
+    Here, $N_i$ denotes the net points that lie within distance $[i-1, i]$ of the orbit of $p$.
+    We further subdivide $N_i$ based on the orbit point that is the closest to the net point. If there are multiple such orbit points, we pick one arbitrarily.
+    Let $N_i(\gamma)$ denote the set of net points in $N_i$ such that the closest orbit point is $\gamma p$.
+    We rewrite the expression for the cardinality using this new decomposition.
+    \begin{align}
+      \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \sum_{\gamma \in \mathrm{SL}(2, \mathbb{Z})} \#\left( B_R(p) \cap N_i(\gamma) \right) \label{eq:net-point-count}
+    \end{align}
+
+    We first narrow down which $\gamma \in \mathrm{SL}(2, \mathbb{Z})$ can actually contribute the innermost term in the sum.
+    If $q$ is a net point that is within distance $R$ of $p$, but also within distance $i$ of $\gamma p$, then we have by the triangle inequality that $d(p, \gamma p) \leq R + i$.
+    This simplifies the sum.
+    \begin{align}
+      \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} \#\left( B_R(p) \cap N_i(\gamma) \right) \label{eq:net-point-count-simp}
+    \end{align}
+
+    Observe now that we can also provide an upper bound for $\#\left( B_R(p) \cap N_i(\gamma) \right)$ purely in terms of $i$, when $R$ and $i$ are large.
+    Consider a Dirichlet domain decomposition for the $\mathrm{SL}(2, \mathbb{Z})$ action on the upper half plane, and focus on the associated to $\gamma p$.
+    The set $N_i(\gamma)$ is precisely the intersection of this domain with the annulus of radius $(i-1, i)$.
+    Because the cardinality of the net points in a region is proportional to the area, it suffices to bound the area of the region instead.
+    When $i$ is large enough, the problem reduces to estimating the area of a hyperbolic cusp, which can be explicitly computed.
+    We get the following estimate on $\#\left( B_R(p) \cap N_i(\gamma) \right)$.
+    Here $D_{\gamma}$ denotes the domain associated to $\gamma p$, and $A_i$ denotes the annulus centered at $p$, and $k$ is a constant that is independent of $i$ and $R$.
+    \begin{align}
+      \#\left( B_R(p) \cap N_i(\gamma) \right) &= \mathrm{Area}\left( B_R(p) \cap A_i(p) \right) \\
+                                               &\leq k \cdot \exp(-i) \label{eq:tail-bound}
+    \end{align}
+    Plugging in \eqref{eq:tail-bound} into \eqref{eq:net-point-count-simp}, we get the following upper bound.
+    \begin{align*}
+      \#\left( B_R(p) \cap N \right) \leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i)
+    \end{align*}
+    We now use \eqref{eq:lattice-point-count} to get a bound on the inner sum.
+    \begin{align*}
+      \#\left( B_R(p) \cap N \right) &\leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i) \\
+                                     &\leq \sum_{i=1}^R c^{\prime}k \exp(R+i) \exp(-i) \\
+                                     &= c^{\prime}k R \exp(R)
+    \end{align*}
+    Since the entropy of $R \exp(R)$ is also $1$, this proves the equality of the $\hNP$ and $\hLP$ for $\os_{1,1,0}$.
+  \item $\os_{1,0,1}$: This surface is very similar to the previous case: it's obtained by gluing together the boundary component of $\os_{1,1,0}$ via the antipodal map.
+    It's a theorem of \textcite{scharlemann1982complex} and also \textcite{gendulphe2017whats} that there is a unique one-sided curve $\kappa$ in $\os_{1,0,1}$ whose complement is $\os_{1,1,0}$.
+    As a consequence, $\mcg(\os_{1,0,1}) \cong \mcg(\os_{1,1,0})$, and $\teich(\os_{1,1,0}) \hookrightarrow \teich(\os_{1,0,1})$.
+
+    We consider now $\mathrm{core}(\teich(\os_{1,0,1}))$: the curve $\kappa$ cannot get shorter than the threshold specified by the core.
+    There is another curve $\kappa^{\prime}$ that intersects $\kappa$ exactly once (see \autoref{fig:base-case-2}).
+    It follows from hyperbolic trigonometry that if $\kappa$ cannot be too long either while staying in $\mathrm{core}(\teich(\os_{1,0,1}))$: if it is, then $\kappa^{\prime}$ becomes shorter than the threshold value.
+
+    If we consider the pants decomposition of the surface along $\kappa$, and any two sided curve, we see that the length coordinates of $\kappa$ in $\mathrm{core}(\teich(\os_{1,0,1}))$ are contained in a compact interval $[t_1, t_2]$, where $t_1 > 0$.
+    This means that $\mathrm{core}(\teich(\os_{1,0,1}))$ is a bounded neighbourhood of the image of $\teich(\os_{1,1,0})$.
+    The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
+    \begin{figure}[h]
+      \centering
+      \includegraphics[height=5cm]{example-image-a}
+      \caption{The curves $\kappa$ and $\kappa^{\prime}$ on $\os_{1,0,1}$.}
+      \label{fig:base-case-2}
+    \end{figure}
+  \item $\os_{0,2,1}$: The mapping class group of this surface is finite: in fact, it is isomorphic to $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ (see \textcite{gendulphe2017whats}).
+    This means $\hLP(\teich(\os_{0,2,1})) = 0$.
+    This surface has exactly two simple geodesics $\kappa$ and $\kappa^{\prime}$, which intersect each other exactly once, such that deleting either one of them results in a pair of pants.
+    Picking a pants decomposition along either $\kappa$ or $\kappa^{\prime}$, we see that $\teich(\os_{0,2,1})$ is homeomorphic to $\mathbb{R}_{>0}$, where the homeomorphism is given by the length coordinate.
+
+    If we now consider $\mathrm{core}(\teich(\os_{0,2,1}))$, the lengths of $\kappa$ and $\kappa^{\prime}$ are bounded below by the threshold.
+    But they are also bounded above, by an argument similar to the previous case, namely is either $\kappa$ or $\kappa^{\prime}$ are very long, the other one sided curve must be very short.
+    This proves that $\mathrm{core}(\teich(\os_{0,2,1}))$ is compact, and as a result $\hNP(\mathrm{core}(\os_{0,2,1})) = 0$.
+    This proves the lemma for $\os_{0,2,1}$.
+  \item $\os_{0,1,2}$: This surface has a unique two-sided element, which we denote by $\gamma_{\infty}$.
+    The one sided curves on this surface are indexed by $\mathbb{Z}$, where $\gamma_n = D_n \gamma_0$, and $D_n$ is the Dehn twist about $\gamma_\infty$.
+    The mapping class group of this surface is also virtually generated by $D_n$.
+    If we consider the pants decomposition along $\gamma_{\infty}$, we get a Fenchel-Nielsen map from $\teich(\os_{0,1,2})$ to the upper half plane $\mathbb{H}^2$, where the $y$-coordinate is $\frac{1}{\mathrm{length}(\gamma_{\infty})}$, and the $x$-coordinate is the twist around $\gamma_{\infty}$.
+    Furthermore, this map is also an isometry, and with respect to these coordinates, $D_n$ is the action of $
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}
+    $ on $\mathbb{H}^2$.
+
+    If we now consider $\mathrm{core}(\teich(\os_{0,1,2}))$, that consists of the points in $\mathbb{H}^2$ whose $y$-coordinate is greater than some threshold value, i.e. a horoball in $\mathbb{H}^2$.
+    We know from elementary hyperbolic geometry that the number of net points in a horoball grows with the same exponential growth rate as the number of net points in the boundary of the horoball, i.e. the horocycle.
+    The former exponential growth rate is precisely $\hNP(\mathrm{core}(\teich(\os_{0,1,2})))$, and the latter term is $\hLP(\teich(\os_{0,1,2}))$.
+  \end{itemize}
+  This concludes the proof of the lemma for the $4$ surfaces with $\chi(S) = -1$.
+\end{proof}
+
+Before we prove the induction step of the argument, we state a few lemmas that will go into the proof.
+
+\begin{lemma}
+  \label{lem:entropy-inequality}
+  Let $S$ be a surface with boundary, and $\chi(S) \leq -2$. If $S^{\prime}$ is a proper subsurface, then we have the following strict inequality between their lattice point entropies.
+  \begin{align*}
+    \hLP(\teich(S)) > \hLP(\teich(S^{\prime}))
+  \end{align*}
+\end{lemma}
+
+\begin{rem}
+  We do actually need the hypothesis $\chi(S) \leq -2$ in the statement of the lemma for two reasons.
+  The first reason is that the lemma is actually false for $\os_{1,0,1}$.
+  Recall that this surface has the torus with one boundary component as a subsurface, but their mapping class groups are isomorphic, and have the same lattice point growth entropy.
+  Another reason why we need the hypothesis is that the proof of the lemma proceeds via a construction of pseudo-Anosov elements on $S$, and $\os_{1,0,1}$ does not admit any pseudo-Anosov mapping classes.
+\end{rem}
+
+\begin{proof}[Proof of Lemma \ref{lem:entropy-inequality}]
+  Observe that $\mcg(S^{\prime})$ is a subgroup of $\mcg(S)$.
+  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(S^{\prime})$, which is the free product of a psuedo-Ansov element in $\mcg(S)$ with $\mcg(S^{\prime})$, and show that $\hLP(H) > \hLP(\mcg(S^{\prime}))$.
+  This is enough to prove the result, since $H$ is a subgroup of $\mcg(S)$, we have that $\hLP(\mcg(S)) \geq \hLP(H)$.
+
+  We now need to show that $\mcg(S)$ contains a pseudo-Anosov element.
+  We can invoke Penner's construction of pseudo-Anosov mapping classes (\cite[Theorem 4.1]{penner1988construction}), as long as we can construct a filling collection of \emph{two-sided} curves in $S$.
+  This may not be always possible for $S$ where $\chi(S) = -1$, but for $S$ with $\chi(S) \leq -2$, this is always possible (see \textcite{khan2023pseudo} for an explicit construction).
+  Let $\kappa$ denote the pseudo-Anosov mapping class we construct.
+
+  We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(S^{\prime})$ in the Thurston boundary.
+  This is because the limit set of $\mcg(S^{\prime})$ can only consist of foliations supported on the subsurface $S^{\prime}$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
+  We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(S^{\prime})$ is the free product of $\mathbb{Z}$ and $\mcg(S^{\prime})$: we let $H$ denote this group.
+
+  We now need to show that the lattice point entropy for $H$ is strictly larger than the $\mcg(S^{\prime})$.
+  To see this, we recall an equivalent definition of the lattice point entropy.
+  The lattice point entropy is the parameter $h$ such that the following Dirichlet series transitions from being convergent to divergent for any $x \in \teich(S)$.
+  \begin{align}
+    \label{eq:dirichlet}
+    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right)
+  \end{align}
+  Since $H = \mathbb{Z} * \mcg(S^{\prime})$, we can represent $\gamma \in H$ as $a_1 \cdot b_1 \cdot a_2 \cdots a_k \cdot b_k$, where $a_i$ belong in $\mathbb{Z}$ and $b_i$ belong in $\mcg(S^{\prime})$.
+  We use this along with the triangle inequality to get an upper bound for $d(x, \gamma x)$.
+  \begin{align}
+    \label{eq:triangle-inequality-1}
+    d(x, \gamma x) \leq \sum_{i=1}^k d(x, a_i x) + d(x, b_i x)
+  \end{align}
+  We plug inequality \eqref{eq:triangle-inequality-1} into \eqref{eq:dirichlet} to get a lower bound.
+  \begin{align}
+    \label{eq:dirichlet-lower-bound}
+    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right) &= \sum_{k=1}^\infty \left(  \sum_{a_1}\cdots \sum_{a_k} \sum_{b_1}\cdots \sum_{b_k}  \exp(-h \cdot d(x, a_1 \cdot b_1 \cdots a_k \cdot b_k x)) \right) \\
+    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d(x, ax)) \right)^k \left( \sum_{b \in \mcg(S^{\prime})} \exp(-h \cdot d(x, bx)) \right)^k
+  \end{align}
+  We know that for $h = \hLP(\teich(S^{\prime}))$, the second term in the above inequality diverges.
+  That means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(S^{\prime})) + \varepsilon$, the series converges to a value greater than $1$.
+  But that mean the Dirichelt series for $H$ diverges at $\hLP(\teich(S^{\prime})) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
+  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(S^{\prime})$, and proves the result.
+\end{proof}
+
 \section{Linear gap in complexity length}
 \label{sec:line-gap-compl}
 

@@ -15,3 +15,8 @@ What should the main theorems/constructions in the paper be?
 - Equality of lattice point entropy and net point entropy. Can think of this as a very weak version of ABEM, but proven without using dynamics.
 - (Optional, might only be in thesis) Application to Patterson-Sullivan theory.
 - (Appendix) HHS structure for non-orientable Teichmüller spaces.
+
+
+* Proof of entropy equality
+
+Need to deal with the two base cases: once punctured torus and a Klein bottle(?). The Teichmüller space in the first case is hyperbolic, so we can use the tail volume estimates. In thesecond case, the entropies are trivially equal because the action is actually cocompact.
