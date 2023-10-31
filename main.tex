@@ -29,7 +29,13 @@
 \label{sec:preliminaries}
 
 \subsection*{List of notation}
-
+\begin{itemize}
+\item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
+\item[-] $\hLP(H)$: For a subgroup $H$ of $\mcg(S)$, this is the exponential growth rate of for the $H$-orbit of a point $x$ in $\teich(S)$.
+\item[-] $\hNP(\mathrm{core}(\teich(S)))$: This is the exponential growth rate for the net points in an $(\varepsilon, 2 \varepsilon)$-net in the weak convex core of $\teich(S)$. The value of $\varepsilon$ is usually clear from the context.
+\item[-] $\os_{g,b,c}$: A surface of genus $g$ with $b$ boundary components, and $c$ crosscaps attached.
+\item[-] $\teich(S)$: The Teichmüller space of the surface $S$.
+\end{itemize}
 
 \section{The weak convex core of $\teich(\no_g)$}
 \label{sec:weak-convex-core}
@@ -54,7 +60,7 @@ In this, and the following section, we will prove that $\hLP = \hNP$, which will
 \begin{theorem}[Entropy equality]
   For any surface $S$ of finite type, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
-    \hNP(\mathrm{core}(\teich(S))) = \hLP(S)
+    \hNP(\mathrm{core}(\teich(S))) = \hLP(\teich(S))
   \end{align*}
 \end{theorem}
 
@@ -65,7 +71,7 @@ In this, and the following section, we will prove that $\hLP = \hNP$, which will
 \end{rem}
 
 We will prove this theorem by inducting on the Euler characteristic of the surface $S$.
-The $4$ base cases we need to check are the $3$ non-orientable surfaces of Euler characteristic $-1$, and one orientable surface with Euler characteristic $-1$.
+The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one orientable surface with Euler characteristic $-1$.
 \begin{itemize}
 \item $\os_{1,1,0}$: This is the torus with $1$ boundary component and $0$ crosscaps attached.
 \item $\os_{1,0,1}$: This is a torus with $0$ boundary components, and $1$ crosscap attached.
@@ -73,12 +79,12 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces of Euler
 \item $\os_{0,1,2}$: This is a sphere with $1$ boundary component, and $2$ crosscaps attached.
 \end{itemize}
 
-\todo[inline]{Have some helper lemma here about various cases where we have entropy equality.}
+% \todo[inline]{Have some helper lemma here about various cases where we have entropy equality.}
 
 \begin{lemma}[Entropy equality: base case]
   For a surface $S$ in $\left\{ \os_{1,1,0}, \os_{1,0,1}, \os_{0,2,1}, \os_{0,1,2} \right\}$, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
-    \hNP(\mathrm{core}(\teich(S))) = \hLP(S)
+    \hNP(\mathrm{core}(\teich(S))) = \hLP(\teich(S))
   \end{align*}
 \end{lemma}
 
@@ -94,7 +100,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces of Euler
     \end{align}
     Here, $p$ is a lattice point, and $B_R(p)$ is the ball of radius $R$ centered at $p$.
 
-    To count the net points in the ball of radius, we parameterize the net points by how for from the orbit of $p$ they lie. Since we're looking for net points in a ball of radius $R$, the furthest away they can be from the orbit is $R$.
+    To count the net points in the ball of radius, we parameterize the net points by how far from the orbit of $p$ they lie. Since we're looking for net points in a ball of radius $R$, the furthest away they can be from the orbit is $R$.
     We thus get a following sum decomposition for the cardinality of the net points.
     \begin{align*}
       \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \#\left( B_R(p) \cap N_i \right)
@@ -146,13 +152,21 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces of Euler
 
     If we consider the pants decomposition of the surface along $\kappa$, and any two sided curve, we see that the length coordinates of $\kappa$ in $\mathrm{core}(\teich(\os_{1,0,1}))$ are contained in a compact interval $[t_1, t_2]$, where $t_1 > 0$.
     This means that $\mathrm{core}(\teich(\os_{1,0,1}))$ is a bounded neighbourhood of the image of $\teich(\os_{1,1,0})$.
-    The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
     \begin{figure}[h]
       \centering
       \includegraphics[height=5cm]{example-image-a}
       \caption{The curves $\kappa$ and $\kappa^{\prime}$ on $\os_{1,0,1}$.}
       \label{fig:base-case-2}
     \end{figure}
+
+    From the previous case, we already have $\hNP(\mathrm{core}(\teich(\os_{1,1,0}))) = \hLP(\teich(\os_{1,1,0}))$, and since their mapping class groups are isomorphic, we also have $\hLP(\teich(\os_{1,1,0})) = \hLP(\teich(\os_{1,0,1}))$.
+    We now need to prove that $\hNP(\mathrm{core}(\teich(\os_{1,1,0}))) = \hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ to prove the result for this case.
+    We have that the net for $\mathrm{core}(\teich(\os_{1,0,1}))$ lies in a bounded neighbourhood of the net for $\mathrm{core}(\teich(\os_{1,1,0}))$: this implies that the cardinalities of the net points in a ball of radius $r$ differ by at most a multiplicative constant.
+    \begin{align*}
+      \#\left( B_R(p) \cap N_{\mathrm{core}(\teich(\os_{1,0,1}))} \right) \leq c \cdot \#\left( B_R(p) \cap N_{\mathrm{core}(\teich(\os_{1,1,0}))} \right)
+    \end{align*}
+    Since the two cardinalities differ by at most a multiplicative constant, they have the same exponential growth rate.
+    % The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
   \item $\os_{0,2,1}$: The mapping class group of this surface is finite: in fact, it is isomorphic to $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ (see \textcite{gendulphe2017whats}).
     This means $\hLP(\teich(\os_{0,2,1})) = 0$.
     This surface has exactly two simple geodesics $\kappa$ and $\kappa^{\prime}$, which intersect each other exactly once, such that deleting either one of them results in a pair of pants.
@@ -232,8 +246,8 @@ Before we prove the induction step of the argument, we state a few lemmas that w
   \end{align}
   We know that for $h = \hLP(\teich(S^{\prime}))$, the second term in the above inequality diverges.
   That means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(S^{\prime})) + \varepsilon$, the series converges to a value greater than $1$.
-  But that mean the Dirichelt series for $H$ diverges at $\hLP(\teich(S^{\prime})) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
-  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(S^{\prime})$, and proves the result.
+  But that means the Dirichlet series for $H$ diverges at $\hLP(\teich(S^{\prime})) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
+  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(S^{\prime})$.
 \end{proof}
 
 \section{Linear gap in complexity length}
