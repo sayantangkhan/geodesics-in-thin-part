@@ -58,6 +58,7 @@
 
 In this, and the following section, we will prove that $\hLP = \hNP$, which will let us upgrade the {\color{red} theorem from the previous section}.
 \begin{theorem}[Entropy equality]
+  \label{thm:entropy-equality}
   For any surface $S$ of finite type, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
     \hNP(\mathrm{core}(\teich(S))) = \hLP(\teich(S))
@@ -194,6 +195,61 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
   This concludes the proof of the lemma for the $4$ surfaces with $\chi(S) = -1$.
 \end{proof}
 
+Before we state the various lemmas we will need for the proof of the inductive step, we sketch the outline of the proof, to illustrate the key idea of the proof, as well as enumerate the difficulties in proving the result.
+
+\begin{proof}[Proof sketch of Theorem \ref{thm:entropy-equality}]
+  It will suffice to prove the following upper bound for any $\varepsilon > 0$ and for large enough $R$, and some polynomial function $q$.
+  \begin{align*}
+    \#\left( B_R(p) \cap N \right) \leq q(R) \cdot \exp(\hLP R (1 + 2\varepsilon))
+  \end{align*}
+  We do this by partitioning the points in $B_R(p) \cap N$ into two sets.
+  \begin{description}
+  \item[Good points] The points in $B_R(p) \cap N$ which are at most distance $\varepsilon R$ away from the closest lattice point.
+    We denote this by $N_g(p, R)$, since the definition of goodness also depends on $p$ and $R$.
+  \item[Bad points] The points in $B_R(p) \cap N$ which are more than distance $\varepsilon R$ away from the closest lattice point.
+    We denote these points by $N_b(p, R)$.
+  \end{description}
+  \todo[inline]{Factor out this definition outside the proof sketch.}
+
+  The first step of the proof is to get an upper bound on the number of good points.
+  To each point in $B_R(p) \cap N$, we associate the nearest lattice point $\gamma p$.
+  Let $N(\gamma)$ denote the subset of net points whose closest lattice point is $\gamma p$.
+  Observe that if $x \in N(\gamma)$ is a good point, i.e. is contained in $N_g(p, r)$, then $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
+  This observation leads us to the following estimate for $\#\left( N_g(p, r) \right) $.
+  \begin{align}
+    \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
+  \end{align}
+
+  The next step in the proof is to show that $\#\left(  B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right)$ has polynomial growth as $R$ increases: this is the content of Lemma \ref{lem:fd-polynomial-growth}.
+  Using this estimate, we can rewrite \eqref{eq:good-estimate-1} in terms of the lattice point counting function for large enough values of $R$.
+  \begin{align}
+    \label{eq:good-estimate-2}
+    \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(S) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
+    &\leq q(R) \cdot \exp\left( \hLP R(1 + 2\varepsilon) \right)
+    \label{eq:good-estimate-3}
+  \end{align}
+  \todo[inline]{Need to adapt the proof of  \cite[Lemma 3.2]{eskinmirzakhani}.}
+
+  This proves the estimate we want for the set of good points.
+  To deal with the bad points, we will show that as $R$ gets larger, the fraction of bad points in $B_R(p) \cap N$ goes to $0$.
+  This will show that the estimate we got for good points in \eqref{eq:good-estimate-3} holds for all points in $B_R(p) \cap N$, for large enough $R$.
+
+  To show that the fraction of bad points goes to $0$, we count with respect to a new metric $d_C$, instead of the Teichmüller metric.
+  This new metric is called complexity length (\textcite{dowdall2023lattice}), and one has a similar lattice point counting result with respect to this new metric for large enough $R$.
+  \begin{align}
+    \#\left( n \in N \mid d_C(p, n) \leq R \right) \leq \exp((\hNP + \delta) R)
+    \label{eq:complexity-length-count}
+  \end{align}
+  Here, $\delta$ is some arbitrary positive constant, and picking a smaller $\delta$ means one has to pick a larger value of $R$ to make the above inequality hold.
+
+  The main reason we work with complexity length instead of the Teichmüller metric is that we can get a better estimate for complexity length for bad points: this is the content of Theorem \ref{thm:complexity-length-gap}.
+  For a point $n \in N_b(p, R)$, we have the following estimate for $d_C(p, n)$, for some constant $c > 0$.
+  \begin{align*}
+    d_C(p, n) \leq R(1 - c \varepsilon)
+  \end{align*}
+  Combining the above inequality with \eqref{eq:complexity-length-count} for a small enough $\delta$, we get that the fraction of bad points goes to $0$ as $R$ goes to $\infty$.
+\end{proof}
+
 Before we prove the induction step of the argument, we state a few lemmas that will go into the proof.
 
 \begin{lemma}
@@ -248,6 +304,34 @@ Before we prove the induction step of the argument, we state a few lemmas that w
   That means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(S^{\prime})) + \varepsilon$, the series converges to a value greater than $1$.
   But that means the Dirichlet series for $H$ diverges at $\hLP(\teich(S^{\prime})) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
   This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(S^{\prime})$.
+\end{proof}
+
+\begin{lemma}
+  \label{lem:fd-polynomial-growth}
+  There exists a polynomial function $q$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $N(\gamma)$.
+  \begin{align*}
+    \#\left( N(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
+  \end{align*}
+\end{lemma}
+
+\begin{rem}
+  \textcite[Lemma 3.2]{eskinmirzakhani} prove this lemma for Teichmüller spaces of orientable surfaces, by comparing the extremal lengths of various curves on the underlying surfaces.
+  We adapt the same proof for non-orientable surfaces, replacing extremal length for hyperbolic lengths instead.
+\end{rem}
+
+\begin{proof}[Proof of Lemma \ref{lem:fd-polynomial-growth}]
+  Firstly, note that it suffices to prove the lemma for $\gamma = 1$, since our choice of basepoint was arbitrary.
+
+  It will suffice to construct a set $\cZ \subset \teich(S)$ such that $\# \cZ \leq R^{f(\chi(S))}$, and for $y \in B_R(p)$, there exists a $z \in \cZ$ and $\kappa \in \mcg(S)$ such that $d(y, \kappa z) \leq C$, for some function $f$, and some fixed constant $C$.
+
+  To see why this suffices, suppose we have such a $\cZ$.
+  Without loss of generality, we can assume that for all points $z \in \cZ$, the closest lattice point is $p$: otherwise we could replace such a point $z$ by $\kappa z$ for an appropriate choice of $\kappa$.
+We then have that for any $n \in N(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
+Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( N(1) \cap B_p(R) \right) \leq C^{\prime} R^{f(\chi(S))}$, for some other constant $C^{\prime}$.
+\todo[inline]{Need a lemma that states we can only pack in a uniformly bounded number of net points in a ball of fixed radius.
+The proof can go via the uniform Lagrangian estimate for the volume of a ball, and use packing arguments.}
+
+
 \end{proof}
 
 \section{Linear gap in complexity length}
