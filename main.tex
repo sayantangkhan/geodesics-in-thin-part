@@ -308,7 +308,7 @@ Before we prove the induction step of the argument, we state a few lemmas that w
 
 \begin{lemma}
   \label{lem:fd-polynomial-growth}
-  There exists a polynomial function $q$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $N(\gamma)$.
+  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $N(\gamma)$.
   \begin{align*}
     \#\left( N(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
   \end{align*}
@@ -322,8 +322,10 @@ Before we prove the induction step of the argument, we state a few lemmas that w
 \begin{proof}[Proof of Lemma \ref{lem:fd-polynomial-growth}]
   Firstly, note that it suffices to prove the lemma for $\gamma = 1$, since our choice of basepoint was arbitrary.
 
-  It will suffice to construct a set $\cZ \subset \teich(S)$ such that $\# \cZ \leq R^{f(\chi(S))}$, and for $y \in B_R(p)$, there exists a $z \in \cZ$ and $\kappa \in \mcg(S)$ such that $d(y, \kappa z) \leq C$, for some function $f$, and some fixed constant $C$.
-
+  It will suffice to prove the following claim.
+  \begin{claim*}
+  There exists a set $\cZ \subset \teich(S)$ such that $\# \cZ \leq R^{f(S)}$, and for $y \in B_R(p)$, there exists a $z \in \cZ$ and $\kappa \in \mcg(S)$ such that $d(y, \kappa z) \leq C$, for some value $f(S)$ that only depends on the topological type of $S$, and some fixed constant $C$.
+  \end{claim*}
   To see why this suffices, suppose we have such a $\cZ$.
   Without loss of generality, we can assume that for all points $z \in \cZ$, the closest lattice point is $p$: otherwise we could replace such a point $z$ by $\kappa z$ for an appropriate choice of $\kappa$.
 We then have that for any $n \in N(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
@@ -331,7 +333,32 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( N(1) \cap B_p(R) \rig
 \todo[inline]{Need a lemma that states we can only pack in a uniformly bounded number of net points in a ball of fixed radius.
 The proof can go via the uniform Lagrangian estimate for the volume of a ball, and use packing arguments.}
 
+\emph{Proof of claim:}
+  Let $\left\{ M_1, \ldots, M_J \right\}$ be all the topologically distinct markings on $p$ that are short.
+  We know that there are only finitely many of them, and the cardinality $J$ only depends on the topological type of the surface $S$.
+  We also know that for each of these short markings, the lengths of the pants curves in the marking are bounded above by some constant $T$.
+  Each of these markings has $N = -3 \chi(S) - b$ pants curves on them, where $b$ is the number of boundary components of $S$.
 
+  We construct the points $z \in \cZ$ by just varying the lengths of these pants curves: the set of lengths we will allow are the following.
+  \begin{align*}
+    \text{Acceptable lengths} = \left\{ T, T \exp(-1), T\exp(-2), \ldots, T \exp(-\lceil R \rceil) \right\}
+  \end{align*}
+  We define the point $z_{j, i_1, i_2, \ldots , i_N}$ to be the point in $\teich(S)$ obtained by considering the marking $M_j$ at $p$, and setting the length of the $k$\textsuperscript{th} pants curve to be $i_k$, where the $i_k$ is one of the acceptable lengths.
+  It's clear that the cardinality of $\cZ$ is at most $J \cdot R^N$, which is a polynomial only depending on the topological type of the surface $S$.
+
+  Suppose now that $y$ is some other point in $B_R(p)$.
+  We pick a $\kappa \in \mcg(S)$ such that the shortest marking on $\kappa y$ is one of the markings $M_j$ for $1 \leq j \leq J$.
+  We now need to show that one of the $z \in \cZ$ is close to $\kappa y$.
+  Pick the $z$ such that the corresponding lengths of the pants curves are closest to the lengths of the pants curves on $\kappa y$.
+  We can now invoke the combinatorial distance formula for Teichmüller metric (proved by \textcite{rafi2007combinatorial} for the orientable setting, and a corollary of Theorem \ref{thm:non-ori-teich-hhs} for the non-orientable case).
+  \begin{align*}
+    d(z, \kappa y) \asymp \sum_Y d_Y(z, \kappa y)_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
+  \end{align*}
+  In the above formula, the first term is the distance between the short markings when projected to non-annular subsurfaces, the second term is the distance between the short markings when projected to annular subsurfaces whose core curves are not the pants curves in the marking, and the third term corresponds to the length and twist parameters of the short curves.
+
+  Since both $z$ and $\kappa y$ have the same short markings, the first two terms in the above sum become $0$.
+  Also, since we picked $z$ to be the element of $\cZ$ such that the lengths were closest to those on $\kappa y$, the third term is bounded by some constant, which proves the result.
+  \todo[inline]{Define marking in the preliminaries.}
 \end{proof}
 
 \section{Linear gap in complexity length}
