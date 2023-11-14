@@ -86,6 +86,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
 % \todo[inline]{Have some helper lemma here about various cases where we have entropy equality.}
 
 \begin{lemma}[Entropy equality: base case]
+  \label{lem:entropy-equality-base-case}
   For a surface $S$ in $\left\{ \os_{1,1,0}, \os_{1,0,1}, \os_{0,2,1}, \os_{0,1,2} \right\}$, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
     \hNP(\mathrm{core}(\teich(S))) = \hLP(\teich(S))
@@ -128,7 +129,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     This is precisely the bound we needed for the first term in \eqref{eq:net-point-decomposition-base-case}.
 
     Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \varepsilon}{2}))$.
-    For any point $x$ in $N_{> \varepsilon R}$, we can decompose the geodesic $[p, x]$ into two segments $[p, x_0]$, and $[x_0, x]$, where $x_0$ is the last point on the geodesic where it stays within some bounded distance of a lattice point.
+    For any point $x$ in $N_{> \varepsilon R}$, we can decompose the geodesic $[p, x]$ into two segments $[p, x_0]$, and $[x_0, x]$, where $x_0$ is the last point on the geodesic where it stays within some bounded distance of a lattice point. \todo{Fix this}
     We also have that $d(p, x_0) \leq R(1-\varepsilon)$, by our assumption, which lets us count the number of such points $x_0$.
     There are at most $\exp(R(1-\varepsilon))$ such points.
     Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
@@ -338,12 +339,49 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( N(1) \cap B_p(R) \rig
 \subsection{Using complexity length to count bad points}
 \label{sec:using-compl-length}
 
-In this section we introduce an alternative to the Teichmüller metric, called the \emph{complexity length}.
+In this section we introduce an alternative to the Teichmüller metric, called the \emph{complexity length} (see Definition \ref{defn:complexity-length}).
 This metric was introduced by \textcite{dowdall2023lattice}, in order to get better estimates on net points contained in the thin part of Teichmüller space (for orientable surfaces).
 We adapt the construction of complexity to the Teichmüller space of non-orientable surfaces in \autoref{sec:line-gap-compl}.
 In this section, we state the main results about complexity length we need in order to prove Theorem \ref{thm:entropy-equality}.
 
-All the results we state about complexity length will involve a arbitrary large parameter $C \gg 0$: for specific applications, we will need to set $C$ larger than some threshold value which we will specify.
+For this section, we will state the results with a rescaled version of complexity length, in order to compare it with Teichmüller length.
+
+\begin{definition}[Rescaled complexity length]
+  Let $S$ be a surface of finite type.
+  The rescaled complexity length $\dcomp$ on $\mathrm{core}(\teich(S))$ is given by the following formula.
+  \begin{align*}
+    \dcomp(x, y) = \frac{\mathfrak{L}(x,y)}{\hNP(\mathrm{core}(\teich(S)))}
+  \end{align*}
+  Here, $\mathfrak{L}(x,y)$ is the complexity length between points $x$ and $y$.
+\end{definition}
+
+The first result we will need is a count of the net points with respect to the rescaled complexity length.
+
+\begin{theorem}[Theorem 12.1 of \cite{dowdall2023lattice}, Theorem \ref{thm:counting-with-complexity}]
+  \label{thm:counting-with-complexity-rescaled}
+  There exists $k \in \mathbb{N}$ that depends on the net $\mathcal{N}$, such that the following inequality holds.
+  \begin{align*}
+    \#\left( y \in \mathcal{N} \mid \dcomp(p, x) \leq R \right) \leq k R^k \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R)
+  \end{align*}
+\end{theorem}
+
+The next result, which is the main theorem of Section \ref{sec:line-gap-compl}, is that if $y$ is a bad point that is Teichmüller distance $R$ away from $p$, then its rescaled complexity distance to $p$ is smaller than $R$ by a definite amount.
+We state this theorem with an additional hypothesis on the net point entropy of subsurfaces.
+We will establish that this hypothesis holds inductively in Section \ref{sec:proof-theorem}.
+
+\begin{theorem}[Linear gap in complexity length]
+  \label{thm:linear-gap-rescaled}
+  Suppose that for all proper subsurfaces $S^{\prime}$ of $S$, the following inequality holds.
+  \begin{align*}
+    \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))
+  \end{align*}
+  Then for any $\varepsilon >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $N_b(p, R, \varepsilon)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
+  \begin{align*}
+    \dcomp(p, y) \leq R(1 - c)
+  \end{align*}
+\end{theorem}
+
+Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:linear-gap-rescaled}, it follows that as $R$ goes to $\infty$, the proportion of bad points goes to $0$, which is what we need for Theorem \ref{thm:entropy-equality}.
 
 \subsection{Entropy gap}
 \label{sec:entr-gap-cons}
@@ -445,64 +483,107 @@ We can now prove the entropy gap result for $\hNP$.
 \subsection{Proof of Theorem \ref{thm:entropy-equality}}
 \label{sec:proof-theorem}
 
+We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-equality}.
 
+\begin{proof}[Proof of Theorem \ref{thm:entropy-equality}]
+  We will prove this lemma by inducting on the complexity of the surface $S$.
+  Lemma \ref{lem:entropy-equality-base-case} proves the result for surfaces with Euler characteristic equal to $-1$, which serves as the base case of the theorem.
 
-Before we state the various lemmas we will need for the proof of the inductive step, we sketch the outline of the proof, to illustrate the key idea of the proof, as well as enumerate the difficulties in proving the result.
+  We now assume that Theorem \ref{thm:entropy-equality} already holds for all proper subsurfaces $S^{\prime}$ of $S$: it will suffice to show that the result holds for $S$.
 
-\begin{proof}[Proof sketch of Theorem \ref{thm:entropy-equality}]
-  It will suffice to prove the following upper bound for any $\varepsilon > 0$ and for large enough $R$, and some polynomial function $q$.
+  We will establish that for any $\varepsilon > 0$, there exists a polynomial $q(R)$, and $R$ large enough, such that the following bound holds.
   \begin{align*}
-    \#\left( B_R(p) \cap N \right) \leq q(R) \cdot \exp(\hLP R (1 + 2\varepsilon))
+    \#\left( B_R(p) \cap \mathcal{N} \right) \leq q(R) \cdot \exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))
   \end{align*}
-  We do this by partitioning the points in $B_R(p) \cap N$ into two sets.
-  \begin{description}
-  \item[Good points] The points in $B_R(p) \cap N$ which are at most distance $\varepsilon R$ away from the closest lattice point.
-    We denote this by $N_g(p, R)$, since the definition of goodness also depends on $p$ and $R$.
-  \item[Bad points] The points in $B_R(p) \cap N$ which are more than distance $\varepsilon R$ away from the closest lattice point.
-    We denote these points by $N_b(p, R)$.
-  \end{description}
-  \todo[inline]{Factor out this definition outside the proof sketch.}
 
-  The first step of the proof is to get an upper bound on the number of good points.
-  To each point in $B_R(p) \cap N$, we associate the nearest lattice point $\gamma p$.
-  Let $N(\gamma)$ denote the subset of net points whose closest lattice point is $\gamma p$.
-  Observe that if $x \in N(\gamma)$ is a good point, i.e. is contained in $N_g(p, r)$, then $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
-  This observation leads us to the following estimate for $\#\left( N_g(p, r) \right) $.
+  We first count the good points in $B_R(p)$, by partitioning them according to the nearest lattice point.
   \begin{align}
-    \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
+    \label{eq:good-point-partition}
+    N_g(p, R, \varepsilon) = \bigsqcup_{\gamma \in \mcg(S)} N_g(\gamma, p, R, \varepsilon)
   \end{align}
-
-  The next step in the proof is to show that $\#\left(  B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right)$ has polynomial growth as $R$ increases: this is the content of Lemma \ref{lem:fd-polynomial-growth}.
-  Using this estimate, we can rewrite \eqref{eq:good-estimate-1} in terms of the lattice point counting function for large enough values of $R$.
+  Observe that if $y \in N_g(\gamma, p, R, \varepsilon)$, then $d(p, \gamma p) \leq R(1 + \varepsilon)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \varepsilon R$.
+  This observation leads to the following upper bound on $\#\left( N_g(p, R, \varepsilon) \right)$.
   \begin{align}
+    \#\left( N_g(p, R, \varepsilon) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N_g(\gamma, p, R, \varepsilon)  \right) \label{eq:good-estimate-1}
+  \end{align}
+  By Lemma \ref{lem:fd-polynomial-growth}, there exists a polynomial $q(R)$ such that each term in the above sum is at most $q(R)$.
+  \begin{align}
+    \#\left( N_g(p, R, \varepsilon) \right) &\leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} q(R) \\
+     &\leq q(R) \cdot \exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))
     \label{eq:good-estimate-2}
-    \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(S) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
-    &\leq q(R) \cdot \exp\left( \hLP R(1 + 2\varepsilon) \right)
-    \label{eq:good-estimate-3}
   \end{align}
-  \todo[inline]{Need to adapt the proof of  \cite[Lemma 3.2]{eskinmirzakhani}.}
+  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\varepsilon)$ as at most $\exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))$, for large enough $R$.
+  We have the desired upper bound on the cardinality for the good points.
+  Now we show that the number of bad points is much smaller than the total number of points in the ball, which will then prove the result.
 
-  This proves the estimate we want for the set of good points.
-  To deal with the bad points, we will show that as $R$ gets larger, the fraction of bad points in $B_R(p) \cap N$ goes to $0$.
-  This will show that the estimate we got for good points in \eqref{eq:good-estimate-3} holds for all points in $B_R(p) \cap N$, for large enough $R$.
-
-  To show that the fraction of bad points goes to $0$, we count with respect to a new metric $d_C$, instead of the Teichmüller metric.
-  This new metric is called complexity length (\textcite{dowdall2023lattice}), and one has a similar lattice point counting result with respect to this new metric for large enough $R$.
-  \begin{align}
-    \#\left( n \in N \mid d_C(p, n) \leq R \right) \leq \exp((\hNP + \delta) R)
-    \label{eq:complexity-length-count}
-  \end{align}
-  Here, $\delta$ is some arbitrary positive constant, and picking a smaller $\delta$ means one has to pick a larger value of $R$ to make the above inequality hold.
-
-  The main reason we work with complexity length instead of the Teichmüller metric is that we can get a better estimate for complexity length for bad points: this is the content of Theorem \ref{thm:complexity-length-gap}.
-  For a point $n \in N_b(p, R)$, we have the following estimate for $d_C(p, n)$, for some constant $c > 0$.
+  From the inductive hypothesis, we have that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $S^{\prime}$.
+  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
+  Applying the theorem, we see that if $y$ is a bad point, $\dcomp(p, y) \leq R(1 - c)$.
+  We then apply Theorem \ref{thm:counting-with-complexity-rescaled} to get an upper bound on the number of bad points.
   \begin{align*}
-    d_C(p, n) \leq R(1 - c \varepsilon)
+    \#\left( N_b(p, R, \varepsilon) \right) \leq kR^k \cdot \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot (1 - c))
   \end{align*}
-  Combining the above inequality with \eqref{eq:complexity-length-count} for a small enough $\delta$, we get that the fraction of bad points goes to $0$ as $R$ goes to $\infty$.
+  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
+  Combining these two facts, we see that the proportion of bad points goes to $0$ as $R$ goes to $\infty$, which proves the result.
 \end{proof}
+\todo[inline]{Change wherever you've used $N$ to $\mathcal{N}$.}
 
-Before we prove the induction step of the argument, we state a few lemmas that will go into the proof.
+% Before we state the various lemmas we will need for the proof of the inductive step, we sketch the outline of the proof, to illustrate the key idea of the proof, as well as enumerate the difficulties in proving the result.
+
+% \begin{proof}[Proof sketch of Theorem \ref{thm:entropy-equality}]
+%   It will suffice to prove the following upper bound for any $\varepsilon > 0$ and for large enough $R$, and some polynomial function $q$.
+%   \begin{align*}
+%     \#\left( B_R(p) \cap N \right) \leq q(R) \cdot \exp(\hLP R (1 + 2\varepsilon))
+%   \end{align*}
+%   We do this by partitioning the points in $B_R(p) \cap N$ into two sets.
+%   \begin{description}
+%   \item[Good points] The points in $B_R(p) \cap N$ which are at most distance $\varepsilon R$ away from the closest lattice point.
+%     We denote this by $N_g(p, R)$, since the definition of goodness also depends on $p$ and $R$.
+%   \item[Bad points] The points in $B_R(p) \cap N$ which are more than distance $\varepsilon R$ away from the closest lattice point.
+%     We denote these points by $N_b(p, R)$.
+%   \end{description}
+%   \todo[inline]{Factor out this definition outside the proof sketch.}
+
+%   The first step of the proof is to get an upper bound on the number of good points.
+%   To each point in $B_R(p) \cap N$, we associate the nearest lattice point $\gamma p$.
+%   Let $N(\gamma)$ denote the subset of net points whose closest lattice point is $\gamma p$.
+%   Observe that if $x \in N(\gamma)$ is a good point, i.e. is contained in $N_g(p, r)$, then $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
+%   This observation leads us to the following estimate for $\#\left( N_g(p, r) \right) $.
+%   \begin{align}
+%     \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
+%   \end{align}
+
+%   The next step in the proof is to show that $\#\left(  B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right)$ has polynomial growth as $R$ increases: this is the content of Lemma \ref{lem:fd-polynomial-growth}.
+%   Using this estimate, we can rewrite \eqref{eq:good-estimate-1} in terms of the lattice point counting function for large enough values of $R$.
+%   \begin{align}
+%     \label{eq:good-estimate-2}
+%     \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(S) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
+%     &\leq q(R) \cdot \exp\left( \hLP R(1 + 2\varepsilon) \right)
+%     \label{eq:good-estimate-3}
+%   \end{align}
+%   \todo[inline]{Need to adapt the proof of  \cite[Lemma 3.2]{eskinmirzakhani}.}
+
+%   This proves the estimate we want for the set of good points.
+%   To deal with the bad points, we will show that as $R$ gets larger, the fraction of bad points in $B_R(p) \cap N$ goes to $0$.
+%   This will show that the estimate we got for good points in \eqref{eq:good-estimate-3} holds for all points in $B_R(p) \cap N$, for large enough $R$.
+
+%   To show that the fraction of bad points goes to $0$, we count with respect to a new metric $d_C$, instead of the Teichmüller metric.
+%   This new metric is called complexity length (\textcite{dowdall2023lattice}), and one has a similar lattice point counting result with respect to this new metric for large enough $R$.
+%   \begin{align}
+%     \#\left( n \in N \mid d_C(p, n) \leq R \right) \leq \exp((\hNP + \delta) R)
+%     \label{eq:complexity-length-count}
+%   \end{align}
+%   Here, $\delta$ is some arbitrary positive constant, and picking a smaller $\delta$ means one has to pick a larger value of $R$ to make the above inequality hold.
+
+%   The main reason we work with complexity length instead of the Teichmüller metric is that we can get a better estimate for complexity length for bad points: this is the content of Theorem \ref{thm:complexity-length-gap}.
+%   For a point $n \in N_b(p, R)$, we have the following estimate for $d_C(p, n)$, for some constant $c > 0$.
+%   \begin{align*}
+%     d_C(p, n) \leq R(1 - c \varepsilon)
+%   \end{align*}
+%   Combining the above inequality with \eqref{eq:complexity-length-count} for a small enough $\delta$, we get that the fraction of bad points goes to $0$ as $R$ goes to $\infty$.
+% \end{proof}
+
+% Before we prove the induction step of the argument, we state a few lemmas that will go into the proof.
 
 \section{Linear gap in complexity length}
 \label{sec:line-gap-compl}
