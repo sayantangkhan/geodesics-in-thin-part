@@ -68,7 +68,7 @@ In this, and the following section, we will prove that $\hLP = \hNP$, which will
 \begin{rem}
   In the case where $S$ is an orientable surface, the theorem is a corollary of \textcite[Theorem 1.2]{10.1215/00127094-1548443}.
   However, the proof of the stronger theorem in the orientable setting uses facts about the dynamics of the geodesic flow on the moduli space, which we don't have in the non-orientable setting.
-  The proof of the weaker theorem only uses topological methods, and works equally well for orientable and non-orientable surfaces.
+  The proof of the weaker theorem only uses coarse geometric methods, and works equally well for orientable and non-orientable surfaces.
 \end{rem}
 
 \subsection{Base case}
@@ -109,71 +109,71 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     We have the following sum decomposition (for an arbitrary choice of $\varepsilon > 0$) for the cardinality of the net points.
     \begin{align}
       \label{eq:net-point-decomposition-base-case}
-      \#\left( B_R(p) \cap N \right) = \#\left( B_R(p) \cap N_{\leq \varepsilon R} \right) + \#\left( B_R(p) \cap N_{> \varepsilon R} \right)
+      \#\left( B_R(p) \cap \mathcal{N} \right) = \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) + \#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right)
     \end{align}
-    Here, $N_{\leq \varepsilon R}$ denotes the net points that lie within distance $\varepsilon R$ of the orbit of $p$, and $N_{> \varepsilon R}$ denotes the net points that lie more than distance $\varepsilon R$ of the orbit of $p$.
+    Here, $\mathcal{N}_{\leq \varepsilon R}$ denotes the net points that lie within distance $\varepsilon R$ of the orbit of $p$, and $\mathcal{N}_{> \varepsilon R}$ denotes the net points that lie more than distance $\varepsilon R$ of the orbit of $p$.
 
     We will show that the first term is at most $p(R) \exp(R(1 + \varepsilon))$, for some polynomial $p(R)$, and that the second term grows slower than the first term.
     Since the choice of $\varepsilon$ was arbitrary, this will prove the equality of the two entropy terms.
 
-    Let $N_{\leq \varepsilon R}(\gamma)$ denote the subset of $N_{\leq \varepsilon R}$ whose closest lattice point is $\gamma p$.
+    Let $\mathcal{N}_{\leq \varepsilon R}(\gamma)$ denote the subset of $\mathcal{N}_{\leq \varepsilon R}$ whose closest lattice point is $\gamma p$.
     Observe that $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
     We also have the following inequality for any $\gamma$, and for some polynomial $p$, by Lemma \ref{lem:fd-polynomial-growth}.
     \begin{align*}
-      \#\left( B_R(p) \cap N_{\leq \varepsilon R} \right) \leq p(R)
+      \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) \leq p(R)
     \end{align*}
-    Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap N_{\leq \varepsilon R} \right)$.
+    Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right)$.
     \begin{align*}
-      \#\left( B_R(p) \cap N_{\leq \varepsilon R} \right) \leq p(R) \cdot \left( \exp(R(1+\varepsilon)) \right)
+      \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) \leq p(R) \cdot \left( \exp(R(1+\varepsilon)) \right)
     \end{align*}
     This is precisely the bound we needed for the first term in \eqref{eq:net-point-decomposition-base-case}.
 
     Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \varepsilon}{2}))$.
-    For any point $x$ in $N_{> \varepsilon R}$, we can decompose the geodesic $[p, x]$ into two segments $[p, x_0]$, and $[x_0, x]$, where $x_0$ is the last point on the geodesic where it stays within some bounded distance of a lattice point. \todo{Fix this}
+    For any point $x$ in $\mathcal{N}_{> \varepsilon R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the [p, x] which stays within some bounded distance of a lattice point.
     We also have that $d(p, x_0) \leq R(1-\varepsilon)$, by our assumption, which lets us count the number of such points $x_0$.
     There are at most $\exp(R(1-\varepsilon))$ such points.
     Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
     Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ and a horoball $H$, where $x_0$ is a definite distance away from the boundary of horoball.
     We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
-    We thus have the following upper bound on $\#\left( B_R(p) \cap N_{> \varepsilon R} \right) $ for large enough values of $R$.
+    We thus have the following upper bound on $\#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right) $ for large enough values of $R$.
     \begin{align*}
-      \#\left( B_R(p) \cap N_{> \varepsilon R} \right)  &\leq p(R) \cdot \exp(R(1-\varepsilon)) \\
+      \#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right)  &\leq p(R) \cdot \exp(R(1-\varepsilon)) \\
                                                         &\leq \exp\left(R\left(1 - \frac{\varepsilon}{2}\right)\right)
     \end{align*}
     This finishes proving the two claims we made about the terms of \eqref{eq:net-point-decomposition-base-case}, and proves the result for $\os_{1,1,0}$.
 
-    % We further subdivide $N_i$ based on the orbit point that is the closest to the net point. If there are multiple such orbit points, we pick one arbitrarily.
-    % Let $N_i(\gamma)$ denote the set of net points in $N_i$ such that the closest orbit point is $\gamma p$.
+    % We further subdivide $\mathcal{N}_i$ based on the orbit point that is the closest to the net point. If there are multiple such orbit points, we pick one arbitrarily.
+    % Let $\mathcal{N}_i(\gamma)$ denote the set of net points in $\mathcal{N}_i$ such that the closest orbit point is $\gamma p$.
     % We rewrite the expression for the cardinality using this new decomposition.
     % \begin{align}
-    %   \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \sum_{\gamma \in \mathrm{SL}(2, \mathbb{Z})} \#\left( B_R(p) \cap N_i(\gamma) \right) \label{eq:net-point-count}
+    %   \#\left( B_R(p) \cap \mathcal{N} \right) = \sum_{i=1}^R \sum_{\gamma \in \mathrm{SL}(2, \mathbb{Z})} \#\left( B_R(p) \cap \mathcal{N}_i(\gamma) \right) \label{eq:net-point-count}
     % \end{align}
 
     % We first narrow down which $\gamma \in \mathrm{SL}(2, \mathbb{Z})$ can actually contribute the innermost term in the sum.
     % If $q$ is a net point that is within distance $R$ of $p$, but also within distance $i$ of $\gamma p$, then we have by the triangle inequality that $d(p, \gamma p) \leq R + i$.
     % This simplifies the sum.
     % \begin{align}
-    %   \#\left( B_R(p) \cap N \right) = \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} \#\left( B_R(p) \cap N_i(\gamma) \right) \label{eq:net-point-count-simp}
+    %   \#\left( B_R(p) \cap \mathcal{N} \right) = \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} \#\left( B_R(p) \cap \mathcal{N}_i(\gamma) \right) \label{eq:net-point-count-simp}
     % \end{align}
 
-    % Observe now that we can also provide an upper bound for $\#\left( B_R(p) \cap N_i(\gamma) \right)$ purely in terms of $i$, when $R$ and $i$ are large.
+    % Observe now that we can also provide an upper bound for $\#\left( B_R(p) \cap \mathcal{N}_i(\gamma) \right)$ purely in terms of $i$, when $R$ and $i$ are large.
     % Consider a Poincaré domain decomposition for the $\mathrm{SL}(2, \mathbb{Z})$ action on the upper half plane, and focus on the associated to $\gamma p$.
-    % The set $N_i(\gamma)$ is precisely the intersection of this domain with the annulus of radius $(i-1, i)$.
+    % The set $\mathcal{N}_i(\gamma)$ is precisely the intersection of this domain with the annulus of radius $(i-1, i)$.
     % Because the cardinality of the net points in a region is proportional to the area, it suffices to bound the area of the region instead.
     % When $i$ is large enough, the problem reduces to estimating the area of a hyperbolic cusp, which can be explicitly computed.
-    % We get the following estimate on $\#\left( B_R(p) \cap N_i(\gamma) \right)$.
+    % We get the following estimate on $\#\left( B_R(p) \cap \mathcal{N}_i(\gamma) \right)$.
     % Here $D_{\gamma}$ denotes the domain associated to $\gamma p$, and $A_i$ denotes the annulus centered at $p$, and $k$ is a constant that is independent of $i$ and $R$.
     % \begin{align}
-    %   \#\left( B_R(p) \cap N_i(\gamma) \right) &= \mathrm{Area}\left( B_R(p) \cap A_i(p) \right) \\
+    %   \#\left( B_R(p) \cap \mathcal{N}_i(\gamma) \right) &= \mathrm{Area}\left( B_R(p) \cap A_i(p) \right) \\
     %                                            &\leq k \cdot \exp(-i) \label{eq:tail-bound}
     % \end{align}
     % Plugging in \eqref{eq:tail-bound} into \eqref{eq:net-point-count-simp}, we get the following upper bound.
     % \begin{align*}
-    %   \#\left( B_R(p) \cap N \right) \leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i)
+    %   \#\left( B_R(p) \cap \mathcal{N} \right) \leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i)
     % \end{align*}
     % We now use \eqref{eq:lattice-point-count} to get a bound on the inner sum.
     % \begin{align*}
-    %   \#\left( B_R(p) \cap N \right) &\leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i) \\
+    %   \#\left( B_R(p) \cap \mathcal{N} \right) &\leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i) \\
     %                                  &\leq \sum_{i=1}^R c^{\prime}k \exp(R+i) \exp(-i) \\
     %                                  &= c^{\prime}k R \exp(R)
     % \end{align*}
@@ -191,8 +191,8 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     This means that $\mathrm{core}(\teich(\os_{1,0,1}))$ is a bounded neighbourhood of the image of $\teich(\os_{1,1,0})$.
     \begin{figure}[h]
       \centering
-      \includegraphics[height=5cm]{example-image-a}
-      \caption{The curves $\kappa$ and $\kappa^{\prime}$ on $\os_{1,0,1}$.}
+      \includegraphics[height=5cm]{images/s101-draft.png}
+      \caption{({\color{red} Draft})The curves $\kappa$ and $\kappa^{\prime}$ on $\os_{1,0,1}$.}
       \label{fig:base-case-2}
     \end{figure}
 
@@ -200,7 +200,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     We now need to prove that $\hNP(\mathrm{core}(\teich(\os_{1,1,0}))) = \hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ to prove the result for this case.
     We have that the net for $\mathrm{core}(\teich(\os_{1,0,1}))$ lies in a bounded neighbourhood of the net for $\mathrm{core}(\teich(\os_{1,1,0}))$: this implies that the cardinalities of the net points in a ball of radius $r$ differ by at most a multiplicative constant.
     \begin{align*}
-      \#\left( B_R(p) \cap N_{\mathrm{core}(\teich(\os_{1,0,1}))} \right) \leq c \cdot \#\left( B_R(p) \cap N_{\mathrm{core}(\teich(\os_{1,1,0}))} \right)
+      \#\left( B_R(p) \cap \mathcal{N}_{\mathrm{core}(\teich(\os_{1,0,1}))} \right) \leq c \cdot \#\left( B_R(p) \cap \mathcal{N}_{\mathrm{core}(\teich(\os_{1,1,0}))} \right)
     \end{align*}
     Since the two cardinalities differ by at most a multiplicative constant, they have the same exponential growth rate.
     % The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\mathrm{core}(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
@@ -237,28 +237,28 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
 The proof of Theorem \ref{thm:entropy-equality} will split up into counting two kinds of net points, which we will call \emph{good points} and $\emph{bad points}$.
 
 \begin{definition}[Good points]
-  A point in $B_R(p) \cap N$ is good if it is at most distance $\varepsilon R$ away from a lattice point $\gamma p$. The set of good points is denoted by $N_g(p, R, \varepsilon)$.
+  A point in $B_R(p) \cap \mathcal{N}$ is good if it is at most distance $\varepsilon R$ away from a lattice point $\gamma p$. The set of good points is denoted by $\mathcal{N}_g(p, R, \varepsilon)$.
 \end{definition}
 
 \begin{definition}[Bad points]
-  A point in $B_R(p) \cap N$ is bad if it is more than distance $\varepsilon R$ away from the nearest lattice point. The set of bad points is denoted by $N_b(p, R, \varepsilon)$.
+  A point in $B_R(p) \cap \mathcal{N}$ is bad if it is more than distance $\varepsilon R$ away from the nearest lattice point. The set of bad points is denoted by $\mathcal{N}_b(p, R, \varepsilon)$.
 \end{definition}
 
 Observe that the classification of a point as good or bad depends on the choice of $R$, $\varepsilon$, and an additional parameter $\varepsilon > 0$.
 
-We also further subdivide $N_g(p, R, \varepsilon)$ based on what the closest lattice point is.
+We also further subdivide $\mathcal{N}_g(p, R, \varepsilon)$ based on what the closest lattice point is.
 
 \begin{definition}[Good point in the domain of $\gamma$]
-  For $\gamma \in \mcg(S)$, the set $N_g(\gamma, p, R, \varepsilon)$ denotes the subset of $N_g(p, R, \varepsilon)$ whose closest lattice point is $\gamma p$.
+  For $\gamma \in \mcg(S)$, the set $\mathcal{N}_g(\gamma, p, R, \varepsilon)$ denotes the subset of $\mathcal{N}_g(p, R, \varepsilon)$ whose closest lattice point is $\gamma p$.
 \end{definition}
 
 We will now prove a lemma that provides an upper bound on the number of good points when restricted to a fundamental domain.
 
 \begin{lemma}
   \label{lem:fd-polynomial-growth}
-  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $N(\gamma)$.
+  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $\mathcal{N}_g(\gamma, p, R, \varepsilon)$.
   \begin{align*}
-    \#\left( N_g(\gamma, p, R, \varepsilon) \cap B_R(\gamma p) \right) \leq q(R)
+    \#\left( \mathcal{N}_g(\gamma, p, R, \varepsilon) \cap B_R(\gamma p) \right) \leq q(R)
   \end{align*}
 \end{lemma}
 
@@ -271,7 +271,7 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
 
 \begin{lemma}[Packing bound]
   \label{lem:packing-argument}
-  For an constants $C > 0$ and $\varepsilon > 0$, there exists a constant $D(C, \varepsilon, S)$ depending on the constants $C$, $\varepsilon$, and the topological type of the surface $S$ such that any ball $B_C(p)$ in $\teich(S)$ cannot contain more than $D$ points that are pairwise distance at least $\varepsilon$ apart.
+  For an constants $C > 0$ and $\varepsilon > 0$, there exists a constant $D(C, \varepsilon, S)$ depending on the constants $C$, $\varepsilon$, and the topological type of the surface $S$ such that any ball $B_C(p)$ (independent from the choice of $p$) in $\teich(S)$ cannot contain more than $D$ points that are pairwise distance at least $\varepsilon$ apart.
 \end{lemma}
 
 \begin{proof}
@@ -290,9 +290,9 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
   First, it will suffice to prove the following stronger claim instead.
   \begin{align}
     \label{eq:reduction-one}
-    \#\left( N(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
+    \#\left( \mathcal{N}(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
   \end{align}
-  Here, $N(\gamma)$ denotes the set of net points whose closest lattice point is $\gamma p$: $N(\gamma)$ is therefore a superset of $N_g(\gamma, p, R, \varepsilon)$.
+  Here, $\mathcal{N}(\gamma)$ denotes the set of net points whose closest lattice point is $\gamma p$: $\mathcal{N}(\gamma)$ is therefore a superset of $\mathcal{N}_g(\gamma, p, R, \varepsilon)$.
 
   Next, note that it suffices to prove \eqref{eq:reduction-one} for $\gamma = 1$, since our choice of basepoint $p$ was arbitrary.
 
@@ -302,8 +302,8 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
   \end{claim*}
   To see why this suffices, suppose we have such a $\cZ$.
   Without loss of generality, we can assume that for all points $z \in \cZ$, the closest lattice point is $p$: otherwise we could replace such a point $z$ by $\kappa z$ for an appropriate choice of $\kappa$.
-We then have that for any $n \in N(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
-Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( N(1) \cap B_p(R) \right) \leq C^{\prime} R^{f(\chi(S))}$, for some other constant $C^{\prime}$, by Lemma \ref{lem:packing-argument}.
+We then have that for any $n \in \mathcal{N}(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
+Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \mathcal{N}(1) \cap B_p(R) \right) \leq C^{\prime} R^{f(\chi(S))}$, for some other constant $C^{\prime}$, by Lemma \ref{lem:packing-argument}.
 % \todo[inline]{Need a lemma that states we can only pack in a uniformly bounded number of net points in a ball of fixed radius.
 % The proof can go via the uniform Lagrangian estimate for the volume of a ball, and use packing arguments.}
 
@@ -375,7 +375,7 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
   \begin{align*}
     \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))
   \end{align*}
-  Then for any $\varepsilon >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $N_b(p, R, \varepsilon)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
+  Then for any $\varepsilon >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \varepsilon)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
   \begin{align*}
     \dcomp(p, y) \leq R(1 - c)
   \end{align*}
@@ -499,16 +499,16 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
   We first count the good points in $B_R(p)$, by partitioning them according to the nearest lattice point.
   \begin{align}
     \label{eq:good-point-partition}
-    N_g(p, R, \varepsilon) = \bigsqcup_{\gamma \in \mcg(S)} N_g(\gamma, p, R, \varepsilon)
+    \mathcal{N}_g(p, R, \varepsilon) = \bigsqcup_{\gamma \in \mcg(S)} \mathcal{N}_g(\gamma, p, R, \varepsilon)
   \end{align}
-  Observe that if $y \in N_g(\gamma, p, R, \varepsilon)$, then $d(p, \gamma p) \leq R(1 + \varepsilon)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \varepsilon R$.
-  This observation leads to the following upper bound on $\#\left( N_g(p, R, \varepsilon) \right)$.
+  Observe that if $y \in \mathcal{N}_g(\gamma, p, R, \varepsilon)$, then $d(p, \gamma p) \leq R(1 + \varepsilon)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \varepsilon R$.
+  This observation leads to the following upper bound on $\#\left( \mathcal{N}_g(p, R, \varepsilon) \right)$.
   \begin{align}
-    \#\left( N_g(p, R, \varepsilon) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N_g(\gamma, p, R, \varepsilon)  \right) \label{eq:good-estimate-1}
+    \#\left( \mathcal{N}_g(p, R, \varepsilon) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap \mathcal{N}_g(\gamma, p, R, \varepsilon)  \right) \label{eq:good-estimate-1}
   \end{align}
   By Lemma \ref{lem:fd-polynomial-growth}, there exists a polynomial $q(R)$ such that each term in the above sum is at most $q(R)$.
   \begin{align}
-    \#\left( N_g(p, R, \varepsilon) \right) &\leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} q(R) \\
+    \#\left( \mathcal{N}_g(p, R, \varepsilon) \right) &\leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} q(R) \\
      &\leq q(R) \cdot \exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))
     \label{eq:good-estimate-2}
   \end{align}
@@ -521,12 +521,12 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
   Applying the theorem, we see that if $y$ is a bad point, $\dcomp(p, y) \leq R(1 - c)$.
   We then apply Theorem \ref{thm:counting-with-complexity-rescaled} to get an upper bound on the number of bad points.
   \begin{align*}
-    \#\left( N_b(p, R, \varepsilon) \right) \leq kR^k \cdot \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot (1 - c))
+    \#\left( \mathcal{N}_b(p, R, \varepsilon) \right) \leq kR^k \cdot \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot (1 - c))
   \end{align*}
   On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
   Combining these two facts, we see that the proportion of bad points goes to $0$ as $R$ goes to $\infty$, which proves the result.
 \end{proof}
-\todo[inline]{Change wherever you've used $N$ to $\mathcal{N}$.}
+% \todo[inline]{Change wherever you've used $N$ to $\mathcal{N}$.}
 
 % Before we state the various lemmas we will need for the proof of the inductive step, we sketch the outline of the proof, to illustrate the key idea of the proof, as well as enumerate the difficulties in proving the result.
 
