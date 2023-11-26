@@ -2,7 +2,7 @@
 \pdfoutput=1
 \usepackage{mathpreamble}
 
-\title{Closed geodesics in the thin part of moduli space of non-orientable surfaces}
+\title{Statistical convex-cocompactness for Teichmüller spaces of non-orientable surfaces}
 \author{Sayantan Khan}
 \address{Department of Mathematics, University of Michigan, Ann Arbor, MI}
 \email{\href{mailto:saykhan@umich.edu}{saykhan@umich.edu}}
@@ -19,6 +19,7 @@
 
 \end{abstract}
 \maketitle
+\tableofcontents
 
 \section{Introduction}
 \label{sec:introduction}
@@ -40,6 +41,90 @@
 \section{The weak convex core of $\teich(\no_g)$}
 \label{sec:weak-convex-core}
 
+{\color{red} Some stuff here.}
+
+The main tool we will need to prove that the weak convex core is minimally distorted is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
+
+Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
+Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
+For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
+\begin{definition}[Product region projection map]
+  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
+  \begin{itemize}
+  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
+  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
+  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
+  \end{itemize}
+\end{definition}
+
+We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $.
+
+We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \varepsilon}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\varepsilon$.
+
+\begin{theorem}[Product region theorem for non-orientable surfaces]
+  \label{thm:prno}
+  For any $c >0$, there exists a small enough $\varepsilon > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \varepsilon}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \varepsilon}(\no_g)$.
+  \begin{align*}
+    \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
+  \end{align*}
+\end{theorem}
+
+\begin{proof}
+  We will prove this result by reducing the distance calculation in $\teich(\no_g)$ to a distance calculation in $\teich(\os_{g-1})$, where $\os_{g-1}$ is the orientation double cover, and invoking the classical product region theorem in that setting.
+
+  We begin the proof by constructing some points in $\teich(\os_{g-1})$ and a multicurve on $\os_{g-1}$.
+  Recall that $\teich(\no_g)$ isometrically embeds inside $\teich(\os_{g-1})$: let $\wt{x}$ and $\wt{y}$ denote the points in $\teich(\os_{g-1})$ that are the images of $x$ and $y$ under the embedding.
+  Let $\wt{\gamma}$ denote the lift of the multicurve $\gamma$: if $\gamma_i$ is a two-sided curve, it will have two disjoint lifts in the cover, and if $\gamma_i$ is a one-sided curve, it will have single lift in the double cover.
+  We have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  Let $\iota$ denote the orientation reversing deck transformation on $\os_{g-1}$ which corresponds to the covering map.
+
+  \begin{claim*}
+    Let $\Pi_k$ denote the projection map from $\teich(\no_g)$ to the $k$\textsuperscript{th} component of $X_\gamma$, and $\wt{\Pi_k}$ denote the projection map from $\teich(\os_{g-1})$ to the lift of the $k$\textsuperscript{th} component of $\gamma$ to $\os_{g-1}$.
+    This map is an isometric embedding.
+    \begin{align*}
+      d(\Pi_k(x), \Pi_k(y)) = d(\wt{\Pi_k}(\wt{x}), \wt{\Pi_k}(\wt{y}))
+    \end{align*}
+  \end{claim*}
+  % \todo[inline]{Explain this better. Maybe have a claim here.}
+
+  \begin{proof}[Proof of claim]
+  We need to verify the claim on the three kinds of components of $\gamma$.
+  \begin{enumerate}[(i)]
+  \item $\no_g \setminus \gamma$: The lift of $\no_g \setminus \gamma$ to $\os_{g-1}$ will have two components if $\no_g \setminus \gamma$ is orientable, which we call $S_1$ and $S_2$. Both $S_1$ and $S_2$ are homeomorphic to $\no_g \setminus \gamma$.
+    If $\no_g \setminus \gamma$ is non-orientable, then its lift in $\os_{g-1}$ is the orientation double cover.
+
+    In the first case, $\teich(\no_g \setminus \gamma)$ maps to the diagonal subspace in $\teich(S_1) \times \teich(S_2)$, and the metric on $\teich(S_1) \times \teich(S_2)$ is the $\sup$ metric.
+    The space $\teich(\no_g)$ maps to the diagonal subspace because its image must be invariant under the map $\iota$, which isometrically swaps $S_1$ and $S_2$.
+    This map is an isometric embedding, and thus for any points $x$ and $y$ in $\teich(\no_g \setminus \gamma)$, the distance between their images in $\teich(S_1) \times \teich(S_2)$ is the same as the distance in $\teich(\no_g \setminus \gamma)$.
+
+    In the second case, we have that $\teich(\no_g \setminus \gamma)$ also isometrically embeds inside the Teichmüller space of its double cover, so the claim follows.
+  \item $\gamma_i$ (for $\gamma_i$ two-sided): The lift of $\gamma_i$ in this case are two disjoint curves on $\os_{g-1}$, which are swapped by the deck transformation $\iota$.
+    This means the $\mathbb{H}$-coordinate given by length and twist of $\gamma_i$ maps to the diagonal in $\mathbb{H} \times \mathbb{H}$, which correspond the length and twist around the two lifts.
+    Since $\mathbb{H}$ mapped to the diagonal in $\mathbb{H} \times \mathbb{H}$ is an isometric embedding with $\sup$ metric, the claim follows in this case.
+  \item $\gamma_i$ (for $\gamma_i$ one-sided): The lift of $\gamma_i$ in this case is a single curve $\wt{\gamma_i}$ on $\os_{g-1}$ which is left invariant by the deck transformation $\iota$.
+    We will show that the twist coordinate around $\wt{\gamma_i}$ cannot be changed without leaving the image of $\teich(\no_g)$ in $\teich(\os_{g-1})$, i.e. any $\wt{x}$ and $\wt{y}$ have the same twist coordinate around $\wt{\gamma_i}$.
+    Once we have established that, the claim will follow, since only the length coordinate of $\gamma_i$ can be changed, which corresponds to $\mathbb{R}_{>0}$.
+
+    Suppose now that $x$ is a point in $\teich(\no_{g})$ and $\wt{x}$ the corresponding point in $\teich(\os_{g-1})$.
+    Consider a pants decomposition on $\no_g$ that contains $\gamma_i$ as one of the curves. There is a unique one-sided curve $\kappa$ that intersects $\gamma_i$ and does not intersect any of the other pants curves.
+    Let $\wt{\kappa}$ be the lift of $\kappa$ to $\os_{g-1}$: we will use this curve to measure twisting around $\wt{\gamma_i}$.
+    Let $x^{\prime}$ be another point in $\teich(\os_{g-1})$ obtained by taking $\wt{x}$, and twisting by some amount around $\wt{\gamma_i}$, without changing the length of $\wt{\gamma_i}$.
+    On $x^{\prime}$, the length of $\wt{\kappa}$ will be different from the length on $\wt{x}$.
+    However, this means that $x^{\prime}$ is not contained in the image of $\teich(\no_g)$, since if it were, the length of $\wt{\kappa}$ would have to be the same, since that's the lift of the curve $\kappa$, whose length only depends on the length of $\gamma_i$.
+  \end{enumerate}
+  \end{proof}
+
+  The following equality follows from the claim.
+  \begin{align*}
+    d_{X_{\wt{\gamma}}}(\Pi(\wt{x}), \Pi(\wt{y})) = d_{X_{{\gamma}}}(\Pi({x}), \Pi({y}))
+  \end{align*}
+  We also have that $\teich(\no_g)$ isometrically embeds into $\teich(\os_{g-1})$.
+  \begin{align*}
+    d(\wt{x}, \wt{y}) = d(x, y)
+  \end{align*}
+  And finally, have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  Combining these three facts, and applying Minsky's product region theorem for orientable surfaces, the result follows.
+\end{proof}
 
 \section{Geodesics in the thin part of $\teich(\no_g)$}
 \label{sec:recurr-rand-walks}
@@ -282,7 +367,7 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
   Finally, note that if the lemma holds for metric spaces $X$ and $Y$, it also holds for $X \times Y$, where the metric on $X \times Y$ is the $\sup$ product with an additive error.
 
   Suppose now that we have the lemma for the Teichmüller spaces of all surfaces with Euler characteristic at least $-n$.
-  To show the lemma for a Teichmüller space of a surface $S$ with Euler characteristic $-n-1$, we break up the Teichmüller space into the thick part, where the mapping class group acts co-compactly, so the first reduction applies, and the thin part, where we have by Minsky's product region theorem \cite[Theorem 6.1]{1077244446}, the metric is the $\sup$ product, so the second reduction applies.
+  To show the lemma for a Teichmüller space of a surface $S$ with Euler characteristic $-n-1$, we break up the Teichmüller space into the thick part, where the mapping class group acts co-compactly, so the first reduction applies, and the thin part, where we have by Minsky's product region theorem \cite[Theorem 6.1]{1077244446} (or Theorem \ref{thm:prno}), the metric is the $\sup$ product, so the second reduction applies.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lem:fd-polynomial-growth}]
@@ -380,6 +465,7 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
     \dcomp(p, y) \leq R(1 - c)
   \end{align*}
 \end{theorem}
+\todo[inline]{Have a remark here on why this ought to be true.}
 
 Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:linear-gap-rescaled}, it follows that as $R$ goes to $\infty$, the proportion of bad points goes to $0$, which is what we need for Theorem \ref{thm:entropy-equality}.
 
@@ -588,12 +674,45 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 \section{Linear gap in complexity length}
 \label{sec:line-gap-compl}
 
-
+In this section, we will adapt the notion of complexity length from \textcite{dowdall2023lattice} to the setting of non-orientable surfaces.
+Their construction of complexity length, and the various results associated to it depend on the following facts about the geometry of the Teichmüller space of orientable surfaces.
+\begin{enumerate}[(i)]
+\item Minsky's product region theorem
+\item Rafi's distance formula
+\item Rafi's weak active intervals: Theorem 3.22 from \textcite{dowdall2023lattice}
+\item Uniform alignment of projection of points to curve complexes from Teichmüller geodesics
+\item Behrstock and BGI inequalities: really the whole HHS package.
+\item Entropy subadditivity for subsurfaces
+\end{enumerate}
 
 \appendix
 
 \section{Weak convex core of $\teich(\no_g)$ is hierarchically hyperbolic}
 \label{sec:trunc-teichm-space}
+
+Use Behrstock to show that progress on subsurfaces that don't come from lifts is negligible.
+
+\todo[inline]{Write down the key idea of all the proofs in this section, namely, going to the double cover, and getting an isometric embedding in the Teichmüller case and the curve complex case \textcite{masur2013geometry}}
+
+\subsection{Minsky's product region theorem}
+\label{sec:minskys-prod-regi}
+
+{\color{red} Move the theorem in Section 3 to this section}
+
+\subsection{Distance formula for Teichmüller space}
+\label{sec:dist-form-teichm}
+
+\todo[inline]{Set up some context.}
+\begin{theorem}[Distance formula]
+  The distance between $x$ and $y$ in $\teich(\no_g)$ is given by the following formula.
+  \begin{align*}
+    d(x, y) \approx \sum_{Y} \left[ d_Y(x, y) \right]_k &+ \sum_{\alpha \not \in \Gamma} \left[ \log(d_{\alpha}(x, y)) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}}(x, y) \\
+    &+ \max_{\alpha \in \Gamma_1} \log \frac{1}{\ell_x(\alpha)} + \max_{\alpha \in \Gamma_2} \log \frac{1}{\ell_y(\alpha)}
+  \end{align*}
+\end{theorem}
+
+\subsection{Curve complex results}
+\label{sec:curve-compl-results}
 
 \printbibliography
 
