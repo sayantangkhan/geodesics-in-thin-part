@@ -29,6 +29,7 @@
 \section{Preliminaries}
 \label{sec:preliminaries}
 
+\todo[inline]{Unify the notation for the various coarse notions of equality and inequalities}
 \subsection*{List of notation}
 \begin{itemize}
 \item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
@@ -42,89 +43,6 @@
 \label{sec:weak-convex-core}
 
 {\color{red} Some stuff here.}
-
-The main tool we will need to prove that the weak convex core is minimally distorted is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
-
-Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
-Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
-For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
-\begin{definition}[Product region projection map]
-  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
-  \begin{itemize}
-  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
-  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
-  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
-  \end{itemize}
-\end{definition}
-
-We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $.
-
-We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \varepsilon}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\varepsilon$.
-
-\begin{theorem}[Product region theorem for non-orientable surfaces]
-  \label{thm:prno}
-  For any $c >0$, there exists a small enough $\varepsilon > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \varepsilon}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \varepsilon}(\no_g)$.
-  \begin{align*}
-    \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
-  \end{align*}
-\end{theorem}
-
-\begin{proof}
-  We will prove this result by reducing the distance calculation in $\teich(\no_g)$ to a distance calculation in $\teich(\os_{g-1})$, where $\os_{g-1}$ is the orientation double cover, and invoking the classical product region theorem in that setting.
-
-  We begin the proof by constructing some points in $\teich(\os_{g-1})$ and a multicurve on $\os_{g-1}$.
-  Recall that $\teich(\no_g)$ isometrically embeds inside $\teich(\os_{g-1})$: let $\wt{x}$ and $\wt{y}$ denote the points in $\teich(\os_{g-1})$ that are the images of $x$ and $y$ under the embedding.
-  Let $\wt{\gamma}$ denote the lift of the multicurve $\gamma$: if $\gamma_i$ is a two-sided curve, it will have two disjoint lifts in the cover, and if $\gamma_i$ is a one-sided curve, it will have single lift in the double cover.
-  We have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
-  Let $\iota$ denote the orientation reversing deck transformation on $\os_{g-1}$ which corresponds to the covering map.
-
-  \begin{claim*}
-    Let $\Pi_k$ denote the projection map from $\teich(\no_g)$ to the $k$\textsuperscript{th} component of $X_\gamma$, and $\wt{\Pi_k}$ denote the projection map from $\teich(\os_{g-1})$ to the lift of the $k$\textsuperscript{th} component of $\gamma$ to $\os_{g-1}$.
-    This map is an isometric embedding.
-    \begin{align*}
-      d(\Pi_k(x), \Pi_k(y)) = d(\wt{\Pi_k}(\wt{x}), \wt{\Pi_k}(\wt{y}))
-    \end{align*}
-  \end{claim*}
-  % \todo[inline]{Explain this better. Maybe have a claim here.}
-
-  \begin{proof}[Proof of claim]
-  We need to verify the claim on the three kinds of components of $\gamma$.
-  \begin{enumerate}[(i)]
-  \item $\no_g \setminus \gamma$: The lift of $\no_g \setminus \gamma$ to $\os_{g-1}$ will have two components if $\no_g \setminus \gamma$ is orientable, which we call $S_1$ and $S_2$. Both $S_1$ and $S_2$ are homeomorphic to $\no_g \setminus \gamma$.
-    If $\no_g \setminus \gamma$ is non-orientable, then its lift in $\os_{g-1}$ is the orientation double cover.
-
-    In the first case, $\teich(\no_g \setminus \gamma)$ maps to the diagonal subspace in $\teich(S_1) \times \teich(S_2)$, and the metric on $\teich(S_1) \times \teich(S_2)$ is the $\sup$ metric.
-    The space $\teich(\no_g)$ maps to the diagonal subspace because its image must be invariant under the map $\iota$, which isometrically swaps $S_1$ and $S_2$.
-    This map is an isometric embedding, and thus for any points $x$ and $y$ in $\teich(\no_g \setminus \gamma)$, the distance between their images in $\teich(S_1) \times \teich(S_2)$ is the same as the distance in $\teich(\no_g \setminus \gamma)$.
-
-    In the second case, we have that $\teich(\no_g \setminus \gamma)$ also isometrically embeds inside the Teichmüller space of its double cover, so the claim follows.
-  \item $\gamma_i$ (for $\gamma_i$ two-sided): The lift of $\gamma_i$ in this case are two disjoint curves on $\os_{g-1}$, which are swapped by the deck transformation $\iota$.
-    This means the $\mathbb{H}$-coordinate given by length and twist of $\gamma_i$ maps to the diagonal in $\mathbb{H} \times \mathbb{H}$, which correspond the length and twist around the two lifts.
-    Since $\mathbb{H}$ mapped to the diagonal in $\mathbb{H} \times \mathbb{H}$ is an isometric embedding with $\sup$ metric, the claim follows in this case.
-  \item $\gamma_i$ (for $\gamma_i$ one-sided): The lift of $\gamma_i$ in this case is a single curve $\wt{\gamma_i}$ on $\os_{g-1}$ which is left invariant by the deck transformation $\iota$.
-    We will show that the twist coordinate around $\wt{\gamma_i}$ cannot be changed without leaving the image of $\teich(\no_g)$ in $\teich(\os_{g-1})$, i.e. any $\wt{x}$ and $\wt{y}$ have the same twist coordinate around $\wt{\gamma_i}$.
-    Once we have established that, the claim will follow, since only the length coordinate of $\gamma_i$ can be changed, which corresponds to $\mathbb{R}_{>0}$.
-
-    Suppose now that $x$ is a point in $\teich(\no_{g})$ and $\wt{x}$ the corresponding point in $\teich(\os_{g-1})$.
-    Consider a pants decomposition on $\no_g$ that contains $\gamma_i$ as one of the curves. There is a unique one-sided curve $\kappa$ that intersects $\gamma_i$ and does not intersect any of the other pants curves.
-    Let $\wt{\kappa}$ be the lift of $\kappa$ to $\os_{g-1}$: we will use this curve to measure twisting around $\wt{\gamma_i}$.
-    Let $x^{\prime}$ be another point in $\teich(\os_{g-1})$ obtained by taking $\wt{x}$, and twisting by some amount around $\wt{\gamma_i}$, without changing the length of $\wt{\gamma_i}$.
-    On $x^{\prime}$, the length of $\wt{\kappa}$ will be different from the length on $\wt{x}$.
-    However, this means that $x^{\prime}$ is not contained in the image of $\teich(\no_g)$, since if it were, the length of $\wt{\kappa}$ would have to be the same, since that's the lift of the curve $\kappa$, whose length only depends on the length of $\gamma_i$.
-  \end{enumerate}
-  \end{proof}
-
-  The following equality follows from the claim.
-  \begin{align*}
-    d_{X_{\wt{\gamma}}}(\Pi(\wt{x}), \Pi(\wt{y})) = d_{X_{{\gamma}}}(\Pi({x}), \Pi({y}))
-  \end{align*}
-  We also have that $\teich(\no_g)$ isometrically embeds into $\teich(\os_{g-1})$.
-  \begin{align*}
-    d(\wt{x}, \wt{y}) = d(x, y)
-  \end{align*}
-  And finally, have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
-  Combining these three facts, and applying Minsky's product region theorem for orientable surfaces, the result follows.
-\end{proof}
 
 \section{Geodesics in the thin part of $\teich(\no_g)$}
 \label{sec:recurr-rand-walks}
@@ -694,8 +612,101 @@ Use Behrstock to show that progress on subsurfaces that don't come from lifts is
 
 \todo[inline]{Write down the key idea of all the proofs in this section, namely, going to the double cover, and getting an isometric embedding in the Teichmüller case and the curve complex case \textcite{masur2013geometry}}
 
+\begin{theorem}[Isometric embedding of Teichmüller spaces]
+  \label{thm:i-embedding-teich-space}
+  Blah
+\end{theorem}
+
+\begin{theorem}[Quasi isometric embedding of curve complexes \cite{masur2013geometry}]
+  \label{thm:qi-embedding-curve-complex}
+  The map $\cC(\no_g) \to \cC(\os_{g-1})$ obtained by lifting curves in $\no_g$ to $\os_{g-1}$ is a quasi-isometric embedding.
+\end{theorem}
+
 \subsection{Minsky's product region theorem}
 \label{sec:minskys-prod-regi}
+
+The main tool we will need to prove that the weak convex core is minimally distorted is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
+
+Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
+Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
+For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
+\begin{definition}[Product region projection map]
+  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
+  \begin{itemize}
+  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
+  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
+  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
+  \end{itemize}
+\end{definition}
+
+We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $.
+
+We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \varepsilon}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\varepsilon$.
+
+\begin{theorem}[Product region theorem for non-orientable surfaces]
+  \label{thm:prno}
+  For any $c >0$, there exists a small enough $\varepsilon > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \varepsilon}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \varepsilon}(\no_g)$.
+  \begin{align*}
+    \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
+  \end{align*}
+\end{theorem}
+
+\begin{proof}
+  We will prove this result by reducing the distance calculation in $\teich(\no_g)$ to a distance calculation in $\teich(\os_{g-1})$, where $\os_{g-1}$ is the orientation double cover, and invoking the classical product region theorem in that setting.
+
+  We begin the proof by constructing some points in $\teich(\os_{g-1})$ and a multicurve on $\os_{g-1}$.
+  Recall that $\teich(\no_g)$ isometrically embeds inside $\teich(\os_{g-1})$: let $\wt{x}$ and $\wt{y}$ denote the points in $\teich(\os_{g-1})$ that are the images of $x$ and $y$ under the embedding.
+  Let $\wt{\gamma}$ denote the lift of the multicurve $\gamma$: if $\gamma_i$ is a two-sided curve, it will have two disjoint lifts in the cover, and if $\gamma_i$ is a one-sided curve, it will have single lift in the double cover.
+  We have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  Let $\iota$ denote the orientation reversing deck transformation on $\os_{g-1}$ which corresponds to the covering map.
+
+  \begin{claim*}
+    Let $\Pi_k$ denote the projection map from $\teich(\no_g)$ to the $k$\textsuperscript{th} component of $X_\gamma$, and $\wt{\Pi_k}$ denote the projection map from $\teich(\os_{g-1})$ to the lift of the $k$\textsuperscript{th} component of $\gamma$ to $\os_{g-1}$.
+    This map is an isometric embedding.
+    \begin{align*}
+      d(\Pi_k(x), \Pi_k(y)) = d(\wt{\Pi_k}(\wt{x}), \wt{\Pi_k}(\wt{y}))
+    \end{align*}
+  \end{claim*}
+  % \todo[inline]{Explain this better. Maybe have a claim here.}
+
+  \begin{proof}[Proof of claim]
+  We need to verify the claim on the three kinds of components of $\gamma$.
+  \begin{enumerate}[(i)]
+  \item $\no_g \setminus \gamma$: The lift of $\no_g \setminus \gamma$ to $\os_{g-1}$ will have two components if $\no_g \setminus \gamma$ is orientable, which we call $S_1$ and $S_2$. Both $S_1$ and $S_2$ are homeomorphic to $\no_g \setminus \gamma$.
+    If $\no_g \setminus \gamma$ is non-orientable, then its lift in $\os_{g-1}$ is the orientation double cover.
+
+    In the first case, $\teich(\no_g \setminus \gamma)$ maps to the diagonal subspace in $\teich(S_1) \times \teich(S_2)$, and the metric on $\teich(S_1) \times \teich(S_2)$ is the $\sup$ metric.
+    The space $\teich(\no_g)$ maps to the diagonal subspace because its image must be invariant under the map $\iota$, which isometrically swaps $S_1$ and $S_2$.
+    This map is an isometric embedding, and thus for any points $x$ and $y$ in $\teich(\no_g \setminus \gamma)$, the distance between their images in $\teich(S_1) \times \teich(S_2)$ is the same as the distance in $\teich(\no_g \setminus \gamma)$.
+
+    In the second case, we have that $\teich(\no_g \setminus \gamma)$ also isometrically embeds inside the Teichmüller space of its double cover, so the claim follows.
+  \item $\gamma_i$ (for $\gamma_i$ two-sided): The lift of $\gamma_i$ in this case are two disjoint curves on $\os_{g-1}$, which are swapped by the deck transformation $\iota$.
+    This means the $\mathbb{H}$-coordinate given by length and twist of $\gamma_i$ maps to the diagonal in $\mathbb{H} \times \mathbb{H}$, which correspond the length and twist around the two lifts.
+    Since $\mathbb{H}$ mapped to the diagonal in $\mathbb{H} \times \mathbb{H}$ is an isometric embedding with $\sup$ metric, the claim follows in this case.
+  \item $\gamma_i$ (for $\gamma_i$ one-sided): The lift of $\gamma_i$ in this case is a single curve $\wt{\gamma_i}$ on $\os_{g-1}$ which is left invariant by the deck transformation $\iota$.
+    We will show that the twist coordinate around $\wt{\gamma_i}$ cannot be changed without leaving the image of $\teich(\no_g)$ in $\teich(\os_{g-1})$, i.e. any $\wt{x}$ and $\wt{y}$ have the same twist coordinate around $\wt{\gamma_i}$.
+    Once we have established that, the claim will follow, since only the length coordinate of $\gamma_i$ can be changed, which corresponds to $\mathbb{R}_{>0}$.
+
+    Suppose now that $x$ is a point in $\teich(\no_{g})$ and $\wt{x}$ the corresponding point in $\teich(\os_{g-1})$.
+    Consider a pants decomposition on $\no_g$ that contains $\gamma_i$ as one of the curves. There is a unique one-sided curve $\kappa$ that intersects $\gamma_i$ and does not intersect any of the other pants curves.
+    Let $\wt{\kappa}$ be the lift of $\kappa$ to $\os_{g-1}$: we will use this curve to measure twisting around $\wt{\gamma_i}$.
+    Let $x^{\prime}$ be another point in $\teich(\os_{g-1})$ obtained by taking $\wt{x}$, and twisting by some amount around $\wt{\gamma_i}$, without changing the length of $\wt{\gamma_i}$.
+    On $x^{\prime}$, the length of $\wt{\kappa}$ will be different from the length on $\wt{x}$.
+    However, this means that $x^{\prime}$ is not contained in the image of $\teich(\no_g)$, since if it were, the length of $\wt{\kappa}$ would have to be the same, since that's the lift of the curve $\kappa$, whose length only depends on the length of $\gamma_i$.
+  \end{enumerate}
+  \end{proof}
+
+  The following equality follows from the claim.
+  \begin{align*}
+    d_{X_{\wt{\gamma}}}(\Pi(\wt{x}), \Pi(\wt{y})) = d_{X_{{\gamma}}}(\Pi({x}), \Pi({y}))
+  \end{align*}
+  We also have that $\teich(\no_g)$ isometrically embeds into $\teich(\os_{g-1})$.
+  \begin{align*}
+    d(\wt{x}, \wt{y}) = d(x, y)
+  \end{align*}
+  And finally, have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  Combining these three facts, and applying Minsky's product region theorem for orientable surfaces, the result follows.
+\end{proof}
 
 {\color{red} Move the theorem in Section 3 to this section}
 
@@ -703,13 +714,89 @@ Use Behrstock to show that progress on subsurfaces that don't come from lifts is
 \label{sec:dist-form-teichm}
 
 \todo[inline]{Set up some context.}
+
+Let $x$ and $y$ be a pair of points in $\teich(\no_g)$, and let $\Gamma$ be the set of curves that are short on both $x$ and $y$, $\Gamma_x$ the set of curves that are only short on $x$, and $\Gamma_y$ the set of curves that are only short on $y$.
+Let $\mu_x$ and $\mu_y$ be short markings on $x$ and $y$ respectively.
+Finally, let $\cC^+$ and $\cC^-$ denote the set of two-sided and one-sided curves on $\no_g$.
+
 \begin{theorem}[Distance formula]
   The distance between $x$ and $y$ in $\teich(\no_g)$ is given by the following formula.
-  \begin{align*}
-    d(x, y) \approx \sum_{Y} \left[ d_Y(x, y) \right]_k &+ \sum_{\alpha \not \in \Gamma} \left[ \log(d_{\alpha}(x, y)) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}}(x, y) \\
-    &+ \max_{\alpha \in \Gamma_1} \log \frac{1}{\ell_x(\alpha)} + \max_{\alpha \in \Gamma_2} \log \frac{1}{\ell_y(\alpha)}
-  \end{align*}
+  \begin{equation}
+  \begin{aligned}
+    d(x, y) &\emul \sum_{Y} \left[ d_Y(\mu_x, \mu_y) \right]_k + \sum_{\alpha \in \Gamma^c \cap \cC^+} \left[ \log(d_{\alpha}(\mu_x, \mu_y)) \right]_k \\
+    &+ \max_{\alpha \in \Gamma \cap \cC^+} d_{\mathbb{H}_{\alpha}}(x, y) + \max_{\alpha \in \Gamma \cap \cC^-} d_{(\mathbb{R}_{>0})_{\alpha}}(x, y) \\
+    &+ \max_{\alpha \in \Gamma_x} \log \frac{1}{\ell_x(\alpha)} + \max_{\alpha \in \Gamma_y} \log \frac{1}{\ell_y(\alpha)}
+  \end{aligned}
+  \label{eq:distance-formula-nonorient}
+  \end{equation}
 \end{theorem}
+\begin{proof}
+  Let $\wt{x}$ and $\wt{y}$ be the images of $x$ and $y$ in $\teich(\os_{g-1})$ under the isometric embedding map.
+  Since $d(x,y) = d(\wt{x}, \wt{y})$, it will suffice to estimate $d(\wt{x}, \wt{y})$ using distances in the curve complexes.
+  Let $\wt{\mu_x}$ and $\wt{\mu_y}$ be the lifts of $\mu_x$ and $\mu_y$.
+  Both $\wt{\mu_x}$ and $\wt{\mu_y}$ are short markings on $\wt{x}$ and $\wt{y}$ respectively.
+  We have by Rafi's distance formula \cite[Theorem 6.1]{rafi2007combinatorial}, the following estimate on $d(\wt{x}, \wt{y})$.
+  \begin{equation}
+  \begin{aligned}
+    d(\wt{x}, \wt{y}) &\emul \sum_{Y} \left[ d_Y(\wt{\mu_x}, \wt{\mu_y}) \right]_k + \sum_{\alpha \in \wt{\Gamma}^c} \left[ \log(d_{\alpha}(\wt{\mu_x}, \wt{\mu_y})) \right]_k \\
+    &+ \max_{\alpha \in \wt{\Gamma}} d_{\mathbb{H}_{\alpha}}(\wt{x}, \wt{y})\\
+    &+ \max_{\alpha \in \wt{\Gamma_{\wt{x}}}} \log \frac{1}{\ell_{\wt{x}}(\alpha)} + \max_{\alpha \in \Gamma_{\wt{y}}} \log \frac{1}{\ell_{\wt{y}}(\alpha)}
+  \end{aligned}
+  \label{eq:distance-formula-orient}
+  \end{equation}
+  Here, $\wt{\Gamma}$, $\wt{\Gamma_{\wt{x}}}$, and $\wt{\Gamma_{\wt{y}}}$ are curves on $\wt{x}$ and $\wt{y}$ that are simultaneously short, short on $\wt{x}$ and not on $\wt{y}$, and short on $\wt{y}$ and not on $\wt{x}$ respectively.
+
+ It will suffice to show that for a large enough choice of $k$, the right hand side of \eqref{eq:distance-formula-nonorient} is equal to the right hand side of \eqref{eq:distance-formula-orient}, up to an additive and multiplicative constant.
+ We consider the first term in the right hand side of \eqref{eq:distance-formula-orient}, namely the sum over the non-annular subsurfaces $Y$.
+ There are three possibilities for $Y$ in $\os_{g-1}$.
+ \begin{enumerate}[(i)]
+ \item $Y$ is one component of a lift of an orientable subsurface $Z$ of $\no_g$: In this case $Y$ and $\iota(Y)$ are disjoint, and the restriction of the covering map to $Y$ (or $\iota(Y)$) is a homeomorphism.
+   We then have $d_Y(\wt{\mu_x}, \wt{\mu_y}) = d_Z(\mu_x, \mu_y)$ (and the same equality with $Y$ replaced with $\iota(Y)$).
+   Thus, for every term associated to an orientable non-annular subsurface $Z$ in \eqref{eq:distance-formula-nonorient}, we get two corresponding equal terms in \eqref{eq:distance-formula-orient}.
+ \item $Y$ is the lift of a non-orientable subsurface $Z$ of $\no_g$: In this case, we can apply Theorem \ref{thm:qi-embedding-curve-complex} to get that $d_Y(\wt{\mu_x}, \wt{\mu_y}) \emul d_Z(\mu_x, \mu_y)$.
+ \item $Y$ is not a lift of a subsurface of $\no_g$: If $Y$ is not a lift of a subsurface from $\no_g$, that means $Y$ and $\iota(Y)$ are not disjoint, nor are they equal.
+   Since one of them can't be nested in the other, they must be transverse.
+   By the Behrstock inequality for transverse surfaces, there exists some $k_0$ large enough such that the following holds for any $x$, $y$, and $Y$.
+   \begin{align}
+     \min\left( d_Y(\wt{\mu_x}, \wt{\mu_y}), d_{\iota(Y)}(\wt{\mu_x}, \wt{\mu_y}) \right) \leq k_0
+     \label{ineq:behrstock-transverse}
+   \end{align}
+   Also note that $d_Y(\wt{\mu_x}, \wt{\mu_y}) = d_{\iota(Y)}(\wt{\mu_x}, \wt{\mu_y})$, since $\iota(\wt{\mu_i}) = \wt{\mu_i}$ for $i = x$ and $i=y$.
+   Plugging this into \eqref{ineq:behrstock-transverse}, we get a bound on the curve complex projection to $Y$.
+   \begin{align*}
+     d_Y(\wt{\mu_x}, \wt{\mu_y}) \leq k_0
+   \end{align*}
+   If we pick a threshold $k > k_0$, the subsurfaces $Y$ that do not arise from lifts will not contribute to the right hand side of \eqref{eq:distance-formula-orient}.
+ \end{enumerate}
+ The analysis of the three possible types of non-annular subsurfaces $Y$ shows that the first terms on the right hand side of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal up to a multiplicative and additive constant, for $k > k_0$.
+
+ We now do the same case analysis for annular subsurfaces: consider a curve $\alpha$ on $\os_{g-1}$ that is contained in $\Gamma^c$, i.e. it is not simultaneously short on $\wt{x}$ and $\wt{y}$. There are three possibilities for $\alpha$.
+ \begin{enumerate}[(i)]
+ \item $\alpha$ is one component of a lift of a two-sided curve $\gamma$ on $\no_g$: In this case, $\alpha$ and $\iota(\alpha)$ are disjoint, and the restriction of the covering map to these curves is a homeomorphism.
+   We have $d_\alpha(\wt{\mu_x}, \wt{\mu_y}) = d_\gamma(\mu_x, \mu_y)$: consequently, for every term in $\Gamma^c \cap \cC^+$ in \eqref{eq:distance-formula-nonorient}, we have two equal terms in \eqref{eq:distance-formula-orient}.
+ \item $\alpha$ is the lift of a one-sided curve on $\no_g$: In this case $\alpha = \iota(\alpha)$, but the transformation $\iota$ reverses orientation on the surface $\os_{g-1}$.
+   That means $\wt(\mu_x)$ and $\wt{\mu_y}$ cannot have a relative twist between them along $\alpha$, because if they did, $\iota(\wt(\mu_x))$ and $\iota(\wt(\mu_y))$ would have the opposite twist.
+   On the other hand $\wt{\mu_i} = \iota(\wt{\mu_i})$ for $i=x$ and $i=y$, which means the relative twist must be $0$.
+   This proves that the $\alpha$ which are lifts of one-sided curves do not contribute to the second term of \eqref{eq:distance-formula-orient}.
+ \item $\alpha$ is not a lift of a curve on $\no_g$: In this case $\alpha$ and $\iota(\alpha)$ intersect each other, and are not equal, which means they are transverse.
+   We deal with this the same way we dealt with transverse non-annular subsurfaces, i.e. via the Behrstock inequality.
+ \end{enumerate}
+ This case analysis proves that the second terms on the right hand side of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal, up to an additive and multiplicative constant.
+
+We now deal with the last three terms of \eqref{eq:distance-formula-orient}.
+These terms deal with short curves on $x$ or $y$: we claim that the short curves must be lifts of either one-sided or two-sided curves in $\no_g$.
+Suppose a curve $\alpha$ is short and not a lift. Then $\alpha$ has positive intersection number with $\iota(\alpha)$, but since $\iota$ is an isometry, $\iota(\alpha)$ must also be short.
+For a sufficiently small threshold for what we call short, we can't have a short curve intersecting another short curve, which proves the claim that all the short curves arise as lifts.
+
+Since the curves in $\wt{\Gamma}$ are all lifts, the third term of \eqref{eq:distance-formula-orient} can be split up into two terms: the lifts of the two-sided and one-sided curves.
+For the two-sided curves, the distance calculation involves both the length and twist coordinate, and for the one-sided curves, only the length coordinate is involved.
+This follows from Theorem \ref{thm:prno}.
+
+Finally, the last two terms in \eqref{eq:distance-formula-orient} are the same as the last two terms of \eqref{eq:distance-formula-nonorient}, up to an additive error of $(6g) \cdot \log(2)$, since the lift of a short curve can double its length, and there are no more than $6g$ short curves.
+
+We have shown that the right hand sides of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal, up to a multiplicative and additive constant, which proves the result.
+\end{proof}
+
 
 \subsection{Curve complex results}
 \label{sec:curve-compl-results}

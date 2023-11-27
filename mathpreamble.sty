@@ -122,3 +122,23 @@
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\dcomp}{d_{\mathrm{comp}}}
 \newcommand{\wt}{\widetilde}
+
+% new \oset macro
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
+
+%\newcommand{\emul}{\stackrel{{}_\ast}{\asymp}}
+%\newcommand{\gmul}{\stackrel{{}_\ast}{\succ}}
+%\newcommand{\lmul}{\stackrel{{}_\ast}{\prec}}
+%\newcommand{\eadd}{\stackrel{{}_+}{\asymp}}
+%\newcommand{\gadd}{\stackrel{{}_+}{\succ}}
+%\newcommand{\ladd}{\stackrel{{}_+}{\prec}}
+\newcommand{\emul}{\oset{\cdot}{\asymp}}
+\newcommand{\gmul}{\oset{\cdot}{\succ}}
+\newcommand{\lmul}{\oset{\cdot}{\prec}}
+\newcommand{\eadd}{\oset{+}{\asymp}}
+\newcommand{\gadd}{\oset{+}{\succ}}
