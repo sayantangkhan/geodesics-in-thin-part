@@ -327,15 +327,14 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \mathcal{N}(1) \cap B
   We pick a $\kappa \in \mcg(S)$ such that the shortest marking on $\kappa y$ is one of the markings $M_j$ for $1 \leq j \leq J$.
   We now need to show that one of the $z \in \cZ$ is close to $\kappa y$.
   Pick the $z$ such that the corresponding lengths of the pants curves are closest to the lengths of the pants curves on $\kappa y$.
-  We can now invoke the combinatorial distance formula for Teichmüller metric (proved by \textcite{rafi2007combinatorial} for the orientable setting, and a corollary of Theorem \ref{thm:non-ori-teich-hhs} for the non-orientable case).
+  We can now invoke the combinatorial distance formula for Teichmüller metric (proved by \textcite{rafi2007combinatorial} for the orientable setting, and Theorem \ref{thm:distance-formula} for the non-orientable case).
   \begin{align*}
-    d(z, \kappa y) \asymp \sum_Y d_Y(z, \kappa y)_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
+    d(z, \kappa y) \asymp \sum_Y \left[ d_Y(z, \kappa y) \right]_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
   \end{align*}
   In the above formula, the first term is the distance between the short markings when projected to non-annular subsurfaces, the second term is the distance between the short markings when projected to annular subsurfaces whose core curves are not the pants curves in the marking, and the third term corresponds to the length and twist parameters of the short curves.
 
   Since both $z$ and $\kappa y$ have the same short markings, the first two terms in the above sum become $0$.
   Also, since we picked $z$ to be the element of $\cZ$ such that the lengths were closest to those on $\kappa y$, the third term is bounded by some constant, which proves the result.
-  \todo[inline]{Define marking in the preliminaries.}
 \end{proof}
 
 
@@ -720,6 +719,7 @@ Let $\mu_x$ and $\mu_y$ be short markings on $x$ and $y$ respectively.
 Finally, let $\cC^+$ and $\cC^-$ denote the set of two-sided and one-sided curves on $\no_g$.
 
 \begin{theorem}[Distance formula]
+  \label{thm:distance-formula}
   The distance between $x$ and $y$ in $\teich(\no_g)$ is given by the following formula.
   \begin{equation}
   \begin{aligned}
