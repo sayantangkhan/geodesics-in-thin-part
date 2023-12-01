@@ -598,33 +598,49 @@ Their construction of complexity length, and the various results associated to i
 \item Rafi's distance formula
 \item Rafi's weak active intervals: Theorem 3.22 from \textcite{dowdall2023lattice}
 \item Uniform alignment of projection of points to curve complexes from Teichmüller geodesics
-\item Behrstock and BGI inequalities: really the whole HHS package.
+\item Lemma 3.26 about active intervals instead of Rafi's version. BGI and time ordering follows from this.
+\item Consistency and realization.
 \item Entropy subadditivity for subsurfaces
 \end{enumerate}
 
 \appendix
 
-\section{Weak convex core of $\teich(\no_g)$ is hierarchically hyperbolic}
-\label{sec:trunc-teichm-space}
+\section{Geometry of $\teich(\no_g)$}
+\label{sec:geom-of-teich}
 
-Use Behrstock to show that progress on subsurfaces that don't come from lifts is negligible.
+In this section, we prove some standard results about the geometry of Teichmüller spaces of non-orientable surfaces that we use in Section \ref{sec:line-gap-compl}.
+We do so by lifting the hyperbolic structures and markings on the non-orientable surfaces to their double covers, which give us points in the Teichmüller space and curve complex of the double cover.
 
-\todo[inline]{Write down the key idea of all the proofs in this section, namely, going to the double cover, and getting an isometric embedding in the Teichmüller case and the curve complex case \textcite{masur2013geometry}}
+The fact that these lifts are well-defined and respect the metric properties are encapsulated in the following two theorems.
 
-\begin{theorem}[Isometric embedding of Teichmüller spaces]
+\begin{theorem}[Isometric embedding of Teichmüller spaces (Theorem 2.1 of \cite{limitsetkhan})]
   \label{thm:i-embedding-teich-space}
-  Blah
+  The map $i : \teich(\no_g) \to \teich(\os_{g-1})$ given by lifting the hyperbolic structure and marking from $\no_g$ to $\os_{g-1}$ is an isometric embedding.
+  Furthermore, the image of $\teich(\no_g)$ in $\teich(\os_{g-1})$ is the subset of $\teich(\os_{g-1})$ is fixed by $\iota^{\ast}$, where $\iota^{\ast}$ is the map induced by the orientation reversing deck transformation $\iota$ on $\os_{g-1}$.
 \end{theorem}
 
-\begin{theorem}[Quasi isometric embedding of curve complexes \cite{masur2013geometry}]
+\begin{theorem}[Quasi isometric embedding of curve complexes (Lemma 6.3 from \cite{masur2013geometry})]
   \label{thm:qi-embedding-curve-complex}
   The map $\cC(\no_g) \to \cC(\os_{g-1})$ obtained by lifting curves in $\no_g$ to $\os_{g-1}$ is a quasi-isometric embedding.
 \end{theorem}
 
+We will use the above two theorems, along with Lemma \ref{lem:lifting-subsurfaces}, to reduce statements about the geometry of $\teich(\no_g)$ to statements about the geometry of $\teich(\os_{g-1})$.
+However, we postpone the statement and the proof of Lemma \ref{lem:lifting-subsurfaces} until Section \ref{sec:dist-form-teichm}, since it's not required for Section \ref{sec:minskys-prod-regi}.
+
+We set up some notation for this section.
+\begin{itemize}
+\item[-] $d(x,y)$ and $d(\wt{x}, \wt{y})$: Given points $x$ and $y$ in $\teich(\no_g)$, $d(x, y)$ is the distance in Teichmüller metric between them, and $d(\wt{x}, \wt{y})$ is the distance in $\teich(\os_{g-1})$ between their images, $\wt{x}$ and $\wt{y}$.
+\item[-] $\pi_V(\mu_x)$ and $\pi_V(x)$: If $\mu_x$ is a marking/curve on a surface, the $\pi_V(\mu_x)$ denotes the subsurface projection to the subsurface $V$. If $x$ is a point in the Teichmüller space, the $\pi_V(x) = \pi_V(\mu_x)$, where $\mu_x$ is the Bers marking on $x$.
+\item[-] $d_V(\mu_x, \mu_y)$ and $d_V(x, y)$: If $\mu_x$ and $\mu_y$ are markings/curves on a surface, and $V$ is a subsurface, then $d_V(\mu_x, \mu_y)$ refers to the curve complex distance between the subsurface projections of $\mu_x$ and $\mu_y$ in $\cC(V)$.
+  When $x$ and $y$ are points in Teichmüller space, $d_V(x,y)$ refers to $d_V(\mu_x, \mu_y)$, where $\mu_x$ and $\mu_y$ are the Bers marking on $x$ and $y$.
+\end{itemize}
+
+\todo[inline]{Set up the notation, i.e. the various metrics floating around.}
+
 \subsection{Minsky's product region theorem}
 \label{sec:minskys-prod-regi}
 
-The main tool we will need to prove that the weak convex core is minimally distorted is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
+In this section, we prove a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
 
 Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
 Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
@@ -638,7 +654,7 @@ For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\te
   \end{itemize}
 \end{definition}
 
-We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $.
+We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
 
 We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \varepsilon}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\varepsilon$.
 
@@ -678,7 +694,7 @@ We will be interested in looking at the restriction of $\Pi$ to the thin region 
     The space $\teich(\no_g)$ maps to the diagonal subspace because its image must be invariant under the map $\iota$, which isometrically swaps $S_1$ and $S_2$.
     This map is an isometric embedding, and thus for any points $x$ and $y$ in $\teich(\no_g \setminus \gamma)$, the distance between their images in $\teich(S_1) \times \teich(S_2)$ is the same as the distance in $\teich(\no_g \setminus \gamma)$.
 
-    In the second case, we have that $\teich(\no_g \setminus \gamma)$ also isometrically embeds inside the Teichmüller space of its double cover, so the claim follows.
+    In the second case, we have that $\teich(\no_g \setminus \gamma)$ also isometrically embeds inside the Teichmüller space of its double cover, by Theorem \ref{thm:i-embedding-teich-space}, so the claim follows.
   \item $\gamma_i$ (for $\gamma_i$ two-sided): The lift of $\gamma_i$ in this case are two disjoint curves on $\os_{g-1}$, which are swapped by the deck transformation $\iota$.
     This means the $\mathbb{H}$-coordinate given by length and twist of $\gamma_i$ maps to the diagonal in $\mathbb{H} \times \mathbb{H}$, which correspond the length and twist around the two lifts.
     Since $\mathbb{H}$ mapped to the diagonal in $\mathbb{H} \times \mathbb{H}$ is an isometric embedding with $\sup$ metric, the claim follows in this case.
@@ -707,16 +723,49 @@ We will be interested in looking at the restriction of $\Pi$ to the thin region 
   Combining these three facts, and applying Minsky's product region theorem for orientable surfaces, the result follows.
 \end{proof}
 
-{\color{red} Move the theorem in Section 3 to this section}
+% {\color{red} Move the theorem in Section 3 to this section}
 
-\subsection{Distance formula for Teichmüller space}
+\subsection{Teichmüller geodesics and geodesics in the curve complex}
 \label{sec:dist-form-teichm}
 
-\todo[inline]{Set up some context.}
+In this section, we will deduce some standard results about Teichmüller geodesics and the corresponding curve complex geodesics for non-orientable surfaces by reducing to the orientable case.
+The following lemma will be the main tool for the reduction to the orientable case.
+\begin{lemma}
+  \label{lem:lifting-subsurfaces}
+  Let $[x, y]$ be a Teichmüller geodesics segment in $\teich(\no)$, where $\no$ is a non-orientable surface, and $[\wt{x}, \wt{y}]$ be its image in $\teich(\os)$, where $\os$ is the orientable double cover of $\no$.
+  Let $V$ be a subsurface of $S$: then the following for $d_V(\wt{x}, \wt{y})$.
+  \begin{enumerate}[(i)]
+  \item If $V$ is the lift of a non-orientable subsurface $W$ in $\no$, then $d_V(\wt{x}, \wt{y}) \emul d_W(x, y)$.
+  \item If $V$ is the lift of an orientable subsurface $W$ in $\no$, then $d_V(\wt{x}, \wt{y}) = d_{\iota(V)}(\wt{x}, \wt{y}) = d_W(x, y)$.
+  \item If $V$ is not a lift of a subsurface in $\no$, then there exists a uniform constant $k_0$, independent of $x$, $y$, and $V$, such that $d_V(\wt{x}, \wt{y}) \leq k_0$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  We deal with the proof in cases.
+  \begin{enumerate}[(i)]
+  \item If $V$ is the lift of an orientable surface, we have that the covering map restricted to $V$ is a homeomorphism, and the same holds for $\iota(V)$, so the result follows in this case as well.
+  \item If $V$ is the lift of a non-orientable subsurface $W$, then by Theorem \ref{thm:qi-embedding-curve-complex}, we have that $\cC(W)$ quasi-isometrically embeds into $\cC(V)$, and the result follows.
+  \item If $V$ is not a lift at all, that means $V$ and $\iota(V)$ are transverse subsurfaces.
+    By the Behrstock inequality, there exists a $k_0$ such that the following holds.
+    \begin{align}
+      \label{ineq:min-of-equal}
+      \min(d_V(\wt{x}, \wt{y}), d_{\iota(V)}(\wt{x}, \wt{y})) \leq k_0
+    \end{align}
+    Note that we also have that $\wt{x}$ and $\wt{y}$ are fixed by $\iota^{\ast}$, the induced map on $\teich(\os)$, which gives us the following.
+    \begin{align*}
+      d_{\iota(V)}(\wt{x}, \wt{y}) &= d_{V}(\iota^{\ast}(\wt{x}), \iota^{\ast}(\wt{y})) \\
+                                   &= d_V(\wt{x}, \wt{y})
+    \end{align*}
+    This means that both the terms appearing in the $\min$ in \eqref{ineq:min-of-equal} are equal, which gives us the result.
+  \end{enumerate}
+\end{proof}
 
+% \todo[inline]{Set up some context.}
+We begin by proving the distance formula for points in Teichmüller space.
 Let $x$ and $y$ be a pair of points in $\teich(\no_g)$, and let $\Gamma$ be the set of curves that are short on both $x$ and $y$, $\Gamma_x$ the set of curves that are only short on $x$, and $\Gamma_y$ the set of curves that are only short on $y$.
 Let $\mu_x$ and $\mu_y$ be short markings on $x$ and $y$ respectively.
-Finally, let $\cC^+$ and $\cC^-$ denote the set of two-sided and one-sided curves on $\no_g$.
+Let $\cC^+$ and $\cC^-$ denote the set of two-sided and one-sided curves on $\no_g$.
+Finally, let $\left[ x \right]_k$ be the function which is $0$ for $x \leq k$, and identity for $x > k$.
 
 \begin{theorem}[Distance formula]
   \label{thm:distance-formula}
@@ -748,27 +797,18 @@ Finally, let $\cC^+$ and $\cC^-$ denote the set of two-sided and one-sided curve
 
  It will suffice to show that for a large enough choice of $k$, the right hand side of \eqref{eq:distance-formula-nonorient} is equal to the right hand side of \eqref{eq:distance-formula-orient}, up to an additive and multiplicative constant.
  We consider the first term in the right hand side of \eqref{eq:distance-formula-orient}, namely the sum over the non-annular subsurfaces $Y$.
- There are three possibilities for $Y$ in $\os_{g-1}$.
+ There are three possibilities for $Y$ in $\os_{g-1}$, which we deal with using Lemma \ref{lem:lifting-subsurfaces}.
  \begin{enumerate}[(i)]
- \item $Y$ is one component of a lift of an orientable subsurface $Z$ of $\no_g$: In this case $Y$ and $\iota(Y)$ are disjoint, and the restriction of the covering map to $Y$ (or $\iota(Y)$) is a homeomorphism.
-   We then have $d_Y(\wt{\mu_x}, \wt{\mu_y}) = d_Z(\mu_x, \mu_y)$ (and the same equality with $Y$ replaced with $\iota(Y)$).
+ \item $Y$ is one component of a lift of an orientable subsurface $Z$ of $\no_g$: In this case we have $d_Y(\wt{\mu_x}, \wt{\mu_y}) = d_Z(\mu_x, \mu_y)$ (and the same equality with $Y$ replaced with $\iota(Y)$).
    Thus, for every term associated to an orientable non-annular subsurface $Z$ in \eqref{eq:distance-formula-nonorient}, we get two corresponding equal terms in \eqref{eq:distance-formula-orient}.
- \item $Y$ is the lift of a non-orientable subsurface $Z$ of $\no_g$: In this case, we can apply Theorem \ref{thm:qi-embedding-curve-complex} to get that $d_Y(\wt{\mu_x}, \wt{\mu_y}) \emul d_Z(\mu_x, \mu_y)$.
- \item $Y$ is not a lift of a subsurface of $\no_g$: If $Y$ is not a lift of a subsurface from $\no_g$, that means $Y$ and $\iota(Y)$ are not disjoint, nor are they equal.
-   Since one of them can't be nested in the other, they must be transverse.
-   By the Behrstock inequality for transverse surfaces, there exists some $k_0$ large enough such that the following holds for any $x$, $y$, and $Y$.
-   \begin{align}
-     \min\left( d_Y(\wt{\mu_x}, \wt{\mu_y}), d_{\iota(Y)}(\wt{\mu_x}, \wt{\mu_y}) \right) \leq k_0
-     \label{ineq:behrstock-transverse}
-   \end{align}
-   Also note that $d_Y(\wt{\mu_x}, \wt{\mu_y}) = d_{\iota(Y)}(\wt{\mu_x}, \wt{\mu_y})$, since $\iota(\wt{\mu_i}) = \wt{\mu_i}$ for $i = x$ and $i=y$.
-   Plugging this into \eqref{ineq:behrstock-transverse}, we get a bound on the curve complex projection to $Y$.
+ \item $Y$ is the lift of a non-orientable subsurface $Z$ of $\no_g$: In this case, we have $d_Y(\wt{\mu_x}, \wt{\mu_y}) \emul d_Z(\mu_x, \mu_y)$.
+ \item $Y$ is not a lift of a subsurface of $\no_g$: In this case, we have the following for some $k_0$.
    \begin{align*}
      d_Y(\wt{\mu_x}, \wt{\mu_y}) \leq k_0
    \end{align*}
    If we pick a threshold $k > k_0$, the subsurfaces $Y$ that do not arise from lifts will not contribute to the right hand side of \eqref{eq:distance-formula-orient}.
  \end{enumerate}
- The analysis of the three possible types of non-annular subsurfaces $Y$ shows that the first terms on the right hand side of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal up to a multiplicative and additive constant, for $k > k_0$.
+ % The analysis of the three possible types of non-annular subsurfaces $Y$ shows that the first terms on the right hand side of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal up to a multiplicative and additive constant, for $k > k_0$.
 
  We now do the same case analysis for annular subsurfaces: consider a curve $\alpha$ on $\os_{g-1}$ that is contained in $\Gamma^c$, i.e. it is not simultaneously short on $\wt{x}$ and $\wt{y}$. There are three possibilities for $\alpha$.
  \begin{enumerate}[(i)]
@@ -797,9 +837,75 @@ Finally, the last two terms in \eqref{eq:distance-formula-orient} are the same a
 We have shown that the right hand sides of \eqref{eq:distance-formula-nonorient} and \eqref{eq:distance-formula-orient} are equal, up to a multiplicative and additive constant, which proves the result.
 \end{proof}
 
+We now verify that Teichmüller geodesics can be broken up into \emph{active intervals associated to subsurfaces}, which are subintervals of the geodesic associated to each subsurface $V$, along which the projection to $V$ is large, and outside of which, the projection is bounded.
+% To build up the machinery of complexity length, we will also need a description of the Teichmüller geodesic segments.
+% Let $[x, y]$ be a Teichmüller geodesic segment between $x$ and $y$ in $\teich(\no_g)$.
+The following lemma  of \textcite[Lemma 3.26]{dowdall2023lattice} (which itself is a generalization of \textcite[Proposition 3.7]{rafi2007combinatorial}) describes the subsegments of $[x,y]$ along which the geodesic makes progress in the curve complex of a subsurface.
 
-\subsection{Curve complex results}
-\label{sec:curve-compl-results}
+\begin{proposition}
+  \label{thm:active-intervals}
+  For each sufficiently small $\varepsilon > 0$, there exists $0 < \varepsilon^{\prime} < \varepsilon$ and $M_\varepsilon \geq 0$ such that for any subsurface $V \sqsubset S$, there's a (possibly empty) connected interval $\mathcal{I}_V^\varepsilon \subset [x,y]$ such that the following five conditions hold.
+  \begin{enumerate}[(i)]
+  \item If $d_V(x, y) \geq M_\varepsilon$, then $\mathcal{I}_V^{\varepsilon}$ is a non-empty subinterval of $[x,y]$.
+  \item $\ell_\alpha(z) < \varepsilon$ for all $z \in \mathcal{I}_V^{\varepsilon}$ and $\alpha \in \partial V$.
+  \item For all $z \in [x,y] \setminus \mathcal{I}_V^{\varepsilon}$, some component $\alpha$ of $\partial V$ has $\ell_\alpha(z) > \varepsilon^{\prime}$.
+  \item $d_V(w, z) \leq M_\varepsilon$ for every subinterval $[w,z] \subset [x,y]$ if $[w,z] \cap \mathcal{I}_V^\varepsilon = \varnothing$.
+  \item For a pair of traverse subsurfaces $U$ and $V$, $\mathcal{I}_U^\varepsilon \cap \mathcal{I}_V^\varepsilon = \varnothing$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}[Proof of Theorem \ref{thm:active-intervals} for non-orientable surfaces]
+  Let $\no$ be the non-orientable surface, and $\os$ its double cover.
+  We consider the image $[\wt{x}, \wt{y}]$ of the geodesic $[x,y]$ in $\teich(\os)$.
+  We know that the result holds for $[\wt{x}, \wt{y}]$, although with $\varepsilon^{\prime}$ replaced with $\frac{\varepsilon^{\prime}}{2}$, since lifting can double the lengths of some curves.
+
+  The main fact we need to verify is that the only subsurfaces $V$ that have non-empty $\mathcal{I}_V^\varepsilon$ come from lifts.
+  If $V$ is a subsurface of $\os$ that is not a lift, we use case (iii) of Lemma \ref{lem:lifting-subsurfaces} to conclude that $d_V(x, y) \leq k_0$ for some fixed constant $k_0$.
+  Picking $M_\varepsilon > k_0$ guarantees that the only subsurfaces for which $\mathcal{I}_V^\varepsilon$ is non-empty arise from lifts, which proves the result for non-orientable surfaces.
+\end{proof}
+
+Finally, we show that the consistency and the realization results (\textcite{behrstock2012geometry}) hold for Teichmüller spaces of non-orientable surfaces as well.
+We begin by recalling the definition of consistency.
+
+\begin{definition}[Consistency]
+  For a connected surface $S$, and a parameter $\theta \geq 1$, we say a tuple $(z_V) \in \prod_{V \sqsubset S} \cC(V)$ is $\theta$-consistent if the following two conditions holds for all pairs of subsurfaces $U$ and $V$.
+  \begin{enumerate}[(i)]
+  \item If $U \pitchfork V$, then
+    \begin{align*}
+      \min(d_U(z_U, \partial V), d_V(z_V, \partial U)) \leq \theta
+    \end{align*}
+  \item If $U \sqsubset V$, then
+    \begin{align*}
+      \min(d_U(z_U, \pi_U(z_V)), d_V(z_V, \partial U)) \leq \theta
+    \end{align*}
+  \end{enumerate}
+\end{definition}
+\todo[inline]{Make sure I use the transversality notation consistently.}
+
+The following theorem (\textcite[Theorem 4.3]{behrstock2012geometry}) states that the projection from Teichmüller space to the curve complexes of all the subsurfaces is coarsely surjective onto the set of consistent tuples.
+
+\begin{theorem}[Consistency and realization]
+  \label{thm:consistency-realization}
+  There is a constant $K \geq 1$, and function $\mathfrak{C}: \mathbb{R}_+ \to \mathbb{R}_+$ such that the following holds for any surface $S$.
+  \begin{itemize}
+  \item (Consistency) For every $x \in \teich(S)$, the projection tuple $(\pi_V(x))_{V \sqsubset S}$ is $K$-consistent.
+  \item (Realization) For every $\theta$-consistent tuple $(z_V)_{V \sqsubset S}$, there exists a point $z \in \teich(S)$ such that $d_V(\pi_V(z), z_V) \leq \mathfrak{C}(\theta)$ for all $V$.
+  \end{itemize}
+\end{theorem}
+\begin{proof}[Proof sketch of Theorem \ref{thm:consistency-realization} for non-orientable surfaces]
+    We first show that the projection map is consistent, and then show consistent tuples lie coarsely in the image of the projection map.
+  \begin{itemize}
+  \item (Consistency) We map $x$ to $\wt{x}$ in the Teichmüller space of the double cover $\wt{S}$.
+    By applying the theorem for orientable surfaces, we have the $(\pi_{W}(\wt{x}))_{W \sqsubset \wt{S}}$, and we restrict to the subsurfaces in the tuple which arise as lifts.
+    These points lie in the image of the quasi-isometric embedding map from Theorem \ref{thm:qi-embedding-curve-complex}, which means consistency also holds for the tuples in $S$.
+  \item (Realization) Given a $\theta$-consistent tuple $(z_V)_{V \sqsubset S}$, we construct a $\theta^{\prime}$-consistent tuple in the double cover $\wt{S}$.
+    For subsurfaces of $\wt{S}$ that arise as lifts, we use the map from Theorem \ref{thm:qi-embedding-curve-complex}.
+    For the subsurfaces $W$ that are not lifts, we set $z_W = \pi_W(\partial(\iota(W)))$.
+    The fact that this is a $\theta^{\prime}$-consistent tuple follows from the Behrstock inequality (for some $\theta^{\prime} > \theta$)\footnote{A longer but a more thorough way of seeing this would be to verify that the Teichmüller space of a non-orientable surface satisfies the $9$ axioms for hierarchical hyperbolicity that are enumerated in \textcite{behrstock2019hierarchically}.}.
+    We now use this point to construct $y \in \teich(\wt{S})$, and deduce that $y$ is coarsely fixed by $\iota^{\ast}$.
+    This means there is some $x \in \teich(S)$ whose image is coarsely $y$, and therefore the projection maps are coarsely $(z_V)$.
+  \end{itemize}
+\end{proof}
 
 \printbibliography
 
