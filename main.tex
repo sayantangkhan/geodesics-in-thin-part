@@ -2,7 +2,7 @@
 \pdfoutput=1
 \usepackage{mathpreamble}
 
-\title{Statistical convex-cocompactness for Teichmüller spaces of non-orientable surfaces}
+\title[Statistic convex-cocompactness for $\teich(\no_g)$]{Statistical convex-cocompactness for Teichmüller spaces of non-orientable surfaces}
 \author{Sayantan Khan}
 \address{Department of Mathematics, University of Michigan, Ann Arbor, MI}
 \email{\href{mailto:saykhan@umich.edu}{saykhan@umich.edu}}
@@ -590,6 +590,51 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 
 \section{Linear gap in complexity length}
 \label{sec:line-gap-compl}
+
+\subsection{An example of counting in product regions}
+\label{sec:an-example-counting}
+
+Before we define complexity length, we will look at an example that illustrates why we need complexity length.
+Theorem 1.3 of \textcite{10.1215/00127094-1548443} proves an estimate on the volume of balls in Teichmüller space.
+From this volume estimate, we can obtain an estimate on the cardinality of net points of an $(\varepsilon, 2 \varepsilon)$-net $\mathcal{N}$.
+\begin{theorem}[Theorem 1.3 of \cite{10.1215/00127094-1548443}]
+  \label{thm:abem}
+  For a point $p$ in $\teich(S)$ (where $S$ is a genus $g$ surface with $b$ boundary components), the number of net points in a ball of radius $R$ centered at the origin satisfies the following asymptotic as $R$ goes to $\infty$ for some bounded function $C(p)$.
+  \begin{align*}
+    \#\left( \mathcal{N} \cap B_R(p) \right) \emul \exp((6g-6 + 2b)R)
+  \end{align*}
+  Here, the multiplicative and additive constants showing up in $\emul$ only depend on $p$ and $\varepsilon$.
+\end{theorem}
+
+Suppose now that we want to use the above theorem to count net points in a product region.
+More concretely, let $p$ be a point in $\teich(S)$ such that a non-separating curve $\gamma$ is very short: $\ell_{\gamma}(p) \leq \delta \cdot \exp(-R_0)$, for some $\delta > 0$, and some large $R_0$, and we want to estimate the cardinality of $\mathcal{N} \cap B_R(p)$ for $R < R_0$.
+Note that since $R < R_0$, the ball $B_R(p)$ is still contained in the product region of Teichmüller space where $\ell_\gamma \leq \delta$.
+
+Since the entire ball $B_R(p)$ is in a product region, we have by Minsky's product region theorem (see Theorem \ref{thm:prno} for a precise statement) that the ball decomposes (up to an additive error) as the
+product of a ball in $\teich(S \setminus \gamma)$ and ball in $\mathbb{H}$ (which corresponds to the length and twist around $\gamma$).
+This gives us an alternative estimate for $\#\left( \mathcal{N} \cap B_R(p)\right)$.
+\begin{align}
+  \label{eq:prod-decomp}
+  \#\left( \mathcal{N} \cap B_R(p) \right) &\leq C \cdot \left( \mathcal{N}_1 \cap B_R(p, S \setminus \gamma) \right) \cdot \left( \mathcal{N}_2 \cap B_R(p, \mathbb{H})\right)
+\end{align}
+Here $\mathcal{N}_1$ and $\mathcal{N}_2$ are nets for $\teich(S \setminus \gamma)$ and $\mathbb{H}$, and $B_R(p, S \setminus \gamma)$ and $B_R(p, \mathbb{H})$ are projections on the ball $B_R(p)$ to the two components.
+Applying Theorem \ref{thm:abem} to the right hand side of \eqref{eq:prod-decomp}, we get a better estimate than we would have gotten with a direct application of Theorem \ref{thm:abem}.
+\begin{align*}
+  \#\left( \mathcal{N} \cap B_R(p) \right) &\leq C \cdot \left( \mathcal{N}_1 \cap B_R(p, S \setminus \gamma) \right) \cdot \left( \mathcal{N}_2 \cap B_R(p, \mathbb{H})\right) \\
+                                           &\emul \exp((6(g-1)-6 + 2(b+2))R) \cdot \exp(R) \\
+  &= \exp((6g-6+2b-1)R)
+\end{align*}
+
+This example illustrates that in order to count net points accurately, it's not sufficient to just estimate the distance the between the base point $p$ and the net point $n$: if the geodesic segment $[p, n]$ travels in a product region, the count will be lower than what Theorem \ref{thm:abem} predicts.
+In fact, the count will also depend on the type of the product region.
+In the above example, the product region had just one curve $\gamma$ becoming short, but in general, a product region can have multiple curves getting short, in which case, the net point count will be even smaller.
+
+The idea of complexity length is to assign to each point in a geodesic segment a weight which indicates the complexity of the product region that point in the geodesic is currently in.
+That means for a geodesic segment that lies entirely in the thick part, all of its points will be assigned weight equal to $6g-6 + 2b$.
+On the other hand, the geodesic segments in the above example will have all of their points assigned the weight $6g-6+2b-1$.
+\todo[inline]{Maybe make the above paragraph read slightly better.}
+
+For geodesic segments that enter and exit several product regions, assigning a weight to each point on the geodesic is a slightly more involved, and the content of the remainder of this section.
 
 \subsection{An overview of complexity length}
 \label{sec:an-overv-compl}
