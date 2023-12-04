@@ -591,17 +591,35 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 \section{Linear gap in complexity length}
 \label{sec:line-gap-compl}
 
-In this section, we will adapt the notion of complexity length from \textcite{dowdall2023lattice} to the setting of non-orientable surfaces.
-Their construction of complexity length, and the various results associated to it depend on the following facts about the geometry of the Teichmüller space of orientable surfaces.
+\subsection{An overview of complexity length}
+\label{sec:an-overv-compl}
+
+Outline of this section:
 \begin{enumerate}[(i)]
-\item Minsky's product region theorem
-\item Rafi's distance formula
-\item Rafi's weak active intervals: Theorem 3.22 from \textcite{dowdall2023lattice}
-\item Uniform alignment of projection of points to curve complexes from Teichmüller geodesics
-\item Lemma 3.26 about active intervals instead of Rafi's version. BGI and time ordering follows from this.
-\item Consistency and realization.
-\item Entropy subadditivity for subsurfaces
+\item Example in the thin region where ABEM is excessive.
+\item This suggests a finer way to count net points when we a priori have some information about the fact that they travel in the thin part for a reasonable amount of time.
+\item The idea is to resolve a Teichmüller geodesic into subsegments that are Teichmüller geodesics in subsurfaces.
+\item If we do it naïvely, we overcount: there are two kinds of overcounting. Orthogonality, which isn't so bad, and nesting, which is.
+\item We deal with the overcounting by constructing witness families, i.e. subsets of subsurfaces, which are minimal in an appropriate sense.
+\item We can use these witness families to resolve points on the geodesics to points in the Teichmüller space of subsurfaces. We need some sort of alignment for fellow traveling.
+\item We specify properties of witnesses that we need to resolve points.
+\item The define complexity length.
+\item Then some more properties to reduce overcounting/badness.
+\item Describe the refinement process.
+\item Sketch out the proof of the counting result.
 \end{enumerate}
+
+% In this section, we will adapt the notion of complexity length from \textcite{dowdall2023lattice} to the setting of non-orientable surfaces.
+% Their construction of complexity length, and the various results associated to it depend on the following facts about the geometry of the Teichmüller space of orientable surfaces.
+% \begin{enumerate}[(i)]
+% \item Minsky's product region theorem
+% \item Rafi's distance formula
+% \item Rafi's weak active intervals: Theorem 3.22 from \textcite{dowdall2023lattice}
+% \item Uniform alignment of projection of points to curve complexes from Teichmüller geodesics
+% \item Lemma 3.26 about active intervals instead of Rafi's version. BGI and time ordering follows from this.
+% \item Consistency and realization.
+% \item Entropy subadditivity for subsurfaces
+% \end{enumerate}
 
 \appendix
 
