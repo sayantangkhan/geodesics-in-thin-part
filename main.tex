@@ -2,7 +2,7 @@
 \pdfoutput=1
 \usepackage{mathpreamble}
 
-\title[Statistic convex-cocompactness for $\teich(\no_g)$]{Statistical convex-cocompactness for Teichmüller spaces of non-orientable surfaces}
+\title[Statistical convex-cocompactness for $\teich(\no_g)$]{Statistical convex-cocompactness for Teichmüller spaces of non-orientable surfaces}
 \author{Sayantan Khan}
 \address{Department of Mathematics, University of Michigan, Ann Arbor, MI}
 \email{\href{mailto:saykhan@umich.edu}{saykhan@umich.edu}}
@@ -629,19 +629,21 @@ This example illustrates that in order to count net points accurately, it's not 
 In fact, the count will also depend on the type of the product region.
 In the above example, the product region had just one curve $\gamma$ becoming short, but in general, a product region can have multiple curves getting short, in which case, the net point count will be even smaller.
 
-The idea of complexity length is to assign to each point in a geodesic segment a weight which indicates the complexity of the product region that point in the geodesic is currently in.
-That means for a geodesic segment that lies entirely in the thick part, all of its points will be assigned weight equal to $6g-6 + 2b$.
-On the other hand, the geodesic segments in the above example will have all of their points assigned the weight $6g-6+2b-1$.
-\todo[inline]{Maybe make the above paragraph read slightly better.}
+Furthermore, a geodesic segment can enter and exit several product regions: in order to make the above analysis work in this more complicated setting, we will motivate and define \emph{complexity length} in the next subsection.
 
-For geodesic segments that enter and exit several product regions, assigning a weight to each point on the geodesic is a slightly more involved, and the content of the remainder of this section.
+% The idea of complexity length is to assign to each point in a geodesic segment a weight which indicates the complexity of the product region that point in the geodesic is currently in.
+% That means for a geodesic segment that lies entirely in the thick part, all of its points will be assigned weight equal to $6g-6 + 2b$.
+% On the other hand, the geodesic segments in the above example will have all of their points assigned the weight $6g-6+2b-1$.
+% \todo[inline]{Maybe make the above paragraph read slightly better.}
+
+% For geodesic segments that enter and exit several product regions, assigning a weight to each point on the geodesic is a slightly more involved, and the content of the remainder of this section.
 
 \subsection{An overview of complexity length}
 \label{sec:an-overv-compl}
 
 Outline of this section:
 \begin{enumerate}[(i)]
-\item Example in the thin region where ABEM is excessive.
+\item {\color{red} DONE:} {Example in the thin region where ABEM is excessive.}
 \item This suggests a finer way to count net points when we a priori have some information about the fact that they travel in the thin part for a reasonable amount of time.
 \item The idea is to resolve a Teichmüller geodesic into subsegments that are Teichmüller geodesics in subsurfaces.
 \item If we do it naïvely, we overcount: there are two kinds of overcounting. Orthogonality, which isn't so bad, and nesting, which is.
@@ -665,6 +667,8 @@ Outline of this section:
 % \item Consistency and realization.
 % \item Entropy subadditivity for subsurfaces
 % \end{enumerate}
+
+
 
 \appendix
 
