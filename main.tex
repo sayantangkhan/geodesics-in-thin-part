@@ -641,6 +641,40 @@ Furthermore, a geodesic segment can enter and exit several product regions: in o
 \subsection{An overview of complexity length}
 \label{sec:an-overv-compl}
 
+We now consider a geodesic $[x,y]$ (where $x$ and $y$ are net points) that travels through several product regions $p_i$, and possibly the thick part, which we will also consider a product region, albeit a trivial one.
+Let $h_i$ be the exponent associated to the product region $p_i$: this is the exponent that will appear when we invoke Theorem \ref{thm:abem} to count net points in the product region $p_i$.
+The order in which $[x, y]$ travels through the product region is specified in \autoref{fig:schematic}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{images/schematic.png}
+  \caption{A schematic of the geodesic $[x,y]$ traveling through several product regions.}
+  \label{fig:schematic}
+\end{figure}
+
+Let $z_i$ denote the points on the geodesic segment that correspond to the times when the geodesic enters or exits a product region: in \autoref{fig:schematic}, we have labeled $z_i$ for $1 \leq i \leq 8$.
+Let $\mathcal{J}_i$ denote the interval $[x, z_1]$ for $i=0$, the interval $[z_i, z_{i+1}]$ for $1 \leq i \leq 7$, and $[z_8, y]$ for $i=8$.
+Let $\ell_i$ be the length of $\mathcal{J}_i$, and $e_i$ be the sum of the $h_i$ for each of the product regions that the interval $\mathcal{J}_i$ is in.
+Also, for each $z_i$, let $z_i^{\prime}$ denote the nearest net point.
+
+Keeping $x$ fixed, we can try to count the number of net points $y$ that satisfy the configuration we have described.
+We have about $O(\exp(e_0 \ell_0))$ possibilities for $z_1^{\prime}$, and then keeping a $z_1^{\prime}$ fixed, $O(\exp(e_i \ell_1))$ possibilities for $z_2^{\prime}$ and so on.
+Multiplying all these estimates, we have the following upper bound for cardinality of $y$.
+\begin{align*}
+  \#\left( y \right) \leq \exp\left( \sum_{i=0}^8 e_i \ell_i \right)
+\end{align*}
+
+The quantity $\sum e_i \ell_i$ serves as a re-weighted version of length of the geodesic in manner that works well with the counting function.
+This is a primitive version of the \emph{complexity length} of $[x,y]$, and motivates the actual definition.
+
+Before we define complexity length, we note two ways in which the above estimate overestimates the actual number of net points: that happens when a point in the geodesic is simultaneously in two or more product regions, which can happen in two ways.
+\begin{enumerate}[(i)]
+\item The product regions are disjoint:
+\item The product regions are nested:
+\end{enumerate}
+
+
+\todo[inline]{Remove the outline}
+
 Outline of this section:
 \begin{enumerate}[(i)]
 \item {\color{red} DONE:} {Example in the thin region where ABEM is excessive.}
