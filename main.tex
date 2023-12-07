@@ -629,7 +629,40 @@ This example illustrates that in order to count net points accurately, it's not 
 In fact, the count will also depend on the type of the product region.
 In the above example, the product region had just one curve $\gamma$ becoming short, but in general, a product region can have multiple curves getting short, in which case, the net point count will be even smaller.
 
-Furthermore, a geodesic segment can enter and exit several product regions: in order to make the above analysis work in this more complicated setting, we will motivate and define \emph{complexity length} in the next subsection.
+We now consider a geodesic $[x,y]$ (where $x$ and $y$ are net points) that travels through several product regions $p_i$, and possibly the thick part, which we will also consider a product region, albeit a trivial one.
+Let $h_i$ be the exponent associated to the product region $p_i$: this is the exponent that will appear when we invoke Theorem \ref{thm:abem} to count net points in the product region $p_i$.
+The order in which $[x, y]$ travels through the product region is specified in \autoref{fig:schematic}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{images/schematic.png}
+  \caption{A schematic of the geodesic $[x,y]$ traveling through several product regions.}
+  \label{fig:schematic}
+\end{figure}
+
+Let $z_i$ denote the points on the geodesic segment that correspond to the times when the geodesic enters or exits a product region: in \autoref{fig:schematic}, we have labeled $z_i$ for $1 \leq i \leq 8$.
+Let $\mathcal{J}_i$ denote the interval $[x, z_1]$ for $i=0$, the interval $[z_i, z_{i+1}]$ for $1 \leq i \leq 7$, and $[z_8, y]$ for $i=8$.
+Let $\ell_i$ be the length of $\mathcal{J}_i$, and $e_i$ be the sum of the $h_i$ for each of the product regions that the interval $\mathcal{J}_i$ is in.
+Also, for each $z_i$, let $z_i^{\prime}$ denote the nearest net point.
+
+Keeping $x$ fixed, we can try to count the number of net points $y$ that satisfy the configuration we have described.
+We have about $O(\exp(e_0 \ell_0))$ possibilities for $z_1^{\prime}$, and then keeping a $z_1^{\prime}$ fixed, $O(\exp(e_i \ell_1))$ possibilities for $z_2^{\prime}$ and so on.
+Multiplying all these estimates, we have the following upper bound for cardinality of $y$.
+\begin{align*}
+  \#\left( y \right) \leq \exp\left( \sum_{i=0}^8 e_i \ell_i \right)
+\end{align*}
+
+The quantity $\sum e_i \ell_i$ serves as a re-weighted version of length of the geodesic in manner that works well with the counting function.
+This is a primitive version of the \emph{complexity length} of $[x,y]$, and motivates the actual definition.
+
+Before we define complexity length, we note two ways in which the above estimate overestimates the actual number of net points: that happens when a point in the geodesic is simultaneously in two or more product regions, which can happen in two ways.
+\begin{enumerate}[(i)]
+\item The product regions are disjoint: In this case, we are accounting the length of the geodesic segment multiple times: once for each product region we are in. However, this overcounting is still better than directly invoking Theorem \ref{thm:abem}, since the sums of the exponents $h_i$ associated to each of the disjoint product regions are smaller than the exponent associated to the entire surface.
+\item The product regions are nested: In this case as well, we are accounting for the length of a geodesic multiple times, once for each product region we are in.
+  Unlike in the previous case, in this case, the exponents associated to each product region can add up to a quantity larger than the exponent associated to the entire surface, which means the presence of nested product regions can give a worse estimate than Theorem \ref{thm:abem}.
+  We will get around this problem by looking only at product regions associated to special subsurfaces which are called \emph{witnesses}.
+\end{enumerate}
+
+% Furthermore, a geodesic segment can enter and exit several product regions: in order to make the above analysis work in this more complicated setting, we will motivate and define \emph{complexity length} in the next subsection.
 
 % The idea of complexity length is to assign to each point in a geodesic segment a weight which indicates the complexity of the product region that point in the geodesic is currently in.
 % That means for a geodesic segment that lies entirely in the thick part, all of its points will be assigned weight equal to $6g-6 + 2b$.
@@ -641,12 +674,55 @@ Furthermore, a geodesic segment can enter and exit several product regions: in o
 \subsection{An overview of complexity length}
 \label{sec:an-overv-compl}
 
+Now that we have motivated the need for complexity length, as well as considering special subsurfaces called witnesses, we formally define them in this section.
+This section is a summary for Sections 7 through 12 of \textcite{dowdall2023lattice}, so we refer the reader to those sections for details we elide.
+One difference in our presentation is that we care about these constructions for both orientable and non-orientable surfaces, while the original authors only work with orientable surfaces.
+However, their constructions and proofs go through for non-orientable surfaces, as long as we provide a proof of the non-orientable versions of some of the foundational results they use.
+We list those theorems here, and link to the proof of the non-orientable version that appears in Section \ref{sec:geom-of-teich}.
+\begin{enumerate}[(i)]
+\item Minsky's product region theorem (see Theorem \ref{thm:prno}).
+\item Distance formula for Teichmüller space (see Theorem \ref{thm:distance-formula}).
+\item Active intervals for subsurfaces (see Proposition \ref{thm:active-intervals}).
+\item Consistency and realization (see Theorem \ref{thm:consistency-realization}).
+\end{enumerate}
+
+Let $\os$ be a surface (not necessarily orientable), and $\mathbf{C}$ some large arbitrary constant, and $\varepsilon > 0$ a small constant we pick later.
+We also pick constants $N_V$, for each $V \sqsubset \os$, such that $N_V$ only depends on the topological type of $V$.
+The precise values of the $N_V$'s is specified via Proposition 10.13 of \cite{dowdall2023lattice}.
+
+Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsurfaces $\mathcal{Y}(x, y)$ along which $[x, y]$ has large projections.
+
+\begin{definition}[Active subsurfaces]
+  A subsurface $V \sqsubset \os$ is an active subsurface, i.e. in $\mathcal{Y}(x,y)$ if one of the following two conditions hold.
+  \begin{enumerate}[(i)]
+  \item The projection to $\cC(V)$ has diameter at least $N_V$.
+  \item If $V$ is annular with core curve $\gamma$, then
+    \begin{align*}
+      \min\left( \ell_\gamma(x), \ell_{\gamma}(y) \right) < \varepsilon
+    \end{align*}
+  \end{enumerate}
+\end{definition}
+
+Associated to each active subsurface $V$, there is a non-empty connected sub-interval of $[x,y]$, denoted $\mathcal{I}_V^\varepsilon$, which we obtain via an application of Proposition \ref{thm:active-intervals}.
+The active intervals associated to active subsurfaces enjoy the following properties.
+\begin{enumerate}[(i)]
+\item $\ell_\alpha(z) < \varepsilon$ for $z \in \mathcal{I}_V^\varepsilon$ and $\alpha \in \partial V$.
+\item For $z \not \in \mathcal{I}_V^\varepsilon$, $\ell_{\alpha}(z) > \varepsilon^{\prime}$ for some $z \in \partial V$, and some $\varepsilon^{\prime} < \varepsilon$ that only depends on $\varepsilon$.
+\item For $[w,z] \subset [x,y]$ with $[w,z] \cap \mathcal{I}_V^\varepsilon = \varnothing$, $d_V(w,z) \leq M_\varepsilon$ for some $M_\varepsilon$ that only depends on $\varepsilon$.
+\item For $U \pitchfork V$, $\mathcal{I}_U^\varepsilon \cap \mathcal{I}_V^\varepsilon = \varnothing$.
+\end{enumerate}
+
+\todo{Figure out the latex for the symbol Dowdall-Masur use for active subsurfaces.}
+
+\todo[inline]{Remove the outline}
+
 Outline of this section:
 \begin{enumerate}[(i)]
 \item {\color{red} DONE:} {Example in the thin region where ABEM is excessive.}
-\item This suggests a finer way to count net points when we a priori have some information about the fact that they travel in the thin part for a reasonable amount of time.
-\item The idea is to resolve a Teichmüller geodesic into subsegments that are Teichmüller geodesics in subsurfaces.
-\item If we do it naïvely, we overcount: there are two kinds of overcounting. Orthogonality, which isn't so bad, and nesting, which is.
+\item {\color{red} DONE:} This suggests a finer way to count net points when we a priori have some information about the fact that they travel in the thin part for a reasonable amount of time.
+\item {\color{red} DONE:} The idea is to resolve a Teichmüller geodesic into subsegments that are Teichmüller geodesics in subsurfaces.
+\item {\color{red} DONE:} If we do it naïvely, we overcount: there are two kinds of overcounting. Orthogonality, which isn't so bad, and nesting, which is.
+\item Make precise the notion of product region being active.
 \item We deal with the overcounting by constructing witness families, i.e. subsets of subsurfaces, which are minimal in an appropriate sense.
 \item We can use these witness families to resolve points on the geodesics to points in the Teichmüller space of subsurfaces. We need some sort of alignment for fellow traveling.
 \item We specify properties of witnesses that we need to resolve points.
