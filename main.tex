@@ -694,7 +694,7 @@ Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsu
 \todo{Figure out the latex for the symbol Dowdall-Masur use for active subsurfaces.}
 
 \begin{definition}[Active subsurfaces]
-  A subsurface $V \sqsubset \os$ is an active subsurface, i.e. in $\mathcal{Y}(x,y)$ if one of the following two conditions hold.
+  A subsurface $V \sqsubset \os$ is an active subsurface, i.e. in $\mathcal{Y}(x,y)$, if one of the following two conditions hold.
   \begin{enumerate}[(i)]
   \item The projection to $\cC(V)$ has diameter at least $N_V$.
   \item If $V$ is annular with core curve $\gamma$, then
@@ -704,7 +704,7 @@ Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsu
   \end{enumerate}
 \end{definition}
 
-Associated to each active subsurface $V$, there is a non-empty connected sub-interval of $[x,y]$, denoted $\mathcal{I}_V^\varepsilon$, which we obtain via an application of Proposition \ref{thm:active-intervals}.
+Associated to each active subsurface $V$, there is a non-empty connected sub-interval of $[x,y]$, which we call an active interval, and denote $\mathcal{I}_V^\varepsilon$, which we obtain via an application of Proposition \ref{thm:active-intervals}.
 The active intervals associated to active subsurfaces enjoy the following properties.
 \begin{enumerate}[(i)]
 \item $\ell_\alpha(z) < \varepsilon$ for $z \in \mathcal{I}_V^\varepsilon$ and $\alpha \in \partial V$.
@@ -712,6 +712,52 @@ The active intervals associated to active subsurfaces enjoy the following proper
 \item For $[w,z] \subset [x,y]$ with $[w,z] \cap \mathcal{I}_V^\varepsilon = \varnothing$, $d_V(w,z) \leq M_\varepsilon$ for some $M_\varepsilon$ that only depends on $\varepsilon$.
 \item For $U \pitchfork V$, $\mathcal{I}_U^\varepsilon \cap \mathcal{I}_V^\varepsilon = \varnothing$.
 \end{enumerate}
+
+Observe that when restricted to $\mathcal{I}_V^\varepsilon$, the geodesic is traveling in a product region, one of whose components is $\teich(V)$, but trying to apply the technique from the previous subsection leads to the problem of overcounting, namely overcounting arising from subsurfaces either nested in $V$, or subsurfaces $V$ is nested in.
+
+To deal with this issue, we will consider a subset of $\mathcal{Y}(x,y)$, called a \emph{witness family}.
+However, to avoid overcounting, some additional properties are required of the witness families.
+Rather than defining all of those properties without context, we introduce them one at a time, after motivating the need for the property.
+
+\begin{definition}[Witness family]
+  A witness family $\Omega(x,y)$ associated to the geodesic $[x,y]$ is a subset of $\mathcal{Y}(x, y)$ satisfying the following properties.
+  \begin{enumerate}[(i)]
+  \item For any $Z \in \mathcal{Y}(x,y)$, $Z \sqsubset W$ for some $W \in \Omega(x,y)$.
+  \item If $Z \sqsubset W$, and $Z \in \Omega(x,y)$ and $W \in \mathcal{Y}(x,y)$, then $W$ must also either be a witness, or must be transverse to a witness $V \in \Omega(x,y)$ such that $Z \sqsubset V$.
+  \end{enumerate}
+\end{definition}
+The first condition of the definition ensures that when we restrict our attention from all active subsurfaces to witnesses, we do not lose information, i.e. every active subsurface contributes to whichever witness it is contained in.
+{\color{red} The second condition is a more technical requirement that we will motivate later.}
+
+We now make the notion of an active subsurface \emph{contributing to a witness} more precise.
+\begin{definition}[Complete witness family]
+  For an active subsurface $V$, a witness $W$ is said to be the $\Omega$-completion of $V$, denoted $\overline{V}$ \todo{Figure out how Dowdall-Masur get a subscript on the overline.} if $W$ is the minimal (by inclusion) witness containing $V$.
+  If $W = \overline{V}$, we say $V$ \emph{contributes} to $W$.
+  Furthermore, A witness family is \emph{complete} if every active subsurface has a unique $\Omega$-completion.
+\end{definition}
+
+By partitioning off the collection active subsurfaces into classes, where each class is represented by a witness, and only considering the product regions associated to the witnesses, rather than all the active subsurfaces, we can cut down on the overcount we obtain by considering all active subsurfaces.
+
+We now look at an extreme example of a complete witness families to motivate further properties that we will need from the witness families in order to count well.
+
+\begin{example}[Trivial witness family]
+  \label{ex:uninsulated}
+  Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, such that $\gamma$ has large translation distance on $\cC(\os)$, and $\delta$ a reducible mapping class, acting on a subsurface $V$ such that the action of $\delta$ on $\cC(V)$ has large translation distance as well.
+
+  Let $x$ be a point in $\teich(\os)$, and $y = \delta \gamma \delta^{-1} x$.
+  The active subsurfaces for $[x, y]$ contain the surfaces $\os$, $V$, and $\gamma V$: however, we can pick $\Omega(x,y) = \left\{ \os \right\}$, and check that this is a complete witness family.
+\end{example}
+
+  In the above example, since we only have one subsurface in our witness family, we certainly don't overcount via overlapping product regions, but we do end up ignoring the fact that the geodesic $[x,y]$ travels in a smaller product region near the beginning of the segment, as well as the end.
+  For the initial and the final segment of the geodesic, the witness $\os$ is too big for the subsurface the geodesic is actually traveling in.
+  This suggest that a better choice of a witness family would be to include both $V$ and $\gamma V$ as witnesses too.
+  We can take this approach further, and include every subsurface in $\mathcal{Y}(x,y)$ as a witness: this will still form a complete witness family.
+  However, this approach also leads to overcounting \todo{Replace overcounting with a different word?}, because of overlapping regions coming from nested or disjoint subsurfaces.
+
+  The drawback of Example \ref{ex:uninsulated} motivates the next property we will require from witness families, which is the notion of being \emph{insulated}.
+  \begin{definition}[Insulated witness family]
+
+  \end{definition}
 
 \todo[inline]{Remove the outline}
 
@@ -726,6 +772,7 @@ Outline of this section:
 \item We can use these witness families to resolve points on the geodesics to points in the Teichmüller space of subsurfaces. We need some sort of alignment for fellow traveling.
 \item We specify properties of witnesses that we need to resolve points.
 \item The define complexity length.
+\item Once we have the definition of complexity length, describe the tensions that a witness family must satisfy.
 \item Then some more properties to reduce overcounting/badness.
 \item Describe the refinement process.
 \item Sketch out the proof of the counting result.
