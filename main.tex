@@ -755,9 +755,92 @@ We now look at an extreme example of a complete witness families to motivate fur
   However, this approach also leads to overcounting \todo{Replace overcounting with a different word?}, because of overlapping regions coming from nested or disjoint subsurfaces.
 
   The drawback of Example \ref{ex:uninsulated} motivates the next property we will require from witness families, which is the notion of being \emph{insulated}.
+  Informally, a witness family $\Omega(x,y)$ is insulated if all the maximal active subsurfaces that are active near the beginning or end of $[x,y]$ are also witnesses.
   \begin{definition}[Insulated witness family]
-
+    \label{def:insulated}
+    A witness family $\Omega(x,y)$ is insulated if for every $E \in \Omega(x,y)$, the following subsurfaces $V \sqsubset E$ are also witnesses.
+    \begin{enumerate}[(i)]
+    \item $V \in \mathcal{Y}(x,y)$.
+    \item $d_E(\cC(V), x) \leq 9\mathbf{C}$, or $d_E(\cC(V), y) \leq 9 \mathbf{C}$, where we consider $\cC(V)$ to be a subset of $\cC(E)$.
+    \item $V$ is topologically maximal among the subsurfaces that satisfy (i) and (ii).
+    \end{enumerate}
   \end{definition}
+
+  % A benefit of co
+  Once we have an insulated witness family, we can order a nested pair of witnesses $W \sqsubset V$ based on whether $W$ is active near the beginning or the end of the geodesic $[x,y]$ projected to $\cC(V)$.
+
+  \begin{definition}[Subordering]
+    Let $[x,y]$ be a geodesic in $\teich(\os)$.
+    Then for each nested pair of witnesses $W \sqsubset V$, a subordering is an assignment of exactly one of the following two possibilities:
+    \begin{enumerate}[(i)]
+    \item $W \swarrow V$
+    \item $V \searrow W$
+    \end{enumerate}
+    The orderings $\swarrow$ and $\searrow$ satisfy the following properties.
+    \begin{enumerate}[(i)]
+    \item If $Z$, $V$, and $W$ are witnesses such that $Z \sqsubset V \sqsubset W$, then $Z \swarrow W$ iff $V \swarrow W$ (equivalently, $W \searrow Z$ iff $W \searrow V$).
+    \item If $Z$, $V$ and $W$ are witnesses such that $Z \swarrow V \searrow W$, then $Z \pitchfork_V W$ and $Z \lessdot W$. \todo[inline]{Define what $\pitchfork_V$ as well as time-ordering $\lessdot$ mean.}
+    \item If $Z$ and $V$ are witnesses, and $W$ an active subsurface such that $Z \swarrow V \lessdot W$, or $W \lessdot V \searrow Z$, then $Z \pitchfork_V W$.
+    \item If $Z$ and $V$ are witnesses, such that $Z \swarrow V$ (or $Z \searrow V$), then there does not exist any active subsurface $W$ such that the $\Omega$-closure of $W$ is $V$ and $W \lessdot V$ (or $V \lessdot W$).
+    \end{enumerate}
+  \end{definition}
+
+  We now provide some motivation for the various conditions that appear in the above definition.
+  First of all, when we see $Z \swarrow W$, we are to read that as \emph{the geodesic $[x,y]$ makes progress in the nested subsurface $Z$, before making progress in the supersurface $W$}.
+  Similarly, when we see $W \searrow Z$, we are to read that as \emph{the geodesic $[x,y]$ make progress in the supersurface $W$ before making progress in the nested subsurface $Z$}.
+  With this description of the subordering, conditions (i) and (iv) of the definition are easy to understand. The conditions (ii) and (iii) let us upgrade $\swarrow$ and $\searrow$ to transversality and time-ordering.
+  A more intuitive reading of condition (ii) for instance would be, if $Z swarrow V \searrow W$, that means the geodesic makes progress in $Z$ before $V$, and then makes progress in $W$.
+  That means if we just look at $V$ and $W$, it makes progress in $V$ and then $W$. And since neither of them are nested in the other, the only way they can be time-ordered is by being transverse relative to $V$.
+
+  We can also see how the subordering on a witness family interacts with the witness family being insulated: recall the pair of witnesses $V \sqsubset E$ from Definition \ref{def:insulated}.
+  \begin{itemize}
+  \item If $d_E(\cC(V), x) \leq 9 \mathbf{C}$, then $V \swarrow E$, since the geodesic makes progress in $V$ before $E$.
+  \item If $d_E(\cC(V), Y) \leq 9 \mathbf{C}$, then $E \searrow V$, since the geodesic makes progress in $E$ before $V$.
+  \end{itemize}
+  However, the above example does not capture all the ways in which we can have $V \swarrow E$ or $E \searrow V$.
+  Consider a decomposition of a Teichmüller geodesic by the active intervals corresponding to witnesses illustrated in \autoref{fig:subordering-examples}.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{images/subordering-example.png}
+    \caption{Examples of $V_i \swarrow E$ and $E \searrow W_i$.}
+    \label{fig:subordering-examples}
+  \end{figure}
+
+  In this example, all of the witnesses $V_i$ satisfy $V_i \swarrow E$, and all of the witnesses $W_i$ satisfy $E \searrow W_i$, but $d_E(\cC(V_i), x)$ need not be less than $9\mathbf{C}$ for $i=2$ or $i=3$, and similarly, $d_E(\cC(W_i), y)$ need not be less than $9 \mathbf{C}$ for $i=2$ or $i=3$.
+
+  In fact, the above example illustrates that for witnesses $V$ that are not within distance $9 \mathbf{C}$ from one of the endpoints, the choice between assigning $V \swarrow E$ and $E \searrow V$ is ambiguous, which is what the property of being \emph{wide} tries to fix.
+  The property of being \emph{wide} also tells when an active subsurface $V$ nested in a witness $E$ contributes to $E$: this happens when $V$ appears in the ``middle'' of the segment $[x,y]$.
+
+  \begin{definition}[Wide witness families]
+    A witness family is wide if for each $V$ in the witness family, both of the following quantities are at most $\frac{N_V}{3}$.
+    \begin{itemize}
+    \item For $W$ a witness such that $W \swarrow V$, the quantity $\mathrm{diam}_V(x, \cC(W))$.
+    \item For $W$ a witness such that $V \searrow W$, the quantity $\mathrm{diam}_V(y, \cC(W))$.
+    \end{itemize}
+  \end{definition}
+
+  The idea behind a wide witness family is to create a buffer zone of length at least $\frac{N_V}{3}$ in the middle of the projection of the geodesic to $\cC(V)$ for any witness $V$ such that:
+  \begin{itemize}
+  \item If any subsurface $W$ is active to the left of the buffer zone, it contributes to a subsurface $Z$ such that $Z \swarrow V$.
+  \item If any subsurface $W$ is active to the right of the buffer zone, it contributes to a subsurface $Z$ such that $V \searrow Z$.
+  \item If a subsurface $W$ is active within the buffer zone, it contributes to $V$.
+  \end{itemize}
+
+  The upshot of defining wide, insulated, subordered, and complete witness families (which will be abbreviated to WISC witness families) is that it gives us a better idea the order in which progress is made in various active subsurfaces.
+  If we were working with just the collection of active subsurfaces, the only time we can tell if a geodesic makes progress in a subsurface $V$ followed by the subsurface $W$ is when $V \pitchfork W$.
+  When working with a WISC witness family, we can do that, but we can also make similar statements about pairs of nested witnesses $V \sqsubset W$, namely we can have either $V \swarrow W$ or $W \searrow V$.
+
+  The following lemma asserts that WISC witness families exist, and their cardinality can be uniformly bounded.
+  \begin{lemma}[Lemmas 7.29 and 7.30 from \cite{dowdall2023lattice}]
+    Let $\os$ be surface, and $[x,y]$ a geodesic segment in $\teich(\os)$.
+    Then there exists a WISC witness family $\Omega(x,y)$ for $[x,y]$.
+    Furthermore, the cardinality of $\Omega(x,y)$ depends only on $\os$, and not the points $x$ and $y$.
+  \end{lemma}
+  \begin{rem}
+    While the statements of Lemmas 7.29 and 7.30 in \textcite{dowdall2023lattice} are for orientable surfaces, they go through without any changes for non-orientable surfaces as well.
+  \end{rem}
+
+  We now get to the raison d'\^etre of witness families: turning points on the geodesic segment $[x,y]$ in $\teich(\os)$ into points in $\teich(V)$, where $V$ is a witness in $\Omega(x,y)$.
 
 \todo[inline]{Remove the outline}
 
