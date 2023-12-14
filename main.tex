@@ -811,6 +811,8 @@ We now look at an extreme example of a complete witness families to motivate fur
   In fact, the above example illustrates that for witnesses $V$ that are not within distance $9 \mathbf{C}$ from one of the endpoints, the choice between assigning $V \swarrow E$ and $E \searrow V$ is ambiguous, which is what the property of being \emph{wide} tries to fix.
   The property of being \emph{wide} also tells when an active subsurface $V$ nested in a witness $E$ contributes to $E$: this happens when $V$ appears in the ``middle'' of the segment $[x,y]$.
 
+  \todo[inline]{Specify that this definition needs ISC witness families}
+
   \begin{definition}[Wide witness families]
     A witness family is wide if for each $V$ in the witness family, both of the following quantities are at most $\frac{N_V}{3}$.
     \begin{itemize}
@@ -842,8 +844,9 @@ We now look at an extreme example of a complete witness families to motivate fur
 
   We now get to the raison d'\^etre of witness families: turning points on the geodesic segment $[x,y]$ in $\teich(\os)$ into points in $\teich(V)$, where $V$ is a witness in $\Omega(x,y)$.
   We will do so by assigning to each point $w$ in a neighbourhood of $[x,y]$ a point $\wt{w}_Z$ in $\cC(Z)$ for all subsurfaces $Z$ contained in $V$, and then showing this assignment is consistent.
-  Then the realization theorem (Theorem \ref{thm:consistency-realization}) will give us a point $\widehat{w}_V^{\Omega}$ in $\teich(V)$ which has the same projections $\cC(Z)$ as the original point $W$.
+  Then the realization theorem (Theorem \ref{thm:consistency-realization}) will give us a point $\widehat{w}_V^{\Omega}$ in $\teich(V)$ which has the same projections in $\cC(Z)$ as the original point $W$.
   \begin{definition}[Projection tuple]
+    \label{def:projection-tuple}
     Let $\Omega(x,y)$ be a WISC witness family for a Teichmüller geodesic $[x,y]$ in $\teich(\os)$.
     Let $w$ be a point in $\teich(\os)$ satisfying the following bound for every active subsurface $V$.
     \begin{align*}
@@ -873,7 +876,7 @@ We now look at an extreme example of a complete witness families to motivate fur
     Let $[x,y]$ be a geodesic segment in $\teich(\os)$, and $\Omega(x,y)$ an associated WISC witness family.
     For $w \in \left\{ x, y \right\}$, and $U \in \Omega(x,y)$, we define $\widehat{w}_U^{\Omega}$ as follows.
     \begin{itemize}
-    \item If $U$ is non-annular, then $\widehat{w}_U^{\Omega} \in \teich(U)$ is the thick point whose projections to $\cC(V)$ for $V \sqsubseteq U$ are coarsely equal to the projection tuple $\widehat{w}_U$.
+    \item If $U$ is non-annular, then $\widehat{w}_U^{\Omega} \in \teich(U)$ is the thick point whose projections to $\cC(V)$ for $V \sqsubseteq U$ are coarsely equal to the projection tuple $\widehat{w}_U$ (which exists due to the Realization theorem (Theorem \ref{thm:consistency-realization})).
     \item If $U$ is annular, then $\wt{w}_U$ is an element of $\mathbb{Z}$, and we set $\widehat{w}_U^{\Omega}$ to be the point in $\mathbb{H}$ whose twist coordinate is $\wt{w}_U$, and whose length coordinate is $\displaystyle \frac{1}{\min\left( \varepsilon, \ell_{\partial U}(w) \right)}$.
     \end{itemize}
   \end{definition}
@@ -882,14 +885,127 @@ We now look at an extreme example of a complete witness families to motivate fur
 
   \begin{definition}[Complexity of witness family]
     Let $[x, y]$ be a geodesic segment in $\teich(\os)$, and $\Omega$ an associated WISC witness family.
-    The complexity $\mathfrak{L}(x,y)$ of $\Omega$ is the following quantity.
+    The complexity $\mathfrak{L}_{\Omega}(x,y)$ of $\Omega$ is the following quantity.
     \begin{align*}
-      \mathfrak{L}(x,y) \coloneqq \sum_{U \in \Omega} \hNP^{\ast}(U) \cdot d_{\teich(U)}(\widehat{x}_{U}^{\Omega}, \widehat{y}_{U}^{\Omega})
+      \mathfrak{L}_{\Omega}(x,y) \coloneqq \sum_{U \in \Omega} \hNP^{\ast}(U) \cdot d_{\teich(U)}(\widehat{x}_{U}^{\Omega}, \widehat{y}_{U}^{\Omega})
     \end{align*}
     Here, $\hNP^{\ast}(U)$ is the net point growth entropy for $\teich(U)$ when $U$ is non-annular, and when $U$ is annular, $\hNP^{\ast}(U)$ is $1$ when both $\widehat{x}_{U}^{\Omega}$ and $\widehat{y}_{U}^{\Omega}$ are $\varepsilon$-thick, and $2$ if not.
   \end{definition}
 
-{\color{red} Go back to the conjugation example, and see what complexity length it gets assigned.}
+We now address why we used a modified version of the projection map in Definition \ref{def:projection-tuple} instead of the usual projection map to curve complexes, by revisiting Example \ref{ex:uninsulated}.
+\begin{example}
+  \label{ex:need-for-modified-projection}
+  Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, with large translation distance on $\cC(S)$ and small projections elsewhere.
+  Let $\delta$ be a reducible mapping class, which is psuedo-Anosov on a subsurface $V$, with large translation distance on $\cC(V)$ and small translation distance everywhere.
+  Let $x$ be a point in $\teich(\os)$, and $y = \delta \gamma \delta^{-1} x$.
+  Let $\Omega(x, y) = \left\{ \os, V, \gamma V \right\}$.
+  One can verify that this is a WISC witness family for $[x,y]$.
+  Furthermore, we have that $V \swarrow \os$ and $\os \searrow \gamma V$.
+
+  We now compute the resolution of the points $x$ and $y$ in $\teich(V)$, $\teich(\gamma V)$, and $\teich(\os)$.
+  Observe that the geodesic $[x,y]$ almost immediately moves into a production region associated to $V$ at the beginning, leaves that product region at some point $w$ along the geodesic, and then enters the product region associated to $\gamma V$ at some point $z$, and then stays in that product region almost all the way up to the end.
+  We will abuse notation slightly, and refer to $x$ and $w$ as points in $\teich(V)$, when we mean their projection via the product region map, and $z$ and $y$ will refer to points in $\teich(\gamma V)$
+  Resolving points in $\teich(V)$ and $\teich(\gamma V)$ is easy, since there's no other witnesses nested in them, which means the projection tuple for those subsurfaces is the usual projection map.
+  \begin{align*}
+    \widehat{x}_V^{\Omega} &= x \\
+    \widehat{y}_V^{\Omega} &= w \\
+    \widehat{x}_{\gamma V}^{\Omega} &= z \\
+    \widehat{y}_{\gamma V}^{\Omega} &= y \\
+  \end{align*}
+  To resolve points in $\teich(\os)$, we have to use our modified projection map, instead of the usual one.
+  Doing so, the points $x$ and $y$ resolve in the following manner.
+  \begin{align*}
+    \widehat{x}_{\os}^{\Omega} = w \\
+    \widehat{y}_{\os}^{\Omega} = z
+  \end{align*}
+
+  If we instead used the usual projection maps, $\widehat{x}_{\os}^{\Omega}$ would resolve to $x$, and $\widehat{y}_{\os}^{\Omega}$ would resolve to $y$.
+  Consequently, we would not have the following estimate for complexity in terms of Teichmüller distance.
+  \begin{align*}
+    \mathfrak{L}_{\Omega}(x,y) &= \hNP^{\ast}(V) \cdot d_{\teich(V)}(x, w) + \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(w, z) + \hNP^{\ast}(\gamma V) \cdot d_{\teich(\gamma V)}(z, y) \\
+    &< \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(x, y)
+  \end{align*}
+\end{example}
+
+Constructing the resolution points $\widehat{x}_V^{\Omega}$ and $\widehat{x}_V^{\Omega}$ via the Realization theorem does not provide us very good bounds for $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{x}_V^{\Omega})$.
+At best, we accrue multiplicative and additive errors if we use Rafi's distance formula to estimate this distance from the curve complex distances.
+For our applications however, the most we can tolerate is additive error.
+To do this, we will need to refine to notion of active interval for a subsurface to something more useful for the estimate: the \emph{contribution set} $\mathcal{A}_V^{\Omega}$ of a witness $V$.
+We first define two intermediate collections of subintervals of a geodesic segment $[x,y]$.
+\begin{align*}
+  M(V) &\coloneqq \bigcup \left\{ \mathcal{I}_W^{\varepsilon} \mid \text{$W \in \Omega$ with $W \sqsubset V$ }  \right\} \\
+  C(V) &\coloneqq \bigcup \left\{ \mathcal{I}_Z^{\varepsilon} \mid \text{$Z$ contributes to $V$} \right\}
+\end{align*}
+
+\begin{definition}[Contribution set]
+  For a witness $V \in \Omega$, the contribution set $\mathcal{A}_V^{\Omega}$ is a subset of the geodesic segment $[x,y]$ defined in the following manner.
+  \begin{align*}
+    \mathcal{A}_V^{\Omega} \coloneqq \left( \mathcal{I}_V^{\varepsilon} \setminus M(V) \right) \cup C(V)
+  \end{align*}
+\end{definition}
+\begin{rem}
+  The reason we remove $M(V)$ and then later add $C(V)$ again is because it is possible for several different subsurfaces to be active at the same time: orthogonal subsurfaces for instance.
+  One can have $V$ and $W$ as witnesses, with $W \sqsubset V$, and $Z \sqsubset V$ an active subsurface but not a witness, such that $W \perp Z$ with $\mathcal{I}_W^{\varepsilon}$ and $\mathcal{I}_Z^{\varepsilon}$ overlapping.
+  In that case, removing $M(V)$ would also remove part of $\mathcal{I}_Z^\varepsilon$, and adding back $C(V)$ would add back the deleted portion.
+\end{rem}
+
+The following theorem estimates $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{y}_V^{\Omega})$ using $\mathcal{A}_V^{\Omega}$.
+\begin{theorem}[Theorem 9.4 of \cite{dowdall2023lattice}]
+  \label{thm:contribution-set-resolution-distance}
+  There exists a uniform constant $C$ such that the following bound holds for any $x$, $y$, and witness $V$.
+  \begin{align*}
+d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{y}_V^{\Omega}) \leq \int_x^y \mathbbm{1}_{\mathcal{A}_V^{\Omega}} + C
+  \end{align*}
+\end{theorem}
+
+Contribution sets help us make precise the notion of ``overcounting'' when multiple product regions are active at the same time.
+More precisely, when a segment of $[x,y]$ is a part of two or more contribution sets, that segment shows up multiple times when computing $\mathfrak{L}_{\Omega}(x,y)$, thanks to Theorem \ref{thm:contribution-set-resolution-distance}.
+If the overlapping segment is sufficiently long, one could even end up having $\mathfrak{L}_{\Omega}(x,y) > \hNP^\ast(\os) \cdot d_{\teich(\os)}(x, y)$, which as we will see, leads to a worse count for net points than the usual methods.
+This phenomenon of contribution sets overlapping is called \emph{badness}, and while we will not be able to eliminate it entirely, we will be able to minimize it.
+
+\begin{definition}[Bad set]
+  We say a point $p$ in $\mathcal{A}_V^{\Omega}$ is bad if there exists some other witness $W$ such that $p$ also belongs in $\mathcal{A}_W^{\Omega}$.
+  The bad set $\mathcal{B}_V^{\Omega}$ denotes the set of all bad points in $\mathcal{A}_V^{\Omega}$, and $\left| \mathcal{B}_V^{\Omega} \right|$ denotes the total length of this set, when we think of $\mathcal{B}_V^{\Omega}$ as a subset of the geodesic segment $[x,y]$.
+\end{definition}
+
+For our applications, we won't need to eliminate badness entirely, or even bound the length of the bad set uniformly: it will suffice to show that the length of the bad set is a very small multiple of $d_{\teich(\os)}(x,y)$.
+
+\begin{definition}[Admissible and limited]
+  A witness family $\Omega$ associated to a geodesic segment $[x,y]$ is said to be:
+  \begin{itemize}
+  \item \emph{admissible} if $\displaystyle \left| \mathcal{B}_V^{\Omega} \right| \leq \frac{d_{\teich(\os)}(x,y)}{K_V \mathbf{C}}$, for all $V \in \Omega$, and some constants $K_V$ that only depend on the topological type of $V$.
+  \item \emph{limited} if $\left| \Omega \right|$ is uniformly bounded, independent of $x$ and $y$.
+  \end{itemize}
+\end{definition}
+\begin{rem}
+  Our definition of limited is a weaker version of Definition 10.7 from \textcite{dowdall2023lattice}, but since we don't need to stronger version, we present this version instead.
+\end{rem}
+
+\textcite{dowdall2023lattice} prove that WISC witness families that are admissible and limited exist. They call these witness families WISCAL witness families.
+
+\begin{proposition}[Section 10.3 of \cite{dowdall2023lattice}]
+  For all $[x,y]$, there exists an associated WISC witness family that is also admissible and limited.
+\end{proposition}
+
+For WISCAL witness families, the following result relating complexity and Teichmüller distance follows easily from Theorem \ref{thm:contribution-set-resolution-distance} and the definition of admissible.
+
+\begin{proposition}
+  If $\Omega$ is a WISCAL witness family associated to $[x,y]$, then the following inequality holds.
+  \begin{align*}
+    \mathfrak{L}_{\Omega}(x,y) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x, y)
+  \end{align*}
+  Here, $K$ is some uniform constant depending only on $\os$.
+\end{proposition}
+
+We now define complexity length, which follows from the definition of the complexity of a witness family.
+
+\begin{definition}[Complexity length]
+  For a pair of points $x$ and $y$ in $\teich(\os)$, the complexity length $\mathfrak{L}(x,y)$ is defined to be the following.
+  \begin{align*}
+    \mathfrak{L}(x,y) \coloneqq \inf_{\Omega} \mathfrak{L}_{\Omega}(x,y)
+  \end{align*}
+  Here, we take the infimum over all WISCAL witness families for $[x,y]$.
+\end{definition}
 
 \todo[inline]{Remove the outline}
 
@@ -903,7 +1019,7 @@ Outline of this section:
 \item {\color{red} DONE:} We deal with the overcounting by constructing witness families, i.e. subsets of subsurfaces, which are minimal in an appropriate sense.
 \item {\color{red} DONE:} We can use these witness families to resolve points on the geodesics to points in the Teichmüller space of subsurfaces. We need some sort of alignment for fellow traveling.
 \item {\color{red} DONE:} We specify properties of witnesses that we need to resolve points.
-\item {\color{red} DONE:} The define complexity length.
+\item {\color{red} DONE:} Then define complexity length.
 \item Once we have the definition of complexity length, describe the tensions that a witness family must satisfy.
 \item Then some more properties to reduce overcounting/badness.
 \item Describe the refinement process.
