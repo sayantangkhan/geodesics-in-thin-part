@@ -366,6 +366,7 @@ The first result we will need is a count of the net points with respect to the r
     \#\left( y \in \mathcal{N} \mid \dcomp(p, x) \leq R \right) \leq k R^k \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R)
   \end{align*}
 \end{theorem}
+\todo[inline]{Add the $\varepsilon_1$ parameter.}
 
 The next result, which is the main theorem of Section \ref{sec:line-gap-compl}, is that if $y$ is a bad point that is Teichmüller distance $R$ away from $p$, then its rescaled complexity distance to $p$ is smaller than $R$ by a definite amount.
 We state this theorem with an additional hypothesis on the net point entropy of subsurfaces.
@@ -1007,36 +1008,72 @@ We now define complexity length, which follows from the definition of the comple
   Here, we take the infimum over all WISCAL witness families for $[x,y]$.
 \end{definition}
 
-\todo[inline]{Remove the outline}
+With the machinery of complexity length set up, it is now possible to count net points with respect to complexity length.
 
-Outline of this section:
-\begin{enumerate}[(i)]
-\item {\color{red} DONE:} {Example in the thin region where ABEM is excessive.}
-\item {\color{red} DONE:} This suggests a finer way to count net points when we a priori have some information about the fact that they travel in the thin part for a reasonable amount of time.
-\item {\color{red} DONE:} The idea is to resolve a Teichmüller geodesic into subsegments that are Teichmüller geodesics in subsurfaces.
-\item {\color{red} DONE:} If we do it naïvely, we overcount: there are two kinds of overcounting. Orthogonality, which isn't so bad, and nesting, which is.
-\item {\color{red} DONE:} Make precise the notion of product region being active.
-\item {\color{red} DONE:} We deal with the overcounting by constructing witness families, i.e. subsets of subsurfaces, which are minimal in an appropriate sense.
-\item {\color{red} DONE:} We can use these witness families to resolve points on the geodesics to points in the Teichmüller space of subsurfaces. We need some sort of alignment for fellow traveling.
-\item {\color{red} DONE:} We specify properties of witnesses that we need to resolve points.
-\item {\color{red} DONE:} Then define complexity length.
-\item Once we have the definition of complexity length, describe the tensions that a witness family must satisfy.
-\item Then some more properties to reduce overcounting/badness.
-\item Describe the refinement process.
-\item Sketch out the proof of the counting result.
-\end{enumerate}
+\begin{theorem}[Theorem 12.1 of \cite{dowdall2023lattice}]
+  \label{thm:counting-with-complexity}
+  For any large enough $\mathbf{C} > 0$, and any $\varepsilon_1 > 0$, there exists an integer $k \geq 1$, and $r > 0$ large enough such that the following bound holds for net points in $\teich(\os)$.
+  \begin{align*}
+    \# \left( y \in \mathcal{N} \mid \mathfrak{L}(x,y) \leq r \right) \leq kr^k \cdot \exp\left( (1+\varepsilon_1)r \right)
+  \end{align*}
+\end{theorem}
+\todo[inline]{Make sure we're using consistent notation for net.}
 
-% In this section, we will adapt the notion of complexity length from \textcite{dowdall2023lattice} to the setting of non-orientable surfaces.
-% Their construction of complexity length, and the various results associated to it depend on the following facts about the geometry of the Teichmüller space of orientable surfaces.
-% \begin{enumerate}[(i)]
-% \item Minsky's product region theorem
-% \item Rafi's distance formula
-% \item Rafi's weak active intervals: Theorem 3.22 from \textcite{dowdall2023lattice}
-% \item Uniform alignment of projection of points to curve complexes from Teichmüller geodesics
-% \item Lemma 3.26 about active intervals instead of Rafi's version. BGI and time ordering follows from this.
-% \item Consistency and realization.
-% \item Entropy subadditivity for subsurfaces
-% \end{enumerate}
+\begin{rem}
+  The above theorem is a slightly weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\varepsilon_1$.
+  The reason we have the weaker version is that in the proof of their theorem, they count the number of net points in $\teich(V)$ in a ball of radius $R$, where $V$ is a witness, using Theorem \ref{thm:abem}, which gives them that the number of net points is equal, up to multiplicative error, to $\exp(\hNP(U) R)$.
+  Since Theorem \ref{thm:abem} only holds orientable surfaces, and we want to state our results for non-orientable surfaces as well, we will need to use a weaker counting result to count net points in $\teich(V)$, namely the following bound, which holds for any $\varepsilon_2 > 0$ and large enough $R$.
+  \begin{align*}
+    \#\left( y \in \mathcal{N} \mid d_{\teich(V)}(x, y) \leq R \right) \leq \exp\left( (\hNP(V) + \varepsilon_2 ) R \right)
+  \end{align*}
+\end{rem}
+
+We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the proof proceeds identically to the proof in \textcite{dowdall2023lattice}, except at one point, where we plug in our weaker bound for net points in $\teich(V)$ for witnesses $V$.
+
+\begin{proof}[Sketch of proof for Theorem \ref{thm:counting-with-complexity}]
+  For each $y \in \mathcal{N}$ such that $\mathfrak{L}(x,y) \leq r$, we have a WISCAL witness family $\Omega$ such that $\mathfrak{L}_{\Omega}(x,y) \leq r$.
+  We can turn that witness family into a graph in the following manner.
+  \begin{itemize}
+  \item Add a vertex for every witness $V \in \Omega$.
+  \item Label the vertex associated with $V$ with the tuple $(\hNP^{\ast}(V), \lfloor d_{\teich(V)}(\widehat{x}_{V}^{\Omega}, \widehat{y}_{V}^{\Omega}) \rfloor)$.
+  \item If we have a pair of witnesses $V \swarrow W$, we join the vertices associated to them with a directed edge labeled ``SW'': $V \xrightarrow{SW} W$.
+  \item If we have a pair of witnesses $W \searrow V$, we join the vertices associated to them with a directed edge labeled ``SE'': $W \xrightarrow{SE} V$.
+  \item If we have a pair of witnesses $W \pitchfork V$, with $W \lessdot V$, we join the vertices associated to them with a directed edge labelled ``P'': $W \xrightarrow{P} V$.
+  \end{itemize}
+
+  We first count how many distinct possibilities are there for such labeled graphs that correspond to $y$ for which $\mathfrak{L}(x,y) \leq r$.
+  Since the cardinality of a WISCAL family is uniformly bounded, there are at most $k$ many vertices, for some constant $k$.
+  As for the labels on the vertices, there are at most $\frac{r}{\hNP^{\ast}(V)}$ possibilities for a label on vertex which corresponds to a subsurface which is homeomorphic to $V$.
+  From this, we conclude that there are at most $p(r)$ possibilities for the combinatorial type of the graph, where $p(r)$ is a polynomial in $r$.
+
+  It will suffice to compute how many distinct net points give rise to witness families whose graph is of a given type.
+  To do so, we consider \emph{initial subsets} of the graph, i.e. a subset $\mathcal{W}$ of the vertices $\mathcal{V}$ of the graph such that there is no directed edge from $\mathcal{V} \setminus \mathcal{W}$ to $\mathcal{W}$.
+
+  Given an initial subset $\mathcal{W}$ of the graph, we construct points $y$ such that the witness family associated to $[x,y]$ has the combinatorial type $\mathcal{W}$.
+  We then consider an enlargement of $\mathcal{W}$ by one-additional vertex $v$, such that the enlargement is still an initial subset.
+  \begin{claim*}
+    The entire graph $\mathcal{V}$ can be built up from such one-step enlargements.
+  \end{claim*}
+
+  We then count the number of net points whose associated witness families have the combinatorial type $\mathcal{W} \cup \left\{ v \right\}$, after we fix one witness family associated to $\mathcal{W}$.
+  More concretely, let $w$ be a point such that the combinatorial type of the witness family associated to $[x,w]$ is $\mathcal{W}$.
+  Suppose now that we add a vertex $(h, r_0)$ to the graph $\mathcal{W}$.
+  To extend $\Omega(x,w)$ so that its combinatorial type is $\mathcal{W} \cup \left\{ (h, r_0) \right\}$, we need to add a witness $U$ whose net point entropy is $h$, and travel for distance $r_0$ in the Teichmüller space of $U$.
+  There are only finitely many choices for such subsurfaces $U$ (because their boundary curves must get short near $w$), and once we've made a choice of $U$, we have a choice $\exp\left( (\hNP(V) + \varepsilon_2) r_0 \right)$ points.
+
+  Multiplying out the counts for each vertex added, we get the following estimate for the cardinality associated to each combinatorial type.
+  \begin{align*}
+    \#\left( y \mid \text{$\Omega(x,y)$ has combinatorial type $\mathcal{V}$} \right) &= \sum_{(h, s) \in \mathcal{V}} \exp\left( (h + \varepsilon_2)s \right) \\
+    &\leq \exp\left( (1 + \varepsilon_1)r \right)
+  \end{align*}
+  We get the second inequality by picking $\varepsilon_2$ small enough, and observing that $\sum hs = r$.
+\end{proof}
+
+\subsubsection{Alignment}
+\label{sec:alignment}
+
+\subsection{Linear gap for bad points}
+\label{sec:linear-gap-bad}
 
 
 
