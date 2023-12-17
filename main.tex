@@ -993,10 +993,27 @@ For WISCAL witness families, the following result relating complexity and Teichm
 \begin{proposition}
   If $\Omega$ is a WISCAL witness family associated to $[x,y]$, then the following inequality holds.
   \begin{align*}
-    \mathfrak{L}_{\Omega}(x,y) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x, y)
+    \mathfrak{L}_{\Omega}(x,y) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x, y) + K \mathbf{C}
   \end{align*}
   Here, $K$ is some uniform constant depending only on $\os$.
 \end{proposition}
+
+For triples of points that do not backtrack, there exists a version of the above inequality similar to a reverse triangle inequality.
+
+\begin{definition}[$\theta$-aligned]
+  A triple of points $(x,y,z)$ in $\teich(\os)$ is said to be $\theta$-aligned if the following inequality holds for all subsurfaces $V$.
+  \begin{align*}
+    d_V(x, y) + d_V(y, z) \leq d_V(x, z) + \theta
+  \end{align*}
+\end{definition}
+
+\begin{theorem}[Theorem 11.2 of \cite{dowdall2023lattice}]
+  If $(x, y, z)$ is a $\mathbf{C}$-aligned triple in $\teich(\os)$, and $\Omega_1$ is a WISCAL witness family for $[x,y]$, and $\Omega_2$ a WISCAL witness family for $[y,z]$, then the following inequality holds.
+  \begin{align*}
+    \mathfrak{L}_{\Omega_1}(x, y) + \mathfrak{L}_{\Omega_2}(y, z) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x,z) + K \mathbf{C}
+  \end{align*}
+  Here, $K$ is some uniform constant depending only on $\os$.
+\end{theorem}
 
 We now define complexity length, which follows from the definition of the complexity of a witness family.
 
@@ -1069,13 +1086,21 @@ We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the p
   We get the second inequality by picking $\varepsilon_2$ small enough, and observing that $\sum hs = r$.
 \end{proof}
 
-\subsubsection{Alignment}
-\label{sec:alignment}
-
 \subsection{Linear gap for bad points}
 \label{sec:linear-gap-bad}
 
+In this subsection, we will prove our main result involving complexity length: on the complexity length of bad points.
 
+\begin{theorem}
+  Suppose that for all proper subsurfaces $S^{\prime}$ of $\os$, the following inequality holds.
+  \begin{align*}
+    \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(\os)))
+  \end{align*}
+  Then for any $\varepsilon_3 > 0$, there exists $c > 0$, and $R$ large enough, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \varepsilon_3)$, the following upper bound holds for the complexity length between $p$ and $y$.
+  \begin{align*}
+    \mathfrak{L}(p, y) \leq \hNP(S) (1 - c) R
+  \end{align*}
+\end{theorem}
 
 \appendix
 
