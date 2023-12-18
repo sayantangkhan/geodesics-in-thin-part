@@ -372,7 +372,7 @@ The next result, which is the main theorem of Section \ref{sec:line-gap-compl}, 
 We state this theorem with an additional hypothesis on the net point entropy of subsurfaces.
 We will establish that this hypothesis holds inductively in Section \ref{sec:proof-theorem}.
 
-\begin{theorem}[Linear gap in complexity length]
+\begin{theorem}[Linear gap in complexity length, Theorem \ref{thm:linear-gap}]
   \label{thm:linear-gap-rescaled}
   Suppose that for all proper subsurfaces $S^{\prime}$ of $S$, the following inequality holds.
   \begin{align*}
@@ -991,6 +991,7 @@ For our applications, we won't need to eliminate badness entirely, or even bound
 For WISCAL witness families, the following result relating complexity and Teichmüller distance follows easily from Theorem \ref{thm:contribution-set-resolution-distance} and the definition of admissible.
 
 \begin{proposition}
+  \label{prop:complexity-length-inequality}
   If $\Omega$ is a WISCAL witness family associated to $[x,y]$, then the following inequality holds.
   \begin{align*}
     \mathfrak{L}_{\Omega}(x,y) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x, y) + K \mathbf{C}
@@ -1092,6 +1093,7 @@ We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the p
 In this subsection, we will prove our main result involving complexity length: on the complexity length of bad points.
 
 \begin{theorem}
+  \label{thm:linear-gap}
   Suppose that for all proper subsurfaces $S^{\prime}$ of $\os$, the following inequality holds.
   \begin{align*}
     \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(\os)))
@@ -1101,6 +1103,79 @@ In this subsection, we will prove our main result involving complexity length: o
     \mathfrak{L}(p, y) \leq \hNP(S) (1 - c) R
   \end{align*}
 \end{theorem}
+
+Let $\Omega$ be a WISCAL witness family for $[p, y]$: the proof of Theorem \ref{thm:linear-gap} splits into two cases depending on whether the surface $\os$ is a witness in $\Omega$ or not.
+
+The former case is harder, so we deal with that first.
+% \begin{lemma}
+%   The triple $(p, \widehat{y}_{\os}^{\Omega}, y)$ is $\theta$-aligned, for some constant $\theta$ independent of $R$ and $y$.
+% \end{lemma}
+
+% \begin{proof}
+%   Recall that we define $\widehat{y}_{\os}^{\Omega}$ by specifying its coordinates in the curve complex of a subsurface $V$ according to the following rule.
+%   \begin{itemize}
+%   \item $\pi_V(y)$ if $\overline{V} \swarrow \os$.
+%   \item $\pi_V(p)$ if $\os \searrow \overline{V}$.
+%   \item $\pi_V(y)$ otherwise.
+%   \end{itemize}
+%   In all of these cases, the resulting triple in $\cC(V)$ looks like $(p,p,y)$ or $(p,y,y)$, which are trivially $\theta$-aligned for some uniform constant $\theta$.
+% \end{proof}
+
+We consider the triple of points $(p, \widehat{y}_{\os}^{\Omega}, y)$, and first estimate $\mathfrak{L}(p, \widehat{y}_{\os}^{\Omega})$.
+% Observe that from the way we have defined $\widehat{y}_{\os}^{\Omega}$, it's within a bounded distance of the point $q$ on $[p,y]$ which is the last point on $[p, y]$ which stays in the thick part.
+
+% By hypothesis of $y$ being a bad point, we have the following bounds on Teichmüller distance.
+% \begin{align*}
+%   % d_{\teich(\os)}(q, y) &> \varepsilon_3 R \\
+%   d_{\teich(\os)}(p, q) &\leq (1-\varepsilon_3) R
+% \end{align*}
+% Since $\widehat{y}_{\os}^{\Omega}$ is within bounded distance of $q$, we get similar bounds for $\widehat{y}_{\os}^{\Omega}$, with an additional constant $J$.
+% \begin{align}
+%   \label{eq:eq1}
+%   % d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) &> \varepsilon_3 R - J \\
+%   d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) &\leq (1-\varepsilon_3) R + J
+% \end{align}
+By applying Proposition \ref{prop:complexity-length-inequality}, we get a bound for $\mathfrak{L}(p, \widehat{y}_{\os}^{\Omega})$.
+\begin{align}
+  \label{eq:eq2}
+  \mathfrak{L}(p, \widehat{y}_{\os}^{\Omega}) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega})) + K \mathbf{C}
+\end{align}
+
+We next estimate $\mathfrak{L}(\widehat{y}_{\os}^{\Omega})$: we claim that there exists a WISCAL witness family $\Omega^{\prime}$ for $[\widehat{y}_{\os}^{\Omega}, y]$ that does not have $\os$ as a witness.
+Indeed, we can construct this witness family from $\Omega$: take all the witnesses $V$ such that $\os \searrow V$.
+
+Since the witness family $\Omega^{\prime}$ does not have $\os$ as a witness, we can do better than Proposition \ref{prop:complexity-length-inequality} when estimating $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
+Since we have from our hypothesis that $\hNP(\mathrm{core}(\os)) > \hNP(\mathrm{core}(S^{\prime}))$, there exists a constant $h$ such that $h < \hNP(\mathrm{core}(\os))$ but $h > \hNP(\mathrm{core}(S^{\prime}))$.
+Using Theorem \ref{thm:contribution-set-resolution-distance}, we get the following estimate for $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
+\begin{align}
+  \label{eq:eq3}
+\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y) \leq \left( h + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) + K \mathbf{C}
+\end{align}
+
+From the triangle inequality for complexity length, we also have the following
+\begin{align}
+  \label{eq:eq4}
+  \mathfrak{L}(p, y) \leq \mathfrak{L}(p, \widehat{y}_{\os}^{\Omega}) + \mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)
+\end{align}
+We plug in \eqref{eq:eq2} and \eqref{eq:eq3} into \eqref{eq:eq4}.
+\begin{align*}
+  \mathfrak{L}(p, y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega})) + \left( h + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) +  2K \mathbf{C} \\
+                     &= \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y)) \\
+                     &- \left( \hNP(\os) - h \right) d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \\
+  &+  2K \mathbf{C}
+\end{align*}
+
+Since $\widehat{y}_{\os}^\Omega$ is within a bounded distance of a point $q$ on $[p, y]$, we have $d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \leq R + J$, for some constant $J$.
+Furthermore, $d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \geq \varepsilon_3 R$, by the hypothesis of $y$ being a bad point.
+This simplifies the expression for $\mathfrak{L}(x,y)$.
+\begin{align*}
+  \mathfrak{L}(x,y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) R - (\hNP(\os) - h)(\varepsilon_3) R + 2K \mathbf{C} \\
+  &= R \left( \hNP(\os) - d + \frac{K}{\mathbf{C}} \right) + 2K\mathbf{C}
+\end{align*}
+Here, $d = \varepsilon_3 \left( \hNP(\os) - h \right)$, which is a positive constant, since $\hNP(\os) > h$.
+By picking $\mathbf{C}$ and $R$ large enough, we get the statement of the theorem, which proves the result in the first case of $\os$ being in the witness family.
+
+When $\os$ is not in the witness family, we set $\widehat{y}_{\os}^{\Omega} = p$, and the rest of the proof follows identically.
 
 \appendix
 
