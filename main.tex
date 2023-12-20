@@ -899,12 +899,21 @@ We now address why we used a modified version of the projection map in Definitio
   Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, with large translation distance on $\cC(S)$ and small projections elsewhere.
   Let $\delta$ be a reducible mapping class, which is psuedo-Anosov on a subsurface $V$, with large translation distance on $\cC(V)$ and small translation distance everywhere.
   Let $x$ be a point in $\teich(\os)$, and $y = \delta \gamma \delta^{-1} x$.
-  Let $\Omega(x, y) = \left\{ \os, V, \gamma V \right\}$.
+  We first verify that $\mathcal{Y}(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
+  To see this, we consider the following tuple of points $(x, \delta x, \delta \gamma x, \delta \gamma \delta^{-1}x)$.
+  We claim that each of the points in the tuple lies coarsely on the geodesic $[x,y]$, and computing the projections of adjacent pairs of points in tuple, we get the following.
+  \begin{itemize}
+  \item[-] $[x, \delta x]$ has large projections on $\cC(V)$ and small projections on other curve complexes.
+  \item[-] $[\delta x, \delta \gamma x]$ has large projections on the $\cC(\delta \os)$, which is the same as $\cC(\os)$, and small projections elsewhere.
+  \item[-] $[\delta \gamma x, \delta \gamma \delta^{-1} x]$ has large projections on $\cC(\delta \gamma V)$, and small projections elsewhere.
+  \end{itemize}
+  Let $\Omega(x, y) = \mathcal{Y}(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
+  % \todo[inline]{Add more details about why $\delta \gamma V$ is the correct domain.}
   One can verify that this is a WISC witness family for $[x,y]$.
   Furthermore, we have that $V \swarrow \os$ and $\os \searrow \gamma V$.
 
   We now compute the resolution of the points $x$ and $y$ in $\teich(V)$, $\teich(\gamma V)$, and $\teich(\os)$.
-  Observe that the geodesic $[x,y]$ almost immediately moves into a production region associated to $V$ at the beginning, leaves that product region at some point $w$ along the geodesic, and then enters the product region associated to $\gamma V$ at some point $z$, and then stays in that product region almost all the way up to the end.
+  Observe that the geodesic $[x,y]$ almost immediately moves into a product region associated to $V$ at the beginning, leaves that product region at some point $w$ along the geodesic, and then enters the product region associated to $\gamma V$ at some point $z$, and then stays in that product region almost all the way up to the end.
   We will abuse notation slightly, and refer to $x$ and $w$ as points in $\teich(V)$, when we mean their projection via the product region map, and $z$ and $y$ will refer to points in $\teich(\gamma V)$
   Resolving points in $\teich(V)$ and $\teich(\gamma V)$ is easy, since there's no other witnesses nested in them, which means the projection tuple for those subsurfaces is the usual projection map.
   \begin{align*}
@@ -1141,11 +1150,11 @@ By applying Proposition \ref{prop:complexity-length-inequality}, we get a bound 
   \mathfrak{L}(p, \widehat{y}_{\os}^{\Omega}) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega})) + K \mathbf{C}
 \end{align}
 
-We next estimate $\mathfrak{L}(\widehat{y}_{\os}^{\Omega})$: we claim that there exists a WISCAL witness family $\Omega^{\prime}$ for $[\widehat{y}_{\os}^{\Omega}, y]$ that does not have $\os$ as a witness.
+We next estimate $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$: we claim that there exists a WISCAL witness family $\Omega^{\prime}$ for $[\widehat{y}_{\os}^{\Omega}, y]$ that does not have $\os$ as a witness.
 Indeed, we can construct this witness family from $\Omega$: take all the witnesses $V$ such that $\os \searrow V$.
 
 Since the witness family $\Omega^{\prime}$ does not have $\os$ as a witness, we can do better than Proposition \ref{prop:complexity-length-inequality} when estimating $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
-Since we have from our hypothesis that $\hNP(\mathrm{core}(\os)) > \hNP(\mathrm{core}(S^{\prime}))$, there exists a constant $h$ such that $h < \hNP(\mathrm{core}(\os))$ but $h > \hNP(\mathrm{core}(S^{\prime}))$.
+We have from our hypothesis that $\hNP(\mathrm{core}(\os)) > \hNP(\mathrm{core}(S^{\prime}))$, there exists a constant $h$ such that $h < \hNP(\mathrm{core}(\os))$ but $h > \hNP(\mathrm{core}(S^{\prime}))$.
 Using Theorem \ref{thm:contribution-set-resolution-distance}, we get the following estimate for $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
 \begin{align}
   \label{eq:eq3}
