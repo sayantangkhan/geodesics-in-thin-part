@@ -34,9 +34,11 @@
 \begin{itemize}
 \item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
 \item[-] $\hLP(H)$: For a subgroup $H$ of $\mcg(S)$, this is the exponential growth rate of for the $H$-orbit of a point $x$ in $\teich(S)$.
-\item[-] $\hNP(\mathrm{core}(\teich(S)))$: This is the exponential growth rate for the net points in an $(\varepsilon, 2 \varepsilon)$-net in the weak convex core of $\teich(S)$. The value of $\varepsilon$ is usually clear from the context.
+\item[-] $\hNP(\mathrm{core}(\teich(S)))$: This is the exponential growth rate for the net points in an $(\vepn, 2 \vepn)$-net in the weak convex core of $\teich(S)$. The value of $\vepn$ is usually clear from the context.
 \item[-] $\os_{g,b,c}$: A surface of genus $g$ with $b$ boundary components, and $c$ crosscaps attached.
 \item[-] $\teich(S)$: The Teichmüller space of the surface $S$.
+\item[-] $\pitchfork$: $U \pitchfork V$ denotes that the surfaces $U$ and $V$ are transverse.
+\item[-] $U \lessdot V$: The Behrstock partial order for transverse subsurfaces $U$ and $V$.
 \end{itemize}
 
 \section{The weak convex core of $\teich(\no_g)$}
@@ -109,39 +111,39 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     Here, $p$ is a lattice point, and $B_R(p)$ is the ball of radius $R$ centered at $p$.
 
     To count the net points in the ball of radius, we parameterize the net points by how far from the orbit of $p$ they lie. Since we're looking for net points in a ball of radius $R$, the furthest away they can be from the orbit is $R$.
-    We have the following sum decomposition (for an arbitrary choice of $\varepsilon > 0$) for the cardinality of the net points.
+    We have the following sum decomposition (for an arbitrary choice of $\vepb > 0$) for the cardinality of the net points.
     \begin{align}
       \label{eq:net-point-decomposition-base-case}
-      \#\left( B_R(p) \cap \mathcal{N} \right) = \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) + \#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right)
+      \#\left( B_R(p) \cap \mathcal{N} \right) = \#\left( B_R(p) \cap \mathcal{N}_{\leq \vepb R} \right) + \#\left( B_R(p) \cap \mathcal{N}_{> \vepb R} \right)
     \end{align}
-    Here, $\mathcal{N}_{\leq \varepsilon R}$ denotes the net points that lie within distance $\varepsilon R$ of the orbit of $p$, and $\mathcal{N}_{> \varepsilon R}$ denotes the net points that lie more than distance $\varepsilon R$ of the orbit of $p$.
+    Here, $\mathcal{N}_{\leq \vepb R}$ denotes the net points that lie within distance $\vepb R$ of the orbit of $p$, and $\mathcal{N}_{> \vepb R}$ denotes the net points that lie more than distance $\vepb R$ of the orbit of $p$.
 
-    We will show that the first term is at most $p(R) \exp(R(1 + \varepsilon))$, for some polynomial $p(R)$, and that the second term grows slower than the first term.
-    Since the choice of $\varepsilon$ was arbitrary, this will prove the equality of the two entropy terms.
+    We will show that the first term is at most $p(R) \exp(R(1 + \vepb))$, for some polynomial $p(R)$, and that the second term grows slower than the first term.
+    Since the choice of $\vepb$ was arbitrary, this will prove the equality of the two entropy terms.
 
-    Let $\mathcal{N}_{\leq \varepsilon R}(\gamma)$ denote the subset of $\mathcal{N}_{\leq \varepsilon R}$ whose closest lattice point is $\gamma p$.
-    Observe that $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
+    Let $\mathcal{N}_{\leq \vepb R}(\gamma)$ denote the subset of $\mathcal{N}_{\leq \vepb R}$ whose closest lattice point is $\gamma p$.
+    Observe that $d(p, \gamma p)$ is at most $R + \vepb R$, by the triangle inequality.
     We also have the following inequality for any $\gamma$, and for some polynomial $p$, by Lemma \ref{lem:fd-polynomial-growth}.
     \begin{align*}
-      \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) \leq p(R)
+      \#\left( B_R(p) \cap \mathcal{N}_{\leq \vepb R} \right) \leq p(R)
     \end{align*}
-    Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right)$.
+    Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap \mathcal{N}_{\leq \vepb R} \right)$.
     \begin{align*}
-      \#\left( B_R(p) \cap \mathcal{N}_{\leq \varepsilon R} \right) \leq p(R) \cdot \left( \exp(R(1+\varepsilon)) \right)
+      \#\left( B_R(p) \cap \mathcal{N}_{\leq \vepb R} \right) \leq p(R) \cdot \left( \exp(R(1+\vepb)) \right)
     \end{align*}
     This is precisely the bound we needed for the first term in \eqref{eq:net-point-decomposition-base-case}.
 
-    Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \varepsilon}{2}))$.
-    For any point $x$ in $\mathcal{N}_{> \varepsilon R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the [p, x] which stays within some bounded distance of a lattice point.
-    We also have that $d(p, x_0) \leq R(1-\varepsilon)$, by our assumption, which lets us count the number of such points $x_0$.
-    There are at most $\exp(R(1-\varepsilon))$ such points.
+    Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \vepb}{2}))$.
+    For any point $x$ in $\mathcal{N}_{> \vepb R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the [p, x] which stays within some bounded distance of a lattice point.
+    We also have that $d(p, x_0) \leq R(1-\vepb)$, by our assumption, which lets us count the number of such points $x_0$.
+    There are at most $\exp(R(1-\vepb))$ such points.
     Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
     Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ and a horoball $H$, where $x_0$ is a definite distance away from the boundary of horoball.
     We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
-    We thus have the following upper bound on $\#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right) $ for large enough values of $R$.
+    We thus have the following upper bound on $\#\left( B_R(p) \cap \mathcal{N}_{> \vepb R} \right) $ for large enough values of $R$.
     \begin{align*}
-      \#\left( B_R(p) \cap \mathcal{N}_{> \varepsilon R} \right)  &\leq p(R) \cdot \exp(R(1-\varepsilon)) \\
-                                                        &\leq \exp\left(R\left(1 - \frac{\varepsilon}{2}\right)\right)
+      \#\left( B_R(p) \cap \mathcal{N}_{> \vepb R} \right)  &\leq p(R) \cdot \exp(R(1-\vepb)) \\
+                                                        &\leq \exp\left(R\left(1 - \frac{\vepb}{2}\right)\right)
     \end{align*}
     This finishes proving the two claims we made about the terms of \eqref{eq:net-point-decomposition-base-case}, and proves the result for $\os_{1,1,0}$.
 
@@ -240,28 +242,28 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
 The proof of Theorem \ref{thm:entropy-equality} will split up into counting two kinds of net points, which we will call \emph{good points} and $\emph{bad points}$.
 
 \begin{definition}[Good points]
-  A point in $B_R(p) \cap \mathcal{N}$ is good if it is at most distance $\varepsilon R$ away from a lattice point $\gamma p$. The set of good points is denoted by $\mathcal{N}_g(p, R, \varepsilon)$.
+  A point in $B_R(p) \cap \mathcal{N}$ is good if it is at most distance $\vepb R$ away from a lattice point $\gamma p$. The set of good points is denoted by $\mathcal{N}_g(p, R, \vepb)$.
 \end{definition}
 
 \begin{definition}[Bad points]
-  A point in $B_R(p) \cap \mathcal{N}$ is bad if it is more than distance $\varepsilon R$ away from the nearest lattice point. The set of bad points is denoted by $\mathcal{N}_b(p, R, \varepsilon)$.
+  A point in $B_R(p) \cap \mathcal{N}$ is bad if it is more than distance $\vepb R$ away from the nearest lattice point. The set of bad points is denoted by $\mathcal{N}_b(p, R, \vepb)$.
 \end{definition}
 
-Observe that the classification of a point as good or bad depends on the choice of $R$, $\varepsilon$, and an additional parameter $\varepsilon > 0$.
+Observe that the classification of a point as good or bad depends on the choice of $R$, $p$, and an additional parameter $\vepb > 0$.
 
-We also further subdivide $\mathcal{N}_g(p, R, \varepsilon)$ based on what the closest lattice point is.
+We also further subdivide $\mathcal{N}_g(p, R, \vepb)$ based on what the closest lattice point is.
 
 \begin{definition}[Good point in the domain of $\gamma$]
-  For $\gamma \in \mcg(S)$, the set $\mathcal{N}_g(\gamma, p, R, \varepsilon)$ denotes the subset of $\mathcal{N}_g(p, R, \varepsilon)$ whose closest lattice point is $\gamma p$.
+  For $\gamma \in \mcg(S)$, the set $\mathcal{N}_g(\gamma, p, R, \vepb)$ denotes the subset of $\mathcal{N}_g(p, R, \vepb)$ whose closest lattice point is $\gamma p$.
 \end{definition}
 
 We will now prove a lemma that provides an upper bound on the number of good points when restricted to a fundamental domain.
 
 \begin{lemma}
   \label{lem:fd-polynomial-growth}
-  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $\mathcal{N}_g(\gamma, p, R, \varepsilon)$.
+  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $\mathcal{N}_g(\gamma, p, R, \vepb)$.
   \begin{align*}
-    \#\left( \mathcal{N}_g(\gamma, p, R, \varepsilon) \cap B_R(\gamma p) \right) \leq q(R)
+    \#\left( \mathcal{N}_g(\gamma, p, R, \vepb) \cap B_R(\gamma p) \right) \leq q(R)
   \end{align*}
 \end{lemma}
 
@@ -270,11 +272,11 @@ We will now prove a lemma that provides an upper bound on the number of good poi
   We adapt the same proof for non-orientable surfaces, replacing extremal length for hyperbolic lengths instead.
 \end{rem}
 
-Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following lemma on packing an $\varepsilon$-separated set into a ball of fixed radius in Teichmüller space.
+Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following lemma on packing an $\vepn$-separated set into a ball of fixed radius in Teichmüller space (where $\vepn$ is the parameter associated to our net $\mathcal{N}$).
 
 \begin{lemma}[Packing bound]
   \label{lem:packing-argument}
-  For an constants $C > 0$ and $\varepsilon > 0$, there exists a constant $D(C, \varepsilon, S)$ depending on the constants $C$, $\varepsilon$, and the topological type of the surface $S$ such that any ball $B_C(p)$ (independent from the choice of $p$) in $\teich(S)$ cannot contain more than $D$ points that are pairwise distance at least $\varepsilon$ apart.
+  For an constants $C > 0$ and $\vepn > 0$, there exists a constant $D(C, \vepn, S)$ depending on the constants $C$, $\vepn$, and the topological type of the surface $S$ such that any ball $B_C(p)$ (independent from the choice of $p$) in $\teich(S)$ cannot contain more than $D$ points that are pairwise distance at least $\vepn$ apart.
 \end{lemma}
 
 \begin{proof}
@@ -295,7 +297,7 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
     \label{eq:reduction-one}
     \#\left( \mathcal{N}(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
   \end{align}
-  Here, $\mathcal{N}(\gamma)$ denotes the set of net points whose closest lattice point is $\gamma p$: $\mathcal{N}(\gamma)$ is therefore a superset of $\mathcal{N}_g(\gamma, p, R, \varepsilon)$.
+  Here, $\mathcal{N}(\gamma)$ denotes the set of net points whose closest lattice point is $\gamma p$: $\mathcal{N}(\gamma)$ is therefore a superset of $\mathcal{N}_g(\gamma, p, R, \vepb)$.
 
   Next, note that it suffices to prove \eqref{eq:reduction-one} for $\gamma = 1$, since our choice of basepoint $p$ was arbitrary.
 
@@ -329,7 +331,7 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \mathcal{N}(1) \cap B
   Pick the $z$ such that the corresponding lengths of the pants curves are closest to the lengths of the pants curves on $\kappa y$.
   We can now invoke the combinatorial distance formula for Teichmüller metric (proved by \textcite{rafi2007combinatorial} for the orientable setting, and Theorem \ref{thm:distance-formula} for the non-orientable case).
   \begin{align*}
-    d(z, \kappa y) \asymp \sum_Y \left[ d_Y(z, \kappa y) \right]_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
+    d(z, \kappa y) \emul \sum_Y \left[ d_Y(z, \kappa y) \right]_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
   \end{align*}
   In the above formula, the first term is the distance between the short markings when projected to non-annular subsurfaces, the second term is the distance between the short markings when projected to annular subsurfaces whose core curves are not the pants curves in the marking, and the third term corresponds to the length and twist parameters of the short curves.
 
@@ -343,7 +345,7 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \mathcal{N}(1) \cap B
 
 In this section we introduce an alternative to the Teichmüller metric, called the \emph{complexity length} (see Definition \ref{defn:complexity-length}).
 This metric was introduced by \textcite{dowdall2023lattice}, in order to get better estimates on net points contained in the thin part of Teichmüller space (for orientable surfaces).
-We adapt the construction of complexity to the Teichmüller space of non-orientable surfaces in \autoref{sec:line-gap-compl}.
+We adapt the construction of complexity to the Teichmüller space of non-orientable surfaces in Section \ref{sec:line-gap-compl}.
 In this section, we state the main results about complexity length we need in order to prove Theorem \ref{thm:entropy-equality}.
 
 For this section, we will state the results with a rescaled version of complexity length, in order to compare it with Teichmüller length.
@@ -361,12 +363,12 @@ The first result we will need is a count of the net points with respect to the r
 
 \begin{theorem}[Theorem 12.1 of \cite{dowdall2023lattice}, Theorem \ref{thm:counting-with-complexity}]
   \label{thm:counting-with-complexity-rescaled}
-  There exists $k \in \mathbb{N}$ that depends on the net $\mathcal{N}$, such that the following inequality holds.
+  There exists a polynomial function $p(R)$ that depends on the net $\mathcal{N}$, and a parameter $\veperr > 0$, such that the following inequality holds for any $\veperr > 0$.
   \begin{align*}
-    \#\left( y \in \mathcal{N} \mid \dcomp(p, x) \leq R \right) \leq k R^k \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R)
+    \#\left( y \in \mathcal{N} \mid \dcomp(p, x) \leq R \right) \leq p(R) \exp((\hNP(\mathrm{core}(\teich(S))) + \veperr) \cdot R)
   \end{align*}
 \end{theorem}
-\todo[inline]{Add the $\varepsilon_1$ parameter.}
+% \todo[inline]{Add the $\varepsilon_1$ parameter.}
 
 The next result, which is the main theorem of Section \ref{sec:line-gap-compl}, is that if $y$ is a bad point that is Teichmüller distance $R$ away from $p$, then its rescaled complexity distance to $p$ is smaller than $R$ by a definite amount.
 We state this theorem with an additional hypothesis on the net point entropy of subsurfaces.
@@ -374,67 +376,74 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
 
 \begin{theorem}[Linear gap in complexity length, Theorem \ref{thm:linear-gap}]
   \label{thm:linear-gap-rescaled}
-  Suppose that for all proper subsurfaces $S^{\prime}$ of $S$, the following inequality holds.
+  Suppose that for all proper subsurfaces $V$ of $\os$, the following inequality holds.
   \begin{align*}
-    \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))
+    \hNP(\mathrm{core}(\teich(V))) < \hNP(\mathrm{core}(\os))
   \end{align*}
-  Then for any $\varepsilon >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \varepsilon)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
+  Then for any $\vepb >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \vepb)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
   \begin{align*}
     \dcomp(p, y) \leq R(1 - c)
   \end{align*}
 \end{theorem}
-\todo[inline]{Have a remark here on why this ought to be true.}
+\begin{rem}
+  We give a brief outline of why the above result should hold.
+  Complexity length can be thought of as a weighted version of Teichmüller length, where a specific segment is assigned a weight based on whether it's traveling in the thick part of Teichmüller space, or the thin part.
+  In the latter case, it is assigned a smaller weight that is proportional to the net point entropy of the product region it is traveling in.
+  The Teichmüller geodesics associated to bad points spend a significant fraction traveling in the thin part, by the very definition of bad points.
+  It stands to reason then that the complexity length assigned to them is smaller by a definite amount, due to the time they spend in the thin part.
+\end{rem}
+% \todo[inline]{Have a remark here on why this ought to be true.}
 
 Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:linear-gap-rescaled}, it follows that as $R$ goes to $\infty$, the proportion of bad points goes to $0$, which is what we need for Theorem \ref{thm:entropy-equality}.
 
 \subsection{Entropy gap}
 \label{sec:entr-gap-cons}
 
-In the previous section, we saw that the key hypothesis we need for the complexity length estimate was that for any proper subsurface $S^{\prime}$ of $S$, the following strict inequality held.
+In the previous section, we saw that the key hypothesis we need for the complexity length estimate was that for any proper subsurface $V$ of $\os$, the following strict inequality held.
 \begin{align}
   \label{eq:net-point-entropy-gap}
-  \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))
+  \hNP(\mathrm{core}(\teich(V))) < \hNP(\mathrm{core}(\os))
 \end{align}
 
-In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by proving a similar inequality for the lattice point entropy, and using the fact that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $S^{\prime}$, by the inductive hypothesis.
+In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by proving a similar inequality for the lattice point entropy, and using the fact that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$, by the inductive hypothesis.
 
 \begin{lemma}[Lattice point entropy gap]
   \label{lem:entropy-inequality}
-  Let $S$ be a surface, and $\chi(S) \leq -2$. If $S^{\prime}$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $S^{\prime}$, then we have the following strict inequality between their lattice point entropy.
+  Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their lattice point entropy.
   \begin{align*}
-    \hLP(\teich(S^{\prime})) < \hLP(\teich(S))
+    \hLP(\teich(V)) < \hLP(\teich(\os))
   \end{align*}
 \end{lemma}
 
 \begin{rem}
-  We do actually need the hypothesis $\chi(S) \leq -2$ in the statement of the lemma for two reasons.
+  We do actually need the hypothesis $\chi(\os) \leq -2$ in the statement of the lemma for two reasons.
   The first reason is that the lemma is actually false for $\os_{1,0,1}$.
   Recall that this surface has the torus with one boundary component as a subsurface, but their mapping class groups are isomorphic, and have the same lattice point growth entropy.
-  Another reason why we need the hypothesis is that the proof of the lemma proceeds via a construction of pseudo-Anosov elements on $S$, and $\os_{1,0,1}$ does not admit any pseudo-Anosov mapping classes.
+  Another reason why we need the hypothesis is that the proof of the lemma proceeds via a construction of pseudo-Anosov elements on $\os$, and $\os_{1,0,1}$ does not admit any pseudo-Anosov mapping classes.
 \end{rem}
 
 \begin{proof}[Proof of Lemma \ref{lem:entropy-inequality}]
-  Observe that $\mcg(S^{\prime})$ is a subgroup of $\mcg(S)$.
-  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(S^{\prime})$, which is the free product of a psuedo-Ansov element in $\mcg(S)$ with $\mcg(S^{\prime})$, and show that $\hLP(H) > \hLP(\mcg(S^{\prime}))$.
-  This is enough to prove the result, since $H$ is a subgroup of $\mcg(S)$, we have that $\hLP(\mcg(S)) \geq \hLP(H)$.
+  Observe that $\mcg(V)$ is a subgroup of $\mcg(\os)$.
+  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(V)$, which is the free product of a psuedo-Ansov element in $\mcg(\os)$ with $\mcg(V)$, and show that $\hLP(H) > \hLP(\mcg(V))$.
+  This is enough to prove the result, since $H$ is a subgroup of $\mcg(\os)$, we have that $\hLP(\mcg(\os)) \geq \hLP(H)$.
 
-  We now need to show that $\mcg(S)$ contains a pseudo-Anosov element.
-  We can invoke Penner's construction of pseudo-Anosov mapping classes (\cite[Theorem 4.1]{penner1988construction}), as long as we can construct a filling collection of \emph{two-sided} curves in $S$.
-  This may not be always possible for $S$ where $\chi(S) = -1$, but for $S$ with $\chi(S) \leq -2$, this is always possible (see \cite{Liechti2018MinimalPS} and \cite{khan2023pseudo} for explicit constructions).
+  We now need to show that $\mcg(\os)$ contains a pseudo-Anosov element.
+  We can invoke Penner's construction of pseudo-Anosov mapping classes (\cite[Theorem 4.1]{penner1988construction}), as long as we can construct a filling collection of \emph{two-sided} curves in $\os$.
+  This may not be always possible for $\os$ where $\chi(\os) = -1$, but for $\os$ with $\chi(\os) \leq -2$, this is always possible (see \cite{Liechti2018MinimalPS} and \cite{khan2023pseudo} for explicit constructions).
   Let $\kappa$ denote the pseudo-Anosov mapping class we construct.
 
-  We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(S^{\prime})$ in the Thurston boundary.
-  This is because the limit set of $\mcg(S^{\prime})$ can only consist of foliations supported on the subsurface $S^{\prime}$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
-  We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(S^{\prime})$ is the free product of $\mathbb{Z}$ and $\mcg(S^{\prime})$: we let $H$ denote this group.
+  We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(V)$ in the Thurston boundary.
+  This is because the limit set of $\mcg(V)$ can only consist of foliations supported on the subsurface $V$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
+  We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(V)$ is the free product of $\mathbb{Z}$ and $\mcg(V)$: we let $H$ denote this group.
 
-  We now need to show that the lattice point entropy for $H$ is strictly larger than the $\mcg(S^{\prime})$.
+  We now need to show that the lattice point entropy for $H$ is strictly larger than the $\mcg(V)$.
   To see this, we recall an equivalent definition of the lattice point entropy.
-  The lattice point entropy is the parameter $h$ such that the following Poincaré series transitions from being convergent to divergent for any $x \in \teich(S)$.
+  The lattice point entropy is the parameter $h$ such that the following Poincaré series transitions from being convergent to divergent for any $x \in \teich(\os)$.
   \begin{align}
     \label{eq:dirichlet}
     \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right)
   \end{align}
-  Since $H = \mathbb{Z} * \mcg(S^{\prime})$, we can represent $\gamma \in H$ as $a_1 \cdot b_1 \cdot a_2 \cdots a_k \cdot b_k$, where $a_i$ belong in $\mathbb{Z}$ and $b_i$ belong in $\mcg(S^{\prime})$.
+  Since $H = \mathbb{Z} * \mcg(V)$, we can represent $\gamma \in H$ as $a_1 \cdot b_1 \cdot a_2 \cdots a_k \cdot b_k$, where $a_i$ belong in $\mathbb{Z}$ and $b_i$ belong in $\mcg(V)$.
   We use this along with the triangle inequality to get an upper bound for $d(x, \gamma x)$.
   \begin{align}
     \label{eq:triangle-inequality-1}
@@ -444,24 +453,24 @@ In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by pr
   \begin{align}
     \label{eq:dirichlet-lower-bound}
     \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right) &= \sum_{k=1}^\infty \left(  \sum_{a_1}\cdots \sum_{a_k} \sum_{b_1}\cdots \sum_{b_k}  \exp(-h \cdot d(x, a_1 \cdot b_1 \cdots a_k \cdot b_k x)) \right) \\
-    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d(x, ax)) \right)^k \left( \sum_{b \in \mcg(S^{\prime})} \exp(-h \cdot d(x, bx)) \right)^k
+    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d(x, ax)) \right)^k \left( \sum_{b \in \mcg(V)} \exp(-h \cdot d(x, bx)) \right)^k
     \label{eq:dirichlet-lower-bound-2}
   \end{align}
 
-  We have that Theorem \ref{thm:entropy-equality} holds for $S^{\prime}$, which means that $\mathrm{core}(\teich(S^{\prime}))$ is SCC.
+  We have that Theorem \ref{thm:entropy-equality} holds for $V$, which means that $\mathrm{core}(\teich(V))$ is SCC.
   Corollary 5.4 of \cite{10.1093/imrn/rny001} states that group actions that are SCC have Poincaré series that diverge at the critical exponent.
-  This means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(S^{\prime})) + \varepsilon$, the series converges to a value greater than $1$.
-  But that means the Poincaré series for $H$ diverges at $\hLP(\teich(S^{\prime})) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
-  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(S^{\prime})$.
+  This means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(V)) + \varepsilon$, the series converges to a value greater than $1$.
+  But that means the Poincaré series for $H$ diverges at $\hLP(\teich(V)) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
+  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(V)$.
 \end{proof}
 
 We can now prove the entropy gap result for $\hNP$.
 
 \begin{lemma}[Net point entropy gap]
   \label{lem:net-point-entropy-inequality}
-  Let $S$ be a surface, and $\chi(S) \leq -2$. If $S^{\prime}$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $S^{\prime}$, then we have the following strict inequality between their net point entropy.
+  Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their net point entropy.
   \begin{align*}
-    \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))
+    \hNP(\mathrm{core}(\teich(V))) < \hNP(\mathrm{core}(\teich(\os)))
   \end{align*}
 \end{lemma}
 
@@ -469,17 +478,17 @@ We can now prove the entropy gap result for $\hNP$.
   We have the following inequality, which follows trivially from the definition of $\hLP$ and $\hNP$.
   \begin{align}
     \label{eq:ineq1}
-    \hLP(\teich(S)) \leq \hNP(\mathrm{core}(\teich(S)))
+    \hLP(\teich(\os)) \leq \hNP(\mathrm{core}(\teich(\os)))
   \end{align}
   From Lemma \ref{lem:entropy-inequality}, we get the following inequality.
   \begin{align}
     \label{eq:ineq2}
-    \hLP(\teich(S^{\prime})) < \hLP(\teich(S))
+    \hLP(\teich(V)) < \hLP(\teich(\os))
   \end{align}
-  Finally, since we have Theorem \ref{thm:entropy-equality} for $S^{\prime}$, we have the following equality.
+  Finally, since we have Theorem \ref{thm:entropy-equality} for $V$, we have the following equality.
   \begin{align}
     \label{eq:eq3}
-    \hLP(\teich(S^{\prime})) = \hNP(\mathrm{core}(\teich(S^{\prime})))
+    \hLP(\teich(V)) = \hNP(\mathrm{core}(\teich(V)))
   \end{align}
   Chaining together \eqref{eq:ineq1}, \eqref{eq:ineq2}, and \eqref{eq:eq3} gives us the result.
 \end{proof}
@@ -490,44 +499,48 @@ We can now prove the entropy gap result for $\hNP$.
 We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-equality}.
 
 \begin{proof}[Proof of Theorem \ref{thm:entropy-equality}]
-  We will prove this lemma by inducting on the complexity of the surface $S$.
+  We will prove this lemma by inducting on the complexity of the surface $\os$.
   Lemma \ref{lem:entropy-equality-base-case} proves the result for surfaces with Euler characteristic equal to $-1$, which serves as the base case of the theorem.
 
-  We now assume that Theorem \ref{thm:entropy-equality} already holds for all proper subsurfaces $S^{\prime}$ of $S$: it will suffice to show that the result holds for $S$.
+  We now assume that Theorem \ref{thm:entropy-equality} already holds for all proper subsurfaces $V$ of $\os$: it will suffice to show that the result holds for $\os$.
 
-  We will establish that for any $\varepsilon > 0$, there exists a polynomial $q(R)$, and $R$ large enough, such that the following bound holds.
+  We will establish that for any $\vepb > 0$, there exists a polynomial $q(R)$, and $R$ large enough, such that the following bound holds.
   \begin{align*}
-    \#\left( B_R(p) \cap \mathcal{N} \right) \leq q(R) \cdot \exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))
+    \#\left( B_R(p) \cap \mathcal{N} \right) \leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
   \end{align*}
 
   We first count the good points in $B_R(p)$, by partitioning them according to the nearest lattice point.
   \begin{align}
     \label{eq:good-point-partition}
-    \mathcal{N}_g(p, R, \varepsilon) = \bigsqcup_{\gamma \in \mcg(S)} \mathcal{N}_g(\gamma, p, R, \varepsilon)
+    \mathcal{N}_g(p, R, \vepb) = \bigsqcup_{\gamma \in \mcg(\os)} \mathcal{N}_g(\gamma, p, R, \vepb)
   \end{align}
-  Observe that if $y \in \mathcal{N}_g(\gamma, p, R, \varepsilon)$, then $d(p, \gamma p) \leq R(1 + \varepsilon)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \varepsilon R$.
-  This observation leads to the following upper bound on $\#\left( \mathcal{N}_g(p, R, \varepsilon) \right)$.
+  Observe that if $y \in \mathcal{N}_g(\gamma, p, R, \vepb)$, then $d(p, \gamma p) \leq R(1 + \vepb)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \vepb R$.
+  This observation leads to the following upper bound on $\#\left( \mathcal{N}_g(p, R, \vepb) \right)$.
   \begin{align}
-    \#\left( \mathcal{N}_g(p, R, \varepsilon) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap \mathcal{N}_g(\gamma, p, R, \varepsilon)  \right) \label{eq:good-estimate-1}
+    \#\left( \mathcal{N}_g(p, R, \vepb) \right) \leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \vepb)}} \#\left( B_{\vepb R}(\gamma p) \cap \mathcal{N}_g(\gamma, p, R, \vepb)  \right) \label{eq:good-estimate-1}
   \end{align}
   By Lemma \ref{lem:fd-polynomial-growth}, there exists a polynomial $q(R)$ such that each term in the above sum is at most $q(R)$.
   \begin{align}
-    \#\left( \mathcal{N}_g(p, R, \varepsilon) \right) &\leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} q(R) \\
-     &\leq q(R) \cdot \exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))
+    \#\left( \mathcal{N}_g(p, R, \vepb) \right) &\leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \vepb)}} q(R) \\
+     &\leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
     \label{eq:good-estimate-2}
   \end{align}
-  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\varepsilon)$ as at most $\exp(\hLP(\teich(S)) \cdot R \cdot (1 + 2 \varepsilon))$, for large enough $R$.
+  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\vepb)$ as at most $\exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))$, for large enough $R$.
   We have the desired upper bound on the cardinality for the good points.
   Now we show that the number of bad points is much smaller than the total number of points in the ball, which will then prove the result.
 
-  From the inductive hypothesis, we have that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $S^{\prime}$.
-  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(S)))$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
+  From the inductive hypothesis, we have that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$.
+  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\mathrm{core}(\teich(V))) < \hNP(\mathrm{core}(\teich(\os)))$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
   Applying the theorem, we see that if $y$ is a bad point, $\dcomp(p, y) \leq R(1 - c)$.
   We then apply Theorem \ref{thm:counting-with-complexity-rescaled} to get an upper bound on the number of bad points.
   \begin{align*}
-    \#\left( \mathcal{N}_b(p, R, \varepsilon) \right) \leq kR^k \cdot \exp(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot (1 - c))
+    \#\left( \mathcal{N}_b(p, R, \vepb) \right) \leq kR^k \cdot \exp((\hNP(\mathrm{core}(\teich(\os))) + \veperr) \cdot R \cdot (1 - c))
   \end{align*}
-  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\mathrm{core}(\teich(S))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
+  We pick $\veperr$ small enough such that the above term satisfies the following inequality for large enough $R$.
+  \begin{align*}
+    \exp((\hNP(\mathrm{core}(\teich(\os))) + \veperr) \cdot R \cdot (1 - c)) < \exp\left(\hNP(\mathrm{core}(\teich(\os))) \cdot R \cdot \left(1 - \frac{2c}{3}\right)\right)
+  \end{align*}
+  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\mathrm{core}(\teich(\os))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
   Combining these two facts, we see that the proportion of bad points goes to $0$ as $R$ goes to $\infty$, which proves the result.
 \end{proof}
 % \todo[inline]{Change wherever you've used $N$ to $\mathcal{N}$.}
@@ -554,14 +567,14 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 %   Observe that if $x \in N(\gamma)$ is a good point, i.e. is contained in $N_g(p, r)$, then $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
 %   This observation leads us to the following estimate for $\#\left( N_g(p, r) \right) $.
 %   \begin{align}
-%     \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(S) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
+%     \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
 %   \end{align}
 
 %   The next step in the proof is to show that $\#\left(  B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right)$ has polynomial growth as $R$ increases: this is the content of Lemma \ref{lem:fd-polynomial-growth}.
 %   Using this estimate, we can rewrite \eqref{eq:good-estimate-1} in terms of the lattice point counting function for large enough values of $R$.
 %   \begin{align}
 %     \label{eq:good-estimate-2}
-%     \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(S) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
+%     \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(\os) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
 %     &\leq q(R) \cdot \exp\left( \hLP R(1 + 2\varepsilon) \right)
 %     \label{eq:good-estimate-3}
 %   \end{align}
@@ -597,14 +610,14 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 
 Before we define complexity length, we will look at an example that illustrates why we need complexity length.
 Theorem 1.3 of \textcite{10.1215/00127094-1548443} proves an estimate on the volume of balls in Teichmüller space.
-From this volume estimate, we can obtain an estimate on the cardinality of net points of an $(\varepsilon, 2 \varepsilon)$-net $\mathcal{N}$.
+From this volume estimate, we can obtain an estimate on the cardinality of net points of an $(\vepn, 2 \vepn)$-net $\mathcal{N}$.
 \begin{theorem}[Theorem 1.3 of \cite{10.1215/00127094-1548443}]
   \label{thm:abem}
-  For a point $p$ in $\teich(S)$ (where $S$ is a genus $g$ surface with $b$ boundary components), the number of net points in a ball of radius $R$ centered at the origin satisfies the following asymptotic as $R$ goes to $\infty$ for some bounded function $C(p)$.
+  For a point $p$ in $\teich(S)$ (where $S$ is a genus $g$ surface with $b$ boundary components), the number of net points in a ball of radius $R$ centered at the origin satisfies the following asymptotic as $R$ goes to $\infty$.
   \begin{align*}
     \#\left( \mathcal{N} \cap B_R(p) \right) \emul \exp((6g-6 + 2b)R)
   \end{align*}
-  Here, the multiplicative and additive constants showing up in $\emul$ only depend on $p$ and $\varepsilon$.
+  Here, the multiplicative and additive constants showing up in $\emul$ only depend on $p$ and $\vepn$.
 \end{theorem}
 
 Suppose now that we want to use the above theorem to count net points in a product region.
@@ -618,7 +631,7 @@ This gives us an alternative estimate for $\#\left( \mathcal{N} \cap B_R(p)\righ
   \label{eq:prod-decomp}
   \#\left( \mathcal{N} \cap B_R(p) \right) &\leq C \cdot \left( \mathcal{N}_1 \cap B_R(p, S \setminus \gamma) \right) \cdot \left( \mathcal{N}_2 \cap B_R(p, \mathbb{H})\right)
 \end{align}
-Here $\mathcal{N}_1$ and $\mathcal{N}_2$ are nets for $\teich(S \setminus \gamma)$ and $\mathbb{H}$, and $B_R(p, S \setminus \gamma)$ and $B_R(p, \mathbb{H})$ are projections on the ball $B_R(p)$ to the two components.
+Here $\mathcal{N}_1$ and $\mathcal{N}_2$ are $(\vepn, 2\vepn)$ nets for $\teich(S \setminus \gamma)$ and $\mathbb{H}$, and $B_R(p, S \setminus \gamma)$ and $B_R(p, \mathbb{H})$ are projections on the ball $B_R(p)$ to the two components.
 Applying Theorem \ref{thm:abem} to the right hand side of \eqref{eq:prod-decomp}, we get a better estimate than we would have gotten with a direct application of Theorem \ref{thm:abem}.
 \begin{align*}
   \#\left( \mathcal{N} \cap B_R(p) \right) &\leq C \cdot \left( \mathcal{N}_1 \cap B_R(p, S \setminus \gamma) \right) \cdot \left( \mathcal{N}_2 \cap B_R(p, \mathbb{H})\right) \\
@@ -687,53 +700,60 @@ We list those theorems here, and link to the proof of the non-orientable version
 \item Consistency and realization (see Theorem \ref{thm:consistency-realization}).
 \end{enumerate}
 
-Let $\os$ be a surface (not necessarily orientable), and $\mathbf{C}$ some large arbitrary constant, and $\varepsilon > 0$ a small constant we pick later.
+Let $\os$ be a surface (not necessarily orientable), and $\mathbf{C}$ some large arbitrary constant, and $\vept > 0$ a small constant we pick later.
 We also pick constants $N_V$, for each $V \sqsubset \os$, such that $N_V$ only depends on the topological type of $V$.
 The precise values of the $N_V$'s is specified via Proposition 10.13 of \cite{dowdall2023lattice}.
+We will also abuse notation slightly and use $\hNP(V)$ to refer to $\hNP(\mathrm{core}(\teich(V)))$ whenever $V$ is a non-orientable surface: when $V$ is orientable, $\hNP(V)$ will refer to $\hNP(\teich(V))$.
 
-Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsurfaces $\mathcal{Y}(x, y)$ along which $[x, y]$ has large projections.
-\todo{Figure out the latex for the symbol Dowdall-Masur use for active subsurfaces.}
+Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsurfaces $\Upsilon(x, y)$ along which $[x, y]$ has large projections.
+% \todo{Figure out the latex for the symbol Dowdall-Masur use for active subsurfaces.}
 
 \begin{definition}[Active subsurfaces]
-  A subsurface $V \sqsubset \os$ is an active subsurface, i.e. in $\mathcal{Y}(x,y)$, if one of the following two conditions hold.
+  A subsurface $V \sqsubset \os$ is an active subsurface, i.e. in $\Upsilon(x,y)$, if one of the following two conditions hold.
   \begin{enumerate}[(i)]
   \item The projection to $\cC(V)$ has diameter at least $N_V$.
   \item If $V$ is annular with core curve $\gamma$, then
     \begin{align*}
-      \min\left( \ell_\gamma(x), \ell_{\gamma}(y) \right) < \varepsilon
+      \min\left( \ell_\gamma(x), \ell_{\gamma}(y) \right) < \vept
     \end{align*}
   \end{enumerate}
 \end{definition}
 
-Associated to each active subsurface $V$, there is a non-empty connected sub-interval of $[x,y]$, which we call an active interval, and denote $\mathcal{I}_V^\varepsilon$, which we obtain via an application of Proposition \ref{thm:active-intervals}.
+Associated to each active subsurface $V$, there is a non-empty connected sub-interval of $[x,y]$, which we call an active interval, and denote $\mathcal{I}_V^{\vept}$, which we obtain via an application of Proposition \ref{thm:active-intervals}.
 The active intervals associated to active subsurfaces enjoy the following properties.
 \begin{enumerate}[(i)]
-\item $\ell_\alpha(z) < \varepsilon$ for $z \in \mathcal{I}_V^\varepsilon$ and $\alpha \in \partial V$.
-\item For $z \not \in \mathcal{I}_V^\varepsilon$, $\ell_{\alpha}(z) > \varepsilon^{\prime}$ for some $z \in \partial V$, and some $\varepsilon^{\prime} < \varepsilon$ that only depends on $\varepsilon$.
-\item For $[w,z] \subset [x,y]$ with $[w,z] \cap \mathcal{I}_V^\varepsilon = \varnothing$, $d_V(w,z) \leq M_\varepsilon$ for some $M_\varepsilon$ that only depends on $\varepsilon$.
-\item For $U \pitchfork V$, $\mathcal{I}_U^\varepsilon \cap \mathcal{I}_V^\varepsilon = \varnothing$.
+\item $\ell_\alpha(z) < \vept$ for $z \in \mathcal{I}_V^{\vept}$ and $\alpha \in \partial V$.
+\item For $z \not \in \mathcal{I}_V^{\vept}$, $\ell_{\alpha}(z) > {\vept}^{\prime}$ for some $z \in \partial V$, and some ${\vept}^{\prime} < {\vept}$ that only depends on ${\vept}$.
+\item For $[w,z] \subset [x,y]$ with $[w,z] \cap \mathcal{I}_V^{\vept} = \varnothing$, $d_V(w,z) \leq M_{\vept}$ for some $M_{\vept}$ that only depends on ${\vept}$.
+\item For $U \pitchfork V$, $\mathcal{I}_U^{\vept} \cap \mathcal{I}_V^{\vept} = \varnothing$.
 \end{enumerate}
 
-Observe that when restricted to $\mathcal{I}_V^\varepsilon$, the geodesic is traveling in a product region, one of whose components is $\teich(V)$, but trying to apply the technique from the previous subsection leads to the problem of overcounting, namely overcounting arising from subsurfaces either nested in $V$, or subsurfaces $V$ is nested in.
+For pairs of transverse subsurfaces $U \pitchfork V$, since $\mathcal{I}_U^{\vept} \cap \mathcal{I}_V^{\vept} = \varnothing$ we can also determine which of the subsurfaces are active first.
+\begin{definition}[Behrstock partial order]
+  If $U$ and $V$ are a pair of transverse subsurfaces in $\Upsilon(x,y)$, we say $U \lessdot V$ if $\mathcal{I}_U^{\vept}$ appears to the left of $\mathcal{I}_V^{\vept}$ in $[x,y]$.
+\end{definition}
 
-To deal with this issue, we will consider a subset of $\mathcal{Y}(x,y)$, called a \emph{witness family}.
+Observe that when restricted to $\mathcal{I}_V^{\vept}$, the geodesic is traveling in a product region, one of whose components is $\teich(V)$, but trying to apply the technique from the previous subsection leads to the problem of overcounting, namely overcounting arising from subsurfaces either nested in $V$, or subsurfaces $V$ is nested in.
+
+To deal with this issue, we will consider a subset of $\Upsilon(x,y)$, called a \emph{witness family}.
 However, to avoid overcounting, some additional properties are required of the witness families.
 Rather than defining all of those properties without context, we introduce them one at a time, after motivating the need for the property.
 
 \begin{definition}[Witness family]
-  A witness family $\Omega(x,y)$ associated to the geodesic $[x,y]$ is a subset of $\mathcal{Y}(x, y)$ satisfying the following properties.
+  A witness family $\Omega(x,y)$ associated to the geodesic $[x,y]$ is a subset of $\Upsilon(x, y)$ satisfying the following properties.
   \begin{enumerate}[(i)]
-  \item For any $Z \in \mathcal{Y}(x,y)$, $Z \sqsubset W$ for some $W \in \Omega(x,y)$.
-  \item If $Z \sqsubset W$, and $Z \in \Omega(x,y)$ and $W \in \mathcal{Y}(x,y)$, then $W$ must also either be a witness, or must be transverse to a witness $V \in \Omega(x,y)$ such that $Z \sqsubset V$.
+  \item For any $Z \in \Upsilon(x,y)$, $Z \sqsubset W$ for some $W \in \Omega(x,y)$.
+  \item If $Z \sqsubset W$, and $Z \in \Omega(x,y)$ and $W \in \Upsilon(x,y)$, then $W$ must also either be a witness, or must be transverse to a witness $V \in \Omega(x,y)$ such that $Z \sqsubset V$.
   \end{enumerate}
 \end{definition}
 The first condition of the definition ensures that when we restrict our attention from all active subsurfaces to witnesses, we do not lose information, i.e. every active subsurface contributes to whichever witness it is contained in.
-{\color{red} The second condition is a more technical requirement that we will motivate later.}
+The second condition is a more technical requirement that is required to ensure that the other properties we define later work nicely.
+% {\color{red} The second condition is a more technical requirement that we will motivate later.}
 
 We now make the notion of an active subsurface \emph{contributing to a witness} more precise.
 \begin{definition}[Complete witness family]
-  For an active subsurface $V$, a witness $W$ is said to be the $\Omega$-completion of $V$, denoted $\overline{V}$ \todo{Figure out how Dowdall-Masur get a subscript on the overline.} if $W$ is the minimal (by inclusion) witness containing $V$.
-  If $W = \overline{V}$, we say $V$ \emph{contributes} to $W$.
+  For an active subsurface $V$, a witness $W$ is said to be the $\Omega$-completion of $V$, denoted $\colsup{V}{\Omega}$ if $W$ is the minimal (by inclusion) witness containing $V$.
+  If $W = \colsup{V}{\Omega}$, we say $V$ \emph{contributes} to $W$.
   Furthermore, A witness family is \emph{complete} if every active subsurface has a unique $\Omega$-completion.
 \end{definition}
 
@@ -752,7 +772,7 @@ We now look at an extreme example of a complete witness families to motivate fur
   In the above example, since we only have one subsurface in our witness family, we certainly don't overcount via overlapping product regions, but we do end up ignoring the fact that the geodesic $[x,y]$ travels in a smaller product region near the beginning of the segment, as well as the end.
   For the initial and the final segment of the geodesic, the witness $\os$ is too big for the subsurface the geodesic is actually traveling in.
   This suggest that a better choice of a witness family would be to include both $V$ and $\gamma V$ as witnesses too.
-  We can take this approach further, and include every subsurface in $\mathcal{Y}(x,y)$ as a witness: this will still form a complete witness family.
+  We can take this approach further, and include every subsurface in $\Upsilon(x,y)$ as a witness: this will still form a complete witness family.
   However, this approach also leads to overcounting \todo{Replace overcounting with a different word?}, because of overlapping regions coming from nested or disjoint subsurfaces.
 
   The drawback of Example \ref{ex:uninsulated} motivates the next property we will require from witness families, which is the notion of being \emph{insulated}.
@@ -761,7 +781,7 @@ We now look at an extreme example of a complete witness families to motivate fur
     \label{def:insulated}
     A witness family $\Omega(x,y)$ is insulated if for every $E \in \Omega(x,y)$, the following subsurfaces $V \sqsubset E$ are also witnesses.
     \begin{enumerate}[(i)]
-    \item $V \in \mathcal{Y}(x,y)$.
+    \item $V \in \Upsilon(x,y)$.
     \item $d_E(\cC(V), x) \leq 9\mathbf{C}$, or $d_E(\cC(V), y) \leq 9 \mathbf{C}$, where we consider $\cC(V)$ to be a subset of $\cC(E)$.
     \item $V$ is topologically maximal among the subsurfaces that satisfy (i) and (ii).
     \end{enumerate}
@@ -857,15 +877,15 @@ We now look at an extreme example of a complete witness families to motivate fur
     \begin{align*}
       \wt{w}_Z =
       \begin{cases}
-        \pi_Z(y), & \text{if $Z \in \mathcal{Y}(x,y)$ and $\ol{Z} \swarrow U$} \\
-        \pi_Z(x), & \text{if $Z \in \mathcal{Y}(x,y)$ and $U \searrow \ol{Z}$} \\
+        \pi_Z(y), & \text{if $Z \in \Upsilon(x,y)$ and $\colsup{Z}{\Omega} \swarrow U$} \\
+        \pi_Z(x), & \text{if $Z \in \Upsilon(x,y)$ and $U \searrow \colsup{Z}{\Omega}$} \\
         \pi_Z(w), & \text{otherwise}
       \end{cases}
     \end{align*}
   \end{definition}
 
-  Observe that this is different from the usual projection map from $\teich(\os)$ to $\cC(Z)$: for subsurfaces $Z$ that contribute to a witness nested in $U$, and consequently, $\overline{Z} \swarrow U$ or $U \searrow \overline{Z}$, we change the projection from $\pi_Z(w)$ to $\pi_Z(y)$ or $\pi_Z(x)$ respectively.
-  \todo[inline]{Motivate the reason for this modified projection map?}
+  Observe that this is different from the usual projection map from $\teich(\os)$ to $\cC(Z)$: for subsurfaces $Z$ that contribute to a witness nested in $U$, and consequently, $\colsup{Z}{\Omega} \swarrow U$ or $U \searrow \colsup{Z}{\Omega}$, we change the projection from $\pi_Z(w)$ to $\pi_Z(y)$ or $\pi_Z(x)$ respectively.
+  % \todo[inline]{Motivate the reason for this modified projection map?}
 
   This new projection map, despite being a modification of the usual projection map, is still consistent.
   \begin{proposition}[Proposition 8.4 of \cite{dowdall2023lattice}]
@@ -878,7 +898,7 @@ We now look at an extreme example of a complete witness families to motivate fur
     For $w \in \left\{ x, y \right\}$, and $U \in \Omega(x,y)$, we define $\widehat{w}_U^{\Omega}$ as follows.
     \begin{itemize}
     \item If $U$ is non-annular, then $\widehat{w}_U^{\Omega} \in \teich(U)$ is the thick point whose projections to $\cC(V)$ for $V \sqsubseteq U$ are coarsely equal to the projection tuple $\widehat{w}_U$ (which exists due to the Realization theorem (Theorem \ref{thm:consistency-realization})).
-    \item If $U$ is annular, then $\wt{w}_U$ is an element of $\mathbb{Z}$, and we set $\widehat{w}_U^{\Omega}$ to be the point in $\mathbb{H}$ whose twist coordinate is $\wt{w}_U$, and whose length coordinate is $\displaystyle \frac{1}{\min\left( \varepsilon, \ell_{\partial U}(w) \right)}$.
+    \item If $U$ is annular, then $\wt{w}_U$ is an element of $\mathbb{Z}$, and we set $\widehat{w}_U^{\Omega}$ to be the point in $\mathbb{H}$ whose twist coordinate is $\wt{w}_U$, and whose length coordinate is $\displaystyle \frac{1}{\min\left( {\vept}, \ell_{\partial U}(w) \right)}$.
     \end{itemize}
   \end{definition}
 
@@ -890,16 +910,16 @@ We now look at an extreme example of a complete witness families to motivate fur
     \begin{align*}
       \mathfrak{L}_{\Omega}(x,y) \coloneqq \sum_{U \in \Omega} \hNP^{\ast}(U) \cdot d_{\teich(U)}(\widehat{x}_{U}^{\Omega}, \widehat{y}_{U}^{\Omega})
     \end{align*}
-    Here, $\hNP^{\ast}(U)$ is the net point growth entropy for $\teich(U)$ when $U$ is non-annular, and when $U$ is annular, $\hNP^{\ast}(U)$ is $1$ when both $\widehat{x}_{U}^{\Omega}$ and $\widehat{y}_{U}^{\Omega}$ are $\varepsilon$-thick, and $2$ if not.
+    Here, $\hNP^{\ast}(U)$ is the net point growth entropy for $\teich(U)$ when $U$ is non-annular, and when $U$ is annular, $\hNP^{\ast}(U)$ is $1$ when both $\widehat{x}_{U}^{\Omega}$ and $\widehat{y}_{U}^{\Omega}$ are ${\vept}$-thick, and $2$ if not.
   \end{definition}
 
 We now address why we used a modified version of the projection map in Definition \ref{def:projection-tuple} instead of the usual projection map to curve complexes, by revisiting Example \ref{ex:uninsulated}.
 \begin{example}
   \label{ex:need-for-modified-projection}
-  Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, with large translation distance on $\cC(S)$ and small projections elsewhere.
+  Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, with large translation distance on $\cC(\os)$ and small projections elsewhere.
   Let $\delta$ be a reducible mapping class, which is psuedo-Anosov on a subsurface $V$, with large translation distance on $\cC(V)$ and small translation distance everywhere.
   Let $x$ be a point in $\teich(\os)$, and $y = \delta \gamma \delta^{-1} x$.
-  We first verify that $\mathcal{Y}(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
+  We first verify that $\Upsilon(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
   To see this, we consider the following tuple of points $(x, \delta x, \delta \gamma x, \delta \gamma \delta^{-1}x)$.
   We claim that each of the points in the tuple lies coarsely on the geodesic $[x,y]$, and computing the projections of adjacent pairs of points in tuple, we get the following.
   \begin{itemize}
@@ -907,7 +927,7 @@ We now address why we used a modified version of the projection map in Definitio
   \item[-] $[\delta x, \delta \gamma x]$ has large projections on the $\cC(\delta \os)$, which is the same as $\cC(\os)$, and small projections elsewhere.
   \item[-] $[\delta \gamma x, \delta \gamma \delta^{-1} x]$ has large projections on $\cC(\delta \gamma V)$, and small projections elsewhere.
   \end{itemize}
-  Let $\Omega(x, y) = \mathcal{Y}(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
+  Let $\Omega(x, y) = \Upsilon(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
   % \todo[inline]{Add more details about why $\delta \gamma V$ is the correct domain.}
   One can verify that this is a WISC witness family for $[x,y]$.
   Furthermore, we have that $V \swarrow \os$ and $\os \searrow \gamma V$.
@@ -943,20 +963,20 @@ For our applications however, the most we can tolerate is additive error.
 To do this, we will need to refine to notion of active interval for a subsurface to something more useful for the estimate: the \emph{contribution set} $\mathcal{A}_V^{\Omega}$ of a witness $V$.
 We first define two intermediate collections of subintervals of a geodesic segment $[x,y]$.
 \begin{align*}
-  M(V) &\coloneqq \bigcup \left\{ \mathcal{I}_W^{\varepsilon} \mid \text{$W \in \Omega$ with $W \sqsubset V$ }  \right\} \\
-  C(V) &\coloneqq \bigcup \left\{ \mathcal{I}_Z^{\varepsilon} \mid \text{$Z$ contributes to $V$} \right\}
+  M(V) &\coloneqq \bigcup \left\{ \mathcal{I}_W^{{\vept}} \mid \text{$W \in \Omega$ with $W \sqsubset V$ }  \right\} \\
+  C(V) &\coloneqq \bigcup \left\{ \mathcal{I}_Z^{{\vept}} \mid \text{$Z$ contributes to $V$} \right\}
 \end{align*}
 
 \begin{definition}[Contribution set]
   For a witness $V \in \Omega$, the contribution set $\mathcal{A}_V^{\Omega}$ is a subset of the geodesic segment $[x,y]$ defined in the following manner.
   \begin{align*}
-    \mathcal{A}_V^{\Omega} \coloneqq \left( \mathcal{I}_V^{\varepsilon} \setminus M(V) \right) \cup C(V)
+    \mathcal{A}_V^{\Omega} \coloneqq \left( \mathcal{I}_V^{\vept} \setminus M(V) \right) \cup C(V)
   \end{align*}
 \end{definition}
 \begin{rem}
   The reason we remove $M(V)$ and then later add $C(V)$ again is because it is possible for several different subsurfaces to be active at the same time: orthogonal subsurfaces for instance.
-  One can have $V$ and $W$ as witnesses, with $W \sqsubset V$, and $Z \sqsubset V$ an active subsurface but not a witness, such that $W \perp Z$ with $\mathcal{I}_W^{\varepsilon}$ and $\mathcal{I}_Z^{\varepsilon}$ overlapping.
-  In that case, removing $M(V)$ would also remove part of $\mathcal{I}_Z^\varepsilon$, and adding back $C(V)$ would add back the deleted portion.
+  One can have $V$ and $W$ as witnesses, with $W \sqsubset V$, and $Z \sqsubset V$ an active subsurface but not a witness, such that $W \perp Z$ with $\mathcal{I}_W^{\vept}$ and $\mathcal{I}_Z^{\vept}$ overlapping.
+  In that case, removing $M(V)$ would also remove part of $\mathcal{I}_Z^{\vept}$, and adding back $C(V)$ would add back the deleted portion.
 \end{rem}
 
 The following theorem estimates $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{y}_V^{\Omega})$ using $\mathcal{A}_V^{\Omega}$.
@@ -1028,6 +1048,7 @@ For WISCAL witness families, the following result relating complexity and Teichm
 We now define complexity length, which follows from the definition of the complexity of a witness family.
 
 \begin{definition}[Complexity length]
+  \label{defn:complexity-length}
   For a pair of points $x$ and $y$ in $\teich(\os)$, the complexity length $\mathfrak{L}(x,y)$ is defined to be the following.
   \begin{align*}
     \mathfrak{L}(x,y) \coloneqq \inf_{\Omega} \mathfrak{L}_{\Omega}(x,y)
@@ -1039,19 +1060,19 @@ With the machinery of complexity length set up, it is now possible to count net 
 
 \begin{theorem}[Theorem 12.1 of \cite{dowdall2023lattice}]
   \label{thm:counting-with-complexity}
-  For any large enough $\mathbf{C} > 0$, and any $\varepsilon_1 > 0$, there exists an integer $k \geq 1$, and $r > 0$ large enough such that the following bound holds for net points in $\teich(\os)$.
+  For any large enough $\mathbf{C} > 0$, and any $\veperr > 0$, there exists an polynomial function $p(r)$, and $r > 0$ large enough such that the following bound holds for net points in $\teich(\os)$.
   \begin{align*}
-    \# \left( y \in \mathcal{N} \mid \mathfrak{L}(x,y) \leq r \right) \leq kr^k \cdot \exp\left( (1+\varepsilon_1)r \right)
+    \# \left( y \in \mathcal{N} \mid \mathfrak{L}(x,y) \leq r \right) \leq p(r) \cdot \exp\left( (1+\veperr)r \right)
   \end{align*}
 \end{theorem}
-\todo[inline]{Make sure we're using consistent notation for net.}
+%\todo[inline]{Make sure we're using consistent notation for net.}
 
 \begin{rem}
-  The above theorem is a slightly weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\varepsilon_1$.
+  The above theorem is a slightly weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\veperr$.
   The reason we have the weaker version is that in the proof of their theorem, they count the number of net points in $\teich(V)$ in a ball of radius $R$, where $V$ is a witness, using Theorem \ref{thm:abem}, which gives them that the number of net points is equal, up to multiplicative error, to $\exp(\hNP(U) R)$.
-  Since Theorem \ref{thm:abem} only holds orientable surfaces, and we want to state our results for non-orientable surfaces as well, we will need to use a weaker counting result to count net points in $\teich(V)$, namely the following bound, which holds for any $\varepsilon_2 > 0$ and large enough $R$.
+  Since Theorem \ref{thm:abem} only holds orientable surfaces, and we want to state our results for non-orientable surfaces as well, we will need to use a weaker counting result to count net points in $\teich(V)$, namely the following bound, which holds for any $\vepent > 0$ and large enough $R$.
   \begin{align*}
-    \#\left( y \in \mathcal{N} \mid d_{\teich(V)}(x, y) \leq R \right) \leq \exp\left( (\hNP(V) + \varepsilon_2 ) R \right)
+    \#\left( y \in \mathcal{N} \mid d_{\teich(V)}(x, y) \leq R \right) \leq \exp\left( (\hNP(V) + \vepent ) R \right)
   \end{align*}
 \end{rem}
 
@@ -1086,14 +1107,14 @@ We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the p
   More concretely, let $w$ be a point such that the combinatorial type of the witness family associated to $[x,w]$ is $\mathcal{W}$.
   Suppose now that we add a vertex $(h, r_0)$ to the graph $\mathcal{W}$.
   To extend $\Omega(x,w)$ so that its combinatorial type is $\mathcal{W} \cup \left\{ (h, r_0) \right\}$, we need to add a witness $U$ whose net point entropy is $h$, and travel for distance $r_0$ in the Teichmüller space of $U$.
-  There are only finitely many choices for such subsurfaces $U$ (because their boundary curves must get short near $w$), and once we've made a choice of $U$, we have a choice $\exp\left( (\hNP(V) + \varepsilon_2) r_0 \right)$ points.
+  There are only finitely many choices for such subsurfaces $U$ (because their boundary curves must get short near $w$), and once we've made a choice of $U$, we have a choice $\exp\left( (\hNP(V) + \vepent) r_0 \right)$ points.
 
   Multiplying out the counts for each vertex added, we get the following estimate for the cardinality associated to each combinatorial type.
   \begin{align*}
-    \#\left( y \mid \text{$\Omega(x,y)$ has combinatorial type $\mathcal{V}$} \right) &= \sum_{(h, s) \in \mathcal{V}} \exp\left( (h + \varepsilon_2)s \right) \\
-    &\leq \exp\left( (1 + \varepsilon_1)r \right)
+    \#\left( y \mid \text{$\Omega(x,y)$ has combinatorial type $\mathcal{V}$} \right) &= \sum_{(h, s) \in \mathcal{V}} \exp\left( (h + \vepent)s \right) \\
+    &\leq \exp\left( (1 + \veperr)r \right)
   \end{align*}
-  We get the second inequality by picking $\varepsilon_2$ small enough, and observing that $\sum hs = r$.
+  We get the second inequality by picking $\vepent$ small enough, and observing that $\sum hs = r$.
 \end{proof}
 
 \subsection{Linear gap for bad points}
@@ -1103,13 +1124,13 @@ In this subsection, we will prove our main result involving complexity length: o
 
 \begin{theorem}
   \label{thm:linear-gap}
-  Suppose that for all proper subsurfaces $S^{\prime}$ of $\os$, the following inequality holds.
+  Suppose that for all proper subsurfaces $V$ of $\os$, the following inequality holds.
   \begin{align*}
-    \hNP(\mathrm{core}(\teich(S^{\prime}))) < \hNP(\mathrm{core}(\teich(\os)))
+    \hNP(V) < \hNP(\os)
   \end{align*}
-  Then for any $\varepsilon_3 > 0$, there exists $c > 0$, and $R$ large enough, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \varepsilon_3)$, the following upper bound holds for the complexity length between $p$ and $y$.
+  Then for any $\vepb > 0$, there exists $c > 0$, and $R$ large enough, such that for any bad point $y$, i.e. a point in $\mathcal{N}_b(p, R, \vepb)$, the following upper bound holds for the complexity length between $p$ and $y$.
   \begin{align*}
-    \mathfrak{L}(p, y) \leq \hNP(S) (1 - c) R
+    \mathfrak{L}(p, y) \leq \hNP(\os) (1 - c) R
   \end{align*}
 \end{theorem}
 
@@ -1138,14 +1159,14 @@ We consider the triple of points $(p, \widehat{y}_{\os}^{\Omega}, y)$, and first
 
 % By hypothesis of $y$ being a bad point, we have the following bounds on Teichmüller distance.
 % \begin{align*}
-%   % d_{\teich(\os)}(q, y) &> \varepsilon_3 R \\
-%   d_{\teich(\os)}(p, q) &\leq (1-\varepsilon_3) R
+%   % d_{\teich(\os)}(q, y) &> \vepb R \\
+%   d_{\teich(\os)}(p, q) &\leq (1-\vepb) R
 % \end{align*}
 % Since $\widehat{y}_{\os}^{\Omega}$ is within bounded distance of $q$, we get similar bounds for $\widehat{y}_{\os}^{\Omega}$, with an additional constant $J$.
 % \begin{align}
 %   \label{eq:eq1}
-%   % d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) &> \varepsilon_3 R - J \\
-%   d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) &\leq (1-\varepsilon_3) R + J
+%   % d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) &> \vepb R - J \\
+%   d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) &\leq (1-\vepb) R + J
 % \end{align}
 By applying Proposition \ref{prop:complexity-length-inequality}, we get a bound for $\mathfrak{L}(p, \widehat{y}_{\os}^{\Omega})$.
 \begin{align}
@@ -1157,10 +1178,10 @@ We next estimate $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$: we claim that th
 Indeed, we can construct this witness family from $\Omega$: take all the witnesses $V$ such that $\os \searrow V$.
 
 Since the witness family $\Omega^{\prime}$ does not have $\os$ as a witness, we can do better than Proposition \ref{prop:complexity-length-inequality} when estimating $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
-We have from our hypothesis that $\hNP(\mathrm{core}(\os)) > \hNP(\mathrm{core}(S^{\prime}))$, there exists a constant $h$ such that $h < \hNP(\mathrm{core}(\os))$ but $h > \hNP(\mathrm{core}(S^{\prime}))$.
+We have from our hypothesis that $\hNP(\os) > \hNP(V)$, there exists a constant $h$ such that $h < \hNP(\os)$ but $h > \hNP(V)$.
 Using Theorem \ref{thm:contribution-set-resolution-distance}, we get the following estimate for $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
 \begin{align}
-  \label{eq:eq3}
+  \label{eq:eq3p}
 \mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y) \leq \left( h + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) + K \mathbf{C}
 \end{align}
 
@@ -1169,7 +1190,7 @@ From the triangle inequality for complexity length, we also have the following
   \label{eq:eq4}
   \mathfrak{L}(p, y) \leq \mathfrak{L}(p, \widehat{y}_{\os}^{\Omega}) + \mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)
 \end{align}
-We plug in \eqref{eq:eq2} and \eqref{eq:eq3} into \eqref{eq:eq4}.
+We plug in \eqref{eq:eq2} and \eqref{eq:eq3p} into \eqref{eq:eq4}.
 \begin{align*}
   \mathfrak{L}(p, y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega})) + \left( h + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) +  2K \mathbf{C} \\
                      &= \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) (d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y)) \\
@@ -1178,13 +1199,13 @@ We plug in \eqref{eq:eq2} and \eqref{eq:eq3} into \eqref{eq:eq4}.
 \end{align*}
 
 Since $\widehat{y}_{\os}^\Omega$ is within a bounded distance of a point $q$ on $[p, y]$, we have $d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \leq R + J$, for some constant $J$.
-Furthermore, $d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \geq \varepsilon_3 R$, by the hypothesis of $y$ being a bad point.
+Furthermore, $d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \geq \vepb R$, by the hypothesis of $y$ being a bad point.
 This simplifies the expression for $\mathfrak{L}(x,y)$.
 \begin{align*}
-  \mathfrak{L}(x,y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) R - (\hNP(\os) - h)(\varepsilon_3) R + 2K \mathbf{C} \\
+  \mathfrak{L}(x,y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) R - (\hNP(\os) - h)(\vepb) R + 2K \mathbf{C} \\
   &= R \left( \hNP(\os) - d + \frac{K}{\mathbf{C}} \right) + 2K\mathbf{C}
 \end{align*}
-Here, $d = \varepsilon_3 \left( \hNP(\os) - h \right)$, which is a positive constant, since $\hNP(\os) > h$.
+Here, $d = \vepb \left( \hNP(\os) - h \right)$, which is a positive constant, since $\hNP(\os) > h$.
 By picking $\mathbf{C}$ and $R$ large enough, we get the statement of the theorem, which proves the result in the first case of $\os$ being in the witness family.
 
 When $\os$ is not in the witness family, we set $\widehat{y}_{\os}^{\Omega} = p$, and the rest of the proof follows identically.
@@ -1242,11 +1263,11 @@ For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\te
 
 We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
 
-We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \varepsilon}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\varepsilon$.
+We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \vept}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\vept$.
 
 \begin{theorem}[Product region theorem for non-orientable surfaces]
   \label{thm:prno}
-  For any $c >0$, there exists a small enough $\varepsilon > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \varepsilon}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \varepsilon}(\no_g)$.
+  For any $c >0$, there exists a small enough $\vept > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \vept}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \vept}(\no_g)$.
   \begin{align*}
     \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
   \end{align*}
@@ -1258,7 +1279,7 @@ We will be interested in looking at the restriction of $\Pi$ to the thin region 
   We begin the proof by constructing some points in $\teich(\os_{g-1})$ and a multicurve on $\os_{g-1}$.
   Recall that $\teich(\no_g)$ isometrically embeds inside $\teich(\os_{g-1})$: let $\wt{x}$ and $\wt{y}$ denote the points in $\teich(\os_{g-1})$ that are the images of $x$ and $y$ under the embedding.
   Let $\wt{\gamma}$ denote the lift of the multicurve $\gamma$: if $\gamma_i$ is a two-sided curve, it will have two disjoint lifts in the cover, and if $\gamma_i$ is a one-sided curve, it will have single lift in the double cover.
-  We have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  We have that the region $\teich_{\wt{\gamma} \leq \vept}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \vept}(\no_g) \subset \teich(\no_g)$.
   Let $\iota$ denote the orientation reversing deck transformation on $\os_{g-1}$ which corresponds to the covering map.
 
   \begin{claim*}
@@ -1305,7 +1326,7 @@ We will be interested in looking at the restriction of $\Pi$ to the thin region 
   \begin{align*}
     d(\wt{x}, \wt{y}) = d(x, y)
   \end{align*}
-  And finally, have that the region $\teich_{\wt{\gamma} \leq \varepsilon}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \varepsilon}(\no_g) \subset \teich(\no_g)$.
+  And finally, have that the region $\teich_{\wt{\gamma} \leq \vept}(\os_{g-1}) \subset \teich(\os_{g-1})$ intersects the image of $\teich(\no_g)$ at the image of $\teich_{\gamma \leq \vept}(\no_g) \subset \teich(\no_g)$.
   Combining these three facts, and applying Minsky's product region theorem for orientable surfaces, the result follows.
 \end{proof}
 
@@ -1430,24 +1451,24 @@ The following lemma  of \textcite[Lemma 3.26]{dowdall2023lattice} (which itself 
 
 \begin{proposition}
   \label{thm:active-intervals}
-  For each sufficiently small $\varepsilon > 0$, there exists $0 < \varepsilon^{\prime} < \varepsilon$ and $M_\varepsilon \geq 0$ such that for any subsurface $V \sqsubset S$, there's a (possibly empty) connected interval $\mathcal{I}_V^\varepsilon \subset [x,y]$ such that the following five conditions hold.
+  For each sufficiently small $\vept > 0$, there exists $0 < {\vept}^{\prime} < \vept$ and $M_{\vept} \geq 0$ such that for any subsurface $V \sqsubset S$, there's a (possibly empty) connected interval $\mathcal{I}_V^{\vept} \subset [x,y]$ such that the following five conditions hold.
   \begin{enumerate}[(i)]
-  \item If $d_V(x, y) \geq M_\varepsilon$, then $\mathcal{I}_V^{\varepsilon}$ is a non-empty subinterval of $[x,y]$.
-  \item $\ell_\alpha(z) < \varepsilon$ for all $z \in \mathcal{I}_V^{\varepsilon}$ and $\alpha \in \partial V$.
-  \item For all $z \in [x,y] \setminus \mathcal{I}_V^{\varepsilon}$, some component $\alpha$ of $\partial V$ has $\ell_\alpha(z) > \varepsilon^{\prime}$.
-  \item $d_V(w, z) \leq M_\varepsilon$ for every subinterval $[w,z] \subset [x,y]$ if $[w,z] \cap \mathcal{I}_V^\varepsilon = \varnothing$.
-  \item For a pair of traverse subsurfaces $U$ and $V$, $\mathcal{I}_U^\varepsilon \cap \mathcal{I}_V^\varepsilon = \varnothing$.
+  \item If $d_V(x, y) \geq M_{\vept}$, then $\mathcal{I}_V^{{\vept}}$ is a non-empty subinterval of $[x,y]$.
+  \item $\ell_\alpha(z) < {\vept}$ for all $z \in \mathcal{I}_V^{{\vept}}$ and $\alpha \in \partial V$.
+  \item For all $z \in [x,y] \setminus \mathcal{I}_V^{{\vept}}$, some component $\alpha$ of $\partial V$ has $\ell_\alpha(z) > {\vept}^{\prime}$.
+  \item $d_V(w, z) \leq M_{\vept}$ for every subinterval $[w,z] \subset [x,y]$ if $[w,z] \cap \mathcal{I}_V^{\vept} = \varnothing$.
+  \item For a pair of traverse subsurfaces $U$ and $V$, $\mathcal{I}_U^{\vept} \cap \mathcal{I}_V^{\vept} = \varnothing$.
   \end{enumerate}
 \end{proposition}
 
 \begin{proof}[Proof of Theorem \ref{thm:active-intervals} for non-orientable surfaces]
   Let $\no$ be the non-orientable surface, and $\os$ its double cover.
   We consider the image $[\wt{x}, \wt{y}]$ of the geodesic $[x,y]$ in $\teich(\os)$.
-  We know that the result holds for $[\wt{x}, \wt{y}]$, although with $\varepsilon^{\prime}$ replaced with $\frac{\varepsilon^{\prime}}{2}$, since lifting can double the lengths of some curves.
+  We know that the result holds for $[\wt{x}, \wt{y}]$, although with ${\vept}^{\prime}$ replaced with $\frac{{\vept}^{\prime}}{2}$, since lifting can double the lengths of some curves.
 
-  The main fact we need to verify is that the only subsurfaces $V$ that have non-empty $\mathcal{I}_V^\varepsilon$ come from lifts.
+  The main fact we need to verify is that the only subsurfaces $V$ that have non-empty $\mathcal{I}_V^{\vept}$ come from lifts.
   If $V$ is a subsurface of $\os$ that is not a lift, we use case (iii) of Lemma \ref{lem:lifting-subsurfaces} to conclude that $d_V(x, y) \leq k_0$ for some fixed constant $k_0$.
-  Picking $M_\varepsilon > k_0$ guarantees that the only subsurfaces for which $\mathcal{I}_V^\varepsilon$ is non-empty arise from lifts, which proves the result for non-orientable surfaces.
+  Picking $M_{\vept} > k_0$ guarantees that the only subsurfaces for which $\mathcal{I}_V^{\vept}$ is non-empty arise from lifts, which proves the result for non-orientable surfaces.
 \end{proof}
 
 Finally, we show that the consistency and the realization results (\textcite{behrstock2012geometry}) hold for Teichmüller spaces of non-orientable surfaces as well.

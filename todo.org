@@ -6,3 +6,26 @@
 #+LaTeX_HEADER: \usepackage[extreme]{savetrees}
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \thispagestyle{empty}
+
+* TODO Notation fixes
+** DONE Epsilons [5/5]
+- [X] Epsilon for the net: call it $\varepsilon_n$.
+- [X] Epsilon as the parameter for bad points: $\varepsilon_b$.
+- [X] Epsilon as the thinness constant: $\varepsilon_t$.
+- [X] Epsilon that appears as an error term in Theorem 6.22: $\varepsilon_{err}$
+- [X] Epsilon that appears as an error term when counting using net point entropy: $\varepsilon_{ent}$.
+** TODO Net symbols
+Use something other than $\mathcal{N}$, since we are using that for non-orientable surfaces.
+** DONE Subsurface symbols
+Use $V$, $W$, $U$, and $Z$ to begin with.
+** TODO
+Specify that the witness families in Section 6 are C, IC, WIS, and then WISC.
+** TODO Transversality
+Specify what $\pitchfork_V$ and $\lessdot$ mean.
+** TODO Define macro for weak core
+** TODO Specify what $\emul$ means
+* TODO Fix section 6.1
+Rewrite it to make more sense. Also stop using the phrase overcounting so much.
+* DONE Replace $kr^k$ with a polynomial
+In the complexity length counting result, replace $kr^k$ with a $p(r)$.
+* DONE In section 6, specify $\hNP(\os)$ is shorthand for $\hNP(\mathrm{core}(\os))$
