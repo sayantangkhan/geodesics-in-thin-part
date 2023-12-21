@@ -1008,22 +1008,22 @@ For WISCAL witness families, the following result relating complexity and Teichm
   Here, $K$ is some uniform constant depending only on $\os$.
 \end{proposition}
 
-For triples of points that do not backtrack, there exists a version of the above inequality similar to a reverse triangle inequality.
+% For triples of points that do not backtrack, there exists a version of the above inequality similar to a reverse triangle inequality.
 
-\begin{definition}[$\theta$-aligned]
-  A triple of points $(x,y,z)$ in $\teich(\os)$ is said to be $\theta$-aligned if the following inequality holds for all subsurfaces $V$.
-  \begin{align*}
-    d_V(x, y) + d_V(y, z) \leq d_V(x, z) + \theta
-  \end{align*}
-\end{definition}
+% \begin{definition}[$\theta$-aligned]
+%   A triple of points $(x,y,z)$ in $\teich(\os)$ is said to be $\theta$-aligned if the following inequality holds for all subsurfaces $V$.
+%   \begin{align*}
+%     d_V(x, y) + d_V(y, z) \leq d_V(x, z) + \theta
+%   \end{align*}
+% \end{definition}
 
-\begin{theorem}[Theorem 11.2 of \cite{dowdall2023lattice}]
-  If $(x, y, z)$ is a $\mathbf{C}$-aligned triple in $\teich(\os)$, and $\Omega_1$ is a WISCAL witness family for $[x,y]$, and $\Omega_2$ a WISCAL witness family for $[y,z]$, then the following inequality holds.
-  \begin{align*}
-    \mathfrak{L}_{\Omega_1}(x, y) + \mathfrak{L}_{\Omega_2}(y, z) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x,z) + K \mathbf{C}
-  \end{align*}
-  Here, $K$ is some uniform constant depending only on $\os$.
-\end{theorem}
+% \begin{theorem}[Theorem 11.2 of \cite{dowdall2023lattice}]
+%   If $(x, y, z)$ is a $\mathbf{C}$-aligned triple in $\teich(\os)$, and $\Omega_1$ is a WISCAL witness family for $[x,y]$, and $\Omega_2$ a WISCAL witness family for $[y,z]$, then the following inequality holds.
+%   \begin{align*}
+%     \mathfrak{L}_{\Omega_1}(x, y) + \mathfrak{L}_{\Omega_2}(y, z) \leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) d_{\teich(\os)}(x,z) + K \mathbf{C}
+%   \end{align*}
+%   Here, $K$ is some uniform constant depending only on $\os$.
+% \end{theorem}
 
 We now define complexity length, which follows from the definition of the complexity of a witness family.
 
@@ -1113,6 +1113,9 @@ In this subsection, we will prove our main result involving complexity length: o
   \end{align*}
 \end{theorem}
 
+\begin{proof}
+
+
 Let $\Omega$ be a WISCAL witness family for $[p, y]$: the proof of Theorem \ref{thm:linear-gap} splits into two cases depending on whether the surface $\os$ is a witness in $\Omega$ or not.
 
 The former case is harder, so we deal with that first.
@@ -1185,7 +1188,7 @@ Here, $d = \varepsilon_3 \left( \hNP(\os) - h \right)$, which is a positive cons
 By picking $\mathbf{C}$ and $R$ large enough, we get the statement of the theorem, which proves the result in the first case of $\os$ being in the witness family.
 
 When $\os$ is not in the witness family, we set $\widehat{y}_{\os}^{\Omega} = p$, and the rest of the proof follows identically.
-
+\end{proof}
 \appendix
 
 \section{Geometry of $\teich(\no_g)$}
