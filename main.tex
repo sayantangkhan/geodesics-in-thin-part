@@ -42,6 +42,7 @@
 \item[-] $\os_{g,b,c}$: A surface of genus $g$ with $b$ boundary components, and $c$ crosscaps attached.
 \item[-] $\no_g$: A non-orientable surface of genus $g$: this is the same as $\os_{\frac{g-1}{2}, 1, 0}$ if $g$ is odd, and $\os_{\frac{g-2}{2}, 2, 0}$ if $g$ is even.
 \item[-] $\teich(S)$: The Teichmüller space of the surface $S$.
+\item[-] $\systole(S)$: The one-sided systole superlevel set in $\teich(S)$.
 \item[-] $\pitchfork$: $U \pitchfork V$ denotes that the surfaces $U$ and $V$ are transverse.
 \item[-] $U \lessdot V$: The Behrstock partial order for transverse subsurfaces $U$ and $V$.
 \end{itemize}
@@ -51,13 +52,59 @@
 
 Outline of section.
 \begin{enumerate}[(1)]
-\item Define the one-sided systole region.
-\item Point out its drawbacks, and the lack of quasi-convexity.
+\item (DONE) Define the one-sided systole region.
+\item (DONE) Point out its drawbacks, and the lack of quasi-convexity.
 \item Define an even weaker notion of weak-convex core.
 \item Show what the weak convex core is good for.
 \item Prove that the one-sided systole region is a weak-convex core.
-\item Say something about why our methods won't work to show statistical convex co-compactness for the full Teichmüller space.
+\item (DONE) Say something about why our methods won't work to show statistical convex co-compactness for the full Teichmüller space.
 \end{enumerate}
+
+\subsection{Issues with geometric finiteness and statistical convex-cocompactness}
+\label{sec:issu-with-geom}
+
+In order to show that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is geometrically finite (in the sense of Fuchsian groups), we need begin by exhibiting a \emph{convex core}, i.e. a convex subset of $\teich(\no_g)$ on which the action of $\mcg(\no_g)$ is finite covolume.
+Similarly, to show that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we need to exhibit a \emph{statistical convex core}, which is a \emph{statistically convex subset} (see Definition \ref{defn:statistical-convex-subset}) of $\teich(\no_g)$ on which $\mcg(\no_g)$ acts cocompactly.
+
+A candidate for the convex core was suggested by \textcite{gendulphe2017whats}, namely the \emph{one-sided systole superlevel set} $\systole(\no_g)$.
+
+\begin{definition}[One-sided systole superlevel set]
+  The one-sided systole superlevel set is the subset of $\teich(\no_g)$ where no one-sided curve is shorter than $\vept$. This set is denoted $\systole(\no_g)$.
+\end{definition}
+
+The subset $\systole(\no_g)$ has several properties that suggest it should be the convex core for the $\mcg(\no_g)$ action.
+\begin{itemize}
+\item[-] The space $\teich(\no_g)$ $\mcg(\no_g)$-equivariantly deformation retracts onto the subset $\systole(\no_g)$ (Proposition 19.2 of \cite{gendulphe2017whats}).
+\item[-] The $\mcg(\no_g)$ action on $\systole(\no_g)$ has finite $\nu_N$-covolume, where $\nu_N$ is the non-orientable analog of the Weil-Peterson volume form (Proposition 19.1 of \cite{gendulphe2017whats}).
+\end{itemize}
+
+However, the subset $\systole(\no_g)$ fails to be convex, in a very strong sense, as we show in a prior paper.
+\begin{theorem}[Theorem 5.2 of \cite{limitsetkhan}]
+  For all $\vept > 0$, and all $D > 0$, there exists a Teichmüller geodesic segment whose endpoints lie in $\systole(\no_g)$ such that some point in the interior of the geodesic is more than distance $D$ from $\systole(\no_g)$.
+\end{theorem}
+
+With this obstruction, we see that $\systole(\no_g)$ will not do as a convex core for a geometrically finite action.
+There are two directions one could go in with this obstruction in mind, which we phrase as open questions.
+
+If we wish to show that $\mcg(\no_g)$ acts geometrically finitely, this is the question we need to answer.
+\begin{question}
+  Does there exist some other subset of $\teich(\no_g)$ that is finite $\nu_N$-covolume, convex, and $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$?
+\end{question}
+
+Alternatively, if we wish to show that $\mcg(\no_g)$ acts statistically convex-cocompactly on $\teich(\no_g)$, which $\systole(\no_g)$ as the statistical convex core, this is the question we need to answer.
+
+\begin{question}
+  Is $\systole(\no_g)$ statistically convex?
+\end{question}
+
+Our methods for proving statistical convexity do not quite work on $\teich(\no_g)$.
+We rely on strong recurrence of random walks on the space we look at, and random walks on $\teich(\no_g)$ behave poorly, because along certain components, they behave like symmetric random walks on $\mathbb{R}$, which we know do not have very strong recurrence properties.
+We explain this in more detail in the next section, when we set up the machinery of Foster-Lyapunov-Margulis functions.
+
+\subsection{A weaker notion of convexity}
+\label{sec:weak-noti-conv}
+
+
 
 \section{Geodesics in the thin part of $\teich(\no_g)$}
 \label{sec:recurr-rand-walks}
