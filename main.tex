@@ -54,8 +54,8 @@ Outline of section.
 \begin{enumerate}[(1)]
 \item (DONE) Define the one-sided systole region.
 \item (DONE) Point out its drawbacks, and the lack of quasi-convexity.
-\item Define an even weaker notion of weak-convex core.
-\item Show what the weak convex core is good for.
+\item (DONE) Define an even weaker notion of weak-convex core.
+\item (DONE) Show what the weak convex core is good for.
 \item Prove that the one-sided systole region is a weak-convex core.
 \item (DONE) Say something about why our methods won't work to show statistical convex co-compactness for the full Teichmüller space.
 \end{enumerate}
@@ -88,12 +88,14 @@ There are two directions one could go in with this obstruction in mind, which we
 
 If we wish to show that $\mcg(\no_g)$ acts geometrically finitely, this is the question we need to answer.
 \begin{question}
+  \label{ques:geom-finite-core}
   Does there exist some other subset of $\teich(\no_g)$ that is finite $\nu_N$-covolume, convex, and $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$?
 \end{question}
 
 Alternatively, if we wish to show that $\mcg(\no_g)$ acts statistically convex-cocompactly on $\teich(\no_g)$, which $\systole(\no_g)$ as the statistical convex core, this is the question we need to answer.
 
 \begin{question}
+  \label{ques:full-stat-core}
   Is $\systole(\no_g)$ statistically convex?
 \end{question}
 
@@ -103,6 +105,45 @@ We explain this in more detail in the next section, when we set up the machinery
 
 \subsection{A weaker notion of convexity}
 \label{sec:weak-noti-conv}
+
+Rather than directly answering questions \ref{ques:geom-finite-core} or \ref{ques:full-stat-core}, we define an even weaker notion of convexity as an intermediate goal.
+In the next subsection, we will show that $\systole(\no_g)$ satisfies this weaker notion of convexity.
+In this section, we define the notion, and explain why this weakened convexity is still sufficient for the purposes of Patterson-Sullivan theory.
+
+\begin{definition}[Weak convexity]
+  A subset $S$ of a geodesic metric space $X$ is said to be $\vepd$-weak convex (for $\vepd > 0$) if for any pair of points $x$ and $y$ in $S$, any geodesic path $\gamma$ joining $x$ and $y$ can be homotoped to a path $\gamma^{\prime}$ joining $x$ and $y$ such that $\gamma^{\prime}$ lies entirely within $S$, and the lengths of $\gamma$ and $\gamma^{\prime}$ satisfy the following inequality.
+  \begin{align*}
+    \ell(\gamma^{\prime}) \leq (1 + \vepd) \ell(\gamma)
+  \end{align*}
+\end{definition}
+
+An $\vepd$-weak convex subset is a subset which, while not entirely undistorted, has bounded distortion with respect to the ambient metric space.
+When $\vepd = 0$, an $\vepd$-weak convex is an actual convex subset, at least for uniquely geodesic metric spaces.
+
+Weak convexity also interacts well with results from Patterson-Sullivan theory.
+Suppose we have a discrete group $G$ acting properly discontinuously on a metric space $X$, and let $X_{\vepd}$ be an $\vepd$-weak convex subset of $X$ upon which $G$ also acts.
+If the critical exponent for the $G$ action on $X$ is $\delta$, and the corresponding exponent for $X_{\vepd}$ is $\delta_{\vepd}$, we immediate get the following estimate for $\delta$.
+\begin{align*}
+  \delta \leq \delta_{\vepd} + \vepd
+\end{align*}
+
+We can also define a \emph{slowed down geodesic flow} for a subset of the tangent directions on $X_{\vepd}$: namely the tangent directions along which the geodesic enters $X_{\vepd}$ infinitely often in either direction.
+For such bi-infinite geodesics, we can homotope them to lie entirely within $X_{\vepd}$, by only increasing their length by $\vepd$ fraction.
+If we can establish mixing results for this slowed down geodesic flow, we can use the techniques of \textcite{roblin2003ergodicite} to count lattice points in $X_{\vepd}$, the counting results translate into estimates for lattice points in $X$.
+\begin{align*}
+  \#\left( \text{Lattice points in $X$ within distance $R$} \right) \leq \#\left( \text{Lattice points in $X_{\vepd}$ within distance $R + \vepd$} \right)
+\end{align*}
+
+We can get even better estimates if rather than having a single $\vepd$-weak convex subset, we have an family of subsets, such that the $\vepd$ goes to $0$, and the union of the weak convex subsets is the entire space.
+
+\begin{definition}[Exhaustion by weak convex subsets]
+  A metric space $X$ is said to be exhausted by weak convex subsets if there exists a nested family of subsets $\left\{ X_i \right\}$, such that $X_i$ is $\varepsilon_i$-weak convex, where $\varepsilon_i$ goes to $0$, and $\bigcup_{i=1}^{\infty} X_i = X$.
+\end{definition}
+
+It's easy to see that when we have an exhaustion by weak convex subsets, we can get arbitrarily good bounds for the critical exponent for the $G$ action on $X$, as well as count lattice points on $X$ with only subexponential error terms.
+
+\subsection{Weak convexity for $\systole(\no_g)$}
+\label{sec:weak-conv-syst}
 
 
 
