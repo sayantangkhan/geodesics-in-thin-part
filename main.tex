@@ -55,8 +55,9 @@ Outline of section.
 \item (DONE) Define the one-sided systole region.
 \item (DONE) Point out its drawbacks, and the lack of quasi-convexity.
 \item (DONE) Define an even weaker notion of weak-convex core.
+\item ({\color{red}TODO}) Fix the above definition with an additional parameter.
 \item (DONE) Show what the weak convex core is good for.
-\item Prove that the one-sided systole region is a weak-convex core.
+\item ({\color{red}TODO}) Prove that the one-sided systole region is a weak-convex core.
 \item (DONE) Say something about why our methods won't work to show statistical convex co-compactness for the full Teichmüller space.
 \end{enumerate}
 
@@ -145,7 +146,55 @@ It's easy to see that when we have an exhaustion by weak convex subsets, we can 
 \subsection{Weak convexity for $\systole(\no_g)$}
 \label{sec:weak-conv-syst}
 
+In this section, we will show that $\systole(\no_g)$ is $\vepd$-weak convex subset of $\teich(\no_g)$, and that $\teich(\no_g)$ can be exhausted by the subsets $\systole(\no_g)$.
 
+\begin{theorem}
+  \label{thm:weak-convexity}
+  For any $\vepd > 0$, there exists a $\vept > 0$ such that $\systole(\no_g)$ is a $\vepd$-weak convex subset of $\teich(\no_g)$.
+\end{theorem}
+
+The key ingredient in the proof of Theorem \ref{thm:weak-convexity} is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
+
+Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
+Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
+For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
+\begin{definition}[Product region projection map]
+  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
+  \begin{itemize}
+  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
+  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
+  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
+  \end{itemize}
+\end{definition}
+
+We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
+
+We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \vept}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\vept$.
+
+\begingroup
+\def\thetheorem{\ref{thm:prno}}
+\begin{theorem}[Product region theorem for non-orientable surfaces]
+  For any $c >0$, there exists a small enough $\vept > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \vept}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \vept}(\no_g)$.
+  \begin{align*}
+    \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
+  \end{align*}
+
+\end{theorem}
+\addtocounter{theorem}{-1}
+\endgroup
+
+We can now prove Theorem \ref{thm:weak-convexity}.
+
+\begin{proof}[Proof of Theorem \ref{thm:weak-convexity}]
+  We begin by picking a small constant $\vept^{\prime} > 0$ and $\delta > 0$.
+  We will fix the values of these constants at the end of the proof.
+  Let $[x,y]$ be a geodesic segment that starts and ends in $\systolearg{\vept^{\prime}}(\no_g)$.
+  Let $\{p_i\}$ be points on $[x,y]$, such that $x = p_0$, $d(p_i, p_{i+1}) = \delta$, and $d(p_n, y) \leq \delta$, where $p_n$ is the last of the $p_i$'s.
+
+  The first step of our proof is modifying the path $[x,y]$ and .
+  We do so by constructing new points $p_i^{\prime}$, where $p_i^{\prime}$ is obtained from $p_i$ be increasing the length of any one-sided curve that's shorter than $\vept$ to $\vept$.
+  This ensures that the endpoints of the segments $[p_i^{\prime}, p_{i+1}^{\prime}]$ are in $\systolearg{\vept^{\prime}}(\no_g)$.
+\end{proof}
 
 \section{Geodesics in the thin part of $\teich(\no_g)$}
 \label{sec:recurr-rand-walks}
@@ -1350,21 +1399,29 @@ We set up some notation for this section.
 
 In this section, we prove a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces.
 
-Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
-Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
-For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
-\begin{definition}[Product region projection map]
-  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
-  \begin{itemize}
-  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
-  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
-  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
-  \end{itemize}
-\end{definition}
+% Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
+% Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
+% For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
+% \begin{definition}[Product region projection map]
+%   The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
+%   \begin{itemize}
+%   \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
+%   \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
+%   \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
+%   \end{itemize}
+% \end{definition}
 
-We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
+% We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
 
-We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \vept}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\vept$.
+% We will be interested in looking at the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \vept}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\vept$.
+
+We recall the following objects that were defined in Section \ref{sec:weak-conv-syst}.
+
+\begin{enumerate}[(i)]
+\item The multicurve $\gamma$ on $\no_g$.
+\item The metric space $X_\gamma$, and the projection map $\Pi$.
+\item The thin region $\teich_{\gamma \leq \vept}(\no_g)$.
+\end{enumerate}
 
 \begin{theorem}[Product region theorem for non-orientable surfaces]
   \label{thm:prno}
