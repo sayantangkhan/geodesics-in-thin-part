@@ -208,13 +208,15 @@ We can now prove Theorem \ref{thm:weak-convexity}.
 
     We have that the interior of $[p_i, p_{i+1}]$ and $[p_i^{\prime}, p_{i+1}^{\prime}]$ both lie in the region where some one-sided curve $\gamma$ is shorter than $\vept^{\prime}$.
     We invoke Theorem \ref{thm:prno} to estimate distances in this region: we have a constant $c(\vept^{\prime})$ that depends on $\vept^{\prime}$ such that following holds.
-    \begin{align*}
+    \begin{align}
+      \label{eq:p-estimate}
       \left| d(p_i, p_{i+1}) - \sup\left( d_{\teich(\no_g \setminus \gamma)}(\Pi(p_i), \Pi(p_{i+1})), \left| \log \left( \frac{\ell_{p_i}(\gamma)}{\ell_{p_{i+1}}(\gamma)}  \right) \right| \right) \right| \leq c(\vept^{\prime})
-    \end{align*}
+    \end{align}
     Observe that when we replace $p_i$ by $p_i^{\prime}$ and $p_{i+1}$ by $p_{i+1}^{\prime}$, the first term in the $\sup$ stays the same, and the second term becomes $0$.
-    \begin{align*}
+    \begin{align}
+      \label{eq:p-prime-estimate}
       \left| d(p_i^{\prime}, p_{i+1}^{\prime}) - \sup\left( d_{\teich(\no_g \setminus \gamma)}(\Pi(p_i^{\prime}), \Pi(p_{i+1}^{\prime})), 0 \right) \right| \leq c(\vept^{\prime})
-    \end{align*}
+    \end{align}
     This leads to the following estimate for $d(p_i^{\prime}, p_{i+1}^{\prime})$.
     \begin{align}
       \label{eq:length-estimate-homotope}
@@ -241,9 +243,30 @@ We can now prove Theorem \ref{thm:weak-convexity}.
   This proves the result.
 \end{proof}
 
-\section{Geodesics in the thin part of $\teich(\no_g)$}
+\begin{rem}
+  We emphasize that the key step in the above proof is going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate}, where the $\log\left( \frac{\ell_{p_i}(\gamma)}{\ell_{p_i^{\prime}}(\gamma)}  \right)$ term becomes $0$.
+  This is only possible because there cannot be any twisting around a one-sided curve $\gamma$, so the projection map that sends $p_i$ to $p_i^{\prime}$ and $p_{i+1}$ to $p_{i+1}^{\prime}$ is distance reducing.
+  If one tried to use the same proof strategy to show that the thick part of $\teich(\os)$, for any orientable or non-orientable surface $\os$ is weak convex in $\teich(\os)$, the step we described would be the point of failure.
+  In particular, if there's a twist along $\gamma$, going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate} might not be distance reducing, and in fact will exponentially increase the distance, leading the estimate to fail.
+\end{rem}
+
+Now that we have established that $\systole(\no_g)$ is $\vept$-weak convex, we can justifiably call it the weak convex core of $\teich(\no_g)$.
+
+\begin{definition}[Weak convex core of $\teich(\no_g)$]
+  For any $\vept > 0$, we call $\systole(\no_g)$ the weak convex core of $\teich(\no_g)$, and denote it $\core(\teich(\no_g))$.
+  The specific value of $\vept$ will usually not be important (as long as it is smaller than a threshold value), or clear from context.
+\end{definition}
+
+\section{Geodesics in the thin part of $\core(\teich(\no_g))$}
 \label{sec:recurr-rand-walks}
 
+Outline of section:
+\begin{enumerate}[(i)]
+\item ({\color{red} TODO}) State what we conjecture the statistical compact convex core is.
+\item ({\color{red} TODO}) Construct net, and describe our random walk.
+\item ({\color{red} TODO}) Outline how we will show random walk trajectories in the thin part are rare.
+\item ({\color{red} TODO}) Translate the exponential rareness of bad random walk trajectories to bad geodesic segments.
+\end{enumerate}
 
 \subsection{Construction of the Margulis function}
 \label{sec:constr-marg-funct}
