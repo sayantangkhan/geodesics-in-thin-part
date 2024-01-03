@@ -268,6 +268,71 @@ Outline of section:
 \item ({\color{red} TODO}) Translate the exponential rareness of bad random walk trajectories to bad geodesic segments.
 \end{enumerate}
 
+Inspired by Theorem \ref{thm:weak-convexity}, we will focus our attention on $\core(\teich(\no_g))$ instead of the entirety of $\teich(\no_g)$.
+In this section, we will begin a proof of the fact that the action of $\mcg(\no_g)$ on $\core(\teich(\no_g))$ is statistically convex cocompact (we abbreviate that to SCC for the remainder of the paper).
+
+To show that the $\mcg(\no_g)$ action is SCC, we need to exhibit a subset of $\core(\teich(\no_g))$ which has the following two properties.
+\begin{enumerate}[(i)]
+\item The action of $\mcg(\no_g)$ on the subset is cocompact.
+\item The subset is statistically convex.
+\end{enumerate}
+We claim that the subset $\thick(\no_g)$ satisfies these properties.
+\begin{align*}
+  \thick(\no_g) \coloneqq \left\{ z \in \teich(\no_g) \mid \text{No curve on $z$ is shorter than $\vept$} \right\}
+\end{align*}
+
+Although we have defined $\thick(\no_g)$ as a subset of $\teich(\no_g)$, it is clearly also a subset of $\core(\teich(\no_g)) = \systole(\no_g)$: this follows from its very definition, which is a more restrictive version of the definition of $\systole(\no_g)$.
+The action of $\mcg(\no_g)$ on $\thick(\no_g)$ is also cocompact, because the quotient is the thick part of the moduli space, which is well known to be compact.
+
+Showing that $\thick(\no_g)$ is a statistically convex subset of $\core(\teich(\no_g))$ requires more work.
+We begin by rephrasing what it means for $\thick(\no_g)$ to be statistically convex in a form that's more convenient for our methods.
+
+Consider the metric $d_{\vept}$ on $\core(\teich(\no_g))$, defined by the following formula.
+\begin{align*}
+  d_{\vept}(x, y) \coloneqq \inf\left( \ell(\lambda) \mid \text{$\lambda$ is a path in $\core(\teich(\no_g))$ joining $x$ and $y$} \right)
+\end{align*}
+This metric is not the same as the usual Teichmüller metric $d$, but by Theorem \ref{thm:weak-convexity}, we can make the ratio of these two metrics arbitrarily close to $1$ by picking $\vept$ small enough.
+
+We now define lattice point entropy, and entropy for bad lattice points.
+\begin{definition}[Lattice point entropy for $\core(\teich(\no_g))$]
+  Let $p$ be a point in $\thick(\no_g)$, and let $N_p(R, \vept)$ be the lattice point counting function.
+  \begin{align*}
+    N_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid d_{\vept}(p, \gamma p) \leq R \right)
+  \end{align*}
+  The lattice point entropy $\hLP(\teich(\no_g), \vept)$ is the following quantity.
+  \begin{align*}
+    \hLP(\teich(\no_g), \vept) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+\begin{rem}
+  The lattice point entropy is a well-defined quantity since we have that $N_p(R, \vept)$ is a sub-multiplicative function, and therefore $\log N_p(R, \vept)$ is sub-additive, and the limit is well defined by Fekete's lemma.
+\end{rem}
+
+\begin{definition}[Bad lattice points]
+  A lattice point $\gamma p$ is said to be $\alpha$-bad if the geodesic segment joining $p$ and $\gamma p$ spends more than $\alpha$ fraction of its length outside of $\thick(\no_g)$.
+\end{definition}
+
+\begin{definition}[Entropy for $\alpha$-bad lattice points]
+  Let $M_p(R, \vept, \alpha)$ be the counting function for $\alpha$-bad lattice points.
+  \begin{align*}
+    M_p(R, \vept, \alpha) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is $\alpha$-bad}  \right)
+  \end{align*}
+  The entropy for bad lattice points $\hLPb(\teich(\no_g), \vept, \alpha)$ is the following quantity.
+  \begin{align*}
+    \hLPb(\teich(\no_g), \vept, \alpha) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept, \alpha)}{R}
+  \end{align*}
+\end{definition}
+
+We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for any value of $\alpha < 1$.
+
+\begin{theorem}[Statistical convexity]
+  For any $\alpha < 1$, and any $\vept > 0$, the following inequality holds.
+  \begin{align*}
+    \hLPb(\teich(\no_g), \vept, \alpha) < \hLP(\teich(\no_g), \vept)
+  \end{align*}
+\end{theorem}
+
 \subsection{Construction of the Margulis function}
 \label{sec:constr-marg-funct}
 
