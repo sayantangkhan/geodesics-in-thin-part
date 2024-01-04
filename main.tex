@@ -262,8 +262,8 @@ Now that we have established that $\systole(\no_g)$ is $\vept$-weak convex, we c
 
 Outline of section:
 \begin{enumerate}[(i)]
-\item ({\color{red} TODO}) State what we conjecture the statistical compact convex core is.
-\item ({\color{red} TODO}) Construct net, and describe our random walk.
+\item (DONE) State what we conjecture the statistical compact convex core is.
+\item (DONE) Construct net, and describe our random walk.
 \item ({\color{red} TODO}) Outline how we will show random walk trajectories in the thin part are rare.
 \item ({\color{red} TODO}) Translate the exponential rareness of bad random walk trajectories to bad geodesic segments.
 \end{enumerate}
@@ -327,17 +327,62 @@ We now define lattice point entropy, and entropy for bad lattice points.
 We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for any value of $\alpha < 1$.
 
 \begin{theorem}[Statistical convexity]
+  \label{thm:stat-convex}
   For any $\alpha < 1$, and any $\vept > 0$, the following inequality holds.
   \begin{align*}
     \hLPb(\teich(\no_g), \vept, \alpha) < \hLP(\teich(\no_g), \vept)
   \end{align*}
 \end{theorem}
 
-\subsection{Construction of the Margulis function}
+We prove Theorem \ref{thm:stat-convex} by constructing a random walk on $\core(\teich(\no_g))$ and proving a similar entropy gap between all random walk trajectories and the random walk trajectories that spend $\alpha$-fraction of time outside $\thick(\no_g)$.
+
+\subsection{Construction of random walk}
+\label{sec:constr-rand-walk}
+
+Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\teich(\no_g)) / \mcg(\no_g)$.
+
+\begin{definition}[$(\vepn, 2\vepn)$-net in $\core(\teich(\no_g))$]
+  Let $\mathfrak{M}$ be a subset of $\core(\teich(\no_g)) / \mcg(\no_g)$ satisfying the following two conditions.
+  \begin{enumerate}[(i)]
+  \item If $z_1$ and $z_2$ lie in $\mathfrak{M}$, then $d_{\vept}(z_1, z_2) \geq \vepn$.
+  \item For any $z_1$ in $\core(\teich(\no_g)) / \mcg(\no_g)$, there exists $z_2 \in \mathfrak{M}$ such that $d_{\vept}(z_1, z_2) \leq 2 \vepn$.
+  \end{enumerate}
+  An $(\vepn, 2\vepn)$-net $\net$ in $\core(\teich(\no_g))$ is $\mathfrak{p}^{-1}(\mathfrak{M})$ for any subset $\mathfrak{M}$ satisfying the above conditions.
+\end{definition}
+
+The random walk is defined in terms of a net $\net$ and a parameter $\tau > 0$: we pick a starting point $r_0$ (which we call step $0$) for the random walk from one of the net points, and $r_n$ is picked uniformly at random amongst all the net points that are within distance $\tau$ of $r_{n-1}$.
+
+We will be interested in counting the number of $n$-step trajectories of the random walk as a function of $n$ and $\tau$.
+The count will also involve the exponential growth rate of the number of net points in a ball of radius $R$, which we call the \emph{net point entropy} $\hNP(\core(\teich(\no_g)), \vept)$.
+
+\begin{definition}[Net point entropy]
+  Let $K_p(R, \vept)$ be the counting function for net points, where $p \in \core(\teich(\no_g))$.
+  \begin{align*}
+    K_p(R, \vept) \coloneqq \#\left( y \in \net \mid d_{\vept}(p, y) \leq R \right)
+  \end{align*}
+  The net point entropy $\hNP(\core(\teich(\no_g)), \vept)$ is the following function defined in terms of $K_p$.
+  \begin{align*}
+    \hNP(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log K_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+Note that $\hNP(\core(\teich(\no_g)), \vept)$ does not depend on the choice of the actual net, nor does it depend on the parameter $\vepn$. Two different nets with different choices of $\vepn$ will have counting functions that differ by at most a constant multiplicative term, which will not change the value of $\hNP(\core(\teich(\no_g)), \vept)$.
+
+We will replicate the proof of Theorem 1.2 of \textcite{eskinmirzakhani}, where they construct a random walk on a net, and use that to count bad trajectories.
+The key difficulty that comes up in our proof and which does not come up in their proof is the fact that they get an estimate for the cardinality of bad trajectories (and therefore bad lattice points) in terms of $\hNP(\teich(\os_g))$\footnote{$\os_g$ refers to orientable surfaces of genus $g$.}, which they know is the same as $\hLP(\teich(\os_g))$ (i.e. $6g-6$) thanks to Theorem 1.2 of \textcite{10.1215/00127094-1548443}.
+
+Since we are working with non-orientable surfaces, we cannot invoke Theorem 1.2 of \textcite{10.1215/00127094-1548443}, and instead need to relate $\hLP$ and $\hNP$ more directly: this is what we do in Sections \ref{sec:equal-latt-point} and \ref{sec:line-gap-compl}.
+
+\subsection{Construction of the Foster-Lyapunov-Margulis function}
 \label{sec:constr-marg-funct}
 
 \subsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-1}
+
+\subsection{Recurrence for geodesic segments}
+\label{sec:recurr-geod-segm}
+
+
 
 \section{Equality of lattice point entropy and net point entropy}
 \label{sec:equal-latt-point}
