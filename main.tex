@@ -349,6 +349,7 @@ Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\
   \end{enumerate}
   An $(\vepn, 2\vepn)$-net $\net$ in $\core(\teich(\no_g))$ is $\mathfrak{p}^{-1}(\mathfrak{M})$ for any subset $\mathfrak{M}$ satisfying the above conditions.
 \end{definition}
+\todo[inline]{Fix this definition so that the net is grid-aligned with respect to the product regions in the thin part of Teichmüller space.}
 
 The random walk is defined in terms of a net $\net$ and a parameter $\tau > 0$: we pick a starting point $r_0$ (which we call step $0$) for the random walk from one of the net points, and $r_n$ is picked uniformly at random amongst all the net points that are within distance $\tau$ of $r_{n-1}$.
 
@@ -375,6 +376,44 @@ Since we are working with non-orientable surfaces, we cannot invoke Theorem 1.2 
 
 \subsection{Construction of the Foster-Lyapunov-Margulis function}
 \label{sec:constr-marg-funct}
+
+One of the ways to show that a random walk on a non-compact space avoids the complement of a compact region with high probability is to construct a proper function $\flm$ on the space which satisfies a certain inequality when averaged over one step of the random walk.
+
+\begin{definition}[Averaging operator]
+  Let $\tau > 0$ be the parameter associated to the random walk, and $f$ be any real valued function $\core(\teich(\no_g))$.
+  Then the action of the averaging operator $A_{\tau}$ on $f$ is given by the following formula.
+  \begin{align*}
+    (A_{\tau}f)(x) \coloneqq \frac{1}{\#\left( \left\{ z \in \net \mid d_{\vept}(x, z) \leq \tau \right\} \right)} \left( \sum_{\left\{ z \in \net \mid d_{\vept}(x, z) \leq \tau \right\}} f(z) \right)
+  \end{align*}
+\end{definition}
+
+A Foster-Lyapunov-Margulis function is a function that has strong decay properties when the operator $A_{\tau}$ is applied to it.
+
+\begin{definition}[Foster-Lyapunov-Margulis function]
+  A proper function $f$ on $\core(\teich(\no_g))$ is called a Foster-Lyapunov-Margulis function if $A_{\tau}f$ satisfies the following inequality.
+  \begin{align*}
+    (A_{\tau}f)(x) \leq c(x) f(x) + b(x)
+  \end{align*}
+  Here, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$ for some constant $c^{\prime}$ and polynomial $p$.
+  \begin{align*}
+    c(x) \leq c^{\prime} \cdot p(\tau) \cdot \exp(-\tau)
+  \end{align*}
+  \todo[inline]{Might need to fix the exponent in the exponential function.}
+\end{definition}
+
+Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the length of the shortest two-sided curve on the surface.
+\begin{align*}
+  \flm(x) \coloneqq \sqrt{\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
+\end{align*}
+This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
+
+\begin{proposition}
+  The function $\flm$ is a Foster-Lyapunov-Margulis function on $\core(\teich(\no_g))$ with respect to $A_{\tau}$, for large enough values of $\tau$.
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
 
 \subsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-1}
