@@ -349,7 +349,7 @@ Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\
   \end{enumerate}
   An $(\vepn, 2\vepn)$-net $\net$ in $\core(\teich(\no_g))$ is $\mathfrak{p}^{-1}(\mathfrak{M})$ for any subset $\mathfrak{M}$ satisfying the above conditions.
 \end{definition}
-\todo[inline]{Fix this definition so that the net is grid-aligned with respect to the product regions in the thin part of Teichmüller space.}
+% \todo[inline]{Fix this definition so that the net is grid-aligned with respect to the product regions in the thin part of Teichmüller space.}
 
 The random walk is defined in terms of a net $\net$ and a parameter $\tau > 0$: we pick a starting point $r_0$ (which we call step $0$) for the random walk from one of the net points, and $r_n$ is picked uniformly at random amongst all the net points that are within distance $\tau$ of $r_{n-1}$.
 
@@ -383,13 +383,15 @@ One of the ways to show that a random walk on a non-compact space avoids the com
   Let $\tau > 0$ be the parameter associated to the random walk, and $f$ be any real valued function $\core(\teich(\no_g))$.
   Then the action of the averaging operator $A_{\tau}$ on $f$ is given by the following formula.
   \begin{align*}
-    (A_{\tau}f)(x) \coloneqq \frac{1}{\#\left( \left\{ z \in \net \mid d_{\vept}(x, z) \leq \tau \right\} \right)} \left( \sum_{\left\{ z \in \net \mid d_{\vept}(x, z) \leq \tau \right\}} f(z) \right)
+    (A_{\tau}f)(x) \coloneqq \frac{1}{\nu_N\left( B_{\tau}^{\vept}(x) \right)} \left( \int_{B_{\tau}^{\vept}(x)} f(z) d\nu_N(z) \right)
   \end{align*}
+  Here, $B_{\tau}^{\vept}(x)$ is a ball of radius $\tau$ around $x$ with respect to the metric $d_{\vept}$.
 \end{definition}
 
 A Foster-Lyapunov-Margulis function is a function that has strong decay properties when the operator $A_{\tau}$ is applied to it.
 
 \begin{definition}[Foster-Lyapunov-Margulis function]
+  \label{defn:flm}
   A proper function $f$ on $\core(\teich(\no_g))$ is called a Foster-Lyapunov-Margulis function if $A_{\tau}f$ satisfies the following inequality.
   \begin{align*}
     (A_{\tau}f)(x) \leq c(x) f(x) + b(x)
@@ -403,7 +405,7 @@ A Foster-Lyapunov-Margulis function is a function that has strong decay properti
 
 Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the length of the shortest two-sided curve on the surface.
 \begin{align*}
-  \flm(x) \coloneqq \sqrt{\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
+  \flm(x) \coloneqq {\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
 \end{align*}
 This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
 
@@ -412,7 +414,29 @@ This function is a proper function, since the sub-level sets of this function ar
 \end{proposition}
 
 \begin{proof}
-
+  Let $W_0$ be the region of $\core(\teich(\no_g))$ where all two-sided curves are longer than $\delta$, for some value of $\delta$ we will fix later.
+  We divide $\core(\teich(\no_g))$ into three regions, and prove the estimate for $(A_\tau \flm)(x)$ for $x$ in these three regions.
+  The regions $R_1$, $R_2$ and $R_3$ are defined in the following manner.
+  \begin{itemize}
+  \item[-] $R_1$: This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\delta$ for all points in $B_{\tau}^{\vept}(x)$.
+  \item[-] $R_2$: This is the set of points $x$ such that there can be multiple curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ such that each $\gamma_i$ is the shortest curve at some point in $B_{\tau}^{\vept}(x)$, but wherever they are the shortest curves, their length is less than $\delta$.
+  \item[-] $R_3$: This is all of $\core(\teich(\no_g))$ with $R_1$ and $R_2$ removed.
+\end{itemize}
+  \begin{enumerate}[(i)]
+  \item Proof for $x \in R_1$: In this case, the entire ball $B_{\tau}^{\vept}$ is contained in the product region where $\gamma$ stays short.
+    By Theorem \ref{thm:prno}, there exists a constant $c(\delta)$, which can be made arbitrarily small by picking $\delta$ small enough, such that the ball $B_{\tau}^{\vept}(x)$ contains, and is contained inside a product of balls in $\core(\teich(\no_g \setminus \gamma))$ and $\mathbb{H}$ (which corresponds to length and twist around $\gamma$).
+    \begin{align*}
+      B_{\tau - c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau - c(\delta)}(\mathbb{H}) &\subset B_{\tau}^{\vept}(x) \\
+      &\subset B_{\tau + c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau + c(\delta)}(\mathbb{H})
+    \end{align*}
+    Instead of computing the average of $f$ over $B_{\tau}^{\vept}(x)$, we can compute it over the product of the balls as described above.
+    Since the volumes of these balls grow exponentially with respect to radius, computing the average over the product of balls will give us an average that differs from the true average by a bounded multiplicative constant (which can be made as close to $1$ as we like by picking a small enough $\delta$).
+    This constant will be one of the terms that contribute to $c^{\prime}$ in Definition \ref{defn:flm}.
+    Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
+    It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
+  \item Proof for $x \in R_2$:
+  \item Proof for $x \in R_3$:
+  \end{enumerate}
 \end{proof}
 
 \subsection{Recurrence for random walks}
@@ -1706,6 +1730,17 @@ We recall the following objects that were defined in Section \ref{sec:weak-conv-
 \end{proof}
 
 % {\color{red} Move the theorem in Section 3 to this section}
+
+\subsection{Uniform bounds for the volume of a ball}
+\label{sec:unif-bounds-volume}
+
+Outline of section:
+\begin{enumerate}[(i)]
+\item Define the volume form $\nu_N$.
+\item {\color{red} Prove a version of Lemma 3.1 for the Norbury volume form $\nu_N$ using the product region theorem.}
+\end{enumerate}
+
+
 
 \subsection{Teichmüller geodesics and geodesics in the curve complex}
 \label{sec:dist-form-teichm}
