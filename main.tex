@@ -324,11 +324,11 @@ We now define lattice point entropy, and entropy for bad lattice points.
   \end{align*}
 \end{definition}
 
-We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for any value of $\alpha < 1$.
+We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for $\alpha$ close enough to $1$.
 
 \begin{theorem}[Statistical convexity]
   \label{thm:stat-convex}
-  For any $\alpha < 1$, and any $\vept > 0$, the following inequality holds.
+  There exists $\alpha_0 < 1$ such that for any $\alpha_0 < \alpha < 1$, and any $\vept > 0$, the following inequality holds.
   \begin{align*}
     \hLPb(\teich(\no_g), \vept, \alpha) < \hLP(\teich(\no_g), \vept)
   \end{align*}
@@ -378,6 +378,7 @@ Since we are working with non-orientable surfaces, we cannot invoke Theorem 1.2 
 \label{sec:constr-marg-funct}
 
 One of the ways to show that a random walk on a non-compact space avoids the complement of a compact region with high probability is to construct a proper function $\flm$ on the space which satisfies a certain inequality when averaged over one step of the random walk.
+See \textcite{EskinMozes+2022+342+361} for an exposition on the construction of these functions as well as some applications to dynamics and random walks.
 
 \begin{definition}[Averaging operator]
   Let $\tau > 0$ be the parameter associated to the random walk, and $f$ be any real valued function $\core(\teich(\no_g))$.
@@ -410,6 +411,7 @@ Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the 
 This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
 
 \begin{proposition}
+  \label{prop:flm-is-flm}
   The function $\flm$ is a Foster-Lyapunov-Margulis function on $\core(\teich(\no_g))$ with respect to $A_{\tau}$, for large enough values of $\tau$.
 \end{proposition}
 
@@ -490,6 +492,13 @@ This function is a proper function, since the sub-level sets of this function ar
 
 \subsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-1}
+
+We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
+In this section, we will count the number of random walk trajectories that are \emph{$\alpha$-bad} and \emph{almost close up}.
+
+\begin{definition}[$\alpha$-bad trajectories]
+
+\end{definition}
 
 \subsubsection{Why the approach fails for $\teich(\no_g)$}
 \label{sec:why-approach-fails}
