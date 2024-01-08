@@ -400,12 +400,12 @@ A Foster-Lyapunov-Margulis function is a function that has strong decay properti
   \begin{align*}
     c(x) \leq c^{\prime} \cdot p(\tau) \cdot \exp(-\tau)
   \end{align*}
-  \todo[inline]{Might need to fix the exponent in the exponential function.}
+  % \todo[inline]{Might need to fix the exponent in the exponential function.}
 \end{definition}
 
 Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the length of the shortest two-sided curve on the surface.
 \begin{align*}
-  \flm(x) \coloneqq {\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
+  \flm(x) \coloneqq \sqrt{\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
 \end{align*}
 This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
 
@@ -434,13 +434,67 @@ This function is a proper function, since the sub-level sets of this function ar
     This constant will be one of the terms that contribute to $c^{\prime}$ in Definition \ref{defn:flm}.
     Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
     It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
-  \item Proof for $x \in R_2$:
-  \item Proof for $x \in R_3$:
+
+    If we parameterize $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e. $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
+    The average of this function over a sphere is well-understood (see \cite[Lemma 4.2]{EskinMozes+2022+342+361}), and we can use the spherical average to compute the average over a ball by taking a weighted average of the spherical averages.
+    Doing so gives us the following estimate for $(A_{\tau}\flm)(z)$ (where $c^{\prime}$ is some fixed constant).
+    \begin{align*}
+      (A_{\tau}\flm)(z) \leq c^{\prime} \tau \exp(-\tau) \flm(z)
+    \end{align*}
+    Since we have already established that the value $\flm(x)$ only depends on depends on what happens in the $\mathbb{H}$-coordinate, namely $z$, we get a corresponding inequality for $x$, which proves the result in this case.
+    \begin{align*}
+      (A_{\tau}\flm)(x) \leq c^{\prime} \tau \exp(-\tau) \flm(x)
+    \end{align*}
+  \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that get short at some point in $B_{\tau}^{\vept}(x)$.
+    We have that the ball lies in the product region where all the curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ are short simultaneously.
+    If that is not the case, we pick a $\delta$ small enough such that this holds.
+    We have that there exists some constant $c(g)$, depending only on $g$, such that $k \leq c(g)$, since we cannot have too many curves being short simultaneously.
+
+    Similar to the previous case, changing only the $\core(\teich(\no_g \setminus \bigcup_{i=1}^k \gamma_i))$ coordinate will not change the value of the function $\flm$, so it suffices to focus our attention on the coordinates $\prod_{i=1}^k \mathbb{H}_i$, where each $\mathbb{H}_i$ corresponds to the length and twist around $\gamma_i$.
+
+    Let $z_{i, \mathrm{im}}$ be the imaginary part of the $i$\textsuperscript{th} copy of $\mathbb{H}$ in $\prod_{i=1}^k \mathbb{H}_i$.
+    The function $\flm$ on $\prod_{i=1}^k \mathbb{H}_i$ is given by the following formula.
+    \begin{align*}
+      \flm(x) = \max_{i} \sqrt{z_{(i, \mathrm{im})}}
+    \end{align*}
+    Since averaging this function over a product of balls is somewhat tedious, we relate it to a different function $\flm^{\prime}$ that is easier to average.
+    \begin{align*}
+      \flm^{\prime}(x) \coloneqq \sum_i \sqrt{z_{(i, \mathrm{im})}}
+    \end{align*}
+    These two functions are equal, up to a constant multiplicative error.
+    \begin{align*}
+      \frac{\flm^{\prime}(x)}{c(g)} \leq \flm(x) \leq \flm^{\prime}(x)
+    \end{align*}
+    This means we can prove the averaging estimate for $\flm^{\prime}$, and the same estimate will hold for $\flm$, with a slightly worse multiplicative constant.
+
+    Furthermore, since $z_{i, \mathrm{im}}$ is constant along balls in $\mathbb{H}_j$ for $j \neq i$, it suffices to average just each term of the sum in the corresponding $\mathbb{H}_i$.
+    We do so, using the same estimate from the proof in the $R_1$ case.
+    \begin{align*}
+      (A_{\tau}\flm^{\prime})(x) \leq c^{\prime} \tau \exp(-\tau) \flm^{\prime}(x)
+    \end{align*}
+    Replacing $\flm^{\prime}$ with $\flm$ gives us the inequality we want, and proves the result in this case.
+    \begin{align*}
+      (A_{\tau}\flm)(x) \leq  (c(g) \cdot c^{\prime}) \tau \exp(-\tau) \flm(x)
+    \end{align*}
+  \item Proof for $x \in R_3$: Note that the region $R_3$ is compact, which means the function $\flm$ is bounded in this region, and consequently, there exists a uniform upper bound for $A_\tau \flm$ as well Note that the region $R_3$ is compact, which means the function $\flm$ is bounded in this region, and consequently, there exists a uniform upper bound for $A_\tau \flm$ as well.
+    Let us denote the uniform upper bounding function by $b(x)$: we can modify this function to be compactly supported by multiplying it with a bump function that is $1$ on a $\tau$-neighbourhood of $R_3$, and decays to $0$ outside.
+    By construction, we have for $x \in R_3$, $(A_{\tau}\flm)(x) \leq b(x)$.
+    This proves the result for $x \in R_3$.
   \end{enumerate}
+  Putting together the estimate from the three cases, we get the standard form of the inequality (which holds for any $x \in \core(\teich(\no_g))$).
+  \begin{align*}
+    (A_{\tau} \flm)(x) \leq c(x) \flm(x) + b(x)
+  \end{align*}
+  Here, $c(x) \coloneqq (c(g) \cdot c^{\prime}) \tau \exp(-\tau)$, and $b(x)$ is the function from the proof in case $R_3$.
 \end{proof}
 
 \subsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-1}
+
+\subsubsection{Why the approach fails for $\teich(\no_g)$}
+\label{sec:why-approach-fails}
+
+
 
 \subsection{Recurrence for geodesic segments}
 \label{sec:recurr-geod-segm}
