@@ -450,7 +450,7 @@ This function is a proper function, since the sub-level sets of this function ar
   \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that get short at some point in $B_{\tau}^{\vept}(x)$.
     We have that the ball lies in the product region where all the curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ are short simultaneously.
     If that is not the case, we pick a $\delta$ small enough such that this holds.
-    We have that there exists some constant $c(g)$, depending only on $g$, such that $k \leq c(g)$, since we cannot have too many curves being short simultaneously.
+    We have that there exists some constant $c_g$, depending only on $g$, such that $k \leq c_g$, since we cannot have too many curves being short simultaneously.
 
     Similar to the previous case, changing only the $\core(\teich(\no_g \setminus \bigcup_{i=1}^k \gamma_i))$ coordinate will not change the value of the function $\flm$, so it suffices to focus our attention on the coordinates $\prod_{i=1}^k \mathbb{H}_i$, where each $\mathbb{H}_i$ corresponds to the length and twist around $\gamma_i$.
 
@@ -465,7 +465,7 @@ This function is a proper function, since the sub-level sets of this function ar
     \end{align*}
     These two functions are equal, up to a constant multiplicative error.
     \begin{align*}
-      \frac{\flm^{\prime}(x)}{c(g)} \leq \flm(x) \leq \flm^{\prime}(x)
+      \frac{\flm^{\prime}(x)}{c_g} \leq \flm(x) \leq \flm^{\prime}(x)
     \end{align*}
     This means we can prove the averaging estimate for $\flm^{\prime}$, and the same estimate will hold for $\flm$, with a slightly worse multiplicative constant.
 
@@ -476,7 +476,7 @@ This function is a proper function, since the sub-level sets of this function ar
     \end{align*}
     Replacing $\flm^{\prime}$ with $\flm$ gives us the inequality we want, and proves the result in this case.
     \begin{align*}
-      (A_{\tau}\flm)(x) \leq  (c(g) \cdot c^{\prime}) \tau \exp(-\tau) \flm(x)
+      (A_{\tau}\flm)(x) \leq  (c_g \cdot c^{\prime}) \tau \exp(-\tau) \flm(x)
     \end{align*}
   \item Proof for $x \in R_3$: Note that the region $R_3$ is compact, which means the function $\flm$ is bounded in this region, and consequently, there exists a uniform upper bound for $A_\tau \flm$ as well Note that the region $R_3$ is compact, which means the function $\flm$ is bounded in this region, and consequently, there exists a uniform upper bound for $A_\tau \flm$ as well.
     Let us denote the uniform upper bounding function by $b(x)$: we can modify this function to be compactly supported by multiplying it with a bump function that is $1$ on a $\tau$-neighbourhood of $R_3$, and decays to $0$ outside.
@@ -487,18 +487,54 @@ This function is a proper function, since the sub-level sets of this function ar
   \begin{align*}
     (A_{\tau} \flm)(x) \leq c(x) \flm(x) + b(x)
   \end{align*}
-  Here, $c(x) \coloneqq (c(g) \cdot c^{\prime}) \tau \exp(-\tau)$, and $b(x)$ is the function from the proof in case $R_3$.
+  Here, $c(x) \coloneqq (c_g \cdot c^{\prime}) \tau \exp(-\tau)$, and $b(x)$ is the function from the proof in case $R_3$.
 \end{proof}
 
 \subsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-1}
 
 We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
-In this section, we will count the number of random walk trajectories that are \emph{$\alpha$-bad} and \emph{almost close up}.
+In this section, we will count the number of random walk trajectories that are \emph{$\alpha$-bad}.
+%and \emph{almost close up}.
 
 \begin{definition}[$\alpha$-bad trajectories]
-
+  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be $\alpha$-bad for $0 < \alpha < 1$ if at least $\alpha$-fraction of the points $\left\{ r_i \right\}$ are outside $\thick(\no_g)$.
 \end{definition}
+Since we picked $\vept < \delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the bad trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
+\begin{align*}
+  (A_{\tau} \flm)(r_i) \leq c^{\prime} \tau \exp(-\tau) \flm(r_i)
+\end{align*}
+If $r_i$ is not a bad trajectory point, we only have a weaker estimate in terms of a uniformly bounded function $b(x)$.
+\begin{align*}
+  (A_{\tau} \flm)(r_i) \leq b(x)
+\end{align*}
+
+% \begin{definition}[Almost closing up]
+%   \label{defn:acu}
+%   A trajectory $(r_0, r_1, \ldots, r_{n-1})$ is said to almost close up if $d_{\vept}(r_0, r_{n-1}) < t$ for some fixed constant $t$\footnote{The precise value of the constant $t$ does not really matter for the remainder of this section. Larger values of $t$ result in larger constant terms in our final estimate.}.
+% \end{definition}
+
+Fix an $r_0$ in $\thick(\no_g)$, and let $\traj(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-bad random walk trajectories which start at $r_0$.
+%and almost close up, and $\trajnc(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-bad random walk trajectories which start at $r_0$, but do not necessarily close up.
+
+\begin{proposition}
+  For any $\veperr > 0$, there exists $0 < \alpha_0 < 1$, $n_0 \in \mathbb{N}$, and a constant $C \gg 0$,  such that the following bound on $\left| \traj(n, \tau, \alpha) \right|$ holds for $\alpha > \alpha_0$, and $n > n_0$.
+  \begin{align*}
+    \left| \traj(n, \tau, \alpha) \right| \leq C \exp((\hNP - \alpha + \veperr)n\tau)
+  \end{align*}
+  Here, $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
+\end{proposition}
+
+\begin{proof}
+  Since the $\flm(x)$ has a positive lower bound $C_l$ as $x$ varies over $\core(\teich(\no_g))$ (which comes from the Bers constant associated to $\no_g$), we can estimate $\left| \traj(n, \tau, \alpha) \right|$ by summing up $\flm(r_{n-1})$ over all the trajectories in $\traj(n, \tau, \alpha)$.
+  \begin{align*}
+   \left| \traj(n, \tau, \alpha) \right| \leq \frac{1}{C_l} \sum_{\traj(n, \tau, \alpha)} \flm(r_{n-1})
+  \end{align*}
+  It therefore will suffice to estimate $\sum_{\traj(n, \tau, \alpha)} \flm(r_{n-1})$: we do so by conditioning on the previous step of the random walk over and over again until we get to the first step $r_0$.
+
+  Consider the function $q(m, s)$, obtained by doing an $m$-step random walk starting at $s$, and summing up the values of $\flm$ at the final step of the random walk.
+\todo[inline]{Come back to this proof after removing the $\alpha$-dependence everywhere else and its downstream effects.}
+\end{proof}
 
 \subsubsection{Why the approach fails for $\teich(\no_g)$}
 \label{sec:why-approach-fails}
