@@ -310,31 +310,33 @@ We now define lattice point entropy, and entropy for bad lattice points.
 \end{rem}
 
 \begin{definition}[Bad lattice points]
-  A lattice point $\gamma p$ is said to be $\alpha$-bad if the geodesic segment joining $p$ and $\gamma p$ spends more than $\alpha$ fraction of its length outside of $\thick(\no_g)$.
+  A lattice point $\gamma p$ is said to be bad if the geodesic segment joining $p$ and $\gamma p$ stays outside $\thick(\no_g)$ except for a constant amount $t$ near the beginning and end of the geodesic.
+  The precise value of the constant $t$ will not matter for us, so we will usually elide mentions of $t$ in what follows.
 \end{definition}
 
-\begin{definition}[Entropy for $\alpha$-bad lattice points]
-  Let $M_p(R, \vept, \alpha)$ be the counting function for $\alpha$-bad lattice points.
+\begin{definition}[Entropy for bad lattice points]
+  Let $M_p(R, \vept)$ be the counting function for bad lattice points.
   \begin{align*}
-    M_p(R, \vept, \alpha) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is $\alpha$-bad}  \right)
+    M_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is bad}  \right)
   \end{align*}
-  The entropy for bad lattice points $\hLPb(\teich(\no_g), \vept, \alpha)$ is the following quantity.
+  The entropy for bad lattice points $\hLPb(\teich(\no_g), \vept)$ is the following quantity.
   \begin{align*}
-    \hLPb(\teich(\no_g), \vept, \alpha) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept, \alpha)}{R}
+    \hLPb(\teich(\no_g), \vept) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept)}{R}
   \end{align*}
 \end{definition}
 
-We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for $\alpha$ close enough to $1$.
+% We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-bad points is strictly lower than lattice point entropy, for $\alpha$ close enough to $1$.
+The statistical convexity of $\thick(\no_g)$ is equivalent to the following statement, which states that the entropy for bad lattice points is strictly lower than entropy for all lattice points.
 
 \begin{theorem}[Statistical convexity]
   \label{thm:stat-convex}
-  There exists $\alpha_0 < 1$ such that for any $\alpha_0 < \alpha < 1$, and any $\vept > 0$, the following inequality holds.
+  For $\vept > 0$ small enough, the following inequality holds.
   \begin{align*}
-    \hLPb(\teich(\no_g), \vept, \alpha) < \hLP(\teich(\no_g), \vept)
+    \hLPb(\teich(\no_g), \vept) < \hLP(\teich(\no_g), \vept)
   \end{align*}
 \end{theorem}
 
-We prove Theorem \ref{thm:stat-convex} by constructing a random walk on $\core(\teich(\no_g))$ and proving a similar entropy gap between all random walk trajectories and the random walk trajectories that spend $\alpha$-fraction of time outside $\thick(\no_g)$.
+We prove Theorem \ref{thm:stat-convex} by constructing a random walk on $\core(\teich(\no_g))$ and proving a similar entropy gap between all random walk trajectories and the random walk trajectories that spend their time outside $\thick(\no_g)$.
 
 \subsection{Construction of random walk}
 \label{sec:constr-rand-walk}
@@ -494,11 +496,11 @@ This function is a proper function, since the sub-level sets of this function ar
 \label{sec:recurr-rand-walks-1}
 
 We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
-In this section, we will count the number of random walk trajectories that are \emph{$\alpha$-bad}.
+In this section, we will count the number of random walk trajectories that are \emph{bad}.
 %and \emph{almost close up}.
 
-\begin{definition}[$\alpha$-bad trajectories]
-  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be $\alpha$-bad for $0 < \alpha < 1$ if at least $\alpha$-fraction of the points $\left\{ r_i \right\}$ are outside $\thick(\no_g)$.
+\begin{definition}[Bad trajectories]
+  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be bad if all the points in the trajectory except the first point (and possibly the last point) are outside $\thick(\no_g)$.
 \end{definition}
 Since we picked $\vept < \delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the bad trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
 \begin{align*}
@@ -514,26 +516,55 @@ If $r_i$ is not a bad trajectory point, we only have a weaker estimate in terms 
 %   A trajectory $(r_0, r_1, \ldots, r_{n-1})$ is said to almost close up if $d_{\vept}(r_0, r_{n-1}) < t$ for some fixed constant $t$\footnote{The precise value of the constant $t$ does not really matter for the remainder of this section. Larger values of $t$ result in larger constant terms in our final estimate.}.
 % \end{definition}
 
-Fix an $r_0$ in $\thick(\no_g)$, and let $\traj(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-bad random walk trajectories which start at $r_0$.
+Fix an $r_0$ in $\thick(\no_g)$, and let $\traj(n, \tau)$ denote the collection of $n$-step bad random walk trajectories which start at $r_0$.
+We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ to denote the $i$\textsuperscript{th} step of the trajectory $r$.
 %and almost close up, and $\trajnc(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-bad random walk trajectories which start at $r_0$, but do not necessarily close up.
 
 \begin{proposition}
-  For any $\veperr > 0$, there exists $0 < \alpha_0 < 1$, $n_0 \in \mathbb{N}$, and a constant $C \gg 0$,  such that the following bound on $\left| \traj(n, \tau, \alpha) \right|$ holds for $\alpha > \alpha_0$, and $n > n_0$.
+  For any $\veperr > 0$, there exists a $\tau > 0$ large enough, and a constant $C \gg 0$,  such that the following bound on $\left| \traj(n, \tau) \right|$ holds.
   \begin{align*}
-    \left| \traj(n, \tau, \alpha) \right| \leq C \exp((\hNP - \alpha + \veperr)n\tau)
+    \left| \traj(n, \tau) \right| \leq C \exp((\hNP - 1 + \veperr)n\tau)
   \end{align*}
   Here, $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
 \end{proposition}
 
 \begin{proof}
-  Since the $\flm(x)$ has a positive lower bound $C_l$ as $x$ varies over $\core(\teich(\no_g))$ (which comes from the Bers constant associated to $\no_g$), we can estimate $\left| \traj(n, \tau, \alpha) \right|$ by summing up $\flm(r_{n-1})$ over all the trajectories in $\traj(n, \tau, \alpha)$.
+  Since the $\flm(x)$ has a positive lower bound $C_l$ as $x$ varies over $\core(\teich(\no_g))$ (which comes from the Bers constant associated to $\no_g$), we can estimate $\left| \traj(n, \tau) \right|$ by summing up $\flm(r_{n-1})$ over all the trajectories in $\traj(n, \tau)$.
   \begin{align*}
-   \left| \traj(n, \tau, \alpha) \right| \leq \frac{1}{C_l} \sum_{\traj(n, \tau, \alpha)} \flm(r_{n-1})
+   \left| \traj(n, \tau) \right| \leq \frac{1}{C_l} \sum_{r \in \traj(n, \tau)} \flm(r_{n-1})
   \end{align*}
-  It therefore will suffice to estimate $\sum_{\traj(n, \tau, \alpha)} \flm(r_{n-1})$: we do so by conditioning on the previous step of the random walk over and over again until we get to the first step $r_0$.
+  It therefore will suffice to estimate $\sum_{r \in \traj(n, \tau)} \flm(r_{n-1})$: we do so by conditioning on the previous step of the random walk over and over again until we get to the first step $r_0$.
 
-  Consider the function $q(m, s)$, obtained by doing an $m$-step random walk starting at $s$, and summing up the values of $\flm$ at the final step of the random walk.
-\todo[inline]{Come back to this proof after removing the $\alpha$-dependence everywhere else and its downstream effects.}
+  % Consider the function $q(m, s)$, obtained by doing an $m$-step random walk starting at $s$, and summing up the values of $\flm$ at the final step of the random walk.
+% \todo[inline]{Come back to this proof after removing the $\alpha$-dependence everywhere else and its downstream effects.}
+  % The term we want to estimate $\sum_{\traj(n, \tau)}$ is equal to $q(n, r_0)$.
+  We also have the following recursive inequality for $\sum_{r \in \traj(n, \tau)} \flm(r_{n-1})$.
+  \begin{align}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &= \sum_{r \in \traj(n-1, \tau)} \left( \sum_{\substack{y \in \net \\  d_{\vept(y, r_{n-2}) \leq \tau} } } \flm(y) \right) \label{eq:recursive-ineq1} \\
+                                              &\leq \sum_{r \in \traj(n-1, \tau)} C \int_{B_{\tau}^{\vept}(r_{n-2})} \flm(y) d\nu_N(y) \label{eq:recursive-ineq2} \\
+    &= \sum_{r \in \traj(n-1, \tau)} C \nu_N(B_{\tau}^{\vept}(r_{n-2})) (A_{\tau}\flm)(r_{n-2})
+  \end{align}
+  Here, we go from \eqref{eq:recursive-ineq1} to \eqref{eq:recursive-ineq2} by integrating the indicator function supported in a ball of radius $\frac{\vepn}{2}$ around each net point, and using Proposition \ref{prop:uniform-volume-bound} to uniformly bound the integral of the indicator independent of the basepoint.
+
+  We then use the fact that all of the $r_{n-2}$ are bad trajectory points, i.e. they lie outside $\thick(\no_g)$, and consequently, we have strong bounds on $(A_{\tau} \flm)(r_{n-2})$.
+  \begin{align}
+    \label{eq:margulis-estimate-strong-bound}
+    (A_{\tau}\flm)(r_{n-2}) \leq c^{\prime} \tau \exp(-\tau) \flm(r_{n-2})
+  \end{align}
+  Combining \eqref{eq:recursive-ineq1} and \eqref{eq:margulis-estimate-strong-bound}, we get the estimate we need to repeat $n$ times.
+  \begin{align}
+    \label{eq:to-iterate}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) \leq C^{\prime} \tau \exp(-\tau) \exp((\hNP + \veperr^{\prime})\tau) \sum_{r \in \traj(n-1, \tau)} \flm(r_{n-2})
+  \end{align}
+  Here, we upper bound the $\nu_N(B_{\tau}^{\vept}(r_{n-2}))$ with $C^{\prime \prime} \exp((\hNP + \veperr^{\prime})\tau)$, where $\veperr^{\prime}$ is a constant smaller than $\veperr$, and $C^{\prime \prime}$ is some large constant.
+  The term $C^{\prime}$ is equal to $C C^{\prime \prime} c^{\prime}$.
+
+  We now iterate \eqref{eq:to-iterate} $n$ times.
+  \begin{align*}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &\leq \left( C^{\prime} \tau \right)^n \exp((\hNP - 1 + \veperr^{\prime})n\tau) \flm(r_0) \\
+                                              &= \flm(r_0) \cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} \right) n\tau \right)
+  \end{align*}
+  By picking $\tau$ large enough so that $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} < \veperr$, we get the claimed result.
 \end{proof}
 
 \subsubsection{Why the approach fails for $\teich(\no_g)$}
@@ -1839,6 +1870,9 @@ Outline of section:
 \item {\color{red} Prove a version of Lemma 3.1 for the Norbury volume form $\nu_N$ using the product region theorem.}
 \end{enumerate}
 
+\begin{proposition}
+  \label{prop:uniform-volume-bound}
+\end{proposition}
 
 
 \subsection{Teichmüller geodesics and geodesics in the curve complex}
