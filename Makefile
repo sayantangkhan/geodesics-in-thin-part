@@ -1,4 +1,4 @@
-filename = sample-output.pdf
+filename = statistical-convex-cocompactness.pdf
 
 build-pdf:
 	latexmk main.tex
