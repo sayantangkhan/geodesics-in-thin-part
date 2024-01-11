@@ -521,6 +521,7 @@ We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ t
 %and almost close up, and $\trajnc(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-bad random walk trajectories which start at $r_0$, but do not necessarily close up.
 
 \begin{proposition}
+  \label{prop:rw-recurrence}
   For any $\veperr > 0$, there exists a $\tau > 0$ large enough, and a constant $C \gg 0$,  such that the following bound on $\left| \traj(n, \tau) \right|$ holds.
   \begin{align*}
     \left| \traj(n, \tau) \right| \leq C \exp((\hNP - 1 + \veperr)n\tau)
@@ -567,10 +568,30 @@ We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ t
   By picking $\tau$ large enough so that $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} < \veperr$, we get the claimed result.
 \end{proof}
 
-\subsubsection{Why the approach fails for $\teich(\no_g)$}
+Proposition \ref{prop:rw-recurrence} tells us that a random walk on $\core(\teich(\no_g))$ is biased away from the thin part of $\core(\teich(\no_g))$.
+It does so by proving strong upper bounds on the probability that a random walk trajectory with $n$ steps stays in the thin part is less than $\exp((-1 + \veperr)n\tau)$: in other words, a random walk returns to $\thick(\no_g)$ with high probability.
+
+\subsubsection{Why the random walk approach fails for $\teich(\no_g)$}
 \label{sec:why-approach-fails}
 
+If we wanted to make Proposition \ref{prop:rw-recurrence} work on $\teich(\no_g)$, we would need to similarly show the random walk on $\teich(\no_g)$ is recurrent in a similarly strong sense: i.e. the probability of a length $n$ trajectory staying in the thin part decays exponentially in $n$.
+A consequence of this requirement is that the expected return time to the thick part is finite.
 
+Unlike $\core(\teich(\no_g))$, $\teich(\no_g)$ has two kinds of thin regions.
+\begin{itemize}
+\item[-] Thin region where only two-sided curves get short.
+\item[-] Thin region where some one-sided curve also gets short.
+\end{itemize}
+
+It is the second kind of thin region that poses a problem for $\teich(\no_g)$.
+Minsky's product region theorem (Theorem \ref{thm:prno}) tells us that up to additive error, the metric on these thin regions looks like a product of metrics on some copies of $\mathbb{R}$ (corresponding to the one-sided short curves), some copies of $\mathbb{H}$ (corresponding to the two-sided short curves), and a Teichmüller space of lower complexity.
+Since the random walk is controlled by the metric, the random walk on this product metric space is a product of random walks on each of the components.
+
+In particular, the random walk on the $\mathbb{R}$ component is a symmetric random walk on a net in $\mathbb{R}$: i.e. a symmetric random walk on $\mathbb{Z}$.
+Symmetric random walks on $\mathbb{R}$ are known to be recurrent, but only in a weak sense: they recur to compact subsets infinitely often, but the expected return time is unbounded.
+
+This means we cannot hope to prove exponentially decaying upper bounds on the probability that a long random walk trajectory stays in the thin part, since that would lead to finite expected return times.
+This is why the random walk approach fails for $\teich(\no_g)$.
 
 \subsection{Recurrence for geodesic segments}
 \label{sec:recurr-geod-segm}
