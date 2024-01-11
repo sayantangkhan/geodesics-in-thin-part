@@ -260,14 +260,6 @@ Now that we have established that $\systole(\no_g)$ is $\vept$-weak convex, we c
 \section{Geodesics in the thin part of $\core(\teich(\no_g))$}
 \label{sec:recurr-rand-walks}
 
-Outline of section:
-\begin{enumerate}[(i)]
-\item (DONE) State what we conjecture the statistical compact convex core is.
-\item (DONE) Construct net, and describe our random walk.
-\item ({\color{red} TODO}) Outline how we will show random walk trajectories in the thin part are rare.
-\item ({\color{red} TODO}) Translate the exponential rareness of bad random walk trajectories to bad geodesic segments.
-\end{enumerate}
-
 Inspired by Theorem \ref{thm:weak-convexity}, we will focus our attention on $\core(\teich(\no_g))$ instead of the entirety of $\teich(\no_g)$.
 In this section, we will begin a proof of the fact that the action of $\mcg(\no_g)$ on $\core(\teich(\no_g))$ is statistically convex cocompact (we abbreviate that to SCC for the remainder of the paper).
 
@@ -299,9 +291,9 @@ We now define lattice point entropy, and entropy for bad lattice points.
   \begin{align*}
     N_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid d_{\vept}(p, \gamma p) \leq R \right)
   \end{align*}
-  The lattice point entropy $\hLP(\teich(\no_g), \vept)$ is the following quantity.
+  The lattice point entropy $\hLP(\core(\teich(\no_g)), \vept)$ is the following quantity.
   \begin{align*}
-    \hLP(\teich(\no_g), \vept) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R, \vept)}{R}
+    \hLP(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R, \vept)}{R}
   \end{align*}
 \end{definition}
 
@@ -319,9 +311,9 @@ We now define lattice point entropy, and entropy for bad lattice points.
   \begin{align*}
     M_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is bad}  \right)
   \end{align*}
-  The entropy for bad lattice points $\hLPb(\teich(\no_g), \vept)$ is the following quantity.
+  The entropy for bad lattice points $\hLPb(\core(\teich(\no_g)), \vept)$ is the following quantity.
   \begin{align*}
-    \hLPb(\teich(\no_g), \vept) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept)}{R}
+    \hLPb(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept)}{R}
   \end{align*}
 \end{definition}
 
@@ -332,7 +324,7 @@ The statistical convexity of $\thick(\no_g)$ is equivalent to the following stat
   \label{thm:stat-convex}
   For $\vept > 0$ small enough, the following inequality holds.
   \begin{align*}
-    \hLPb(\teich(\no_g), \vept) < \hLP(\teich(\no_g), \vept)
+    \hLPb(\core(\teich(\no_g)), \vept) < \hLP(\core(\teich(\no_g)), \vept)
   \end{align*}
 \end{theorem}
 
@@ -492,8 +484,11 @@ This function is a proper function, since the sub-level sets of this function ar
   Here, $c(x) \coloneqq (c_g \cdot c^{\prime}) \tau \exp(-\tau)$, and $b(x)$ is the function from the proof in case $R_3$.
 \end{proof}
 
-\subsection{Recurrence for random walks}
+\subsection{Recurrence for random walks and geodesic segments}
 \label{sec:recurr-rand-walks-1}
+
+\subsubsection{Recurrence for random walks}
+\label{sec:recurr-rand-walks-2}
 
 We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
 In this section, we will count the number of random walk trajectories that are \emph{bad}.
@@ -593,10 +588,100 @@ Symmetric random walks on $\mathbb{R}$ are known to be recurrent, but only in a 
 This means we cannot hope to prove exponentially decaying upper bounds on the probability that a long random walk trajectory stays in the thin part, since that would lead to finite expected return times.
 This is why the random walk approach fails for $\teich(\no_g)$.
 
-\subsection{Recurrence for geodesic segments}
+\subsubsection{Recurrence for geodesic segments}
 \label{sec:recurr-geod-segm}
 
+In this section, we reduce the problem of counting geodesic segments that travel in the thin part to counting trajectories of random walks that do the same.
 
+\begin{proposition}
+  \label{prop:counting-geodesics}
+  For any $\veperr > 0$, there exists a $\vept^{\prime} > 0$ small enough, a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
+  \begin{align*}
+    M_{r_0}(R) \leq C^{\prime} \exp((\hNP - 1 + \veperr)R)
+  \end{align*}
+  Here, $M_{r_0}(R)$  number of mapping classes $\gamma$ such that the geodesic joining $r_0$ and $\gamma r_0$ stay outside $\thickarg{\vept^{\prime}}(\no_g)$, and $r_0$ is a point in $\thickarg{\vept^{\prime}}(\no_g)$ at which we start our random walk, and $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
+  \begin{align*}
+    M_{r_0}(R) \coloneqq \#\left\{ \gamma \in \mcg(\no_g) \mid \text{$d_{\vept^{\prime}}(r_0, \gamma r_0) \leq R$  and $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$}   \right\}
+  \end{align*}
+\end{proposition}
+
+\begin{proof}
+  We begin our proof by fixing $\vept^{\prime}$.
+  We first pick $\vepn$, i.e. the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
+  We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
+
+  Let $\gamma$ be a mapping class such the geodesic segment $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$ except for bounded distances at the beginning and end.
+  We turn this geodesic segment into a trajectory by marking off points at distance $\tau\left( 1 - \frac{\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
+  All the points in the interior of this trajectory lie outside $\thick(\no_g)$, by our construction of $\vept^{\prime}$.
+  Furthermore, the distance between the adjacent points on the trajectory are at most $\tau$.
+  The number of steps in this trajectory is $\displaystyle n \coloneqq \left\lceil \frac{R}{\tau} \right\rceil$.
+
+  Let $\mathcal{P}$ denote the collection of trajectories obtained via this construction.
+  We apply Proposition \ref{prop:rw-recurrence} to count the number of such trajectories.
+  \begin{align}
+    \# \mathcal{P} &\leq C \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) n\tau\right) \\
+                   &\leq C \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \label{eq:traj-bound-4}
+  \end{align}
+
+  We now determine how many different geodesic segments can map to the same random walk trajectory.
+  If two geodesic segments $[r_0, \gamma_1 r_0]$ and $[r_0, \gamma_2 r_0]$ map to the same random walk trajectory, we must have that they fellow travel for most of their length, and as a result, $d_{\vept}(r_0, \gamma_2^{-1} \gamma_1 r_0)$ is bounded above by a constant value that only depends on $\tau$.
+  Combining the above fact with \eqref{eq:traj-bound-4} gives us a constant $C^{\prime}$ such that the following bound on $M_{r_0}(R)$ holds.
+  \begin{align*}
+    M_{r_0}(R) &\leq \leq C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \\
+    &= C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) \left(1 + \frac{\tau}{R}\right) (R)\right)
+  \end{align*}
+  Picking a value of $R$ large enough gives us the result.
+\end{proof}
+
+We can now tie all of these calculations together to state our results on statistical convexity of $\core(\teich(\no_g))$.
+Proposition \ref{prop:counting-geodesics} gives us an upper bound on $\hLPb(\core(\teich(\no_g)), \vept)$ (by applying the result for smaller and smaller values of $\veperr$).
+\begin{align}
+  \label{eq:bad-entropy-bound}
+  \hLPb(\core(\teich(\no_g)), \vept) \leq \hNP(\core(\teich(\no_g)), \vept) - 1
+\end{align}
+
+To prove Theorem \ref{thm:stat-convex}, it will suffice to prove the following equality relating the lattice point entropy and net point entropy.
+\begin{align}
+  \label{eq:net-and-lattice-condition}
+  \hNP(\core(\teich(\no_g)), \vept) - 1 < \hLP(\core(\teich(\no_g)), \vept)
+\end{align}
+
+For convenience, we also define the undistorted versions of these entropy terms, using the Teichmüller metric $d$ rather than the induced metric $d_{\vept}$.
+
+\begin{definition}[(Undistorted) lattice point entropy for $\teich(\no_g)$]
+  Let $p$ be a point in $\thick(\no_g)$, and let $N_p(R)$ be the lattice point counting function.
+  \begin{align*}
+    N_p(R) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid d(p, \gamma p) \leq R \right)
+  \end{align*}
+  The lattice point entropy $\hLP(\teich(\no_g))$ is the following quantity.
+  \begin{align*}
+    \hLP(\teich(\no_g)) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R)}{R}
+  \end{align*}
+\end{definition}
+
+\begin{definition}[(Undistorted) net point entropy]
+  Let $K_p(R, \vept)$ be the counting function for net points, where $p \in \core(\teich(\no_g))$.
+  \begin{align*}
+    K_p(R, \vept) \coloneqq \#\left( y \in \net \mid d(p, y) \leq R \right)
+  \end{align*}
+  The net point entropy $\hNP(\core(\teich(\no_g)))$ is the following function defined in terms of $K_p$.
+  \begin{align*}
+    \hNP(\core(\teich(\no_g))) \coloneqq \lim_{R \to \infty} \frac{\log K_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+Note that the net point entropy does not depend on the precise value of $\vept$, even though it is counting net-points in $\core(\teich(\no_g))$, since the different values of $\vept$ change the counting function by a multiplicative term that does not depend on $R$.
+
+Recall now Theorem \ref{thm:weak-convexity}, which for any $\vepd > 0$, provides a $\vept > 0$ such that the ratio $d_{\vept}$ and $d$ is bounded above by $1 + \vepd$.
+A consequence of this is that the distorted and the undistorted versions of the entropy terms differ by at most $\hNP(\core(\teich(\no_g))) \cdot \vepd$ and $\hLP(\teich(\no_g)) \cdot \vepd$.
+
+In particular, if we show $\hNP(\core(\teich(\no_g))) = \hLP(\teich(\no_g))$, \eqref{eq:net-and-lattice-condition} will follow (for small enough $\vept$), and so will Theorem \ref{thm:stat-convex}.
+We package up this result as a theorem, which we will use in subsequent sections.
+
+\begin{theorem}
+  \label{thm:entropy-equality-implies-scc}
+  If $\hNP(\core(\teich(\no_g))) = \hLP(\teich(\no_g))$, then $\thick(\no_g)$ is statistically convex, and the action of $\mcg(\no_g)$ on $\core(\teich(\no_g))$ is statistically convex-cocompact.
+\end{theorem}
 
 \section{Equality of lattice point entropy and net point entropy}
 \label{sec:equal-latt-point}
