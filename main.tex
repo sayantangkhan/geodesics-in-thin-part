@@ -627,7 +627,7 @@ In this section, we reduce the problem of counting geodesic segments that travel
   If two geodesic segments $[r_0, \gamma_1 r_0]$ and $[r_0, \gamma_2 r_0]$ map to the same random walk trajectory, we must have that they fellow travel for most of their length, and as a result, $d_{\vept}(r_0, \gamma_2^{-1} \gamma_1 r_0)$ is bounded above by a constant value that only depends on $\tau$.
   Combining the above fact with \eqref{eq:traj-bound-4} gives us a constant $C^{\prime}$ such that the following bound on $M_{r_0}(R)$ holds.
   \begin{align*}
-    M_{r_0}(R) &\leq \leq C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \\
+    M_{r_0}(R) &\leq C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \\
     &= C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) \left(1 + \frac{\tau}{R}\right) (R)\right)
   \end{align*}
   Picking a value of $R$ large enough gives us the result.
@@ -1970,16 +1970,56 @@ We recall the following objects that were defined in Section \ref{sec:weak-conv-
 \subsection{Uniform bounds for the volume of a ball}
 \label{sec:unif-bounds-volume}
 
-Outline of section:
-\begin{enumerate}[(i)]
-\item Define the volume form $\nu_N$.
-\item {\color{red} Prove a version of Lemma 3.1 for the Norbury volume form $\nu_N$ using the product region theorem.}
-\end{enumerate}
+In this section, we define the volume form $\nu_N$ we use for $\teich(\no_g)$, and as an application of Theorem \ref{thm:prno}, we show that the for balls of fixed radius in $\core(\teich(\no_g))$, the $\nu_N$ volume of the ball is bounded above and below by constants that are independent of the center of the ball.
+
+Let $\mathcal{P}$ be a pants decomposition for $\no_g$: \textcite{norbury2008lengths} defined a volume form on $\teich(\no_g)$ using the pants decomposition, analogous to the Weil-Petersson volume form on Teichmüller spaces of orientable surfaces.
+
+\begin{align*}
+  \nu_N = \left( \bigwedge_{\text{$\gamma_i$ one-sided}} \coth(\ell(\gamma_i)) d\ell(\gamma_i) \right) \wedge \left( \bigwedge_{\text{$\gamma_i$ two-sided}} d\tau(\gamma_i) \wedge d\ell(\gamma_i) \right)
+\end{align*}
+Here $\ell(\gamma_i)$ denotes the length of the curve $\gamma_i$, and $\tau(\gamma_i)$ denotes the twist, when $\gamma_i$ is two-sided.
+
+Similar to Wolpert's magic formula, the $\mu_N$ has the following properties.
+\begin{itemize}
+\item[-] The form $\nu_N$ does not depend on the choice of pants decomposition.
+\item[-] $\nu_N$ is $\mcg(\no_g)$ invariant, up to sign.
+\end{itemize}
+This lets us use the absolute value of $\nu_N$ as a volume form on the quotient $\teich(\no_g) / \mcg(\no_g)$.
+We will, for notational convenience, use $\nu_N$ to mean $\left| \nu_N \right|$.
 
 \begin{proposition}
   \label{prop:uniform-volume-bound}
+  For any $\tau > 0$, and $\vept > 0$ small enough, there exist constants $c_1$ and $c_2$ (depending only on $\tau$ and $\vept$) such the $\nu_N$ volume of a ball $B_{\tau}^{\vept}(x)$ of radius $\tau$ centered at $x \in \systole(\no_g)$ are bounded below and above by $c_1$ and $c_2$.
+  \begin{align*}
+    c_1 \leq \nu_N(B_{\tau}^{\vept}(x)) \leq c_2
+  \end{align*}
 \end{proposition}
+\begin{proof}
+  Note that since the points we are considering lie in $\systole(\no_g)$, we have the following upper bound and lower bound for $\coth(\ell(\gamma_i))$, where $\gamma_i$ is a one sided curve.
+  \begin{align}
+    \label{eq:coth-bounds}
+    1 \leq \coth(\ell(\gamma_i)) \leq \coth(\vept)
+  \end{align}
+  In particular, the $\nu_N$ volume of a ball can be bounded above and below by $\coth(\vept)\nu_N^{\prime}$ and $\nu_N^{\prime}$, where $\nu_N^{\prime} = \left( \bigwedge_{\text{$\gamma_i$ one-sided}} d\ell(\gamma_i) \right) \wedge \left( \bigwedge_{\text{$\gamma_i$ two-sided}} d\tau(\gamma_i) \wedge d\ell(\gamma_i) \right)$.
 
+  We now split up $\systole(\no_g)$ into two regions: $\thick(\no_g)$, and the complementary region.
+  Since $\mcg(\no_g)$ acts cocompactly on $\thick(\no_g)$, and $\nu_N(B_{\tau}^{\vept}(x))$ is continuous in $x$, the desired bounds hold in this region.
+  It will therefore suffice to prove the bounds in the complementary region.
+
+  Note that for any $x$ in the complementary region, there is some two-sided curve $\gamma$ that is short.
+  By Theorem \ref{thm:prno}, the ball $B_{\tau}^{\vept}(x)$ is contained in a product of balls, one in $\mathbb{H}$, and one in $\systole(\no_g \setminus \gamma)$.
+  We pick $\gamma$ to be part of a pants decomposition $\mathcal{P}$, and write $\nu_N$ as follows.
+  \begin{align*}
+    \nu_N = \left( d\tau(\gamma) \wedge d\ell(\gamma) \right) \wedge \nu_N^{\no_g \setminus \gamma}
+  \end{align*}
+  Here, $\nu_N^{\no_g \setminus \gamma}$ denotes the volume form on $\teich(\no_g \setminus \gamma)$.
+  As a result, we have that the $\nu_N$ measure of a product of the two balls is the product of the correspond measures of those balls.
+
+  The measure of any ball of a fixed radius in $\mathbb{H}$ is constant, since $\mathbb{H}$ is homogeneous.
+  The $\nu_N^{\no_g \setminus \gamma}$ measure of a ball in $\systole(\no_g \setminus \gamma)$ is again bounded above and below by fixed constants, by inducting on a surface of lower complexity.
+
+  Since we have uniform bounds for both the terms in the product, we get uniform bounds for the measure of a ball in $\systole(\no_g)$.
+\end{proof}
 
 \subsection{Teichmüller geodesics and geodesics in the curve complex}
 \label{sec:dist-form-teichm}
