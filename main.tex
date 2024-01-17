@@ -9,14 +9,16 @@
 \thanks{}
 \urladdr{\url{https://www.sayantankhan.io}}
 
-\keywords{}
-\subjclass[2010]{}
+\keywords{mapping class group, Teichm\"uller space, Patterson-Sullivan theory}
+\subjclass[2010]{57K20}
 
 \date{\today}
 
 \begin{document}
 \begin{abstract}
-
+  We consider a finite volume deformation retract $\systole(\no_g)/\mcg(\no_g)$ of the moduli space of non-orientable surface $\mo(\no_g)$, and show that it behaves like the convex core of $\mo(\no_g)$.
+  Moreover, we show that geodesics in the convex core leave compact regions with exponentially low probabilities, showing that the action of $\mcg(\no_g)$ on $\systole(\no_g)$ is \emph{statistically convex-cocompact}.
+  In combination with recent results of Coulon, Gekhtman, Ma, Tapie, and Yang, this leads to the construction of a finite geodesic flow invariant measure for Teichmüller spaces of non-orientable surfaces, with respect to which the geodesic flow is mixing.
 \end{abstract}
 \maketitle
 
@@ -25,7 +27,16 @@
 \label{sec:introduction}
 
 {\color{red} Outline of introduction.}
-
+\begin{enumerate}[(i)]
+\item List similarities with IVGF surfaces, and point out where analogy breaks down.
+\item State theorem about systole being weak convex.
+\item Weak convexity lets us focus on systole, rather than entire space.
+\item Can prove exponential rareness of thin geodesics in systole, using random walk methods.
+\item Using this, we get stat-convex, and consequently, rest of PS theory thanks to others.
+\item Hard part of random walk argument is showing hLP = hNP. We spend sections 5 and 6 doing this.
+\item Sketch out idea of proof of hLP = hNP.
+\item Mention what's in the appendix.
+\end{enumerate}
 \subsection*{Organization of the paper}
 
 
@@ -245,6 +256,9 @@ This result, combined with the results of \textcite{10.1093/imrn/rny001}, \textc
 
 % \todo[inline]{Unify the notation for the various coarse notions of equality and inequalities}
 \todo[inline]{Figure out which other places in the paper have undocumented notation, and document them here. Also sort this list.}
+
+\todo[inline]{Redo all the figures in inkscape.}
+
 \subsection*{List of notation}
 \begin{itemize}
 \item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
@@ -1633,7 +1647,7 @@ We now look at an extreme example of a complete witness families to motivate fur
     The orderings $\swarrow$ and $\searrow$ satisfy the following properties.
     \begin{enumerate}[(i)]
     \item If $Z$, $V$, and $W$ are witnesses such that $Z \sqsubset V \sqsubset W$, then $Z \swarrow W$ iff $V \swarrow W$ (equivalently, $W \searrow Z$ iff $W \searrow V$).
-    \item If $Z$, $V$ and $W$ are witnesses such that $Z \swarrow V \searrow W$, then $Z \pitchfork_V W$ and $Z \lessdot W$. \todo[inline]{Define what $\pitchfork_V$ as well as time-ordering $\lessdot$ mean.}
+    \item If $Z$, $V$ and $W$ are witnesses such that $Z \swarrow V \searrow W$, then $Z \pitchfork_V W$ and $Z \lessdot W$.
     \item If $Z$ and $V$ are witnesses, and $W$ an active subsurface such that $Z \swarrow V \lessdot W$, or $W \lessdot V \searrow Z$, then $Z \pitchfork_V W$.
     \item If $Z$ and $V$ are witnesses, such that $Z \swarrow V$ (or $Z \searrow V$), then there does not exist any active subsurface $W$ such that the $\Omega$-closure of $W$ is $V$ and $W \lessdot V$ (or $V \lessdot W$).
     \end{enumerate}
@@ -2075,7 +2089,7 @@ We set up some notation for this section.
   When $x$ and $y$ are points in Teichmüller space, $d_V(x,y)$ refers to $d_V(\mu_x, \mu_y)$, where $\mu_x$ and $\mu_y$ are the Bers marking on $x$ and $y$.
 \end{itemize}
 
-\todo[inline]{Set up the notation, i.e. the various metrics floating around.}
+% \todo[inline]{Set up the notation, i.e. the various metrics floating around.}
 
 \subsection{Minsky's product region theorem}
 \label{sec:minskys-prod-regi}
@@ -2374,7 +2388,7 @@ We begin by recalling the definition of consistency.
     \end{align*}
   \end{enumerate}
 \end{definition}
-\todo[inline]{Make sure I use the transversality notation consistently.}
+% \todo[inline]{Make sure I use the transversality notation consistently.}
 
 The following theorem (\textcite[Theorem 4.3]{behrstock2012geometry}) states that the projection from Teichmüller space to the curve complexes of all the subsurfaces is coarsely surjective onto the set of consistent tuples.
 
