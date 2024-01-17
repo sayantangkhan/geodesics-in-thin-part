@@ -19,15 +19,17 @@
 
 \end{abstract}
 \maketitle
-\tableofcontents
 
 
 \section{Introduction}
 \label{sec:introduction}
 
-
+{\color{red} Outline of introduction.}
 
 \subsection*{Organization of the paper}
+
+
+\tableofcontents
 
 % \todo[inline]{Find and rewrite all phrases that begin with ``it's easy to see that''.}
 
@@ -157,14 +159,92 @@ In practice, the uniqueness of the Patterson-Sullivan measure follows from the e
 We will skip the construction of the Bowen-Margulis-Sullivan measure $\mu_{\mathrm{BMS}}$, since the specifics of the construction are not relevant for the remainder of the paper.
 We refer the reader to \textcite{quint2006overview} for the construction of $\mu_{\mathrm{BMS}}$.
 
-\todo[inline]{Something about the arithmeticity of the length spectrum.}
+% \todo[inline]{Something about the arithmeticity of the length spectrum.}
 
-\subsection{Curve complexes and coarse geometry of Teichmüller space}
-\label{sec:curve-compl-coarse}
+\subsubsection{Some results in Patterson-Sullivan theory}
+\label{sec:some-results-patt}
 
+The question of finiteness and ergodicity of the Bowen-Margulis-Sullivan measure is equivalent to several other conditions, some of which are easier to check in some examples.
 
+\begin{theorem}[Hopf-Tsuji-Sullivan dichotomy; \textcite{sullivan1979density}]
+  \label{thm:hts-dich}
+  For a geometrically finite group $\Gamma$, the following conditions are equivalent.
+  \begin{enumerate}[(i)]
+  \item The group is of divergent type.
+  \item The Bowen-Margulis-Sullivan measure is finite.
+  \item The geodesic flow is ergodic with respect to the Bowen-Margulis-Sullivan measure.
+  \end{enumerate}
+\end{theorem}
 
-\todo[inline]{Unify the notation for the various coarse notions of equality and inequalities}
+The ergodicity of the geodesic flow with respect to $\mu_{\mathrm{BMS}}$ can be upgraded to mixing if the length spectrum of $\mathbb{H}/\Gamma$ generates a dense subgroup of $\mathbb{R}$.
+
+\begin{theorem}[\textcite{babillot2002mixing}]
+  \label{thm:mixing-h2}
+  If $\mu_{\mathrm{BMS}}$ is finite, and the lengths of the closed geodesics on $\mathbb{H}/\Gamma$ generate a dense subgroup of $\mathbb{R}$, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+\end{theorem}
+
+One can then combine Theorem \ref{thm:mixing-h2} with the following result of Roblin to count lattice points where the logarithmic error goes to $0$.
+
+\begin{theorem}[\textcite{roblin2003ergodicite}]
+  \label{thm:counting-h2}
+  Let $B_p(R)$ denote the lattice point counting function.
+  \begin{align*}
+    B_p(R) \coloneqq \#\left( \gamma \in \Gamma \mid d(p, \gamma p) \leq R \right)
+  \end{align*}
+  Then there exists a constant $C$, which is the $\mu_{\mathrm{BMS}}$-volume of the unit tangent bundle of $\mathbb{H}/\Gamma$, such that $B_p(R)$ can be approximated in the following manner.
+  \begin{align*}
+    \lim_{R \to \infty} \log\left( \frac{C \exp(h_{\Gamma} R)}{B_p(R)} \right) = 0
+  \end{align*}
+\end{theorem}
+
+\subsubsection{Extending these results to subgroups of mapping class groups}
+\label{sec:extend-these-results}
+
+In \cite{10.1093/imrn/rny001}, Yang outlined a criterion for a \emph{non-elementary group with contracting element} acting on metric space to be of divergent type: the action must be \emph{statistically convex-cocompact}.
+In the context of subgroups of mapping class groups, a subgroup is non-elementary if it contains two non-commuting pseudo-Anosov elements.
+
+To explain what a statistically convex-cocompact action is, we first need to describe what is means for a subset of a metric space to be statistically convex.
+
+Let $X$ be a metric space with a group $G$ acting on it, and let $Y$ be a subset of $X$ which is invariant under the $G$-action, i.e. we have a $G$-action on $Y$ as well, and let $p$ be a point in $Y$.
+One can consider two kinds of counting functions for the $G$-action on $Y$.
+\begin{align*}
+  N_p(R) &\coloneqq \left\{ \gamma \in G \mid d(p, \gamma p) \leq R \right\} \\
+  % M_p(R) & \coloneqq \left\{ \gamma \in G \mid \text{$d(p, \gamma p)$ and the geodesic segment $[p, \gamma p]$ leaves $Y$ except f} \right\}
+\end{align*}
+The function $N_p$ is just the standard lattice point counting function.
+We also want to look at those lattice points that detect a failure of convexity of $Y$, i.e. the geodesic segment joining $p$ and $\gamma p$ leaves and stays outside $Y$, except for bounded distances at the beginning and end of the segment.
+Let $M_p(R)$ denote the counting function for these lattice points.
+Let $h$ and $h_c$ be the exponential growth rates for $N_p(R)$ and $M_p(R)$.
+\begin{align*}
+  h &\coloneqq \lim_{R \to \infty} \frac{\log\left( N_p(R) \right)}{R} \\
+  h_c &\coloneqq \lim_{R \to \infty} \frac{\log\left( M_p(R) \right)}{R}
+\end{align*}
+
+\begin{definition}[Statistically convex subset]
+  \label{defn:statistical-convex-subset}
+  The subset $Y$ is said to be statistically convex if $h_c < h$.
+\end{definition}
+
+\begin{definition}[Statistically convex-cocompact action]
+  The action of $G$ on $X$ is statistically convex-cocompact if there exists some $G$-invariant subset $Y$ such that $Y$ is statistically convex, and the action of $G$ on $Y$ is cocompact.
+\end{definition}
+
+In \cite{10.1093/imrn/rny001}, Yang shows that when a non-elementary group acts statistically convex-cocompactly on a space, the group is of divergent type.
+
+In an upcoming paper, \textcite{CGTY} show that for subgroups of mapping class groups that act statistically convex-cocompactly, a version of the Hopf-Tsuji-Sullivan dichotomy (Theorem \ref{thm:hts-dich}) holds.
+Combining this with Yang's result of the group being of divergence type, one can conclude that the Bowen-Margulis-Sullivan measure on the unit cotangent bundle has finite mass.
+
+In \textcite{gekhtman2023dynamics}, they show that assuming $\mu_{\mathrm{BMS}}$ has finite mass, the analogs of Theorems \ref{thm:mixing-h2} and \ref{thm:counting-h2} are proven, establishing lattice point counting results for the actions of these mapping class subgroups.
+
+In the remainder of this paper, we show that the action of $\mcg(\no_g)$ on $\systole(\no_g)$ (the subset of $\teich(\no_g)$ where the one-sided curves cannot be shorter than $\vept$) is statistically convex-cocompact.
+
+This result, combined with the results of \textcite{10.1093/imrn/rny001}, \textcite{CGTY}, and \textcite{gekhtman2023dynamics}, give us precise counting results for the action of $\mcg(\no_g)$.
+
+% \subsection{Curve complexes and coarse geometry of Teichmüller space}
+% \label{sec:curve-compl-coarse}
+
+% \todo[inline]{Unify the notation for the various coarse notions of equality and inequalities}
+\todo[inline]{Figure out which other places in the paper have undocumented notation, and document them here. Also sort this list.}
 \subsection*{List of notation}
 \begin{itemize}
 \item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
@@ -176,8 +256,10 @@ We refer the reader to \textcite{quint2006overview} for the construction of $\mu
 \item[-] $\teich(S)$: The Teichmüller space of the surface $S$.
 \item[-] $\systole(S)$: The one-sided systole superlevel set in $\teich(S)$.
 \item[-] $\pitchfork$: $U \pitchfork V$ denotes that the surfaces $U$ and $V$ are transverse.
+\item[-] $\pitchfork$: $U \pitchfork_W V$ denotes that $U$ and $V$ are transverse when restricted to any subsurface of $W$ which intersects both $U$ and $V$ non-trivially.
 \item[-] $U \lessdot V$: The Behrstock partial order for transverse subsurfaces $U$ and $V$.
 \item[-] $\nu_N$: The Lagrangian volume form on $\teich(\no_g)$.
+\item[-] $\emul$: We say $a \emul b$ if $a$ and $b$ are equal up to a multiplicative error of $k$ and an additive error of $c$, where $k$ and $c$ are some fixed constants.
 \end{itemize}
 
 \section{The weak convex core of $\teich(\no_g)$}
