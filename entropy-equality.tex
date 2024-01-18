@@ -1,0 +1,551 @@
+\section{Equality of lattice point entropy and net point entropy}
+\label{sec:equal-latt-point}
+
+%% Start with this section
+
+In this, and the following section, we will prove that $\hLP = \hNP$, which will let us apply Theorem \ref{thm:entropy-equality-implies-scc} to conclude that $\core(\teich(S))$ is SCC for surfaces $S$ of finite type.
+\begin{theorem}[Entropy equality]
+  \label{thm:entropy-equality}
+  For any surface $S$ of finite type, the following relationship holds between the $\hNP$ and $\hLP$.
+  \begin{align*}
+    \hNP(\core(\teich(S))) = \hLP(\teich(S))
+  \end{align*}
+\end{theorem}
+
+\begin{rem}
+  In the case where $S$ is an orientable surface, the theorem is a corollary of \textcite[Theorem 1.2]{10.1215/00127094-1548443}.
+  However, the proof of the stronger theorem in the orientable setting uses facts about the dynamics of the geodesic flow on the moduli space, which we don't have in the non-orientable setting.
+  The proof of the weaker theorem only uses coarse geometric methods, and works equally well for orientable and non-orientable surfaces.
+\end{rem}
+
+\subsection{Base case}
+\label{sec:base-case}
+
+We will prove this theorem by inducting on the Euler characteristic of the surface $S$.
+The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one orientable surface with Euler characteristic $-1$.
+\begin{itemize}
+\item $\os_{1,1,0}$: This is the torus with $1$ boundary component and $0$ crosscaps attached.
+\item $\os_{1,0,1}$: This is a torus with $0$ boundary components, and $1$ crosscap attached.
+\item $\os_{0,2,1}$: This is a sphere with $2$ boundary components, and $1$ crosscap attached.
+\item $\os_{0,1,2}$: This is a sphere with $1$ boundary component, and $2$ crosscaps attached.
+\end{itemize}
+
+% \todo[inline]{Have some helper lemma here about various cases where we have entropy equality.}
+
+\begin{lemma}[Entropy equality: base case]
+  \label{lem:entropy-equality-base-case}
+  For a surface $S$ in $\left\{ \os_{1,1,0}, \os_{1,0,1}, \os_{0,2,1}, \os_{0,1,2} \right\}$, the following relationship holds between the $\hNP$ and $\hLP$.
+  \begin{align*}
+    \hNP(\core(\teich(S))) = \hLP(\teich(S))
+  \end{align*}
+\end{lemma}
+
+\begin{proof}
+  For $S = \os_{1,1,0}$, we will directly prove the lemma, and for the remaining three non-orientable surfaces, we will use a description of their Teichmüller spaces and mapping class groups from \textcite{gendulphe2017whats} to reduce to the first case, or show that the result follows trivially.
+  \begin{itemize}
+  \item $\os_{1,1,0}$: Since $\os_{1,1,0}$ is orientable, we have that $\mathrm{core(\teich(\os_{1,1,0}))} = \teich(\os_{1,1,0})$, so it suffices to look at the full Teichmüller space.
+    The Teichmüller space of $\os_{1,1,0}$ is the upper half plane $\HH^2$, and the mapping class group is $\mathrm{SL}(2, \mathbb{Z})$.
+    In this case, the number of lattice points in a ball of radius $R$ grows like $\exp(R)$.
+    More precisely, we have the following inequality for some constants $c$ and $c^\prime$.
+    \begin{align}
+      c \leq \frac{\#\left( B_R(p) \cap p \cdot \mathrm{SL}(2, \mathbb{Z}) \right)}{\exp(R)} \leq c^{\prime} \label{eq:lattice-point-count}
+    \end{align}
+    Here, $p$ is a lattice point, and $B_R(p)$ is the ball of radius $R$ centered at $p$.
+
+    To count the net points in the ball of radius, we parameterize the net points by how far from the orbit of $p$ they lie. Since we're looking for net points in a ball of radius $R$, the furthest away they can be from the orbit is $R$.
+    We have the following sum decomposition (for an arbitrary choice of $\vepb > 0$) for the cardinality of the net points.
+    \begin{align}
+      \label{eq:net-point-decomposition-base-case}
+      \#\left( B_R(p) \cap \net \right) = \#\left( B_R(p) \cap \net_{\leq \vepb R} \right) + \#\left( B_R(p) \cap \net_{> \vepb R} \right)
+    \end{align}
+    Here, $\net_{\leq \vepb R}$ denotes the net points that lie within distance $\vepb R$ of the orbit of $p$, and $\net_{> \vepb R}$ denotes the net points that lie more than distance $\vepb R$ of the orbit of $p$.
+
+    We will show that the first term is at most $p(R) \exp(R(1 + \vepb))$, for some polynomial $p(R)$, and that the second term grows slower than the first term.
+    Since the choice of $\vepb$ was arbitrary, this will prove the equality of the two entropy terms.
+
+    Let $\net_{\leq \vepb R}(\gamma)$ denote the subset of $\net_{\leq \vepb R}$ whose closest lattice point is $\gamma p$.
+    Observe that $d(p, \gamma p)$ is at most $R + \vepb R$, by the triangle inequality.
+    We also have the following inequality for any $\gamma$, and for some polynomial $p$, by Lemma \ref{lem:fd-polynomial-growth}.
+    \begin{align*}
+      \#\left( B_R(p) \cap \net_{\leq \vepb R} \right) \leq p(R)
+    \end{align*}
+    Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap \net_{\leq \vepb R} \right)$.
+    \begin{align*}
+      \#\left( B_R(p) \cap \net_{\leq \vepb R} \right) \leq p(R) \cdot \left( \exp(R(1+\vepb)) \right)
+    \end{align*}
+    This is precisely the bound we needed for the first term in \eqref{eq:net-point-decomposition-base-case}.
+
+    Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \vepb}{2}))$.
+    For any point $x$ in $\net_{> \vepb R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the [p, x] which stays within some bounded distance of a lattice point.
+    We also have that $d(p, x_0) \leq R(1-\vepb)$, by our assumption, which lets us count the number of such points $x_0$.
+    There are at most $\exp(R(1-\vepb))$ such points.
+    Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
+    Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ and a horoball $H$, where $x_0$ is a definite distance away from the boundary of horoball.
+    We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
+    We thus have the following upper bound on $\#\left( B_R(p) \cap \net_{> \vepb R} \right) $ for large enough values of $R$.
+    \begin{align*}
+      \#\left( B_R(p) \cap \net_{> \vepb R} \right)  &\leq p(R) \cdot \exp(R(1-\vepb)) \\
+                                                        &\leq \exp\left(R\left(1 - \frac{\vepb}{2}\right)\right)
+    \end{align*}
+    This finishes proving the two claims we made about the terms of \eqref{eq:net-point-decomposition-base-case}, and proves the result for $\os_{1,1,0}$.
+
+    % We further subdivide $\net_i$ based on the orbit point that is the closest to the net point. If there are multiple such orbit points, we pick one arbitrarily.
+    % Let $\net_i(\gamma)$ denote the set of net points in $\net_i$ such that the closest orbit point is $\gamma p$.
+    % We rewrite the expression for the cardinality using this new decomposition.
+    % \begin{align}
+    %   \#\left( B_R(p) \cap \net \right) = \sum_{i=1}^R \sum_{\gamma \in \mathrm{SL}(2, \mathbb{Z})} \#\left( B_R(p) \cap \net_i(\gamma) \right) \label{eq:net-point-count}
+    % \end{align}
+
+    % We first narrow down which $\gamma \in \mathrm{SL}(2, \mathbb{Z})$ can actually contribute the innermost term in the sum.
+    % If $q$ is a net point that is within distance $R$ of $p$, but also within distance $i$ of $\gamma p$, then we have by the triangle inequality that $d(p, \gamma p) \leq R + i$.
+    % This simplifies the sum.
+    % \begin{align}
+    %   \#\left( B_R(p) \cap \net \right) = \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} \#\left( B_R(p) \cap \net_i(\gamma) \right) \label{eq:net-point-count-simp}
+    % \end{align}
+
+    % Observe now that we can also provide an upper bound for $\#\left( B_R(p) \cap \net_i(\gamma) \right)$ purely in terms of $i$, when $R$ and $i$ are large.
+    % Consider a Poincaré domain decomposition for the $\mathrm{SL}(2, \mathbb{Z})$ action on the upper half plane, and focus on the associated to $\gamma p$.
+    % The set $\net_i(\gamma)$ is precisely the intersection of this domain with the annulus of radius $(i-1, i)$.
+    % Because the cardinality of the net points in a region is proportional to the area, it suffices to bound the area of the region instead.
+    % When $i$ is large enough, the problem reduces to estimating the area of a hyperbolic cusp, which can be explicitly computed.
+    % We get the following estimate on $\#\left( B_R(p) \cap \net_i(\gamma) \right)$.
+    % Here $D_{\gamma}$ denotes the domain associated to $\gamma p$, and $A_i$ denotes the annulus centered at $p$, and $k$ is a constant that is independent of $i$ and $R$.
+    % \begin{align}
+    %   \#\left( B_R(p) \cap \net_i(\gamma) \right) &= \mathrm{Area}\left( B_R(p) \cap A_i(p) \right) \\
+    %                                            &\leq k \cdot \exp(-i) \label{eq:tail-bound}
+    % \end{align}
+    % Plugging in \eqref{eq:tail-bound} into \eqref{eq:net-point-count-simp}, we get the following upper bound.
+    % \begin{align*}
+    %   \#\left( B_R(p) \cap \net \right) \leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i)
+    % \end{align*}
+    % We now use \eqref{eq:lattice-point-count} to get a bound on the inner sum.
+    % \begin{align*}
+    %   \#\left( B_R(p) \cap \net \right) &\leq \sum_{i=1}^R \sum_{\substack{\gamma \in \mathrm{SL}(2, \mathbb{Z}) \\ d(p, \gamma p) \leq R+i}} k \cdot \exp(-i) \\
+    %                                  &\leq \sum_{i=1}^R c^{\prime}k \exp(R+i) \exp(-i) \\
+    %                                  &= c^{\prime}k R \exp(R)
+    % \end{align*}
+    % Since the entropy of $R \exp(R)$ is also $1$, this proves the equality of the $\hNP$ and $\hLP$ for $\os_{1,1,0}$.
+    % \todo{Rework or compress this proof.}
+  \item $\os_{1,0,1}$: This surface is very similar to the previous case: it's obtained by gluing together the boundary component of $\os_{1,1,0}$ via the antipodal map.
+    It's a theorem of \textcite{scharlemann1982complex} and also \textcite{gendulphe2017whats} that there is a unique one-sided curve $\kappa$ in $\os_{1,0,1}$ whose complement is $\os_{1,1,0}$.
+    As a consequence, $\mcg(\os_{1,0,1}) \cong \mcg(\os_{1,1,0})$, and $\teich(\os_{1,1,0}) \hookrightarrow \teich(\os_{1,0,1})$.
+
+    We consider now $\core(\teich(\os_{1,0,1}))$: the curve $\kappa$ cannot get shorter than the threshold specified by the core.
+    There is another curve $\kappa^{\prime}$ that intersects $\kappa$ exactly once (see \autoref{fig:base-case-2}).
+    It follows from hyperbolic trigonometry that if $\kappa$ cannot be too long either while staying in $\core(\teich(\os_{1,0,1}))$: if it is, then $\kappa^{\prime}$ becomes shorter than the threshold value.
+
+    If we consider the pants decomposition of the surface along $\kappa$, and any two sided curve, we see that the length coordinates of $\kappa$ in $\core(\teich(\os_{1,0,1}))$ are contained in a compact interval $[t_1, t_2]$, where $t_1 > 0$.
+    This means that $\core(\teich(\os_{1,0,1}))$ is a bounded neighbourhood of the image of $\teich(\os_{1,1,0})$.
+    \begin{figure}[h]
+      \centering
+      \includegraphics[height=5cm]{images/s101-draft.png}
+      \caption{({\color{red} Draft})The curves $\kappa$ and $\kappa^{\prime}$ on $\os_{1,0,1}$.}
+      \label{fig:base-case-2}
+    \end{figure}
+
+    From the previous case, we already have $\hNP(\core(\teich(\os_{1,1,0}))) = \hLP(\teich(\os_{1,1,0}))$, and since their mapping class groups are isomorphic, we also have $\hLP(\teich(\os_{1,1,0})) = \hLP(\teich(\os_{1,0,1}))$.
+    We now need to prove that $\hNP(\core(\teich(\os_{1,1,0}))) = \hNP(\core(\teich(\os_{1,0,1})))$ to prove the result for this case.
+    We have that the net for $\core(\teich(\os_{1,0,1}))$ lies in a bounded neighbourhood of the net for $\core(\teich(\os_{1,1,0}))$: this implies that the cardinalities of the net points in a ball of radius $r$ differ by at most a multiplicative constant.
+    \begin{align*}
+      \#\left( B_R(p) \cap \net_{\core(\teich(\os_{1,0,1}))} \right) \leq c \cdot \#\left( B_R(p) \cap \net_{\core(\teich(\os_{1,1,0}))} \right)
+    \end{align*}
+    Since the two cardinalities differ by at most a multiplicative constant, they have the same exponential growth rate.
+    % The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\core(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
+  \item $\os_{0,2,1}$: The mapping class group of this surface is finite: in fact, it is isomorphic to $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ (see \textcite{gendulphe2017whats}).
+    This means $\hLP(\teich(\os_{0,2,1})) = 0$.
+    This surface has exactly two simple geodesics $\kappa$ and $\kappa^{\prime}$, which intersect each other exactly once, such that deleting either one of them results in a pair of pants.
+    Picking a pants decomposition along either $\kappa$ or $\kappa^{\prime}$, we see that $\teich(\os_{0,2,1})$ is homeomorphic to $\mathbb{R}_{>0}$, where the homeomorphism is given by the length coordinate.
+
+    If we now consider $\core(\teich(\os_{0,2,1}))$, the lengths of $\kappa$ and $\kappa^{\prime}$ are bounded below by the threshold.
+    But they are also bounded above, by an argument similar to the previous case, namely is either $\kappa$ or $\kappa^{\prime}$ are very long, the other one sided curve must be very short.
+    This proves that $\core(\teich(\os_{0,2,1}))$ is compact, and as a result $\hNP(\core(\os_{0,2,1})) = 0$.
+    This proves the lemma for $\os_{0,2,1}$.
+  \item $\os_{0,1,2}$: This surface has a unique two-sided element, which we denote by $\gamma_{\infty}$.
+    The one sided curves on this surface are indexed by $\mathbb{Z}$, where $\gamma_n = D_n \gamma_0$, and $D_n$ is the Dehn twist about $\gamma_\infty$.
+    The mapping class group of this surface is also virtually generated by $D_n$.
+    If we consider the pants decomposition along $\gamma_{\infty}$, we get a Fenchel-Nielsen map from $\teich(\os_{0,1,2})$ to the upper half plane $\mathbb{H}^2$, where the $y$-coordinate is $\frac{1}{\ell(\gamma_{\infty})}$, and the $x$-coordinate is the twist around $\gamma_{\infty}$.
+    Furthermore, this map is also an isometry, and with respect to these coordinates, $D_n$ is the action of $
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}
+    $ on $\mathbb{H}^2$.
+
+    If we now consider $\core(\teich(\os_{0,1,2}))$, that consists of the points in $\mathbb{H}^2$ whose $y$-coordinate is greater than some threshold value, i.e. a horoball in $\mathbb{H}^2$.
+    We know from elementary hyperbolic geometry that the number of net points in a horoball grows with the same exponential growth rate as the number of net points in the boundary of the horoball, i.e. the horocycle.
+    The former exponential growth rate is precisely $\hNP(\core(\teich(\os_{0,1,2})))$, and the latter term is $\hLP(\teich(\os_{0,1,2}))$.
+  \end{itemize}
+  This concludes the proof of the lemma for the $4$ surfaces with $\chi(S) = -1$.
+\end{proof}
+
+\subsection{Good points and bad points}
+\label{sec:good-points-bad}
+
+The proof of Theorem \ref{thm:entropy-equality} will split up into counting two kinds of net points, which we will call \emph{good points} and $\emph{bad points}$.
+
+\begin{definition}[Good points]
+  A point in $B_R(p) \cap \net$ is good if it is at most distance $\vepb R$ away from a lattice point $\gamma p$. The set of good points is denoted by $\net_g(p, R, \vepb)$.
+\end{definition}
+
+\begin{definition}[Bad points]
+  A point in $B_R(p) \cap \net$ is bad if it is more than distance $\vepb R$ away from the nearest lattice point. The set of bad points is denoted by $\net_b(p, R, \vepb)$.
+\end{definition}
+
+Observe that the classification of a point as good or bad depends on the choice of $R$, $p$, and an additional parameter $\vepb > 0$.
+
+We also further subdivide $\net_g(p, R, \vepb)$ based on what the closest lattice point is.
+
+\begin{definition}[Good point in the domain of $\gamma$]
+  For $\gamma \in \mcg(S)$, the set $\net_g(\gamma, p, R, \vepb)$ denotes the subset of $\net_g(p, R, \vepb)$ whose closest lattice point is $\gamma p$.
+\end{definition}
+
+We will now prove a lemma that provides an upper bound on the number of good points when restricted to a fundamental domain.
+
+\begin{lemma}
+  \label{lem:fd-polynomial-growth}
+  There exists a polynomial function $q$, whose degree only depends on the topological type of $S$, such that for any $\gamma \in \mcg(S)$, the following inequality holds for the cardinality of points in $\net_g(\gamma, p, R, \vepb)$.
+  \begin{align*}
+    \#\left( \net_g(\gamma, p, R, \vepb) \cap B_R(\gamma p) \right) \leq q(R)
+  \end{align*}
+\end{lemma}
+
+\begin{rem}
+  \textcite[Lemma 3.2]{eskinmirzakhani} prove this lemma for Teichmüller spaces of orientable surfaces, by comparing the extremal lengths of various curves on the underlying surfaces.
+  We adapt the same proof for non-orientable surfaces, replacing extremal length for hyperbolic lengths instead.
+\end{rem}
+
+Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following lemma on packing an $\vepn$-separated set into a ball of fixed radius in Teichmüller space (where $\vepn$ is the parameter associated to our net $\net$).
+
+\begin{lemma}[Packing bound]
+  \label{lem:packing-argument}
+  For an constants $C > 0$ and $\vepn > 0$, there exists a constant $D(C, \vepn, S)$ depending on the constants $C$, $\vepn$, and the topological type of the surface $S$ such that any ball $B_C(p)$ (independent from the choice of $p$) in $\teich(S)$ cannot contain more than $D$ points that are pairwise distance at least $\vepn$ apart.
+\end{lemma}
+
+\begin{proof}
+  First of all, note that the above lemma holds for $S = \os_{1,1,0}$, since $\teich(\os_{1,1,0})$ is $\mathbb{H}^2$, which is homogeneous.
+
+  Next, note that the lemma also holds for compact metric spaces, because we can express $D$ as a continuous function of the point $p$, which will achieve a maximum on a compact metric space.
+
+  Finally, note that if the lemma holds for metric spaces $X$ and $Y$, it also holds for $X \times Y$, where the metric on $X \times Y$ is the $\sup$ product with an additive error.
+
+  Suppose now that we have the lemma for the Teichmüller spaces of all surfaces with Euler characteristic at least $-n$.
+  To show the lemma for a Teichmüller space of a surface $S$ with Euler characteristic $-n-1$, we break up the Teichmüller space into the thick part, where the mapping class group acts co-compactly, so the first reduction applies, and the thin part, where we have by Minsky's product region theorem \cite[Theorem 6.1]{1077244446} (or Theorem \ref{thm:prno}), the metric is the $\sup$ product, so the second reduction applies.
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{lem:fd-polynomial-growth}]
+  We begin by making three simplifying reductions.
+  First, it will suffice to prove the following stronger claim instead.
+  \begin{align}
+    \label{eq:reduction-one}
+    \#\left( \net(\gamma) \cap B_R(\gamma p) \right) \leq q(R)
+  \end{align}
+  Here, $\net(\gamma)$ denotes the set of net points whose closest lattice point is $\gamma p$: $\net(\gamma)$ is therefore a superset of $\net_g(\gamma, p, R, \vepb)$.
+
+  Next, note that it suffices to prove \eqref{eq:reduction-one} for $\gamma = 1$, since our choice of basepoint $p$ was arbitrary.
+
+  And finally, it will suffice to prove the following claim.
+  \begin{claim*}
+  There exists a set $\cZ \subset \teich(S)$ such that $\# \cZ \leq R^{f(S)}$, and for $y \in B_R(p)$, there exists a $z \in \cZ$ and $\kappa \in \mcg(S)$ such that $d(y, \kappa z) \leq C$, for some value $f(S)$ that only depends on the topological type of $S$, and some fixed constant $C$.
+  \end{claim*}
+  To see why this suffices, suppose we have such a $\cZ$.
+  Without loss of generality, we can assume that for all points $z \in \cZ$, the closest lattice point is $p$: otherwise we could replace such a point $z$ by $\kappa z$ for an appropriate choice of $\kappa$.
+We then have that for any $n \in \net(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
+Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \net(1) \cap B_p(R) \right) \leq C^{\prime} R^{f(\chi(S))}$, for some other constant $C^{\prime}$, by Lemma \ref{lem:packing-argument}.
+% \todo[inline]{Need a lemma that states we can only pack in a uniformly bounded number of net points in a ball of fixed radius.
+% The proof can go via the uniform Lagrangian estimate for the volume of a ball, and use packing arguments.}
+
+\emph{Proof of claim:}
+  Let $\left\{ M_1, \ldots, M_J \right\}$ be all the topologically distinct markings on $p$ that are short.
+  We know that there are only finitely many of them, and the cardinality $J$ only depends on the topological type of the surface $S$.
+  We also know that for each of these short markings, the lengths of the pants curves in the marking are bounded above by some constant $T$.
+  Each of these markings has $N = -3 \chi(S) - b$ pants curves on them, where $b$ is the number of boundary components of $S$.
+
+  We construct the points $z \in \cZ$ by just varying the lengths of these pants curves: the set of lengths we will allow are the following.
+  \begin{align*}
+    \text{Acceptable lengths} = \left\{ T, T \exp(-1), T\exp(-2), \ldots, T \exp(-\lceil R \rceil) \right\}
+  \end{align*}
+  We define the point $z_{j, i_1, i_2, \ldots , i_N}$ to be the point in $\teich(S)$ obtained by considering the marking $M_j$ at $p$, and setting the length of the $k$\textsuperscript{th} pants curve to be $i_k$, where the $i_k$ is one of the acceptable lengths.
+  It's clear that the cardinality of $\cZ$ is at most $J \cdot R^N$, which is a polynomial only depending on the topological type of the surface $S$.
+
+  Suppose now that $y$ is some other point in $B_R(p)$.
+  We pick a $\kappa \in \mcg(S)$ such that the shortest marking on $\kappa y$ is one of the markings $M_j$ for $1 \leq j \leq J$.
+  We now need to show that one of the $z \in \cZ$ is close to $\kappa y$.
+  Pick the $z$ such that the corresponding lengths of the pants curves are closest to the lengths of the pants curves on $\kappa y$.
+  We can now invoke the combinatorial distance formula for Teichmüller metric (proved by \textcite{rafi2007combinatorial} for the orientable setting, and Theorem \ref{thm:distance-formula} for the non-orientable case).
+  \begin{align*}
+    d(z, \kappa y) \emul \sum_Y \left[ d_Y(z, \kappa y) \right]_k + \sum_{\alpha \not \in \Gamma} \log \left[ d_{\alpha} (z, \kappa) \right]_k + \max_{\alpha \in \Gamma} d_{\mathbb{H}_{\alpha}} (z, \kappa y)
+  \end{align*}
+  In the above formula, the first term is the distance between the short markings when projected to non-annular subsurfaces, the second term is the distance between the short markings when projected to annular subsurfaces whose core curves are not the pants curves in the marking, and the third term corresponds to the length and twist parameters of the short curves.
+
+  Since both $z$ and $\kappa y$ have the same short markings, the first two terms in the above sum become $0$.
+  Also, since we picked $z$ to be the element of $\cZ$ such that the lengths were closest to those on $\kappa y$, the third term is bounded by some constant, which proves the result.
+\end{proof}
+
+
+\subsection{Using complexity length to count bad points}
+\label{sec:using-compl-length}
+
+In this section we introduce an alternative to the Teichmüller metric, called the \emph{complexity length} (see Definition \ref{defn:complexity-length}).
+This metric was introduced by \textcite{dowdall2023lattice}, in order to get better estimates on net points contained in the thin part of Teichmüller space (for orientable surfaces).
+We adapt the construction of complexity to the Teichmüller space of non-orientable surfaces in Section \ref{sec:line-gap-compl}.
+In this section, we state the main results about complexity length we need in order to prove Theorem \ref{thm:entropy-equality}.
+
+For this section, we will state the results with a rescaled version of complexity length, in order to compare it with Teichmüller length.
+
+\begin{definition}[Rescaled complexity length]
+  Let $S$ be a surface of finite type.
+  The rescaled complexity length $\dcomp$ on $\core(\teich(S))$ is given by the following formula.
+  \begin{align*}
+    \dcomp(x, y) = \frac{\mathfrak{L}(x,y)}{\hNP(\core(\teich(S)))}
+  \end{align*}
+  Here, $\mathfrak{L}(x,y)$ is the complexity length between points $x$ and $y$.
+\end{definition}
+
+The first result we will need is a count of the net points with respect to the rescaled complexity length.
+
+\begin{theorem}[Theorem 12.1 of \cite{dowdall2023lattice}, Theorem \ref{thm:counting-with-complexity}]
+  \label{thm:counting-with-complexity-rescaled}
+  There exists a polynomial function $p(R)$ that depends on the net $\net$, and a parameter $\veperr > 0$, such that the following inequality holds for any $\veperr > 0$.
+  \begin{align*}
+    \#\left( y \in \net \mid \dcomp(p, x) \leq R \right) \leq p(R) \exp((\hNP(\core(\teich(S))) + \veperr) \cdot R)
+  \end{align*}
+\end{theorem}
+% \todo[inline]{Add the $\varepsilon_1$ parameter.}
+
+The next result, which is the main theorem of Section \ref{sec:line-gap-compl}, is that if $y$ is a bad point that is Teichmüller distance $R$ away from $p$, then its rescaled complexity distance to $p$ is smaller than $R$ by a definite amount.
+We state this theorem with an additional hypothesis on the net point entropy of subsurfaces.
+We will establish that this hypothesis holds inductively in Section \ref{sec:proof-theorem}.
+
+\begin{theorem}[Linear gap in complexity length, Theorem \ref{thm:linear-gap}]
+  \label{thm:linear-gap-rescaled}
+  Suppose that for all proper subsurfaces $V$ of $\os$, the following inequality holds.
+  \begin{align*}
+    \hNP(\core(\teich(V))) < \hNP(\coret{\os})
+  \end{align*}
+  Then for any $\vepb >0$, there exists $c > 0$, such that for any bad point $y$, i.e. a point in $\net_b(p, R, \vepb)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
+  \begin{align*}
+    \dcomp(p, y) \leq R(1 - c)
+  \end{align*}
+\end{theorem}
+\begin{rem}
+  We give a brief outline of why the above result should hold.
+  Complexity length can be thought of as a weighted version of Teichmüller length, where a specific segment is assigned a weight based on whether it's traveling in the thick part of Teichmüller space, or the thin part.
+  In the latter case, it is assigned a smaller weight that is proportional to the net point entropy of the product region it is traveling in.
+  The Teichmüller geodesics associated to bad points spend a significant fraction traveling in the thin part, by the very definition of bad points.
+  It stands to reason then that the complexity length assigned to them is smaller by a definite amount, due to the time they spend in the thin part.
+\end{rem}
+% \todo[inline]{Have a remark here on why this ought to be true.}
+
+Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:linear-gap-rescaled}, it follows that as $R$ goes to $\infty$, the proportion of bad points goes to $0$, which is what we need for Theorem \ref{thm:entropy-equality}.
+
+\subsection{Entropy gap}
+\label{sec:entr-gap-cons}
+
+In the previous section, we saw that the key hypothesis we need for the complexity length estimate was that for any proper subsurface $V$ of $\os$, the following strict inequality held.
+\begin{align}
+  \label{eq:net-point-entropy-gap}
+  \hNP(\core(\teich(V))) < \hNP(\coret(\os))
+\end{align}
+
+In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by proving a similar inequality for the lattice point entropy, and using the fact that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$, by the inductive hypothesis.
+
+\begin{lemma}[Lattice point entropy gap]
+  \label{lem:entropy-inequality}
+  Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their lattice point entropy.
+  \begin{align*}
+    \hLP(\teich(V)) < \hLP(\teich(\os))
+  \end{align*}
+\end{lemma}
+
+\begin{rem}
+  We do actually need the hypothesis $\chi(\os) \leq -2$ in the statement of the lemma for two reasons.
+  The first reason is that the lemma is actually false for $\os_{1,0,1}$.
+  Recall that this surface has the torus with one boundary component as a subsurface, but their mapping class groups are isomorphic, and have the same lattice point growth entropy.
+  Another reason why we need the hypothesis is that the proof of the lemma proceeds via a construction of pseudo-Anosov elements on $\os$, and $\os_{1,0,1}$ does not admit any pseudo-Anosov mapping classes.
+\end{rem}
+
+\begin{proof}[Proof of Lemma \ref{lem:entropy-inequality}]
+  Observe that $\mcg(V)$ is a subgroup of $\mcg(\os)$.
+  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(V)$, which is the free product of a psuedo-Ansov element in $\mcg(\os)$ with $\mcg(V)$, and show that $\hLP(H) > \hLP(\mcg(V))$.
+  This is enough to prove the result, since $H$ is a subgroup of $\mcg(\os)$, we have that $\hLP(\mcg(\os)) \geq \hLP(H)$.
+
+  We now need to show that $\mcg(\os)$ contains a pseudo-Anosov element.
+  We can invoke Penner's construction of pseudo-Anosov mapping classes (\cite[Theorem 4.1]{penner1988construction}), as long as we can construct a filling collection of \emph{two-sided} curves in $\os$.
+  This may not be always possible for $\os$ where $\chi(\os) = -1$, but for $\os$ with $\chi(\os) \leq -2$, this is always possible (see \cite{Liechti2018MinimalPS} and \cite{khan2023pseudo} for explicit constructions).
+  Let $\kappa$ denote the pseudo-Anosov mapping class we construct.
+
+  We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(V)$ in the Thurston boundary.
+  This is because the limit set of $\mcg(V)$ can only consist of foliations supported on the subsurface $V$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
+  We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(V)$ is the free product of $\mathbb{Z}$ and $\mcg(V)$: we let $H$ denote this group.
+
+  We now need to show that the lattice point entropy for $H$ is strictly larger than the $\mcg(V)$.
+  To see this, we recall an equivalent definition of the lattice point entropy.
+  The lattice point entropy is the parameter $h$ such that the following Poincaré series transitions from being convergent to divergent for any $x \in \teich(\os)$.
+  \begin{align}
+    \label{eq:dirichlet}
+    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right)
+  \end{align}
+  Since $H = \mathbb{Z} * \mcg(V)$, we can represent $\gamma \in H$ as $a_1 \cdot b_1 \cdot a_2 \cdots a_k \cdot b_k$, where $a_i$ belong in $\mathbb{Z}$ and $b_i$ belong in $\mcg(V)$.
+  We use this along with the triangle inequality to get an upper bound for $d(x, \gamma x)$.
+  \begin{align}
+    \label{eq:triangle-inequality-1}
+    d(x, \gamma x) \leq \sum_{i=1}^k d(x, a_i x) + d(x, b_i x)
+  \end{align}
+  We plug inequality \eqref{eq:triangle-inequality-1} into \eqref{eq:dirichlet} to get a lower bound.
+  \begin{align}
+    \label{eq:dirichlet-lower-bound}
+    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right) &= \sum_{k=1}^\infty \left(  \sum_{a_1}\cdots \sum_{a_k} \sum_{b_1}\cdots \sum_{b_k}  \exp(-h \cdot d(x, a_1 \cdot b_1 \cdots a_k \cdot b_k x)) \right) \\
+    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d(x, ax)) \right)^k \left( \sum_{b \in \mcg(V)} \exp(-h \cdot d(x, bx)) \right)^k
+    \label{eq:dirichlet-lower-bound-2}
+  \end{align}
+
+  We have that Theorem \ref{thm:entropy-equality} holds for $V$, which means that $\core(\teich(V))$ is SCC.
+  Corollary 5.4 of \cite{10.1093/imrn/rny001} states that group actions that are SCC have Poincaré series that diverge at the critical exponent.
+  This means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(V)) + \varepsilon$, the series converges to a value greater than $1$.
+  But that means the Poincaré series for $H$ diverges at $\hLP(\teich(V)) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
+  This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(V)$.
+\end{proof}
+
+We can now prove the entropy gap result for $\hNP$.
+
+\begin{lemma}[Net point entropy gap]
+  \label{lem:net-point-entropy-inequality}
+  Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their net point entropy.
+  \begin{align*}
+    \hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))
+  \end{align*}
+\end{lemma}
+
+\begin{proof}
+  We have the following inequality, which follows trivially from the definition of $\hLP$ and $\hNP$.
+  \begin{align}
+    \label{eq:ineq1}
+    \hLP(\teich(\os)) \leq \hNP(\core(\teich(\os)))
+  \end{align}
+  From Lemma \ref{lem:entropy-inequality}, we get the following inequality.
+  \begin{align}
+    \label{eq:ineq2}
+    \hLP(\teich(V)) < \hLP(\teich(\os))
+  \end{align}
+  Finally, since we have Theorem \ref{thm:entropy-equality} for $V$, we have the following equality.
+  \begin{align}
+    \label{eq:eq3}
+    \hLP(\teich(V)) = \hNP(\core(\teich(V)))
+  \end{align}
+  Chaining together \eqref{eq:ineq1}, \eqref{eq:ineq2}, and \eqref{eq:eq3} gives us the result.
+\end{proof}
+
+\subsection{Proof of Theorem \ref{thm:entropy-equality}}
+\label{sec:proof-theorem}
+
+We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-equality}.
+
+\begin{proof}[Proof of Theorem \ref{thm:entropy-equality}]
+  We will prove this lemma by inducting on the complexity of the surface $\os$.
+  Lemma \ref{lem:entropy-equality-base-case} proves the result for surfaces with Euler characteristic equal to $-1$, which serves as the base case of the theorem.
+
+  We now assume that Theorem \ref{thm:entropy-equality} already holds for all proper subsurfaces $V$ of $\os$: it will suffice to show that the result holds for $\os$.
+
+  We will establish that for any $\vepb > 0$, there exists a polynomial $q(R)$, and $R$ large enough, such that the following bound holds.
+  \begin{align*}
+    \#\left( B_R(p) \cap \net \right) \leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
+  \end{align*}
+
+  We first count the good points in $B_R(p)$, by partitioning them according to the nearest lattice point.
+  \begin{align}
+    \label{eq:good-point-partition}
+    \net_g(p, R, \vepb) = \bigsqcup_{\gamma \in \mcg(\os)} \net_g(\gamma, p, R, \vepb)
+  \end{align}
+  Observe that if $y \in \net_g(\gamma, p, R, \vepb)$, then $d(p, \gamma p) \leq R(1 + \vepb)$, since $d(p, y) \leq R$ and $d(y, \gamma p) \leq \vepb R$.
+  This observation leads to the following upper bound on $\#\left( \net_g(p, R, \vepb) \right)$.
+  \begin{align}
+    \#\left( \net_g(p, R, \vepb) \right) \leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \vepb)}} \#\left( B_{\vepb R}(\gamma p) \cap \net_g(\gamma, p, R, \vepb)  \right) \label{eq:good-estimate-1}
+  \end{align}
+  By Lemma \ref{lem:fd-polynomial-growth}, there exists a polynomial $q(R)$ such that each term in the above sum is at most $q(R)$.
+  \begin{align}
+    \#\left( \net_g(p, R, \vepb) \right) &\leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \vepb)}} q(R) \\
+     &\leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
+    \label{eq:good-estimate-2}
+  \end{align}
+  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\vepb)$ as at most $\exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))$, for large enough $R$.
+  We have the desired upper bound on the cardinality for the good points.
+  Now we show that the number of bad points is much smaller than the total number of points in the ball, which will then prove the result.
+
+  From the inductive hypothesis, we have that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$.
+  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
+  Applying the theorem, we see that if $y$ is a bad point, $\dcomp(p, y) \leq R(1 - c)$.
+  We then apply Theorem \ref{thm:counting-with-complexity-rescaled} to get an upper bound on the number of bad points.
+  \begin{align*}
+    \#\left( \net_b(p, R, \vepb) \right) \leq kR^k \cdot \exp((\hNP(\core(\teich(\os))) + \veperr) \cdot R \cdot (1 - c))
+  \end{align*}
+  We pick $\veperr$ small enough such that the above term satisfies the following inequality for large enough $R$.
+  \begin{align*}
+    \exp((\hNP(\core(\teich(\os))) + \veperr) \cdot R \cdot (1 - c)) < \exp\left(\hNP(\core(\teich(\os))) \cdot R \cdot \left(1 - \frac{2c}{3}\right)\right)
+  \end{align*}
+  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\core(\teich(\os))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
+  Combining these two facts, we see that the proportion of bad points goes to $0$ as $R$ goes to $\infty$, which proves the result.
+\end{proof}
+% \todo[inline]{Change wherever you've used $N$ to $\net$.}
+
+% Before we state the various lemmas we will need for the proof of the inductive step, we sketch the outline of the proof, to illustrate the key idea of the proof, as well as enumerate the difficulties in proving the result.
+
+% \begin{proof}[Proof sketch of Theorem \ref{thm:entropy-equality}]
+%   It will suffice to prove the following upper bound for any $\varepsilon > 0$ and for large enough $R$, and some polynomial function $q$.
+%   \begin{align*}
+%     \#\left( B_R(p) \cap N \right) \leq q(R) \cdot \exp(\hLP R (1 + 2\varepsilon))
+%   \end{align*}
+%   We do this by partitioning the points in $B_R(p) \cap N$ into two sets.
+%   \begin{description}
+%   \item[Good points] The points in $B_R(p) \cap N$ which are at most distance $\varepsilon R$ away from the closest lattice point.
+%     We denote this by $N_g(p, R)$, since the definition of goodness also depends on $p$ and $R$.
+%   \item[Bad points] The points in $B_R(p) \cap N$ which are more than distance $\varepsilon R$ away from the closest lattice point.
+%     We denote these points by $N_b(p, R)$.
+%   \end{description}
+%   \todo[inline]{Factor out this definition outside the proof sketch.}
+
+%   The first step of the proof is to get an upper bound on the number of good points.
+%   To each point in $B_R(p) \cap N$, we associate the nearest lattice point $\gamma p$.
+%   Let $N(\gamma)$ denote the subset of net points whose closest lattice point is $\gamma p$.
+%   Observe that if $x \in N(\gamma)$ is a good point, i.e. is contained in $N_g(p, r)$, then $d(p, \gamma p)$ is at most $R + \varepsilon R$, by the triangle inequality.
+%   This observation leads us to the following estimate for $\#\left( N_g(p, r) \right) $.
+%   \begin{align}
+%     \#\left( N_g(p, r) \right) \leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \varepsilon)}} \#\left( B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right) \label{eq:good-estimate-1}
+%   \end{align}
+
+%   The next step in the proof is to show that $\#\left(  B_{\varepsilon R}(\gamma p) \cap N(\gamma)  \right)$ has polynomial growth as $R$ increases: this is the content of Lemma \ref{lem:fd-polynomial-growth}.
+%   Using this estimate, we can rewrite \eqref{eq:good-estimate-1} in terms of the lattice point counting function for large enough values of $R$.
+%   \begin{align}
+%     \label{eq:good-estimate-2}
+%     \#\left( N_g(p, r) \right) &\leq q(R) \cdot \#\left( \gamma \in \mcg(\os) \mid d(p , \gamma p) \leq R(1 + \varepsilon) \right) \\
+%     &\leq q(R) \cdot \exp\left( \hLP R(1 + 2\varepsilon) \right)
+%     \label{eq:good-estimate-3}
+%   \end{align}
+%   \todo[inline]{Need to adapt the proof of  \cite[Lemma 3.2]{eskinmirzakhani}.}
+
+%   This proves the estimate we want for the set of good points.
+%   To deal with the bad points, we will show that as $R$ gets larger, the fraction of bad points in $B_R(p) \cap N$ goes to $0$.
+%   This will show that the estimate we got for good points in \eqref{eq:good-estimate-3} holds for all points in $B_R(p) \cap N$, for large enough $R$.
+
+%   To show that the fraction of bad points goes to $0$, we count with respect to a new metric $d_C$, instead of the Teichmüller metric.
+%   This new metric is called complexity length (\textcite{dowdall2023lattice}), and one has a similar lattice point counting result with respect to this new metric for large enough $R$.
+%   \begin{align}
+%     \#\left( n \in N \mid d_C(p, n) \leq R \right) \leq \exp((\hNP + \delta) R)
+%     \label{eq:complexity-length-count}
+%   \end{align}
+%   Here, $\delta$ is some arbitrary positive constant, and picking a smaller $\delta$ means one has to pick a larger value of $R$ to make the above inequality hold.
+
+%   The main reason we work with complexity length instead of the Teichmüller metric is that we can get a better estimate for complexity length for bad points: this is the content of Theorem \ref{thm:complexity-length-gap}.
+%   For a point $n \in N_b(p, R)$, we have the following estimate for $d_C(p, n)$, for some constant $c > 0$.
+%   \begin{align*}
+%     d_C(p, n) \leq R(1 - c \varepsilon)
+%   \end{align*}
+%   Combining the above inequality with \eqref{eq:complexity-length-count} for a small enough $\delta$, we get that the fraction of bad points goes to $0$ as $R$ goes to $\infty$.
+% \end{proof}
+
+% Before we prove the induction step of the argument, we state a few lemmas that will go into the proof.
+
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

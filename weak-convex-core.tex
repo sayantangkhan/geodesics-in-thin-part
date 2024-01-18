@@ -1,0 +1,203 @@
+\section{The weak convex core of $\teich(\no_g)$}
+\label{sec:weak-convex-core}
+
+\subsection{Issues with geometric finiteness and statistical convex-cocompactness}
+\label{sec:issu-with-geom}
+
+In order to show that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is geometrically finite (in the sense of Fuchsian groups), we need to exhibit a \emph{convex core}, i.e. a convex subset of $\teich(\no_g)$ on which the action of $\mcg(\no_g)$ is finite covolume.
+Similarly, to show that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we need to exhibit a \emph{statistical convex core}, which is a \emph{statistically convex subset} (see Definition \ref{defn:statistical-convex-subset}) of $\teich(\no_g)$ on which $\mcg(\no_g)$ acts cocompactly.
+
+A candidate for the convex core was suggested by \textcite{gendulphe2017whats}, namely the \emph{one-sided systole superlevel set} $\systole(\no_g)$.
+
+\begin{definition}[One-sided systole superlevel set]
+  The one-sided systole superlevel set is the subset of $\teich(\no_g)$ where no one-sided curve is shorter than $\vept$. This set is denoted $\systole(\no_g)$.
+\end{definition}
+
+The subset $\systole(\no_g)$ has several properties that suggest it should be the convex core for the $\mcg(\no_g)$ action.
+\begin{itemize}
+\item[-] The space $\teich(\no_g)$ $\mcg(\no_g)$-equivariantly deformation retracts onto the subset $\systole(\no_g)$ (Proposition 19.2 of \cite{gendulphe2017whats}).
+\item[-] The $\mcg(\no_g)$ action on $\systole(\no_g)$ has finite $\nu_N$-covolume, where $\nu_N$ is the non-orientable analog of the Weil-Petersson volume form (Proposition 19.1 of \cite{gendulphe2017whats}).
+\end{itemize}
+
+However, the subset $\systole(\no_g)$ fails to be convex, in a very strong sense, as we show in a prior paper.
+\begin{theorem}[Theorem 5.2 of \cite{limitsetkhan}]
+  For all $\vept > 0$, and all $D > 0$, there exists a Teichmüller geodesic segment whose endpoints lie in $\systole(\no_g)$ such that some point in the interior of the geodesic is more than distance $D$ from $\systole(\no_g)$.
+\end{theorem}
+
+With this obstruction, we see that $\systole(\no_g)$ will not work as a convex core for a geometrically finite action.
+There are two directions one could go in with this obstruction in mind, which we phrase as open questions.
+
+If we wish to show that $\mcg(\no_g)$ acts geometrically finitely, this is the question we need to answer.
+\begin{question}
+  \label{ques:geom-finite-core}
+  Does there exist some other subset of $\teich(\no_g)$ that is finite $\nu_N$-covolume, convex, and an $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$?
+\end{question}
+% For instance, one could define a subset $\wt{\systole}(\no_g)$, which is the subset of $\teich(\no_g)$ where the \emph{extremal length} of no one-sided curve is shorter than $\vept$.
+% This subset could pos
+
+Alternatively, if we wish to show that $\mcg(\no_g)$ acts statistically convex-cocompactly on $\teich(\no_g)$, where $\systole(\no_g)$ acts as the statistical convex core, this is the question we need to answer.
+
+\begin{question}
+  \label{ques:full-stat-core}
+  Is $\systole(\no_g)$ statistically convex?
+\end{question}
+
+We suspect the answer to Question \ref{ques:full-stat-core} is no, since our methods for proving statistical convexity rely on proving recurrence of random walks on $\teich(\no_g)$, and random walks on all of $\teich(\no_g)$ have poor recurrence properties when they enter regions where one-sided curves are short.
+When the random walks enter these one-sided thin regions, they behave like symmetric random walks on $\mathbb{Z}$, which we know do not have very strong recurrence properties.
+We explain this in more detail in Section \ref{sec:why-approach-fails}, when we set up the machinery of Foster-Lyapunov-Margulis functions.
+
+\subsection{A weaker notion of convexity}
+\label{sec:weak-noti-conv}
+
+Rather than directly answering questions \ref{ques:geom-finite-core} or \ref{ques:full-stat-core}, we define an even weaker notion of convexity as an intermediate goal.
+In the next subsection, we will show that $\systole(\no_g)$ satisfies this weaker notion of convexity.
+In this section, we define the notion, and explain why this weaker notion of convexity is still sufficient for the purposes of Patterson-Sullivan theory.
+
+\begin{definition}[Weak convexity]
+  A subset $S$ of a geodesic metric space $X$ is said to be $\vepd$-weak convex (for $\vepd > 0$) if there exists a constant $t > 0$ such that for any pair of points $x$ and $y$ in $S$, any geodesic path $\gamma$ joining $x$ and $y$ longer than $t$ can be homotoped to a path $\gamma^{\prime}$ joining $x$ and $y$ such that $\gamma^{\prime}$ lies entirely within $S$, and the lengths of $\gamma$ and $\gamma^{\prime}$ satisfy the following inequality.
+  \begin{align*}
+    \ell(\gamma^{\prime}) \leq (1 + \vepd) \ell(\gamma)
+  \end{align*}
+\end{definition}
+
+\begin{rem}
+  Strictly speaking, we should call a subset $(\vepd, t)$-weak convex, as the constant $t$ is part of the data that makes a set weak convex.
+  However, the constant $t$ will not matter for us, so we suppress it in all mentions of weak convexity.
+\end{rem}
+
+An $\vepd$-weak convex subset is a subset which, while not entirely undistorted, has bounded distortion with respect to the ambient metric space at large enough scale.
+% When $\vepd = 0$, an $\vepd$-weak convex is an actual convex subset, at least for uniquely geodesic metric spaces.
+Weak convexity also interacts well with results from Patterson-Sullivan theory.
+Suppose we have a discrete group $G$ acting properly discontinuously on a metric space $X$, and let $X_{\vepd}$ be an $\vepd$-weak convex subset of $X$ upon which $G$ also acts.
+If the critical exponent for the $G$ action on $X$ is $\delta$, and the corresponding exponent for $X_{\vepd}$ is $\delta_{\vepd}$, we immediately get the following estimate for $\delta$.
+\begin{align*}
+  \delta \leq \delta_{\vepd} + \vepd
+\end{align*}
+
+We can also define a \emph{slowed down geodesic flow} for a subset of the tangent directions on $X_{\vepd}$: namely the tangent directions along which the geodesic enters $X_{\vepd}$ infinitely often in either direction.
+For such bi-infinite geodesics, we can homotope them to lie entirely within $X_{\vepd}$, by only increasing their length by $\vepd$ fraction.
+If we can establish mixing results for this slowed down geodesic flow, we can use the techniques of \textcite{roblin2003ergodicite} to count lattice points in $X_{\vepd}$, the counting results translate into estimates for lattice points in $X$.
+\begin{align*}
+  \#\left( \text{Lattice points in $X$ within distance $R$} \right) \leq \#\left( \text{Lattice points in $X_{\vepd}$ within distance $R + \vepd$} \right)
+\end{align*}
+
+We can get even better estimates if rather than having a single $\vepd$-weak convex subset, we have an family of subsets, such that the $\vepd$ goes to $0$, and the union of the weak convex subsets is the entire space.
+
+\begin{definition}[Exhaustion by weak convex subsets]
+  A metric space $X$ is said to be exhausted by weak convex subsets if there exists a nested family of subsets $\left\{ X_i \right\}$, such that $X_i$ is $\varepsilon_i$-weak convex, where $\varepsilon_i$ goes to $0$, and $\bigcup_{i=1}^{\infty} X_i = X$.
+\end{definition}
+
+When there is an exhaustion by weak convex subsets, one can get arbitrarily good bounds for the critical exponent for the $G$ action on $X$, as well as count lattice points on $X$ with only subexponential error terms.
+
+\subsection{Weak convexity for $\systole(\no_g)$}
+\label{sec:weak-conv-syst}
+
+In this section, we will show that $\systole(\no_g)$ is an $\vepd$-weak convex subset of $\teich(\no_g)$, and that $\teich(\no_g)$ can be exhausted by the subsets $\systole(\no_g)$ as $\vept$ goes to $0$.
+
+\begin{theorem}
+  \label{thm:weak-convexity}
+  For any $\vepd > 0$, there exists a $\vept > 0$ such that $\systole(\no_g)$ is a $\vepd$-weak convex subset of $\teich(\no_g)$.
+\end{theorem}
+
+The key ingredient in the proof of Theorem \ref{thm:weak-convexity} is a version of Minsky's product region theorem \cite[Theorem 6.1]{1077244446} for non-orientable surfaces, which we prove in Section \ref{sec:minskys-prod-regi}.
+
+Let $\gamma = \left\{ \gamma_1, \ldots, \gamma_j, \ldots, \gamma_k \right\}$ be a multicurve on a non-orientable surface $\no_g$, where for $i \leq j$, $\gamma_i$ is a two-sided curve, and for $i > j$, $\gamma_i$ is a one-sided curve.
+Let $X_\gamma$ denote the product $\teich(\no_g \setminus \gamma) \times \mathbb{H}_1 \times \cdots \times \mathbb{H}_j \times (\mathbb{R}_{>0})_{j+1} \times \cdots \times (\mathbb{R}_{>0})_k$.
+For any pants decomposition that contains $\gamma$, we get a map $\Pi$ from $\teich(\no_g)$ to $X_\gamma$, which is called the \emph{product region projection map}.
+\begin{definition}[Product region projection map]
+  The product region projection map $\Pi: \teich(\no_g) \to X_\gamma$ is defined in the following manner.
+  \begin{itemize}
+  \item The $\teich(\no_g \setminus \gamma)$-coordinate is obtained by pinching all the curves in $\gamma$ to get a punctured hyperbolic surface.
+  \item The $\mathbb{H}_i$-coordinate is $\left( t, \frac{1}{\ell} \right)$, where $t$ is the \emph{twist} of the two-sided curve $\gamma_i$, and $\ell$ is the hyperbolic length.
+  \item The $(\mathbb{R}_{>0})_i$ coordinate is $\frac{1}{\ell}$, where $\ell$ is the hyperbolic length of the one-sided curve $\gamma_i$.
+  \end{itemize}
+\end{definition}
+
+We define a metric on the product $X_\gamma$ as the supremum of the metrics on each of the components, where the metric on $\teich(\no_g \setminus \gamma)$ is the Teichmüller metric, the metric on the $\mathbb{H}_i$ components is the hyperbolic metric, and the metric on the $(\mathbb{R}_{>0})_i$ is given by $d(x,y) = \left| \log\left( \frac{x}{y}  \right) \right| $, i.e. the restriction of the hyperbolic metric in $\mathbb{H}$ to a vertical line.
+
+We consider the restriction of $\Pi$ to the thin region of Teichmüller space, denoted $\teich_{\gamma \leq \vept}(\no_g)$, which is the region where all curves in $\gamma$ have hyperbolic length at most $\vept$.
+
+\begingroup
+\def\thetheorem{\ref{thm:prno}}
+\begin{theorem}[Product region theorem for non-orientable surfaces]
+  For any $c >0$, there exists a small enough $\vept > 0$, such that the restriction of $\Pi$ to $\teich_{\gamma \leq \vept}(\no_g)$ is an isometry with additive error at most $c$, i.e. the following holds for any $x$ and $y$ in $\teich_{\gamma \leq \vept}(\no_g)$.
+  \begin{align*}
+    \left| d(x, y) - d_{X_{\gamma}}(\Pi(x), \Pi(y)) \right| \leq c
+  \end{align*}
+
+\end{theorem}
+\addtocounter{theorem}{-1}
+\endgroup
+
+We can now prove Theorem \ref{thm:weak-convexity}.
+
+\begin{proof}[Proof of Theorem \ref{thm:weak-convexity}]
+  We begin by picking a small constant $\vept^{\prime} > 0$ and $\delta > 0$.
+  We will fix the values of these constants at the end of the proof.
+  Let $[x,y]$ be a geodesic segment that starts and ends in $\systolearg{\vept^{\prime}}(\no_g)$.
+  Let $\{p_i\}$ be points on $[x,y]$, such that $x = p_0$, $d(p_i, p_{i+1}) = \delta$, and $d(p_n, y) \leq \delta$, where $p_n$ is the last of the $p_i$'s.
+
+  The first step of our proof is modifying the path $[x,y]$ and estimating the length of the modified path.
+  We do so by constructing new points $p_i^{\prime}$, where $p_i^{\prime}$ is obtained from $p_i$ by increasing the length of any one-sided curve that is shorter than $\vept^{\prime}$ to $\vept^{\prime}$.
+  This ensures that the endpoints of the segments $[p_i^{\prime}, p_{i+1}^{\prime}]$ are in $\systolearg{\vept^{\prime}}(\no_g)$.
+  Estimating $d(p_i^{\prime}, p_{i+1}^{\prime})$ splits up into two cases.
+  \begin{enumerate}[(i)]
+  \item When $p_i = p_i^{\prime}$ and $p_{i+1} = p_{i+1}^{\prime}$: In this case $d(p_i^{\prime}, p_{i+1}^{\prime}) = \delta$, by construction.
+  \item When at least one of $p_i$ and $p_{i+1}$ are not equal to $p_i^{\prime}$ and $p_{i+1}^{\prime}$: In this case, we can assume without loss of generality that both $p_i \neq p_i^{\prime}$ and $p_{i+1} \neq p_{i+1}^{\prime}$.
+    If that is not the case, and say $p_i \neq p_i^{\prime}$ and $p_{i+1} = p_{i+1}^{\prime}$, we replace $p_{i+1}$ with the last point $y$ on $[p_i, p_{i+1}]$ that is outside $\systolearg{\vept^{\prime}}(\no_g)$.
+    The interval $[y, p_{i+1}]$ can be treated as in case (i), and we focus on $[p_i, y]$.
+
+    We have that the interior of $[p_i, p_{i+1}]$ and $[p_i^{\prime}, p_{i+1}^{\prime}]$ both lie in the region where some one-sided curve $\gamma$ is shorter than $\vept^{\prime}$.
+    We invoke Theorem \ref{thm:prno} to estimate distances in this region: we have a constant $c(\vept^{\prime})$ that depends on $\vept^{\prime}$ such that following holds.
+    \begin{align}
+      \label{eq:p-estimate}
+      \left| d(p_i, p_{i+1}) - \sup\left( d_{\teich(\no_g \setminus \gamma)}(\Pi(p_i), \Pi(p_{i+1})), \left| \log \left( \frac{\ell_{p_i}(\gamma)}{\ell_{p_{i+1}}(\gamma)}  \right) \right| \right) \right| \leq c(\vept^{\prime})
+    \end{align}
+    Observe that when we replace $p_i$ by $p_i^{\prime}$ and $p_{i+1}$ by $p_{i+1}^{\prime}$, the first argument $\sup$ stays the same, and the second argument becomes $0$.
+    \begin{align}
+      \label{eq:p-prime-estimate}
+      \left| d(p_i^{\prime}, p_{i+1}^{\prime}) - \sup\left( d_{\teich(\no_g \setminus \gamma)}(\Pi(p_i^{\prime}), \Pi(p_{i+1}^{\prime})), 0 \right) \right| \leq c(\vept^{\prime})
+    \end{align}
+    This leads to the following estimate for $d(p_i^{\prime}, p_{i+1}^{\prime})$.
+    \begin{align}
+      \label{eq:length-estimate-homotope}
+      d(p_i^{\prime}, p_{i+1}^{\prime}) \leq \delta + 2c(\vept^{\prime})
+    \end{align}
+  \end{enumerate}
+  We construct a new path $\lambda$ by joining $p_i^{\prime}$'s, and $p_n$ to $y$.
+  If we let $l$ denote the length of $[x,y]$, we get the following estimate for $\ell(\lambda)$ using \eqref{eq:length-estimate-homotope}.
+  \begin{align*}
+    \ell(\lambda) \leq l \left( 1 + \frac{2c(\vept^{\prime})}{\delta} \right)
+  \end{align*}
+  We now pick a value of $\delta$ small enough such that along each of the segments $[p_i, p_{i+1}]$, there is at least one one-sided curve that stays short throughout, and then we pick $\vept^{\prime}$ small enough so that $c(\vept^{\prime})$ is small enough to make $\frac{2c(\vept^{\prime})}{\delta} < \vepd$.
+
+  We now need to show that this new path stays within $\systole(\no_g)$ for some $\vept < \vept^{\prime}$.
+  We already have that $x$, $y$ and all the $p_{i}^{\prime}$ are in $\systolearg{\vept^{\prime}}(\no_g)$ and thus in $\systole(\no_g)$.
+  For the interior of the geodesic segments $[p_i^{\prime}, p_{i+1}^{\prime}]$, since the endpoints are in $\systolearg{\vept^{\prime}}(\no_g)$, and the length of the segments is no more than $\delta(1 + \vepd)$, we have that there exists some $\vept$ such that $[p_i^{\prime}, p_{i+1}^{\prime}]$ lies in $\systole(\no_g)$.
+
+  Finally, we have to deal with geodesic segments $[w,z]$ which start or end in $\systole(\no_g) \setminus \systolearg{\vept^{\prime}}(\no_g)$.
+  We do so by increasing the lengths of short one-sided curves on $w$ and $z$ to $\vept^{\prime}$ if there are any curves shorter than $\vept^{\prime}$.
+  Let the modified points be $w^{\prime}$ and $z^{\prime}$: we first construct a path joining $w^{\prime}$ and $z^{\prime}$ that stays within $\systole(\no_g)$ using our construction, and then prepend that path with a path joining $w$ with $w^{\prime}$ and append a path joining $z^{\prime}$ to $z$.
+  This new path joining $w$ to $z$ stays entirely withing $\systole(\no_g)$, but we now incur a fixed additive error along with our multiplicative error as well.
+  However, if the path is long enough, the additive error can be absorbed in the multiplicative error, with a slightly worse constant.
+  We do that, and the threshold for the path being long enough is the constant $t$ that appears in our definition of weak convexity.
+  This proves the result.
+\end{proof}
+
+\begin{rem}
+  We emphasize that the key step in the above proof is going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate}, where the $\log\left( \frac{\ell_{p_i}(\gamma)}{\ell_{p_i^{\prime}}(\gamma)}  \right)$ term becomes $0$.
+  This is only possible because there cannot be any twisting around a one-sided curve $\gamma$, so the projection map that sends $p_i$ to $p_i^{\prime}$ and $p_{i+1}$ to $p_{i+1}^{\prime}$ is distance reducing.
+  If one tried to use the same proof strategy to show that the thick part of $\teich(\os)$, for any orientable or non-orientable surface $\os$ is weak convex in $\teich(\os)$, the step we described would be the point of failure.
+  In particular, if there's a twist along $\gamma$, going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate} will not be distance reducing, and will exponentially increase the distance, leading the estimate to fail.
+\end{rem}
+
+Now that we have established that $\systole(\no_g)$ is $\vept$-weak convex, we can justifiably call it the weak convex core of $\teich(\no_g)$.
+
+\begin{definition}[Weak convex core of $\teich(\no_g)$]
+  For any $\vept > 0$, we call $\systole(\no_g)$ the weak convex core of $\teich(\no_g)$, and denote it $\core(\teich(\no_g))$.
+  The specific value of $\vept$ will usually not be important (as long as it is smaller than a threshold value), or clear from context.
+\end{definition}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

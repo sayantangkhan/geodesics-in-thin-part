@@ -1,0 +1,235 @@
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+\subsection{Non-orientable surfaces}
+\label{sec:non-orient-surf}
+
+Similar to orientable surfaces, compact non-orientable surfaces with (possibly empty) boundary are classified by their \emph{demigenus} and number of boundary components.
+The demigenus of a non-orientable surfaces is the number of copies of $\mathbb{RP}^2$ that need to be connect-summed in order to get the non-orientable surface.
+An alternative way to construct non-orientable surfaces is to start with an orientable surface, and attach \emph{crosscaps}: a crosscap is attached by deleting the interior of an embedded disc, and gluing the $S^1$ boundary of that disc to itself via the antipodal map.
+
+To unify notation between orientable and non-orientable surfaces, we will denote a compact surface with boundary using $\os_{g,b,c}$, which denotes a surface of genus $g$, with $b$ boundary components, and $c$ crosscaps attached.
+With this notation, a non-orientable surface $\no_{g, b}$ of demigenus $g$ with $b$ boundary components is $\os_{\frac{g-1}{2}, b, 1}$ if $g$ is odd, and $\os_{\frac{g-2}{2}, b, 2}$ if $g$ is even.
+
+One can classify simple closed curves on a non-orientable surface into two categories based on the topology of their tubular neighbourhoods.
+\begin{description}
+\item[Two-sided curves] These are curves whose tubular neighbourhoods are homeomorphic to cylinders.
+\item[One-sided curves] These are curves whose tubular neighbourhoods are homeomorphic to Möbius bands.
+\end{description}
+
+The orientation double cover of $\no_g$ is $\os_{g-1}$, where $p$ denotes the covering map: the one-sided curves on $\no_g$ lift to a single curve on $\os_{g-1}$ that is twice as long, and the two-sided curves on $\no_g$ lift to two disjoint curves on $\os_{g-1}$, both of which are the same length as the original curve.
+We also have an orientation reversing deck transformation $\iota$ on $\os_{g-1}$ corresponding to the covering map.
+The map $\iota$ swaps the lifts of the two-sided curves, and leaves the lifts of the one-sided curves invariant.
+
+The subgroup $\pi_1(\no_g) < \pi_1(\os_{g-1})$ is a \emph{characteristic} subgroup, i.e. left invariant by an automorphism of $\pi_{1}(\os_{g-1})$ induced by a homeomorphism, and consequently, self-homeomorphisms of $\no_g$ have a unique orientation preserving lift to self-homeomorphisms of $\os_{g-1}$, giving us an embedding $p^\ast$ of mapping class groups, induced by the covering map $p$.
+\begin{align*}
+  p^{\ast}: \mcg(\no_g) \hookrightarrow \mcg(\os_{g-1})
+\end{align*}
+The image of $\mcg(\no_g)$ is an infinite-index subgroup of $\mcg(\os_{g-1})$.
+The lifting map also induces an embedding of the corresponding Teichmüller spaces, where the image of $\teich(\no_g)$ is the locus left invariant by $\iota^{\ast}$, where $\iota^{\ast}$ is the deck transformation induced map on $\teich(\os_{g-1})$.
+\begin{align*}
+  p^{\ast}: \teich(\no_g) \hookrightarrow \teich(\os_{g-1})
+\end{align*}
+This embedding is isometric, i.e. Teichmüller geodesics joining points in the image of $\teich(\no_g)$ stay within the image of $\teich(\no_g)$.
+
+These facts present an alternative way of thinking about mapping class groups and Teichmüller spaces of non-orientable surfaces.
+They can be thought of as a special infinite index subgroup of $\mcg(\os_{g-1})$, and a isometrically embedded totally real submanifold of $\teich(\os_{g-1})$.
+We will use this point of view to prove some of the metric properties of $\teich(\no_g)$ we will require, but for most other applications, we prefer to think of $\teich(\no_g)$ and $\mcg(\no_g)$ as independent objects, without embedding them in other spaces.
+
+The Teichmüller space for non-orientable surfaces can be given Fenchel-Nielsen coordinates using a pants decomposition for $\no_g$: the only difference from the orientable setting is that for all the one-sided curves in the pants decomposition, there is only one coordinate, associated to the length of the one-sided curve, rather than both the twist and length.
+This means that Teichmüller spaces of non-orientable surfaces can have odd $\mathbb{R}$-dimension.
+
+Since these Teichmüller spaces of non-orientable surfaces can have odd dimension, we no longer have a symplectic structure, and a corresponding volume form.
+However, the image of $\teich(\no_g)$ in $\teich(\os_{g-1})$ is a Lagrangian submanifold, and consequently a Lagrangian volume form.
+This Lagrangian volume form $\nu_N$ has a particularly nice description in terms of a pants decomposition $\mathcal{P}$, due to \textcite{norbury2008lengths}.
+
+Let $\mathcal{P}$ be a pants decomposition for $\no_g$: $\nu_N$ is defined in terms of the lengths and twists of curves in $\mathcal{P}$.
+
+\begin{align*}
+  \nu_N = \left( \bigwedge_{\text{$\gamma_i$ one-sided}} \coth(\ell(\gamma_i)) d\ell(\gamma_i) \right) \wedge \left( \bigwedge_{\text{$\gamma_i$ two-sided}} d\tau(\gamma_i) \wedge d\ell(\gamma_i) \right)
+\end{align*}
+Here $\ell(\gamma_i)$ denotes the length of the curve $\gamma_i$, and $\tau(\gamma_i)$ denotes the twist, when $\gamma_i$ is two-sided.
+
+Similar to Wolpert's magic formula, the $\mu_N$ has the following properties.
+\begin{itemize}
+\item[-] The form $\nu_N$ does not depend on the choice of pants decomposition.
+\item[-] $\nu_N$ is $\mcg(\no_g)$ invariant, up to sign.
+\end{itemize}
+This lets us use the absolute value of $\nu_N$ as a volume form on the quotient $\teich(\no_g) / \mcg(\no_g)$.
+We will, for notational convenience, use $\nu_N$ to mean $\left| \nu_N \right|$.
+
+With respect to $\nu_N$, the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is infinite covolume: the same also holds for the geodesic flow invariant volume on the unit cotangent bundle.
+Furthermore, the set of cotangent directions in which the geodesic flow recurs to the $\mcg(\no_g)$-cocompact part of $\teich(\no_g)$ has $\nu_N$-measure $0$ (see \textcite{gendulphe2017whats} for more analogies with infinite covolume Fuchsian groups).
+
+\subsection{Critical exponents and Patterson-Sullivan theory}
+\label{sec:crit-expon-patt}
+
+In this section, we outline techniques that are used to deal with infinite-covolume group actions on non-positively curved metric spaces, i.e. Patterson-Sullivan theory.
+For the sake of concreteness, we will state most results in this section for infinite-covolume geometrically finite Fuchsian groups, and specify a generalized theorem/conjecture for the setting of mapping class groups.
+
+Let $\Gamma$ be an infinite-covolume geometrically finite Fuchsian group.
+Geometric finiteness in this context means that the surface $\mathbb{H}/\Gamma$ is composed of \emph{finitely} many components outside of a large enough compact set, where each component is isometric to one of the following regions.
+\begin{enumerate}[(i)]
+\item Cusps: A cusp is the quotient of a horoball (i.e. $\left\{ \mathrm{Im}(z) > t_0 \right\}$ with the upper half plane model) with respect to an isometry of the form $
+  \begin{pmatrix}
+    1 & t \\
+    0 & 1
+  \end{pmatrix}
+  $.
+\item Flares: A flare is quotient of the region $\left\{ \mathrm{Re}(z) > 0 \right\}$ with respect to an isometry of the form $
+  \begin{pmatrix}
+    q & 0 \\
+    0 & \frac{1}{q}
+  \end{pmatrix}
+  $.
+\end{enumerate}
+Note that it is the flares of the hyperbolic surface that make its volume infinite: each of the cusps has finite hyperbolic volume.
+
+The presence of flares also means that the limit set of $\Gamma$, i.e. the set $\overline{\Gamma p} \cap \partial \mathbb{H}$ (for any $p \in \mathbb{H}$) is a measure $0$ subset of the boundary (with respect to the usual Lebesgue measure on $S^1$), as well as forcing the Liouville measure, which is a geodesic flow invariant measure on the unit tangent bundle $S^1 \Gamma / \mathbb{H}$ to be infinite.
+
+Since most results from ergodic theory need a finite flow-invariant measure, the Liouville measure does not work for these infinite-covolume groups.
+The fix to this problem is to construct a new (family of) measure(s) $\left\{ \mu_q \right\}$ on the boundary, which replaces the Lebesgue measure, with respect to which the limit set has full measure, and then use that measure to construct a finite geodesic flow invariant measure on the unit tangent bundle.
+
+The family of measures on the boundary is called the Patterson-Sullivan measure, and the corresponding measure on the unit tangent bundle is called the Bowen-Margulis-Sullivan measure.
+
+\subsubsection{Construction of Patterson-Sullivan measures}
+\label{sec:constr-patt-sull}
+
+We begin by picking a basepoint $p \in \mathbb{H}$, and a parameter $h > 0$, and consider the measure $\mu_q^h$, for $q \in \mathbb{H}$.
+\begin{align*}
+  \mu_q^h \coloneqq \frac{\sum_{\gamma \in \Gamma} \exp(-h d(p, \gamma q)) \delta_{\gamma q}}{\sum_{\gamma \in \Gamma} \exp(-h d(p, \gamma p))}
+\end{align*}
+Here, $\delta_{\gamma q}$ denotes the Dirac mass at $\delta_{\gamma q}$, and $d(p, \gamma q)$ denotes the hyperbolic distance between $p$ and $\gamma q$.
+
+For large enough $h$, the denominator of the expression is a convergent sum, and the resulting measure has total mass that only depends on the choice of $p$ and $q$.
+
+Conversely, for small enough values of $h > 0$, the sum in the denominator diverges, and the measure $\mu_q^h$ is not well defined.
+To see this, one can use the ping pong lemma to embed a copy of the free group $F_2$ in $\Gamma$, and show that for this copy of $F_2$, there is a small enough $h$ to make the sum diverge.
+We can now define the critical exponent $h_{\Gamma}$ of the group $\Gamma$.
+\begin{definition}[Critical exponent]
+  The critical exponent $h_{\Gamma}$ is the infimum of all the values of $h$ for which the following infinite sum converges.
+  \begin{align*}
+    \sum_{\gamma \in \Gamma} \exp(-h d(p, \gamma p))
+  \end{align*}
+\end{definition}
+
+Note that for $h = h_{\Gamma}$, it is possible for the exponential sum to converge or diverge.
+If the sum converges at the critical exponent, the group $\Gamma$ is said to be of \emph{convergent type}, and if it diverges, the group $\Gamma$ is of \emph{divergent type}.
+
+Since the measures $\mu_q^h$ are well-defined for $h > h_{\Gamma}$, and their mass is uniformly bounded (where the bound only depends on $q$), we have that for some sequence of $h \searrow h_{\Gamma}$, the sequence of measures $\mu_q^h$ converges to some limiting measure $\mu_q$.
+This family of limiting measures $\left\{ \mu_q \right\}$ is called a Patterson-Sullivan measure.
+The Patterson-Sullivan measure $\left\{ \mu_q \right\}$ is not unique \emph{a priori}, since picking different sequences $h \searrow h_{\Gamma}$ might lead to different limiting measures.
+
+In practice, the uniqueness of the Patterson-Sullivan measure follows from the ergodicity of the geodesic flow with respect to the Bowen-Margulis-Sullivan measure constructed from a given Patterson-Sullivan measure.
+We will skip the construction of the Bowen-Margulis-Sullivan measure $\mu_{\mathrm{BMS}}$, since the specifics of the construction are not relevant for the remainder of the paper.
+We refer the reader to \textcite{quint2006overview} for the construction of $\mu_{\mathrm{BMS}}$.
+
+% \todo[inline]{Something about the arithmeticity of the length spectrum.}
+
+\subsubsection{Some results in Patterson-Sullivan theory}
+\label{sec:some-results-patt}
+
+The question of finiteness and ergodicity of the Bowen-Margulis-Sullivan measure is equivalent to several other conditions, some of which are easier to check in some examples.
+
+\begin{theorem}[Hopf-Tsuji-Sullivan dichotomy; \textcite{sullivan1979density}]
+  \label{thm:hts-dich}
+  For a geometrically finite group $\Gamma$, the following conditions are equivalent.
+  \begin{enumerate}[(i)]
+  \item The group is of divergent type.
+  \item The Bowen-Margulis-Sullivan measure is finite.
+  \item The geodesic flow is ergodic with respect to the Bowen-Margulis-Sullivan measure.
+  \end{enumerate}
+\end{theorem}
+
+The ergodicity of the geodesic flow with respect to $\mu_{\mathrm{BMS}}$ can be upgraded to mixing if the length spectrum of $\mathbb{H}/\Gamma$ generates a dense subgroup of $\mathbb{R}$.
+
+\begin{theorem}[\textcite{babillot2002mixing}]
+  \label{thm:mixing-h2}
+  If $\mu_{\mathrm{BMS}}$ is finite, and the lengths of the closed geodesics on $\mathbb{H}/\Gamma$ generate a dense subgroup of $\mathbb{R}$, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+\end{theorem}
+
+One can then combine Theorem \ref{thm:mixing-h2} with the following result of Roblin to count lattice points where the logarithmic error goes to $0$.
+
+\begin{theorem}[\textcite{roblin2003ergodicite}]
+  \label{thm:counting-h2}
+  Let $B_p(R)$ denote the lattice point counting function.
+  \begin{align*}
+    B_p(R) \coloneqq \#\left( \gamma \in \Gamma \mid d(p, \gamma p) \leq R \right)
+  \end{align*}
+  Then there exists a constant $C$, which is the $\mu_{\mathrm{BMS}}$-volume of the unit tangent bundle of $\mathbb{H}/\Gamma$, such that $B_p(R)$ can be approximated in the following manner.
+  \begin{align*}
+    \lim_{R \to \infty} \log\left( \frac{C \exp(h_{\Gamma} R)}{B_p(R)} \right) = 0
+  \end{align*}
+\end{theorem}
+
+\subsubsection{Extending these results to subgroups of mapping class groups}
+\label{sec:extend-these-results}
+
+In \cite{10.1093/imrn/rny001}, Yang outlined a criterion for a \emph{non-elementary group with contracting element} acting on metric space to be of divergent type: the action must be \emph{statistically convex-cocompact}.
+In the context of subgroups of mapping class groups, a subgroup is non-elementary if it contains two non-commuting pseudo-Anosov elements.
+
+To explain what a statistically convex-cocompact action is, we first need to describe what is means for a subset of a metric space to be statistically convex.
+
+Let $X$ be a metric space with a group $G$ acting on it, and let $Y$ be a subset of $X$ which is invariant under the $G$-action, i.e. we have a $G$-action on $Y$ as well, and let $p$ be a point in $Y$.
+One can consider two kinds of counting functions for the $G$-action on $Y$.
+\begin{align*}
+  N_p(R) &\coloneqq \left\{ \gamma \in G \mid d(p, \gamma p) \leq R \right\} \\
+  % M_p(R) & \coloneqq \left\{ \gamma \in G \mid \text{$d(p, \gamma p)$ and the geodesic segment $[p, \gamma p]$ leaves $Y$ except f} \right\}
+\end{align*}
+The function $N_p$ is just the standard lattice point counting function.
+We also want to look at those lattice points that detect a failure of convexity of $Y$, i.e. the geodesic segment joining $p$ and $\gamma p$ leaves and stays outside $Y$, except for bounded distances at the beginning and end of the segment.
+Let $M_p(R)$ denote the counting function for these lattice points.
+Let $h$ and $h_c$ be the exponential growth rates for $N_p(R)$ and $M_p(R)$.
+\begin{align*}
+  h &\coloneqq \lim_{R \to \infty} \frac{\log\left( N_p(R) \right)}{R} \\
+  h_c &\coloneqq \lim_{R \to \infty} \frac{\log\left( M_p(R) \right)}{R}
+\end{align*}
+
+\begin{definition}[Statistically convex subset]
+  \label{defn:statistical-convex-subset}
+  The subset $Y$ is said to be statistically convex if $h_c < h$.
+\end{definition}
+
+\begin{definition}[Statistically convex-cocompact action]
+  The action of $G$ on $X$ is statistically convex-cocompact if there exists some $G$-invariant subset $Y$ such that $Y$ is statistically convex, and the action of $G$ on $Y$ is cocompact.
+\end{definition}
+
+In \cite{10.1093/imrn/rny001}, Yang shows that when a non-elementary group acts statistically convex-cocompactly on a space, the group is of divergent type.
+
+In an upcoming paper, \textcite{CGTY} show that for subgroups of mapping class groups that act statistically convex-cocompactly, a version of the Hopf-Tsuji-Sullivan dichotomy (Theorem \ref{thm:hts-dich}) holds.
+Combining this with Yang's result of the group being of divergence type, one can conclude that the Bowen-Margulis-Sullivan measure on the unit cotangent bundle has finite mass.
+
+In \textcite{gekhtman2023dynamics}, they show that assuming $\mu_{\mathrm{BMS}}$ has finite mass, the analogs of Theorems \ref{thm:mixing-h2} and \ref{thm:counting-h2} are proven, establishing lattice point counting results for the actions of these mapping class subgroups.
+
+In the remainder of this paper, we show that the action of $\mcg(\no_g)$ on $\systole(\no_g)$ (the subset of $\teich(\no_g)$ where the one-sided curves cannot be shorter than $\vept$) is statistically convex-cocompact.
+
+This result, combined with the results of \textcite{10.1093/imrn/rny001}, \textcite{CGTY}, and \textcite{gekhtman2023dynamics}, give us precise counting results for the action of $\mcg(\no_g)$.
+
+% \subsection{Curve complexes and coarse geometry of Teichmüller space}
+% \label{sec:curve-compl-coarse}
+
+% \todo[inline]{Unify the notation for the various coarse notions of equality and inequalities}
+\todo[inline]{Figure out which other places in the paper have undocumented notation, and document them here. Also sort this list.}
+
+\todo[inline]{Redo all the figures in inkscape.}
+
+\subsection*{List of notation}
+\begin{itemize}
+\item[-] $\hLP(\teich(S))$: The exponential growth rate for the mapping class group orbit of a point $x$ in $\teich(S)$.
+\item[-] $\hLP(H)$: For a subgroup $H$ of $\mcg(S)$, this is the exponential growth rate of for the $H$-orbit of a point $x$ in $\teich(S)$.
+\item[-] $\net$: An $(\vepn, 2\vepn)$-net.
+\item[-] $\hNP(\core(\teich(S)))$: This is the exponential growth rate for the net points in an $(\vepn, 2 \vepn)$-net in the weak convex core of $\teich(S)$. The value of $\vepn$ is usually clear from the context.
+\item[-] $\os_{g,b,c}$: A surface of genus $g$ with $b$ boundary components, and $c$ crosscaps attached.
+\item[-] $\no_g$: A non-orientable surface of genus $g$: this is the same as $\os_{\frac{g-1}{2}, 0, 1}$ if $g$ is odd, and $\os_{\frac{g-2}{2}, 0, 2}$ if $g$ is even.
+\item[-] $\teich(S)$: The Teichmüller space of the surface $S$.
+\item[-] $\systole(S)$: The one-sided systole superlevel set in $\teich(S)$.
+\item[-] $\pitchfork$: $U \pitchfork V$ denotes that the surfaces $U$ and $V$ are transverse.
+\item[-] $\pitchfork$: $U \pitchfork_W V$ denotes that $U$ and $V$ are transverse when restricted to any subsurface of $W$ which intersects both $U$ and $V$ non-trivially.
+\item[-] $U \lessdot V$: The Behrstock partial order for transverse subsurfaces $U$ and $V$.
+\item[-] $\nu_N$: The Lagrangian volume form on $\teich(\no_g)$.
+\item[-] $\emul$: We say $a \emul b$ if $a$ and $b$ are equal up to a multiplicative error of $k$ and an additive error of $c$, where $k$ and $c$ are some fixed constants.
+\end{itemize}
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:

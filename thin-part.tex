@@ -1,0 +1,431 @@
+\section{Geodesics in the thin part of $\core(\teich(\no_g))$}
+\label{sec:recurr-rand-walks}
+
+Inspired by Theorem \ref{thm:weak-convexity}, we will focus our attention on $\core(\teich(\no_g))$ instead of the entirety of $\teich(\no_g)$.
+In this section, we will begin a proof of the fact that the action of $\mcg(\no_g)$ on $\core(\teich(\no_g))$ is statistically convex-cocompact (we abbreviate that to SCC for the remainder of the paper).
+
+To show that the $\mcg(\no_g)$ action is SCC, we need to exhibit a subset of $\core(\teich(\no_g))$ which has the following two properties.
+\begin{enumerate}[(i)]
+\item The action of $\mcg(\no_g)$ on the subset is cocompact.
+\item The subset is statistically convex.
+\end{enumerate}
+We claim that the subset $\thick(\no_g)$ satisfies these properties.
+\begin{align*}
+  \thick(\no_g) \coloneqq \left\{ z \in \teich(\no_g) \mid \text{No curve on $z$ is shorter than $\vept$} \right\}
+\end{align*}
+
+Although we have defined $\thick(\no_g)$ as a subset of $\teich(\no_g)$, it is also a subset of $\core(\teich(\no_g)) = \systole(\no_g)$: this follows from its very definition, which is a more restrictive version of the definition of $\systole(\no_g)$.
+The action of $\mcg(\no_g)$ on $\thick(\no_g)$ is also cocompact, because the quotient is the thick part of the moduli space, which is known to be compact.
+
+Showing that $\thick(\no_g)$ is a statistically convex subset of $\core(\teich(\no_g))$ requires more work.
+We begin by rephrasing what it means for $\thick(\no_g)$ to be statistically convex in a form that's more convenient for our methods.
+
+Consider the metric $d_{\vept}$ on $\core(\teich(\no_g))$, defined by the following formula.
+\begin{align*}
+  d_{\vept}(x, y) \coloneqq \inf\left( \ell(\lambda) \mid \text{$\lambda$ is a path in $\core(\teich(\no_g))$ joining $x$ and $y$} \right)
+\end{align*}
+This metric is not the same as the usual Teichmüller metric $d$, but by Theorem \ref{thm:weak-convexity}, we can make the ratio of these two metrics arbitrarily close to $1$ by picking $\vept$ small enough.
+
+We now define lattice point entropy, and entropy for \concave lattice points.
+\begin{definition}[Lattice point entropy for $\core(\teich(\no_g))$]
+  Let $p$ be a point in $\thick(\no_g)$, and let $N_p(R, \vept)$ be the lattice point counting function.
+  \begin{align*}
+    N_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid d_{\vept}(p, \gamma p) \leq R \right)
+  \end{align*}
+  The lattice point entropy $\hLP(\core(\teich(\no_g)), \vept)$ is the following quantity.
+  \begin{align*}
+    \hLP(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+\begin{rem}
+  The lattice point entropy is a well-defined quantity since we have that $N_p(R, \vept)$ is a sub-multiplicative function, and therefore $\log N_p(R, \vept)$ is sub-additive, and the limit is well defined by Fekete's lemma.
+\end{rem}
+
+\begin{definition}[\Concave lattice points]
+  A lattice point $\gamma p$ is said to be \concave if the geodesic segment joining $p$ and $\gamma p$ stays outside $\thick(\no_g)$ except for a constant amount $t$ near the beginning and end of the geodesic.
+  The precise value of the constant $t$ will not matter for us, so we will usually elide mentions of $t$ in what follows.
+\end{definition}
+
+\begin{definition}[Entropy for \concave lattice points]
+  Let $M_p(R, \vept)$ be the counting function for \concave lattice points.
+  \begin{align*}
+    M_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is \concave}  \right)
+  \end{align*}
+  The entropy for \concave lattice points $\hLPb(\core(\teich(\no_g)), \vept)$ is the following quantity.
+  \begin{align*}
+    \hLPb(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log M_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+% We will prove a statement that is stronger than statistical convexity of $\thick(\no_g)$, namely that the entropy for $\alpha$-\concave points is strictly lower than lattice point entropy, for $\alpha$ close enough to $1$.
+The statistical convexity of $\thick(\no_g)$ is equivalent to the following statement, which states that the entropy for \concave lattice points is strictly lower than entropy for all lattice points.
+
+\begin{theorem}[Statistical convexity]
+  \label{thm:stat-convex}
+  For $\vept > 0$ small enough, the following inequality holds.
+  \begin{align*}
+    \hLPb(\core(\teich(\no_g)), \vept) < \hLP(\core(\teich(\no_g)), \vept)
+  \end{align*}
+\end{theorem}
+
+We prove Theorem \ref{thm:stat-convex} by constructing a random walk on $\core(\teich(\no_g))$ and proving a similar entropy gap between all random walk trajectories and the random walk trajectories that spend their time outside $\thick(\no_g)$.
+
+\subsection{Construction of random walk}
+\label{sec:constr-rand-walk}
+
+Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\teich(\no_g)) / \mcg(\no_g)$.
+
+\begin{definition}[$(\vepn, 2\vepn)$-net in $\core(\teich(\no_g))$]
+  Let $\mathfrak{M}$ be a subset of $\core(\teich(\no_g)) / \mcg(\no_g)$ satisfying the following two conditions.
+  \begin{enumerate}[(i)]
+  \item If $z_1$ and $z_2$ lie in $\mathfrak{M}$, then $d_{\vept}(z_1, z_2) \geq \vepn$.
+  \item For any $z_1$ in $\core(\teich(\no_g)) / \mcg(\no_g)$, there exists $z_2 \in \mathfrak{M}$ such that $d_{\vept}(z_1, z_2) \leq 2 \vepn$.
+  \end{enumerate}
+  An $(\vepn, 2\vepn)$-net $\net$ in $\core(\teich(\no_g))$ is $\mathfrak{p}^{-1}(\mathfrak{M})$ for any subset $\mathfrak{M}$ satisfying the above conditions.
+\end{definition}
+% \todo[inline]{Fix this definition so that the net is grid-aligned with respect to the product regions in the thin part of Teichmüller space.}
+
+The random walk is defined in terms of a net $\net$ and a parameter $\tau > 0$: we pick a starting point $r_0$ (which we call step $0$) for the random walk from one of the net points, and $r_n$ is picked uniformly at random amongst all the net points that are within distance $\tau$ of $r_{n-1}$.
+
+We will be interested in counting the number of $n$-step trajectories of the random walk as a function of $n$ and $\tau$.
+The count will also involve the exponential growth rate of the number of net points in a ball of radius $R$, which we call the \emph{net point entropy} $\hNP(\core(\teich(\no_g)), \vept)$.
+
+\begin{definition}[Net point entropy]
+  Let $K_p(R, \vept)$ be the counting function for net points, where $p \in \core(\teich(\no_g))$.
+  \begin{align*}
+    K_p(R, \vept) \coloneqq \#\left( y \in \net \mid d_{\vept}(p, y) \leq R \right)
+  \end{align*}
+  The net point entropy $\hNP(\core(\teich(\no_g)), \vept)$ is the following function defined in terms of $K_p$.
+  \begin{align*}
+    \hNP(\core(\teich(\no_g)), \vept) \coloneqq \lim_{R \to \infty} \frac{\log K_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+Note that $\hNP(\core(\teich(\no_g)), \vept)$ does not depend on the choice of the actual net, nor does it depend on the parameter $\vepn$. Two different nets with different choices of $\vepn$ will have counting functions that differ by at most a constant multiplicative term, which will not change the value of $\hNP(\core(\teich(\no_g)), \vept)$.
+
+We will replicate the proof of Theorem 1.2 of \textcite{eskinmirzakhani}, where they construct a random walk on a net, and use that to count \concave trajectories.
+The key difficulty that comes up in our proof and which does not come up in their proof is the fact that they get an estimate for the cardinality of \concave trajectories (and therefore \concave lattice points) in terms of $\hNP(\teich(\os_g))$\footnote{$\os_g$ is the orientable surface of genus $g$.}, which they know is the same as $\hLP(\teich(\os_g))$ (i.e. $6g-6$) by Theorem 1.2 of \textcite{10.1215/00127094-1548443}.
+
+Since we are working with non-orientable surfaces, we cannot invoke Theorem 1.2 of \textcite{10.1215/00127094-1548443}, and instead need to relate $\hLP$ and $\hNP$ more directly: this is what we do in Sections \ref{sec:equal-latt-point} and \ref{sec:line-gap-compl}.
+
+\subsection{Construction of the Foster-Lyapunov-Margulis function}
+\label{sec:constr-marg-funct}
+
+One of the ways to show that a random walk on a non-compact space avoids the complement of a compact region with high probability is to construct a proper function $\flm$ on the space which satisfies a certain inequality when averaged over one step of the random walk.
+See \textcite{EskinMozes+2022+342+361} for an exposition on the construction of these functions as well as some applications to dynamics and random walks.
+
+\begin{definition}[Averaging operator]
+  Let $\tau > 0$ be the parameter associated to the random walk, and $f$ be any real valued function $\core(\teich(\no_g))$.
+  Then the action of the averaging operator $A_{\tau}$ on $f$ is given by the following formula.
+  \begin{align*}
+    (A_{\tau}f)(x) \coloneqq \frac{1}{\nu_N\left( B_{\tau}^{\vept}(x) \right)} \left( \int_{B_{\tau}^{\vept}(x)} f(z) d\nu_N(z) \right)
+  \end{align*}
+  Here, $B_{\tau}^{\vept}(x)$ is a ball of radius $\tau$ around $x$ with respect to the metric $d_{\vept}$.
+\end{definition}
+
+A Foster-Lyapunov-Margulis function is a function that has strong decay properties when the operator $A_{\tau}$ is applied to it.
+
+\begin{definition}[Foster-Lyapunov-Margulis function]
+  \label{defn:flm}
+  A proper function $f$ on $\core(\teich(\no_g))$ is called a Foster-Lyapunov-Margulis function if $A_{\tau}f$ satisfies the following inequality.
+  \begin{align*}
+    (A_{\tau}f)(x) \leq c(x) f(x) + b(x)
+  \end{align*}
+  Here, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$ for some constant $c^{\prime}$ and polynomial $p$.
+  \begin{align*}
+    c(x) \leq c^{\prime} \cdot p(\tau) \cdot \exp(-\tau)
+  \end{align*}
+  % \todo[inline]{Might need to fix the exponent in the exponential function.}
+\end{definition}
+
+Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the length of the shortest two-sided curve on the surface.
+\begin{align*}
+  \flm(x) \coloneqq \sqrt{\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
+\end{align*}
+This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
+
+\begin{proposition}
+  \label{prop:flm-is-flm}
+  The function $\flm$ is a Foster-Lyapunov-Margulis function on $\core(\teich(\no_g))$ with respect to $A_{\tau}$, for large enough values of $\tau$.
+\end{proposition}
+
+\begin{proof}
+  Let $W_0$ be the region of $\core(\teich(\no_g))$ where all two-sided curves are longer than $\delta$, for some value of $\delta$ we will fix later.
+  We divide $\core(\teich(\no_g))$ into three regions, and prove the estimate for $(A_\tau \flm)(x)$ for $x$ in these three regions.
+  The regions $R_1$, $R_2$ and $R_3$ are defined in the following manner.
+  \begin{itemize}
+  \item[-] $R_1$: This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\delta$ for all points in $B_{\tau}^{\vept}(x)$.
+  \item[-] $R_2$: This is the set of points $x$ such that there can be multiple curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ such that each $\gamma_i$ is the shortest curve at some point in $B_{\tau}^{\vept}(x)$, but wherever they are the shortest curves, their length is less than $\delta$.
+  \item[-] $R_3$: This is all of $\core(\teich(\no_g))$ with $R_1$ and $R_2$ removed.
+\end{itemize}
+  \begin{enumerate}[(i)]
+  \item Proof for $x \in R_1$: In this case, the entire ball $B_{\tau}^{\vept}$ is contained in the product region where $\gamma$ stays short.
+    By Theorem \ref{thm:prno}, there exists a constant $c(\delta)$, which can be made arbitrarily small by picking $\delta$ small enough, such that the ball $B_{\tau}^{\vept}(x)$ contains, and is contained inside a product of balls in $\core(\teich(\no_g \setminus \gamma))$ and $\mathbb{H}$ (which corresponds to length and twist around $\gamma$).
+    \begin{align*}
+      B_{\tau - c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau - c(\delta)}(\mathbb{H}) &\subset B_{\tau}^{\vept}(x) \\
+      &\subset B_{\tau + c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau + c(\delta)}(\mathbb{H})
+    \end{align*}
+    Instead of computing the average of $f$ over $B_{\tau}^{\vept}(x)$, we can compute it over the product of the balls as described above.
+    To do so, we need to verify that the measure on the product of the two balls is the product of the measures on the individual balls: we do this in the proof of Proposition \ref{prop:uniform-volume-bound}.
+    Since the volumes of these balls grow exponentially with respect to radius, computing the average over the product of balls will give us an average that differs from the true average by a bounded multiplicative constant (which can be made as close to $1$ as we like by picking a small enough $\delta$).
+    This constant will be one of the terms that contribute to $c^{\prime}$ in Definition \ref{defn:flm}.
+    Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
+    It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
+
+    If we parameterize $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e. $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
+    The average of this function over a sphere is well-understood (see \cite[Lemma 4.2]{EskinMozes+2022+342+361}), and we can use the spherical average to compute the average over a ball by taking a weighted average of the spherical averages.
+    Doing so gives us the following estimate for $(A_{\tau}\flm)(z)$ (where $c^{\prime}$ is some fixed constant).
+    \begin{align*}
+      (A_{\tau}\flm)(z) \leq c^{\prime} \tau \exp(-\tau) \flm(z)
+    \end{align*}
+    Since we have already established that the value $\flm(x)$ only depends on depends on what happens in the $\mathbb{H}$-coordinate, namely $z$, we get a corresponding inequality for $x$, which proves the result in this case.
+    \begin{align*}
+      (A_{\tau}\flm)(x) \leq c^{\prime} \tau \exp(-\tau) \flm(x)
+    \end{align*}
+  \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that get short at some point in $B_{\tau}^{\vept}(x)$.
+    We have that the ball lies in the product region where all the curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ are short simultaneously.
+    If that is not the case, we pick a $\delta$ small enough such that this holds.
+    We have that there exists some constant $c_g$, depending only on $g$, such that $k \leq c_g$, since we cannot have too many curves being short simultaneously.
+
+    Similar to the previous case, changing only the $\core(\teich(\no_g \setminus \bigcup_{i=1}^k \gamma_i))$ coordinate will not change the value of the function $\flm$, so it suffices to focus our attention on the coordinates $\prod_{i=1}^k \mathbb{H}_i$, where each $\mathbb{H}_i$ corresponds to the length and twist around $\gamma_i$.
+
+    Let $z_{i, \mathrm{im}}$ be the imaginary part of the $i$\textsuperscript{th} copy of $\mathbb{H}$ in $\prod_{i=1}^k \mathbb{H}_i$.
+    The function $\flm$ on $\prod_{i=1}^k \mathbb{H}_i$ is given by the following formula.
+    \begin{align*}
+      \flm(x) = \max_{i} \sqrt{z_{(i, \mathrm{im})}}
+    \end{align*}
+    Since averaging this function over a product of balls is somewhat tedious, we relate it to a different function $\flm^{\prime}$ that is easier to average.
+    \begin{align*}
+      \flm^{\prime}(x) \coloneqq \sum_i \sqrt{z_{(i, \mathrm{im})}}
+    \end{align*}
+    These two functions are equal, up to a constant multiplicative error.
+    \begin{align*}
+      \frac{\flm^{\prime}(x)}{c_g} \leq \flm(x) \leq \flm^{\prime}(x)
+    \end{align*}
+    This means we can prove the averaging estimate for $\flm^{\prime}$, and the same estimate will hold for $\flm$, with a slightly worse multiplicative constant.
+
+    Furthermore, since $z_{i, \mathrm{im}}$ is constant along balls in $\mathbb{H}_j$ for $j \neq i$, it suffices to average just each term of the sum in the corresponding $\mathbb{H}_i$.
+    We do so, using the same estimate from the proof in the $R_1$ case.
+    \begin{align*}
+      (A_{\tau}\flm^{\prime})(x) \leq c^{\prime} \tau \exp(-\tau) \flm^{\prime}(x)
+    \end{align*}
+    Replacing $\flm^{\prime}$ with $\flm$ gives us the inequality we want, and proves the result in this case.
+    \begin{align*}
+      (A_{\tau}\flm)(x) \leq  (c_g \cdot c^{\prime}) \tau \exp(-\tau) \flm(x)
+    \end{align*}
+  \item Proof for $x \in R_3$: Note that the region $R_3$ is compact, which means the function $\flm$ is bounded in this region, and consequently, there exists a uniform upper bound for $A_\tau \flm$ as well.
+    Let us denote the uniform upper bounding function by $b(x)$: we can modify this function to be compactly supported by multiplying it with a bump function that is $1$ on a $\tau$-neighbourhood of $R_3$, and decays to $0$ outside.
+    By construction, we have for $x \in R_3$, $(A_{\tau}\flm)(x) \leq b(x)$.
+    This proves the result for $x \in R_3$.
+  \end{enumerate}
+  Putting together the estimate from the three cases, we get the standard form of the inequality (which holds for any $x \in \core(\teich(\no_g))$).
+  \begin{align*}
+    (A_{\tau} \flm)(x) \leq c(x) \flm(x) + b(x)
+  \end{align*}
+  Here, $c(x) \coloneqq (c_g \cdot c^{\prime}) \tau \exp(-\tau)$, and $b(x)$ is the function from the proof in case $R_3$.
+\end{proof}
+
+\subsection{Recurrence for random walks and geodesic segments}
+\label{sec:recurr-rand-walks-1}
+
+\subsubsection{Recurrence for random walks}
+\label{sec:recurr-rand-walks-2}
+
+We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
+In this section, we will count the number of random walk trajectories that are \emph{\concave}.
+%and \emph{almost close up}.
+
+\begin{definition}[\Concave trajectories]
+  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be \concave if all the points in the trajectory except the first point (and possibly the last point) are outside $\thick(\no_g)$.
+\end{definition}
+Since we picked $\vept < \delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the \concave trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
+\begin{align*}
+  (A_{\tau} \flm)(r_i) \leq c^{\prime} \tau \exp(-\tau) \flm(r_i)
+\end{align*}
+If $r_i$ is not a \concave trajectory point, we only have a weaker estimate in terms of a uniformly bounded function $b(x)$.
+\begin{align*}
+  (A_{\tau} \flm)(r_i) \leq b(x)
+\end{align*}
+
+% \begin{definition}[Almost closing up]
+%   \label{defn:acu}
+%   A trajectory $(r_0, r_1, \ldots, r_{n-1})$ is said to almost close up if $d_{\vept}(r_0, r_{n-1}) < t$ for some fixed constant $t$\footnote{The precise value of the constant $t$ does not really matter for the remainder of this section. Larger values of $t$ result in larger constant terms in our final estimate.}.
+% \end{definition}
+
+Fix an $r_0$ in $\thick(\no_g)$, and let $\traj(n, \tau)$ denote the collection of $n$-step \concave random walk trajectories which start at $r_0$.
+We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ to denote the $i$\textsuperscript{th} step of the trajectory $r$.
+%and almost close up, and $\trajnc(n, \tau, \alpha)$ denote the collection of $n$-step $\alpha$-\concave random walk trajectories which start at $r_0$, but do not necessarily close up.
+
+\begin{proposition}
+  \label{prop:rw-recurrence}
+  For any $\veperr > 0$, there exists a $\tau > 0$ large enough, and a constant $C \gg 0$,  such that the following bound on $\left| \traj(n, \tau) \right|$ holds.
+  \begin{align*}
+    \left| \traj(n, \tau) \right| \leq C \exp((\hNP - 1 + \veperr)n\tau)
+  \end{align*}
+  Here, $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
+\end{proposition}
+
+\begin{proof}
+  Since the $\flm(x)$ has a positive lower bound $C_l$ as $x$ varies over $\core(\teich(\no_g))$ (which comes from the Bers constant associated to $\no_g$), we can estimate $\left| \traj(n, \tau) \right|$ by summing up $\flm(r_{n-1})$ over all the trajectories in $\traj(n, \tau)$.
+  \begin{align*}
+   \left| \traj(n, \tau) \right| \leq \frac{1}{C_l} \sum_{r \in \traj(n, \tau)} \flm(r_{n-1})
+  \end{align*}
+  It therefore will suffice to estimate $\sum_{r \in \traj(n, \tau)} \flm(r_{n-1})$: we do so by conditioning on the previous step of the random walk over and over again until we get to the first step $r_0$.
+
+  % Consider the function $q(m, s)$, obtained by doing an $m$-step random walk starting at $s$, and summing up the values of $\flm$ at the final step of the random walk.
+% \todo[inline]{Come back to this proof after removing the $\alpha$-dependence everywhere else and its downstream effects.}
+  % The term we want to estimate $\sum_{\traj(n, \tau)}$ is equal to $q(n, r_0)$.
+  We have the following recursive inequality for $\sum_{r \in \traj(n, \tau)} \flm(r_{n-1})$.
+  \begin{align}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &= \sum_{r \in \traj(n-1, \tau)} \left( \sum_{\substack{y \in \net \\  d_{\vept(y, r_{n-2}) \leq \tau} } } \flm(y) \right) \label{eq:recursive-ineq1} \\
+                                              &\leq \sum_{r \in \traj(n-1, \tau)} C \int_{B_{\tau}^{\vept}(r_{n-2})} \flm(y) d\nu_N(y) \label{eq:recursive-ineq2} \\
+    &= \sum_{r \in \traj(n-1, \tau)} C \nu_N(B_{\tau}^{\vept}(r_{n-2})) (A_{\tau}\flm)(r_{n-2})
+  \end{align}
+  Here, we go from \eqref{eq:recursive-ineq1} to \eqref{eq:recursive-ineq2} by integrating the indicator function supported in a ball of radius $\frac{\vepn}{2}$ around each net point, and using Proposition \ref{prop:uniform-volume-bound} to uniformly bound the integral of the indicator independent of the basepoint.
+
+  We then use the fact that all of the $r_{n-2}$ are \concave trajectory points, i.e. they lie outside $\thick(\no_g)$, and consequently, we have strong bounds on $(A_{\tau} \flm)(r_{n-2})$.
+  \begin{align}
+    \label{eq:margulis-estimate-strong-bound}
+    (A_{\tau}\flm)(r_{n-2}) \leq c^{\prime} \tau \exp(-\tau) \flm(r_{n-2})
+  \end{align}
+  Combining \eqref{eq:recursive-ineq1} and \eqref{eq:margulis-estimate-strong-bound}, we get the estimate we need to repeat $n$ times.
+  \begin{align}
+    \label{eq:to-iterate}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) \leq C^{\prime} \tau \exp(-\tau) \exp((\hNP + \veperr^{\prime})\tau) \left( \sum_{r \in \traj(n-1, \tau)} \flm(r_{n-2}) \right)
+  \end{align}
+  Here, we upper bound the $\nu_N(B_{\tau}^{\vept}(r_{n-2}))$ with $C^{\prime \prime} \exp((\hNP + \veperr^{\prime})\tau)$, where $\veperr^{\prime}$ is a constant smaller than $\veperr$, and $C^{\prime \prime}$ is some large constant.
+  The term $C^{\prime}$ is equal to $C C^{\prime \prime} c^{\prime}$.
+
+  We now iterate \eqref{eq:to-iterate} $n$ times.
+  \begin{align*}
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &\leq \left( C^{\prime} \tau \right)^n \exp((\hNP - 1 + \veperr^{\prime})n\tau) \flm(r_0) \\
+                                              &= \flm(r_0) \cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} \right) n\tau \right)
+  \end{align*}
+  By picking $\tau$ large enough so that $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} < \veperr$, we get the claimed result.
+\end{proof}
+
+Proposition \ref{prop:rw-recurrence} tells us that a random walk on $\core(\teich(\no_g))$ is biased away from the thin part of $\core(\teich(\no_g))$.
+It does so by proving strong upper bounds on the probability that a random walk trajectory with $n$ steps stays in the thin part is less than $\exp((-1 + \veperr)n\tau)$: in other words, a random walk returns to $\thick(\no_g)$ with high probability.
+
+\subsubsection{Why the random walk approach fails for $\teich(\no_g)$}
+\label{sec:why-approach-fails}
+
+If we wanted to make Proposition \ref{prop:rw-recurrence} work on $\teich(\no_g)$, we would need to similarly show the random walk on $\teich(\no_g)$ is recurrent in a similarly strong sense: i.e. the probability of a length $n$ trajectory staying in the thin part decays exponentially in $n$.
+A consequence of this requirement is that the expected return time to the thick part is finite.
+
+Unlike $\core(\teich(\no_g))$, $\teich(\no_g)$ has two kinds of thin regions.
+\begin{itemize}
+\item[-] Thin region where only two-sided curves get short.
+\item[-] Thin region where some one-sided curve also gets short.
+\end{itemize}
+
+It is the second kind of thin region that poses a problem for $\teich(\no_g)$.
+Minsky's product region theorem (Theorem \ref{thm:prno}) tells us that up to additive error, the metric on these thin regions looks like a product of metrics on some copies of $\mathbb{R}$ (corresponding to the one-sided short curves), some copies of $\mathbb{H}$ (corresponding to the two-sided short curves), and a Teichmüller space of lower complexity.
+Since the random walk is controlled by the metric, the random walk on this product metric space is a product of random walks on each of the components.
+
+In particular, the random walk on the $\mathbb{R}$ component is a symmetric random walk on a net in $\mathbb{R}$: i.e. a symmetric random walk on $\mathbb{Z}$.
+Symmetric random walks on $\mathbb{Z}$ are known to be recurrent, but only in a weak sense: they recur to compact subsets infinitely often, but the expected return time is unbounded.
+
+This means we cannot hope to prove exponentially decaying upper bounds on the probability that a long random walk trajectory stays in the thin part, since that would lead to finite expected return times.
+This is why the random walk approach fails for $\teich(\no_g)$.
+
+\subsubsection{Recurrence for geodesic segments}
+\label{sec:recurr-geod-segm}
+
+In this section, we reduce the problem of counting geodesic segments that travel in the thin part to counting trajectories of random walks that do the same.
+
+\begin{proposition}
+  \label{prop:counting-geodesics}
+  For any $\veperr > 0$, there exists a $\vept^{\prime} > 0$ small enough, a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
+  \begin{align*}
+    M_{r_0}(R) \leq C^{\prime} \exp((\hNP - 1 + \veperr)R)
+  \end{align*}
+  Here, $M_{r_0}(R)$  number of mapping classes $\gamma$ such that the geodesic joining $r_0$ and $\gamma r_0$ stay outside $\thickarg{\vept^{\prime}}(\no_g)$, and $r_0$ is a point in $\thickarg{\vept^{\prime}}(\no_g)$ at which we start our random walk, and $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
+  \begin{align*}
+    M_{r_0}(R) \coloneqq \#\left\{ \gamma \in \mcg(\no_g) \mid \text{$d_{\vept^{\prime}}(r_0, \gamma r_0) \leq R$  and $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$}   \right\}
+  \end{align*}
+\end{proposition}
+
+\begin{proof}
+  We begin our proof by fixing $\vept^{\prime}$.
+  We first pick $\vepn$, i.e. the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
+  We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
+
+  Let $\gamma$ be a mapping class such the geodesic segment $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$ except for bounded distances at the beginning and end.
+  We turn this geodesic segment into a trajectory by marking off points at distance $\tau\left( 1 - \frac{2\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
+  All the points in the interior of this trajectory lie outside $\thick(\no_g)$, by our construction of $\vept^{\prime}$.
+  Furthermore, the distance between the adjacent points on the trajectory are at most $\tau$.
+  The number of steps in this trajectory is $\displaystyle n \coloneqq \left\lceil \frac{R}{\tau} \right\rceil$.
+
+  Let $\mathcal{P}$ denote the collection of trajectories obtained via this construction.
+  We apply Proposition \ref{prop:rw-recurrence} to count the number of such trajectories.
+  \begin{align}
+    \# \mathcal{P} &\leq C \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) n\tau\right) \\
+                   &\leq C \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \label{eq:traj-bound-4}
+  \end{align}
+
+  We now determine how many different geodesic segments can map to the same random walk trajectory.
+  If two geodesic segments $[r_0, \gamma_1 r_0]$ and $[r_0, \gamma_2 r_0]$ map to the same random walk trajectory, we must have that they fellow travel for most of their length, and as a result, $d_{\vept}(r_0, \gamma_2^{-1} \gamma_1 r_0)$ is bounded above by a constant value that only depends on $\tau$.
+  Combining the above fact with \eqref{eq:traj-bound-4} gives us a constant $C^{\prime}$ such that the following bound on $M_{r_0}(R)$ holds.
+  \begin{align*}
+    M_{r_0}(R) &\leq C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) (R + \tau)\right) \\
+    &= C^{\prime} \exp\left(\left(\hNP - 1 + \frac{\veperr}{2}\right) \left(1 + \frac{\tau}{R}\right) (R)\right)
+  \end{align*}
+  Picking a value of $R$ large enough gives us the result.
+\end{proof}
+
+We can now tie all of these calculations together to state our results on statistical convexity of $\core(\teich(\no_g))$.
+Proposition \ref{prop:counting-geodesics} gives us an upper bound on $\hLPb(\core(\teich(\no_g)), \vept)$ (by applying the result for smaller and smaller values of $\veperr$).
+\begin{align}
+  \label{eq:bad-entropy-bound}
+  \hLPb(\core(\teich(\no_g)), \vept) \leq \hNP(\core(\teich(\no_g)), \vept) - 1
+\end{align}
+
+To prove Theorem \ref{thm:stat-convex}, it will suffice to prove the following equality relating the lattice point entropy and net point entropy.
+\begin{align}
+  \label{eq:net-and-lattice-condition}
+  \hNP(\core(\teich(\no_g)), \vept) - 1 < \hLP(\core(\teich(\no_g)), \vept)
+\end{align}
+
+For convenience, we also define the undistorted versions of these entropy terms, using the Teichmüller metric $d$ rather than the induced metric $d_{\vept}$.
+
+\begin{definition}[(Undistorted) lattice point entropy for $\teich(\no_g)$]
+  Let $p$ be a point in $\thick(\no_g)$, and let $N_p(R)$ be the lattice point counting function.
+  \begin{align*}
+    N_p(R) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid d(p, \gamma p) \leq R \right)
+  \end{align*}
+  The lattice point entropy $\hLP(\teich(\no_g))$ is the following quantity.
+  \begin{align*}
+    \hLP(\teich(\no_g)) \coloneqq \lim_{R \to \infty} \frac{\log N_p(R)}{R}
+  \end{align*}
+\end{definition}
+
+\begin{definition}[(Undistorted) net point entropy]
+  Let $K_p(R, \vept)$ be the counting function for net points, where $p \in \core(\teich(\no_g))$.
+  \begin{align*}
+    K_p(R, \vept) \coloneqq \#\left( y \in \net \mid d(p, y) \leq R \right)
+  \end{align*}
+  The net point entropy $\hNP(\core(\teich(\no_g)))$ is the following function defined in terms of $K_p$.
+  \begin{align*}
+    \hNP(\core(\teich(\no_g))) \coloneqq \lim_{R \to \infty} \frac{\log K_p(R, \vept)}{R}
+  \end{align*}
+\end{definition}
+
+Note that the net point entropy does not depend on the precise value of $\vept$, even though it is counting net-points in $\core(\teich(\no_g))$, since the different values of $\vept$ change the counting function by a multiplicative term that does not depend on $R$.
+
+Recall now Theorem \ref{thm:weak-convexity}, which for any $\vepd > 0$, provides a $\vept > 0$ such that the ratio $d_{\vept}$ and $d$ is bounded above by $1 + \vepd$.
+A consequence of this is that the distorted and the undistorted versions of the entropy terms differ by at most $\hNP(\core(\teich(\no_g))) \cdot \vepd$ and $\hLP(\teich(\no_g)) \cdot \vepd$.
+
+In particular, if we show $\hNP(\core(\teich(\no_g))) = \hLP(\teich(\no_g))$, \eqref{eq:net-and-lattice-condition} will follow (for small enough $\vept$), and so will Theorem \ref{thm:stat-convex}.
+We package up this result as a theorem, which we will use in subsequent sections.
+
+\begin{theorem}
+  \label{thm:entropy-equality-implies-scc}
+  If $\hNP(\core(\teich(\no_g))) = \hLP(\teich(\no_g))$, then $\thick(\no_g)$ is statistically convex, and the action of $\mcg(\no_g)$ on $\core(\teich(\no_g))$ is statistically convex-cocompact.
+\end{theorem}
+
+
+%%% Local Variables:
+%%% TeX-master: "main"
+%%% End:
