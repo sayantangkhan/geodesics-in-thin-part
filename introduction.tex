@@ -12,6 +12,25 @@
 \item Sketch out idea of proof of hLP = hNP.
 \item Mention what's in the appendix.
 \end{enumerate}
+
+Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many similarities to infinite co-volume geometrically finite Fuchsian groups, in a manner similar how mapping class groups of orientable surfaces behave like lattices in $\mathrm{SL}_2(\mathbb{R})$.
+
+\begin{enumerate}[(i)]
+\item The mapping class groups $\mcg(\no_g)$ are finitely presented.
+\item The action of $\mcg(\no_g)$ on the Teichmüller space $\teich(\no_g)$, has infinite $\nu_N$-covolume, where $\nu_N$ is the generalization of the Weil-Petersson volume form on Teichmüller spaces of non-orientable surfaces (\cite[Theorem 17.1]{gendulphe2017whats} and \cite{norbury2008lengths}).
+\item The limit set of $\mcg(\no_g)$ in the Thurston boundary of $\teich(\no_g)$ is $\pml^+(\no_g)$, i.e. the projective measured laminations that have no two-sided components, which is a subset of the boundary with zero Lebesgue measure (\cite{erlandsson2023mapping} and \cite{limitsetkhan}).
+\item The Teichmüller geodesic flow is not ergodic with respect to any Borel measure on the unit cotangent bundle with full support (\cite[Proposition 17.5]{gendulphe2017whats})
+\item There exists an $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$ to $\systole(\no_g)$, the subset where no one-sided curve is shorter than $\vept > 0$. The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolume \cite[Proposition 19.1]{gendulphe2017whats}.
+\end{enumerate}
+
+With these similarities, one might expect that $\systole(\no_g)$ serves as a convex core of $\teich(\no_g)$, and the geodesic flow restricted to tangent directions whose forward and backward end points lie in the limit set will be ergodic, with respect to a finite geodesic flow invariant measure supported only on these tangent directions.
+
+A prior result of the author shows that this is not the case, i.e. $\systole(\no_g)$ is not even quasi-convex, i.e. geodesic segments whose endpoints lie in $\systole(\no_g)$ can travel arbitrarily far from $\systole(\no_g)$.
+
+\begin{theorem}[Theorem 5.2 of \cite{limitsetkhan}]
+  For all $\vept > 0$, and all $D > 0$, there exists a Teichmüller geodesic segment whose endpoints lie in $\systole(\no_g)$, such that some point in the interior of the geodesic segment is more than distance $D$ from $\systole(\no_g)$.
+\end{theorem}
+
 \subsection*{Organization of the paper}
 
 
