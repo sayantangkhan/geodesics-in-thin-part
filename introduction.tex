@@ -1,17 +1,18 @@
 \section{Introduction}
 \label{sec:introduction}
 
-{\color{red} Outline of introduction.}
-\begin{enumerate}[(i)]
-\item List similarities with IVGF surfaces, and point out where analogy breaks down.
-\item State theorem about systole being weak convex.
-\item Weak convexity lets us focus on systole, rather than entire space.
-\item Can prove exponential rareness of thin geodesics in systole, using random walk methods.
-\item Using this, we get stat-convex, and consequently, rest of PS theory thanks to others.
-\item Hard part of random walk argument is showing hLP = hNP. We spend sections 5 and 6 doing this.
-\item Sketch out idea of proof of hLP = hNP.
-\item Mention what's in the appendix.
-\end{enumerate}
+% {\color{red} Outline of introduction.}
+% \begin{enumerate}[(i)]
+% \item List similarities with IVGF surfaces, and point out where analogy breaks down.
+% \item State theorem about systole being weak convex.
+% \item Weak convexity lets us focus on systole, rather than entire space.
+% \item Can prove exponential rareness of thin geodesics in systole, using random walk methods.
+% \item Using this, we get stat-convex, and consequently, rest of PS theory thanks to others.
+% \item Mention why we might care.
+% \item Hard part of random walk argument is showing hLP = hNP. We spend sections 5 and 6 doing this.
+% \item Sketch out idea of proof of hLP = hNP.
+% \item Mention what's in the appendix.
+% \end{enumerate}
 
 Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many similarities to infinite co-volume geometrically finite Fuchsian groups, in a manner similar how mapping class groups of orientable surfaces behave like lattices in $\mathrm{SL}_2(\mathbb{R})$.
 
@@ -31,10 +32,48 @@ A prior result of the author shows that this is not the case, i.e. $\systole(\no
   For all $\vept > 0$, and all $D > 0$, there exists a Teichmüller geodesic segment whose endpoints lie in $\systole(\no_g)$, such that some point in the interior of the geodesic segment is more than distance $D$ from $\systole(\no_g)$.
 \end{theorem}
 
+However, we show that this failure of quasi-convexity is not a serious obstruction to understanding geodesic segments whose endpoints lie in $\systole(\no_g)$.
+
+\begingroup
+\def\thetheorem{\ref{thm:weak-convexity}}
+\begin{theorem}
+  For any $\vepd > 0$, there exists a $\vept > 0$ small enough, and a constant $t$, such that any geodesic segment $\gamma$, whose length is more than $t$, with endpoints in $\systole(\no_g)$ can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
+  \begin{align*}
+    \ell(\gamma^{\prime}) \leq \ell(\gamma) \cdot (1 + \vepd)
+  \end{align*}
+\end{theorem}
+\addtocounter{theorem}{-1}
+\endgroup
+
+Theorem \ref{thm:weak-convexity} shows that $\systole(\no_g)$, despite not being convex, almost behaves like the convex core of $\teich(\no_g)$: it is a metric subset of $\teich(\no_g)$ which is distorted by an arbitrarily small amount.
+We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$.
+If we restrict our attention to the cotangent directions in which the Teichmüller geodesic enters $\systole(\no_g)$ infinitely often, we can define a \emph{slowed-down} geodesic flow on those tangent directions using the geodesic flow in $\teich(\no_g)$.
+This new geodesic flow projects down to $\systole(\no_g)$, and is only slower than the usual Teichmüller geodesic flow by a factor of at most $1 + \vepd$.
+
+In light of this, we restrict our attention to $\systole(\no_g)$, and the $\mcg(\no_g)$ action on $\systole(\no_g)$.
+Since the action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolume (but not cocompact), one might try to prove that the action is \emph{analogous} to the action of lattices in $\mathrm{SL}_2(\mathbb{R})$ on $\mathbb{H}$.
+However, many of the results on lattices (and Teichmüller spaces of orientable surfaces) rely on having a nice measure preserving $\mathrm{SL}_2(\mathbb{R})$ action on the unit tangent bundle (respectively on the moduli space of quadratic differentials): specifically they rely on the interplay between the geodesic flow and the horocycle flow.
+
+For non-orientable surfaces, we do not have an analog of the horocycle flow on the space of quadratic differentials, so we cannot hope to directly import the techniques from the orientable case.
+However, \textcite{10.1093/imrn/rny001} introduced a notion of \emph{statistically convex-cocompact action}, which can replace the notion of a lattice-like action for our setting.
+In the setting of $\systole(\no_g)$, proving convex-cocompactness is equivalent to proving that geodesic segments between $\mcg(\no_g)$ orbit points in $\systole(\no_g)$ enter the thin part (i.e. the region in $\systole(\no_g)$ where some two-sided curve is short) with exponentially low probabilities.
+
+Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no_g)$.
+\begin{theorem}[Corollary of Theorems \ref{thm:entropy-equality-implies-scc} and \ref{thm:entropy-equality}]
+  The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is statistically convex-cocompact.
+\end{theorem}
+
+Statistical convex-cocompactness is a fairly robust notion for subgroups of the mapping class groups.
+\textcite{gekhtman2023dynamics}, and \textcite{CGTY} show that statistically convex-cocompact actions of subgroups of the mapping class group have good dynamics, namely one can construct a geodesic flow invariant finite measure on the unit cotangent bundle, such that the geodesic flow is mixing with respect to this measure.
+
+\subsection*{Why we care about statistical convex-cocompactness of $\mcg(\no_g)$}
+
+\subsection*{Idea behind proofs of main theorems}
+
 \subsection*{Organization of the paper}
 
 
-\tableofcontents
+% \tableofcontents
 
 % \todo[inline]{Find and rewrite all phrases that begin with ``it's easy to see that''.}
 
