@@ -68,9 +68,84 @@ Statistical convex-cocompactness is a fairly robust notion for subgroups of the 
 
 \subsection*{Why we care about statistical convex-cocompactness of $\mcg(\no_g)$}
 
+\subsubsection*{Counting functions}
+
+Understanding the dynamics of the geodesic flow over the moduli space of \emph{orientable surfaces} has led to solutions for two counting problems on orientable hyperbolic surfaces.
+
+\begin{enumerate}[(i)]
+\item Counting closed curves: Via techniques originally introduced to Margulis in his thesis \cite{margulis2004some}, one can reduce counting closed curves, which are conjugacy classes of mapping class group orbit points, to understanding the geodesic flow over the moduli space.
+  The number of closed curves of length at most $R$, which we denote by $N(R)$ has the following asymptotics (see \cite{eskinmirzakhani}).
+  \begin{align}
+    \label{eq:counting-closed}
+    N(R) \sim \frac{\exp(hR)}{hR}
+  \end{align}
+  Here, the symbol $\sim$ means that the ratio of the two quantities approaches a positive constant as $R$ goes to $\infty$, and $h$ is the volume growth entropy of $\teich(\os_{g})$, which is $6g-6$.
+\item Counting \emph{simple} closed curves: \textcite{mirzakhani2008growth} proved that the counting function $M(R)$ that counts \emph{simple} closed curves satisfies a polynomial asymptotic.
+  \begin{align}
+    \label{eq:counting-simple-closed}
+    M(R) \sim R^{h}
+  \end{align}
+  Here, $h$ is again the volume growth entropy, i.e. $6g-6$.
+  This count also led to an explicit computation of the volumes of moduli spaces of orientable hyperbolic surfaces with boundary, as well as the calculation of expected values for various geometric properties of Weil-Petersson random hyperbolic surfaces.
+\end{enumerate}
+
+For non-orientable surfaces, the counting function does not behave like the orientable version.
+\textcite{gendulphe2017whats} showed that the counting function for closed curves in $\no_g$ is $o(\exp((3g-6)R))$, and the counting function for simple closed curves in $o(L^{3g-6})$, where $3g-6$ is the dimension of $\teich(\no_g)$.
+This raises the question of whether there is an exponent $h < 3g-6$ for which the non-orientable versions of \eqref{eq:counting-closed} and \eqref{eq:counting-simple-closed} continue to hold.
+
+By establishing that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we can use the results of Coulon, Gekhtman, Ma, Tapie, and Yang to count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
+
+While just mixing of the geodesic flow is not strong enough to obtain the error terms for the counting function $N(R)$, exponential mixing is strong enough, and the error terms provide a way to count simple closed curves, and obtain a version of \eqref{eq:counting-simple-closed} for non-orientable surfaces.
+
+\subsubsection*{Random non-orientable hyperbolic surfaces} Since the Weil-Petersson volume of $\mo(\os_{g})$ is finite, one can sample a random orientable hyperbolic surface from this space: using the asymptotics for simple closed curves, Mirzakhani computed the expected values of various geometric properties of random hyperbolic surfaces sampled using this distribution, e.g. systole, diameter, Cheeger constant, etc.
+
+The analogous volume form $\nu_N$ on $\mo(\no_g)$ has infinite mass, and as a result cannot be used to sample a random non-orientable hyperbolic surface.
+However, $\systole(\no_g)$ has finite $\nu_N$-mass, and can be used to sample a random non-orientable hyperbolic surface: if we establish a version of \eqref{eq:counting-simple-closed}, we can hope to compute the expectation of geometrically meaningful random variables over this probability space.
+
+\subsubsection*{Geometric finiteness for mapping class subgroups}
+
+One can think of $\mcg(\no_g)$ as a subgroup of $\mcg(\os_{g-1})$ (where $\os_{g-1}$ is the orientation double cover of $\no_g$), where the embedding is obtained by lifting mapping classes on $\no_g$ to orientation preserving mapping classes on $\os_{g-1}$.
+The image of $\mcg(\no_g)$ is an infinite-index subgroup, and stabilizes an isometrically embedded copy of $\teich(\no_g)$ inside $\teich(\os_{g-1})$.
+
+For subgroups of mapping class groups, the notion of convex-cocompactness was introduced by \textcite{farb2002convex}: these groups have good properties with respect to their dynamics on the Teichmüller space.
+A natural generalization of these subgroups, inspired by the Kleinian setting, is the notion of geometric finiteness.
+While there is not universally agreed upon notion of geometric finiteness for mapping class subgroups, the following two classes are subgroups are considered to be geometrically finite by any reasonable definition.
+
+\begin{enumerate}[(i)]
+\item Veech groups: These are stabilizers of Teichmüller discs in $\teich(\os_{g-1})$ which are finitely generated.
+  They are lattices in $\mathrm{SL}_2(\mathbb{R})$, and their action on the Teichmüller discs they stabilize is well understood via hyperbolic geometry.
+\item Combinations of Veech groups: \textcite{leininger2006combination} show that if two Veech groups $H$ and $K$ share a maximal parabolic subgroup $A$, the subgroup they generate is $H \ast_A K$ (after possibly conjugating by a pseudo-Anosov).
+\end{enumerate}
+
+The key emphasis with these two examples is that in both of these examples, there are only finitely many cusps, i.e. finitely many conjugacy classes of reducible elements.
+However, that is not the case for $\mcg(\no_g)$, it stabilizes an isometrically embedded sub-manifold, and yet there are infinitely many conjugacy classes of reducible elements.
+Despite having infinitely many ``cusps'', our results show that it is still possible to do Patterson-Sullivan theory on $\mcg(\no_g)$, which is a departure from the Fuchsian/Kleinian setting, where finite Bowen-Margulis measure requires finitely many cusps.
+
+This suggests that for subgroups of mapping class groups, the currently accepted notions of geometric finiteness may be too restrictive (from the point of view of Patterson-Sullivan theory).
+
 \subsection*{Idea behind proofs of main theorems}
 
-\subsection*{Organization of the paper}
+In this subsection, we outline the key ideas behind the proof of the main theorems.
+
+\subsubsection*{Weak convexity of $\systole(\no_g)$}
+We construct a projection map from $\teich(\no_g)$ to $\systole(\no_g)$ which takes any one-sided curve of length less than $\vept$ and increases its length to $\vept$, while keeping the lengths and twists of other curves constant.
+We then use Minsky's product region theorem to show that this projection map increases distance by only a factor of $(1 + \vepd)$, where $\vepd$ can be picked to be arbitrarily small.
+
+\subsubsection*{Statistical convexity of $\systole(\no_g)$}
+To show that geodesics in $\systole(\no_g)$ stay away from the thin part, we construct a random walk on $\systole(\no_g)$, and compute the probability of a single step of the random walk entering the thin part, and show that this probability is small.
+This argument gives us that the number of geodesics entering the thin part is at most $\exp(\hNP - 1)$, where $\hNP$ is the discrete analog of the volume growth entropy of $\systole(\no_g)$, whereas the number of geodesics is $\exp(\hLP)$.
+To show that the probability of a geodesic entering the thin part is small, we need to show that $\hLP > \hNP - 1$.
+
+\subsubsection*{Showing $\hLP = \hNP$}
+We prove entropy equality by inducting on the complexity of the surface.
+We first show it for surfaces with Euler characteristic equal to $-1$ using direct methods, and reduce the inductive step to proving an estimate on complexity length for geodesic segments that spend a definite fraction of their time in thin part.
+
+\subsubsection*{Complexity length estimate}
+
+In this section, we use the machinery of complexity length introduced by \textcite{dowdall2023lattice} to show that geodesic segments that spend a small but definite fraction of time near their end in the thin part are rare.
+
+\subsection*{Acknowledgements}
+
 
 
 % \tableofcontents
