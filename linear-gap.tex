@@ -255,9 +255,9 @@ We now look at an extreme example of a complete witness families to motivate fur
     Then there exists a WISC witness family $\Omega(x,y)$ for $[x,y]$.
     Furthermore, the cardinality of $\Omega(x,y)$ depends only on $\os$, and not the points $x$ and $y$.
   \end{lemma}
-  \begin{rem}
+  \begin{remark}
     While the statements of Lemmas 7.29 and 7.30 in \textcite{dowdall2023lattice} are for orientable surfaces, they go through without any changes for non-orientable surfaces as well.
-  \end{rem}
+  \end{remark}
 
   We now get to the raison d'\^etre of witness families: turning points on the geodesic segment $[x,y]$ in $\teich(\os)$ into points in $\teich(V)$, where $V$ is a witness in $\Omega(x,y)$.
   We will do so by assigning to each point $w$ in a neighbourhood of $[x,y]$ a point $\wt{w}_Z$ in $\cC(Z)$ for all subsurfaces $Z$ contained in $V$, and then showing this assignment is consistent.
@@ -369,11 +369,11 @@ We first define two intermediate collections of subintervals of a geodesic segme
     \mathcal{A}_V^{\Omega} \coloneqq \left( \mathcal{I}_V^{\vept} \setminus M(V) \right) \cup C(V)
   \end{align*}
 \end{definition}
-\begin{rem}
+\begin{remark}
   The reason we remove $M(V)$ and then later add $C(V)$ again is because it is possible for several different subsurfaces to be active at the same time: orthogonal subsurfaces for instance.
   One can have $V$ and $W$ as witnesses, with $W \sqsubset V$, and $Z \sqsubset V$ an active subsurface but not a witness, such that $W \perp Z$ with $\mathcal{I}_W^{\vept}$ and $\mathcal{I}_Z^{\vept}$ overlapping.
   In that case, removing $M(V)$ would also remove part of $\mathcal{I}_Z^{\vept}$, and adding back $C(V)$ would add back the deleted portion.
-\end{rem}
+\end{remark}
 
 The following theorem estimates $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{y}_V^{\Omega})$ using $\mathcal{A}_V^{\Omega}$.
 \begin{theorem}[Theorem 9.4 of \cite{dowdall2023lattice}]
@@ -403,9 +403,9 @@ For our applications, we won't need to eliminate badness entirely, or even bound
   \item \emph{limited} if $\left| \Omega \right|$ is uniformly bounded, independent of $x$ and $y$.
   \end{itemize}
 \end{definition}
-\begin{rem}
+\begin{remark}
   Our definition of limited is a weaker version of Definition 10.7 from \textcite{dowdall2023lattice}, but since we don't need the stronger version, we present this version instead.
-\end{rem}
+\end{remark}
 
 \textcite{dowdall2023lattice} prove that WISC witness families that are admissible and limited exist. They call these witness families WISCAL witness families.
 
@@ -463,14 +463,14 @@ With the machinery of complexity length set up, it is now possible to count net 
 \end{theorem}
 %\todo[inline]{Make sure we're using consistent notation for net.}
 
-\begin{rem}
+\begin{remark}
   The above theorem is a slightly weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\veperr$.
   The reason we have the weaker version is that in the proof of their theorem, they count the number of net points in $\teich(V)$ in a ball of radius $R$, where $V$ is a witness, using Theorem \ref{thm:abem}, which gives them that the number of net points is equal, up to multiplicative error, to $\exp(\hNP(U) R)$.
   Since Theorem \ref{thm:abem} only holds orientable surfaces, and we want to state our results for non-orientable surfaces as well, we will need to use a weaker counting result to count net points in $\teich(V)$, namely the following bound, which holds for any $\vepent > 0$ and large enough $R$.
   \begin{align*}
     \#\left( y \in \net \mid d_{\teich(V)}(x, y) \leq R \right) \leq \exp\left( (\hNP(V) + \vepent ) R \right)
   \end{align*}
-\end{rem}
+\end{remark}
 
 We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the proof proceeds identically to the proof in \textcite{dowdall2023lattice}, except at one point, where we plug in our weaker bound for net points in $\teich(V)$ for witnesses $V$.
 

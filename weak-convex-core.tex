@@ -60,10 +60,10 @@ In this section, we define the notion, and explain why this weaker notion of con
   \end{align*}
 \end{definition}
 
-\begin{rem}
+\begin{remark}
   Strictly speaking, we should call a subset $(\vepd, t)$-weak convex, as the constant $t$ is part of the data that makes a set weak convex.
   However, the constant $t$ will not matter for us, so we suppress it in all mentions of weak convexity.
-\end{rem}
+\end{remark}
 
 An $\vepd$-weak convex subset is a subset which, while not entirely undistorted, has bounded distortion with respect to the ambient metric space at large enough scale.
 % When $\vepd = 0$, an $\vepd$-weak convex is an actual convex subset, at least for uniquely geodesic metric spaces.
@@ -184,12 +184,12 @@ We can now prove Theorem \ref{thm:weak-convexity}.
   This proves the result.
 \end{proof}
 
-\begin{rem}
+\begin{remark}
   We emphasize that the key step in the above proof is going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate}, where the $\log\left( \frac{\ell_{p_i}(\gamma)}{\ell_{p_i^{\prime}}(\gamma)}  \right)$ term becomes $0$.
   This is only possible because there cannot be any twisting around a one-sided curve $\gamma$, so the projection map that sends $p_i$ to $p_i^{\prime}$ and $p_{i+1}$ to $p_{i+1}^{\prime}$ is distance reducing.
   If one tried to use the same proof strategy to show that the thick part of $\teich(\os)$, for any orientable or non-orientable surface $\os$ is weak convex in $\teich(\os)$, the step we described would be the point of failure.
   In particular, if there's a twist along $\gamma$, going from \eqref{eq:p-estimate} to \eqref{eq:p-prime-estimate} will not be distance reducing, and will exponentially increase the distance, leading the estimate to fail.
-\end{rem}
+\end{remark}
 
 Now that we have established that $\systole(\no_g)$ is $\vept$-weak convex, we can justifiably call it the weak convex core of $\teich(\no_g)$.
 

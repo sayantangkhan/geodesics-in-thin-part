@@ -12,11 +12,11 @@ In this, and the following section, we will prove that $\hLP = \hNP$, which will
   \end{align*}
 \end{theorem}
 
-\begin{rem}
+\begin{remark}
   In the case where $S$ is an orientable surface, the theorem is a corollary of \textcite[Theorem 1.2]{10.1215/00127094-1548443}.
   However, the proof of the stronger theorem in the orientable setting uses facts about the dynamics of the geodesic flow on the moduli space, which we don't have in the non-orientable setting.
   The proof of the weaker theorem only uses coarse geometric methods, and works equally well for orientable and non-orientable surfaces.
-\end{rem}
+\end{remark}
 
 \subsection{Base case}
 \label{sec:base-case}
@@ -209,10 +209,10 @@ We will now prove a lemma that provides an upper bound on the number of good poi
   \end{align*}
 \end{lemma}
 
-\begin{rem}
+\begin{remark}
   \textcite[Lemma 3.2]{eskinmirzakhani} prove this lemma for Teichmüller spaces of orientable surfaces, by comparing the extremal lengths of various curves on the underlying surfaces.
   We adapt the same proof for non-orientable surfaces, replacing extremal length for hyperbolic lengths instead.
-\end{rem}
+\end{remark}
 
 Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following lemma on packing an $\vepn$-separated set into a ball of fixed radius in Teichmüller space (where $\vepn$ is the parameter associated to our net $\net$).
 
@@ -327,13 +327,13 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
     \dcomp(p, y) \leq R(1 - c)
   \end{align*}
 \end{theorem}
-\begin{rem}
+\begin{remark}
   We give a brief outline of why the above result should hold.
   Complexity length can be thought of as a weighted version of Teichmüller length, where a specific segment is assigned a weight based on whether it's traveling in the thick part of Teichmüller space, or the thin part.
   In the latter case, it is assigned a smaller weight that is proportional to the net point entropy of the product region it is traveling in.
   The Teichmüller geodesics associated to bad points spend a significant fraction traveling in the thin part, by the very definition of bad points.
   It stands to reason then that the complexity length assigned to them is smaller by a definite amount, due to the time they spend in the thin part.
-\end{rem}
+\end{remark}
 % \todo[inline]{Have a remark here on why this ought to be true.}
 
 Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:linear-gap-rescaled}, it follows that as $R$ goes to $\infty$, the proportion of bad points goes to $0$, which is what we need for Theorem \ref{thm:entropy-equality}.
@@ -357,12 +357,12 @@ In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by pr
   \end{align*}
 \end{lemma}
 
-\begin{rem}
+\begin{remark}
   We do actually need the hypothesis $\chi(\os) \leq -2$ in the statement of the lemma for two reasons.
   The first reason is that the lemma is actually false for $\os_{1,0,1}$.
   Recall that this surface has the torus with one boundary component as a subsurface, but their mapping class groups are isomorphic, and have the same lattice point growth entropy.
   Another reason why we need the hypothesis is that the proof of the lemma proceeds via a construction of pseudo-Anosov elements on $\os$, and $\os_{1,0,1}$ does not admit any pseudo-Anosov mapping classes.
-\end{rem}
+\end{remark}
 
 \begin{proof}[Proof of Lemma \ref{lem:entropy-inequality}]
   Observe that $\mcg(V)$ is a subgroup of $\mcg(\os)$.
