@@ -14,7 +14,7 @@
 % \item Mention what's in the appendix.
 % \end{enumerate}
 
-Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many similarities to infinite co-volume geometrically finite Fuchsian groups, in a manner similar how mapping class groups of orientable surfaces behave like lattices in $\mathrm{SL}_2(\mathbb{R})$.
+Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many similarities to infinite co-volume geometrically finite Fuchsian groups, in a manner similar how mapping class groups of orientable surfaces sometimes behave like lattices in $\mathrm{SL}_2(\mathbb{R})$.
 
 \begin{enumerate}[(i)]
 \item The mapping class groups $\mcg(\no_g)$ are finitely presented.
@@ -26,7 +26,7 @@ Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many 
 
 With these similarities, one might expect that $\systole(\no_g)$ serves as a convex core of $\teich(\no_g)$, and the geodesic flow restricted to tangent directions whose forward and backward end points lie in the limit set will be ergodic, with respect to a finite geodesic flow invariant measure supported only on these tangent directions.
 
-A prior result of the author shows that this is not the case, i.e. $\systole(\no_g)$ is not even quasi-convex, i.e. geodesic segments whose endpoints lie in $\systole(\no_g)$ can travel arbitrarily far from $\systole(\no_g)$.
+A prior result of the author shows that this is not the case: $\systole(\no_g)$ is not even quasi-convex, i.e. geodesic segments whose endpoints lie in $\systole(\no_g)$ can travel arbitrarily far from $\systole(\no_g)$.
 
 \begin{theorem}[Theorem 5.2 of \cite{limitsetkhan}]
   For all $\vept > 0$, and all $D > 0$, there exists a Teichmüller geodesic segment whose endpoints lie in $\systole(\no_g)$, such that some point in the interior of the geodesic segment is more than distance $D$ from $\systole(\no_g)$.
@@ -37,18 +37,23 @@ However, we show that this failure of quasi-convexity is not a serious obstructi
 \begingroup
 \def\thetheorem{\ref{thm:weak-convexity}}
 \begin{theorem}
-  For any $\vepd > 0$, there exists a $\vept > 0$ small enough, and a constant $t$, such that any geodesic segment $\gamma$, whose length is more than $t$, with endpoints in $\systole(\no_g)$ can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
+  For any $\vepd > 0$, there exists a $\vept > 0$ small enough, and a constant $c$, such that any geodesic segment $\gamma$, whose length is more than $c$, with endpoints in $\systole(\no_g)$ can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
   \begin{align*}
     \ell(\gamma^{\prime}) \leq \ell(\gamma) \cdot (1 + \vepd)
   \end{align*}
 \end{theorem}
 \addtocounter{theorem}{-1}
 \endgroup
+% \todo[inline]{Should not have $\vept$ and constant $t$ in the same theorem statement.}
 
 Theorem \ref{thm:weak-convexity} shows that $\systole(\no_g)$, despite not being convex, almost behaves like the convex core of $\teich(\no_g)$: it is a metric subset of $\teich(\no_g)$ (with respect to the induced path metric) which is distorted by an arbitrarily small amount.
-We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$.
-If we restrict our attention to the cotangent directions in which the Teichmüller geodesic enters $\systole(\no_g)$ for arbitrarily large times\todo{Is this clear?}, we can define a \emph{slowed-down} geodesic flow on those tangent directions using the geodesic flow in $\teich(\no_g)$.
-This new geodesic flow projects down to $\systole(\no_g)$, and is only slower than the usual Teichmüller geodesic flow by a factor of at most $1 + \vepd$.
+We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$, and focus our attention on this subspace as a metric space, where the metric is the induced path metric.
+If we restrict our attention to the cotangent directions in $\teich(\no_g)$ along which the geodesic flow does not eventually leave $\systole(\no_g)$, we can use those cotangent directions to define a geodesic flow for $\systole(\no_g)$.
+We call this collection of restricted directions the restricted cotangent bundle over $\systole(\no_g)$
+
+% If we restrict our attention to the cotangent directions in which the Teichmüller geodesic enters $\systole(\no_g)$ for arbitrarily large times\todo{Is this clear?}, we can define a \emph{slowed-down} geodesic flow on those tangent directions using the geodesic flow in $\teich(\no_g)$.
+% This new geodesic flow projects down to $\systole(\no_g)$, and is only slower than the usual Teichmüller geodesic flow by a factor of at most $1 + \vepd$.
+% \todo{Might wanna remove it? Or say, ``if we restrict our attention to tangent directions that do not eventually leave systole, we can define a geodesic flow for this new space.''}
 
 In light of this, we restrict our attention to $\systole(\no_g)$, and the $\mcg(\no_g)$ action on $\systole(\no_g)$.
 Since the action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolume (but not cocompact), one might try to prove that the action is
@@ -59,32 +64,44 @@ However, many of the results on lattices (and Teichmüller spaces of orientable 
 
 For non-orientable surfaces, we do not have an analog of the horocycle flow on the space of quadratic differentials, so we cannot hope to directly import the techniques from the orientable case.
 However, \textcite{10.1093/imrn/rny001} introduced a notion of \emph{statistically convex-cocompact action}, which can replace the notion of a lattice-like action for our setting.
-In the setting of $\systole(\no_g)$, proving convex-cocompactness is equivalent to proving that geodesic segments between $\mcg(\no_g)$ orbit points in $\systole(\no_g)$ enter the thin part (i.e. the region in $\systole(\no_g)$ where some two-sided curve is short) with exponentially low probabilities.
+In the setting of $\systole(\no_g)$, proving statistical convex-cocompactness is equivalent to proving that geodesic segments between $\mcg(\no_g)$ orbit points in $\systole(\no_g)$ enter the thin part (i.e. the region in $\systole(\no_g)$ where some two-sided curve is short) with exponentially low probabilities.
 
 Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no_g)$.
 \begin{theorem}[Corollary of Theorems \ref{thm:entropy-equality-implies-scc} and \ref{thm:entropy-equality}]
+  \label{thm:statistical-convex-cocompactness}
   The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is statistically convex-cocompact.
 \end{theorem}
-\todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
+% \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
-Statistical convex-cocompactness is a fairly robust notion for subgroups of the mapping class groups.
-\textcite{gekhtman2023dynamics}, and \textcite{CGTY} show that statistically convex-cocompact actions of subgroups of the mapping class group have good dynamics, namely one can construct a geodesic flow invariant finite measure on the unit cotangent bundle, such that the geodesic flow is mixing with respect to this measure.
+Combining Theorem \ref{thm:statistical-convex-cocompactness} with the results of \textcite{gekhtman2023dynamics}, and \textcite{CGTY} lets us construct Patterson-Sullivan measures (with good dynamical properties) on the limit set.
+In particular, \textcite{CGTY} show that the construction of Patterson-Sullivan measures for statistically convex-cocompact subgroups of the mapping class groups leads to a finite geodesic flow invariant measure (i.e. the Bowen-Margulis measure) on the tangent bundle, and \textcite{gekhtman2023dynamics} show that finite Bowen-Margulis measure implies mixing of the geodesic flow in this setting.
+Applied to the setting of non-orientable surfaces, we get the following results.
+\begin{enumerate}[(i)]
+\item Existence of a unique family of Patterson-Sullivan measures on the limit set $\pml^+(\no_g)$.
+\item Mixing of the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$.
+  % This can be used to count lattice points in $\teich(\no_g)$.
+\item Ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$.
+\end{enumerate}
 
-\subsection*{Why we care about statistical convex-cocompactness of $\mcg(\no_g)$}
+% Statistical convex-cocompactness is a fairly robust notion for subgroups of the mapping class groups.
+% \textcite{gekhtman2023dynamics}, and \textcite{CGTY} show that statistically convex-cocompact actions of subgroups of the mapping class group have good dynamics, namely one can construct a geodesic flow invariant finite measure on the unit cotangent bundle, such that the geodesic flow is mixing with respect to this measure.
+% \todo[inline]{Rewrite this paragraph.}
+
+\subsection*{Why we care about Patterson-Sullivan theory for $\mcg(\no_g)$}
 
 \subsubsection*{Counting functions}
 
-Understanding the dynamics of the geodesic flow over the moduli space of \emph{orientable surfaces} has led to solutions for two counting problems on orientable hyperbolic surfaces.
+Understanding the dynamics of the geodesic flow over the moduli space of \emph{orientable surfaces} has led to solutions for two counting problems: one on the moduli space of hyperbolic surfaces, and one on hyperbolic surfaces themselves.
 
 \begin{enumerate}[(i)]
-\item Counting closed curves: Via techniques originally introduced to Margulis in his thesis \cite{margulis2004some}, one can reduce counting closed curves, which are conjugacy classes of mapping class group orbit points, to understanding the geodesic flow over the moduli space.
+\item Counting closed curves in moduli space: Via techniques originally introduced to Margulis in his thesis \cite{margulis2004some}, one can reduce counting closed curves, which are conjugacy classes of mapping class group orbit points, to understanding the geodesic flow over the moduli space.
   The number of closed curves of length at most $R$, which we denote by $N(R)$ has the following asymptotics (see \cite{eskinmirzakhani}).
   \begin{align}
     \label{eq:counting-closed}
     N(R) \sim \frac{\exp(hR)}{hR}
   \end{align}
   Here, the symbol $\sim$ means that the ratio of the two quantities approaches a positive constant as $R$ goes to $\infty$, and $h$ is the volume growth entropy of $\teich(\os_{g})$, which is $6g-6$.
-\item Counting \emph{simple} closed curves: \textcite{mirzakhani2008growth} proved that the counting function $M(R)$ that counts \emph{simple} closed curves satisfies a polynomial asymptotic.
+\item Counting \emph{simple} closed curves on orientable hyperbolic surfaces: \textcite{mirzakhani2008growth} proved that the counting function $M(R)$ that counts \emph{simple} closed curves satisfies a polynomial asymptotic.
   \begin{align}
     \label{eq:counting-simple-closed}
     M(R) \sim R^{h}
@@ -99,13 +116,38 @@ This raises the question of whether there is an exponent $h < 3g-6$ for which th
 
 By establishing that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we can use the results of Coulon, Gekhtman, Ma, Tapie, and Yang to count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
 
-While just mixing of the geodesic flow is not strong enough to obtain the error terms for the counting function $N(R)$, exponential mixing is strong enough, and the error terms provide a way to count simple closed curves, and obtain a version of \eqref{eq:counting-simple-closed} for non-orientable surfaces.
+To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might help count simple closed curves on $\no_g$, we outline Mirzakhani's original proof of the fact for orientable surfaces (see \cite{mirzakhani2008growth} for the original proof, and \cite{2022arXiv220204156A} for a gentler exposition).
 
-\subsubsection*{Random non-orientable hyperbolic surfaces} Since the Weil-Petersson volume of $\mo(\os_{g})$ is finite, one can sample a random orientable hyperbolic surface from this space: using the asymptotics for simple closed curves, Mirzakhani computed the expected values of various geometric properties of random hyperbolic surfaces sampled using this distribution, e.g. systole, diameter, Cheeger constant, etc.
-\todo{Maybe get a citation for this, or be more specific?}
+\begin{proof}[Sketch of simple closed curve counting in the orientable case]
+  The proof proceeds in 3 steps.
+  \begin{enumerate}[Step 1:]
+  \item For any simple closed curve $\gamma$ and any $L > 0$, consider the measure $\mu_L$ on the space $\ml(\os_g)$ of measured laminations.
+    \begin{align*}
+      \mu_L \coloneqq \frac{1}{L^{6g-6}} \sum_{\alpha \in \mcg(\os_g)} \delta_{\frac{1}{L}\alpha \gamma}
+    \end{align*}
+  \item Letting $L$ go to $\infty$, $\left\{ \mu_L \right\}$ converges to measure $\mu$ that is $\mcg(\os_g)$-invariant.
+    By ergodicity of the $\mcg(\os_g)$-action on $\ml(\os_g)$ with respect to the Thurston measure, we have that the limiting measure $\mu$ is a constant multiple $c$ times the Thurston measure.
+  \item To show that the constant $c$ is positive, one needs to average over the moduli space $\mo(\os_g)$, using Mirzakhani's integration formula for the Weil-Petersson volume form.
+  \end{enumerate}
+\end{proof}
 
-The analogous volume form $\nu_N$ on $\mo(\no_g)$ has infinite mass, and as a result cannot be used to sample a random non-orientable hyperbolic surface.
-However, $\systole(\no_g)$ has finite $\nu_N$-mass, and can be used to sample a random non-orientable hyperbolic surface: if we establish a version of \eqref{eq:counting-simple-closed}, we can hope to compute the expectation of geometrically meaningful random variables over this probability space.
+To replicate this proof in the non-orientable setting, we pick the original simple closed curve $\gamma$ to be a \emph{two-sided} curve, and replace the exponent $6g-6$ with $h + 1$, where $h$ is the critical exponent of $\mcg(\no_g)$.
+With these replacements, we have that the measures $\mu_L$ converge to an $\mcg(\no_g)$-invariant measure supported on $\ml^+(\no_g)$ (this is a result of \textcite{erlandsson2023mapping}).
+Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we conjecture that there is an $\mcg(\no_g)$-ergodic measure supported on $\ml^+(\no_g)$, since $\ml^+(\no_g) = \pml^+(\no_g) \times \mathbb{R}$.
+If this holds, one will have completed Step 2 of the proof for non-orientable surfaces.
+
+Making Step 3 work for non-orientable surfaces is still open: this would require coming up with a recursive formula for volumes of $\systole(\no_g)$ (or some other finite volume subset), and not all of $\teich(\no_g)$, since that has infinite $\nu_N$-volume.
+
+% While just mixing of the geodesic flow is not strong enough to obtain the error terms for the counting function $N(R)$, exponential mixing is strong enough, and the error terms provide a way to count simple closed curves, and obtain a version of \eqref{eq:counting-simple-closed} for non-orientable surfaces.
+% \todo[inline]{State this as a question}
+
+% \todo[inline]{Something about IETs with flips.}
+
+% \subsubsection*{Random non-orientable hyperbolic surfaces} Since the Weil-Petersson volume of $\mo(\os_{g})$ is finite, one can sample a random orientable hyperbolic surface from this space: using the asymptotics for simple closed curves, Mirzakhani computed the expected values of various geometric properties of random hyperbolic surfaces sampled using this distribution, e.g. systole, diameter, Cheeger constant, etc.
+% \todo{Maybe get a citation for this, or be more specific?}
+
+% The analogous volume form $\nu_N$ on $\mo(\no_g)$ has infinite mass, and as a result cannot be used to sample a random non-orientable hyperbolic surface.
+% However, $\systole(\no_g)$ has finite $\nu_N$-mass, and can be used to sample a random non-orientable hyperbolic surface: if we establish a version of \eqref{eq:counting-simple-closed}, we can hope to compute the expectation of geometrically meaningful random variables over this probability space.
 
 \subsubsection*{Geometric finiteness for mapping class subgroups}
 
@@ -126,8 +168,8 @@ The key emphasis with these two examples is that there are only finitely many cu
 However, that is not the case for $\mcg(\no_g)$, it stabilizes an isometrically embedded sub-manifold, and yet there are infinitely many conjugacy classes of reducible elements.
 Despite having infinitely many ``cusps'', our results show that it is still possible to do Patterson-Sullivan theory on $\mcg(\no_g)$, which is a departure from the Fuchsian/Kleinian setting, where finite Bowen-Margulis measure requires finitely many cusps.
 
-This suggests that for subgroups of mapping class groups, the currently accepted notions of geometric finiteness may be too restrictive (from the point of view of Patterson-Sullivan theory).
-\todo{Maybe go into more detail. Should I even be saying the geometric finiteness is too restrictive. Is that rude?}
+% This suggests that for subgroups of mapping class groups, one can do Patterson-Sullivan theory even for groups that are not considered to be .
+% \todo{Maybe go into more detail. Should I even be saying the geometric finiteness is too restrictive. Is that rude?}
 
 \subsection*{Idea behind proofs of main theorems}
 
@@ -140,8 +182,9 @@ We then use Minsky's product region theorem to show that this projection map inc
 \subsubsection*{Statistical convexity of $\systole(\no_g)$}
 To show that geodesics in $\systole(\no_g)$ stay away from the thin part, we construct a random walk on $\systole(\no_g)$, and compute the probability of a single step of the random walk entering the thin part, and show that this probability is small.
 Estimating this probability reduces to computing an average over a ball in $\mathbb{H}$ because of Minsky's product region theorem.
-The random walk argument gives us that the number of geodesics entering the thin part is at most $\exp(\hNP - 1)$, where $\hNP$ is the discrete analog of the volume growth entropy of $\systole(\no_g)$, whereas the number of geodesics is $\exp(\hLP)$.
-To show that the probability of a geodesic entering the thin part is small, we need to show that $\hLP > \hNP - 1$.
+The random walk argument gives us that the number of geodesics of length at most $R$ entering the thin part is at most $\exp((\hNP - 1)R)$, where $\hNP$ is the discrete analog of the volume growth entropy of $\systole(\no_g)$.
+However, the total number of geodesics of length at most $R$ grows like $\exp((\hLP)R)$, where $\hLP$ is the growth rate of the number of lattice points.
+To show that the probability of a geodesic entering the thin part is exponentially small, we need to relate the two entropy terms, and show that $\hLP > \hNP - 1$.
 
 \subsubsection*{Showing $\hLP = \hNP$}
 We prove entropy equality by inducting on the complexity of the surface.
