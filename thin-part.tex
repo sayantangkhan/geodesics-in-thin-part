@@ -42,9 +42,11 @@ We now define lattice point entropy, and entropy for \concave lattice points.
   The lattice point entropy is a well-defined quantity since we have that $N_p(R, \vept)$ is a sub-multiplicative function, and therefore $\log N_p(R, \vept)$ is sub-additive, and the limit is well defined by Fekete's lemma.
 \end{remark}
 
+ We define a variable $t = 2 \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$, and recall the definition of $t$-\concave lattice points.
 \begin{definition}[\Concave lattice points]
-  A lattice point $\gamma p$ is said to be \concave if the geodesic segment joining $p$ and $\gamma p$ stays outside $\thick(\no_g)$ except for a constant amount $t$ near the beginning and end of the geodesic.
-  The precise value of the constant $t$ will not matter for us, so we will usually elide mentions of $t$ in what follows.
+ A lattice point $\gamma p$ is $t$-concave if some geodesic segment $\kappa$ starting in a ball of radius $t$ centered at $p$ and ending in ball of radius $t$ centered at $\gamma p$ stays outside the set $\thick(\no_g)$.
+
+  The path obtained by joining $p$ to the starting point of $\kappa$, then following $\kappa$, and then joining the end point of $\kappa$ to $\gamma p$ is called the \emph{concavity detecting path for $\gamma p$}.
 \end{definition}
 
 \begin{definition}[Entropy for \concave lattice points]
@@ -352,8 +354,9 @@ In this section, we reduce the problem of counting geodesic segments that travel
   We first pick $\vepn$, i.e. the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
   We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
 
-  Let $\gamma$ be a mapping class such the geodesic segment $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$ except for bounded distances at the beginning and end.
-  We turn this geodesic segment into a trajectory by marking off points at distance $\tau\left( 1 - \frac{2\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
+  Let $\gamma$ be a mapping class such that $\gamma p$ is a concave lattice point.
+  We consider now the concavity detecting path for $\gamma p$: recall that this is a path that starts at $p$, and ends at $\gamma p$, and the middle segment obtained by deleting a prefix of length $2 \cdot \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$ and a suffix of length $2 \cdot \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$ stays outside $\thick(\no_g)$.
+  We turn this path into a random walk trajectory by marking off points at distance $\tau\left( 1 - \frac{2\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
   All the points in the interior of this trajectory lie outside $\thick(\no_g)$, by our construction of $\vept^{\prime}$.
   Furthermore, the distance between the adjacent points on the trajectory are at most $\tau$.
   The number of steps in this trajectory is $\displaystyle n \coloneqq \left\lceil \frac{R}{\tau} \right\rceil$.

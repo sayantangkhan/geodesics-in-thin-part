@@ -19,7 +19,7 @@ Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many 
 \begin{enumerate}[(i)]
 \item The mapping class groups $\mcg(\no_g)$ are finitely presented.
 \item The action of $\mcg(\no_g)$ on the Teichmüller space $\teich(\no_g)$, has infinite $\nu_N$-covolume, where $\nu_N$ is the generalization of the Weil-Petersson volume form on Teichmüller spaces of non-orientable surfaces (\cite[Theorem 17.1]{gendulphe2017whats} and \cite{norbury2008lengths}).
-\item The limit set of $\mcg(\no_g)$ in the Thurston boundary of $\teich(\no_g)$ is $\pml^+(\no_g)$, i.e. the projective measured laminations that have no two-sided components, which is a subset of the boundary with zero Lebesgue measure (\cite{erlandsson2023mapping} and \cite{limitsetkhan}).
+\item The limit set of $\mcg(\no_g)$ in the Thurston boundary of $\teich(\no_g)$ is $\pml^+(\no_g)$, i.e. the projective measured laminations that have no two-sided components  (\cite{erlandsson2023mapping} and \cite{limitsetkhan}), which is a subset of the boundary with zero Lebesgue measure (\cite{norbury2008lengths}).
 \item The Teichmüller geodesic flow is not ergodic with respect to any Borel measure on the unit cotangent bundle with full support (\cite[Proposition 17.5]{gendulphe2017whats})
 \item There exists an $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$ to $\systole(\no_g)$, the subset where no one-sided curve is shorter than $\vept > 0$. The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolume \cite[Proposition 19.1]{gendulphe2017whats}.
 \end{enumerate}
@@ -37,7 +37,7 @@ However, we show that this failure of quasi-convexity is not a serious obstructi
 \begingroup
 \def\thetheorem{\ref{thm:weak-convexity}}
 \begin{theorem}
-  For any $\vepd > 0$, there exists a $\vept > 0$ small enough, and a constant $c$, such that any geodesic segment $\gamma$, whose length is more than $c$, with endpoints in $\systole(\no_g)$ can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
+  For any $\vepd > 0$, there exists a $\vept^{\prime}$, and a constant $c$, such that any geodesic segment $\gamma$, whose length is more than $c$, with endpoints in $\systole(\no_g)$, for $0 < \vept < \vept^{\prime}$, can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
   \begin{align*}
     \ell(\gamma^{\prime}) \leq \ell(\gamma) \cdot (1 + \vepd)
   \end{align*}
@@ -49,7 +49,7 @@ However, we show that this failure of quasi-convexity is not a serious obstructi
 Theorem \ref{thm:weak-convexity} shows that $\systole(\no_g)$, despite not being convex, almost behaves like the convex core of $\teich(\no_g)$: it is a metric subset of $\teich(\no_g)$ (with respect to the induced path metric) which is distorted by an arbitrarily small amount.
 We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$, and focus our attention on this subspace as a metric space, where the metric is the induced path metric.
 If we restrict our attention to the cotangent directions in $\teich(\no_g)$ along which the geodesic flow does not eventually leave $\systole(\no_g)$, we can use those cotangent directions to define a geodesic flow for $\systole(\no_g)$.
-We call this collection of restricted directions the restricted cotangent bundle over $\systole(\no_g)$
+We call this collection of restricted directions the restricted cotangent bundle over $\systole(\no_g)$.
 
 % If we restrict our attention to the cotangent directions in which the Teichmüller geodesic enters $\systole(\no_g)$ for arbitrarily large times\todo{Is this clear?}, we can define a \emph{slowed-down} geodesic flow on those tangent directions using the geodesic flow in $\teich(\no_g)$.
 % This new geodesic flow projects down to $\systole(\no_g)$, and is only slower than the usual Teichmüller geodesic flow by a factor of at most $1 + \vepd$.
@@ -73,15 +73,44 @@ Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no
 \end{theorem}
 % \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
-Combining Theorem \ref{thm:statistical-convex-cocompactness} with the results of \textcite{gekhtman2023dynamics}, and \textcite{CGTY} lets us construct Patterson-Sullivan measures (with good dynamical properties) on the limit set.
-In particular, \textcite{CGTY} show that the construction of Patterson-Sullivan measures for statistically convex-cocompact subgroups of the mapping class groups leads to a finite geodesic flow invariant measure (i.e. the Bowen-Margulis measure) on the tangent bundle, and \textcite{gekhtman2023dynamics} show that finite Bowen-Margulis measure implies mixing of the geodesic flow in this setting.
-Applied to the setting of non-orientable surfaces, we get the following results.
-\begin{enumerate}[(i)]
-\item Existence of a unique family of Patterson-Sullivan measures on the limit set $\pml^+(\no_g)$.
-\item Mixing of the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$.
-  % This can be used to count lattice points in $\teich(\no_g)$.
-\item Ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$.
-\end{enumerate}
+\textcite{gekhtman2023dynamics}, and \textcite{CGTY} (which is upcoming work) prove the following theorems about statistically convex cocompact actions of subgroups of mapping class groups on Teichmüller space.
+
+\begin{theorem}[To appear in \textcite{CGTY}]
+  \label{thm:bms-finite}
+  Let $\Gamma$ be a subgroup of the mapping class group $\mcg(\os_g)$ whose action on $\teich(\no_g)$ is statistically convex-cocompact.
+  Then the Bowen-Margulis measure $\mu_{\mathrm{BMS}}$ on the unit cotangent bundle of $\teich(\os_g)/\Gamma$ is finite.
+\end{theorem}
+
+\begin{theorem}[Theorem 4.9 of \cite{gekhtman2023dynamics}]
+  \label{thm:mixing-bms}
+  If $\Gamma$ is a subgroup of the mapping class group such that the associated Bowen-Margulis is finite, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+\end{theorem}
+
+As a corollary of the Theorem \ref{thm:mixing-bms}, we get the following results about the Patterson-Sullivan measures and the action of $\Gamma$ on the limit set.
+\begin{corollary}
+  \label{cor:niceness}
+  If $\Gamma$ is a subgroup of $\mcg(\os_g)$ such that the Bowen-Margulis measure associated to $\Gamma$ is finite, then the following results hold.
+  \begin{itemize}
+  \item There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\os_g)}$ on the limit set of $\Gamma$, given by the Patterson-Sullivan construction.
+  \item The action of $\Gamma$ on the limit set is ergodic.
+  \end{itemize}
+\end{corollary}
+
+Combining Theorem \ref{thm:statistical-convex-cocompactness} with Theorems \ref{thm:bms-finite} and \ref{thm:mixing-bms} lets us construct Patterson-Sullivan measures (with good dynamical properties) on the limit set, and a finite Bowen-Margulis measure on the unit cotangent bundle.
+% In particular, \textcite{CGTY} show that the construction of Patterson-Sullivan measures for statistically convex-cocompact subgroups of the mapping class groups leads to a finite geodesic flow invariant measure (i.e. the Bowen-Margulis measure) on the tangent bundle, and \textcite{gekhtman2023dynamics} show that finite Bowen-Margulis measure implies mixing of the geodesic flow in this setting.
+In particular, letting $\Gamma = \mcg(\no_g) < \mcg(\os_{g-1})$ gives us a version of Theorem \ref{thm:mixing-bms} and Corollary \ref{cor:niceness} for $\mcg(\no_g)$.
+
+\begin{corollary}
+  There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\no_g)}$ on the limit set $\pml^+(\no_g)$, given by the Patterson-Sullivan construction.
+  Furthermore, the action of $\mcg(\no_g)$ on $\pml^+(\no_g)$ is ergodic, and the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$ is mixing with respect to the Bowen-Margulis measure.
+\end{corollary}
+
+% \begin{enumerate}[(i)]
+% \item Existence of a unique family of Patterson-Sullivan measures on the limit set $\pml^+(\no_g)$.
+% \item Mixing of the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$.
+%   % This can be used to count lattice points in $\teich(\no_g)$.
+% \item Ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$.
+% \end{enumerate}
 
 % Statistical convex-cocompactness is a fairly robust notion for subgroups of the mapping class groups.
 % \textcite{gekhtman2023dynamics}, and \textcite{CGTY} show that statistically convex-cocompact actions of subgroups of the mapping class group have good dynamics, namely one can construct a geodesic flow invariant finite measure on the unit cotangent bundle, such that the geodesic flow is mixing with respect to this measure.
@@ -107,7 +136,7 @@ Understanding the dynamics of the geodesic flow over the moduli space of \emph{o
     M(R) \sim R^{h}
   \end{align}
   Here, $h$ is again the volume growth entropy, i.e. $6g-6$.
-  This count also led to an explicit computation of the volumes of moduli spaces of orientable hyperbolic surfaces with boundary, as well as the calculation of expected values for various geometric properties of Weil-Petersson random hyperbolic surfaces.
+  % This count also led to an explicit computation of the volumes of moduli spaces of orientable hyperbolic surfaces with boundary, as well as the calculation of expected values for various geometric properties of Weil-Petersson random hyperbolic surfaces.
 \end{enumerate}
 
 For non-orientable surfaces, the counting function does not behave like the orientable version.

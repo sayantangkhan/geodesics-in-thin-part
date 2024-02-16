@@ -21,7 +21,7 @@ The orientation double cover of $\no_g$ is $\os_{g-1}$, where $p$ denotes the co
 We also have an orientation reversing deck transformation $\iota$ on $\os_{g-1}$ corresponding to the covering map.
 The map $\iota$ swaps the lifts of the two-sided curves, and leaves the lifts of the one-sided curves invariant.
 
-The subgroup $\pi_1(\no_g) < \pi_1(\os_{g-1})$ is a \emph{characteristic} subgroup, i.e. left invariant by an automorphism of $\pi_{1}(\os_{g-1})$ induced by a homeomorphism, and consequently, self-homeomorphisms of $\no_g$ have a unique orientation preserving lift to self-homeomorphisms of $\os_{g-1}$, giving us an embedding $p^\ast$ of mapping class groups, induced by the covering map $p$.
+The subgroup $\pi_1(\os_{g-1}) < \pi_1(\no_g)$ is a \emph{characteristic} subgroup, i.e. left invariant by an automorphism of $\pi_{1}(\no_g)$ induced by a homeomorphism, and consequently, self-homeomorphisms of $\no_g$ have a unique orientation preserving lift to self-homeomorphisms of $\os_{g-1}$, giving us an embedding $p^\ast$ of mapping class groups, induced by the covering map $p$.
 \begin{align*}
   p^{\ast}: \mcg(\no_g) \hookrightarrow \mcg(\os_{g-1})
 \end{align*}
@@ -58,8 +58,8 @@ Similar to Wolpert's magic formula, the $\mu_N$ has the following properties.
 This lets us use the absolute value of $\nu_N$ as a volume form on the quotient $\teich(\no_g) / \mcg(\no_g)$.
 We will, for notational convenience, use $\nu_N$ to mean $\left| \nu_N \right|$.
 
-With respect to $\nu_N$, the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is infinite covolume: the same also holds for the geodesic flow invariant volume on the unit cotangent bundle.
-Furthermore, the set of cotangent directions in which the geodesic flow recurs to the $\mcg(\no_g)$-cocompact part of $\teich(\no_g)$ has $\nu_N$-measure $0$ (see \textcite{gendulphe2017whats} for more analogies with infinite covolume Fuchsian groups).
+With respect to $\nu_N$, the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is infinite covolume: the same also holds for the geodesic flow invariant volume on the full\footnote{Full referring to the entire unit cotangent bundle as opposed to the restricted unit cotangent bundle.} unit cotangent bundle.
+Furthermore, the set of cotangent directions in which the geodesic flow recurs to the $\mcg(\no_g)$-cocompact part of $\teich(\no_g)$ has $\nu_N$-measure $0$: this is due to \textcite{norbury2008lengths} (see \textcite{gendulphe2017whats} for more analogies with infinite covolume Fuchsian groups).
 
 \subsection{Critical exponents and Patterson-Sullivan theory}
 \label{sec:crit-expon-patt}
@@ -176,9 +176,15 @@ One can consider two kinds of counting functions for the $G$-action on $Y$.
   N_p(R) &\coloneqq \left\{ \gamma \in G \mid d(p, \gamma p) \leq R \right\} \\
   % M_p(R) & \coloneqq \left\{ \gamma \in G \mid \text{$d(p, \gamma p)$ and the geodesic segment $[p, \gamma p]$ leaves $Y$ except f} \right\}
 \end{align*}
-The function $N_p$ is just the standard lattice point counting function.
-We also want to look at those lattice points that detect a failure of convexity of $Y$, i.e. the geodesic segment joining $p$ and $\gamma p$ leaves and stays outside $Y$, except for bounded distances at the beginning and end of the segment.
-Let $M_p(R)$ denote the counting function for these lattice points.
+The function $N_p$ is the standard lattice point counting function.
+We also want to look at those lattice points that detect a failure of convexity of $Y$: we call these points \emph{concave lattice points}.
+\begin{definition}[$t$-Concave lattice points]
+  A lattice point $\gamma p$ is $t$-concave if some geodesic segment $\kappa$ starting in a ball of radius $t$ centered at $p$ and ending in ball of radius $t$ centered at $\gamma p$ stays outside the set $Y$.
+  The path obtained by joining $p$ to the starting point of $\kappa$, then following $\kappa$, and then joining the end point of $\kappa$ to $\gamma p$ is called the \emph{concavity detecting path for $\gamma p$}.
+\end{definition}
+For our applications, the precise value of $t$ will not be very important: we fix it to be twice the diameter of the compact set $\thick(\no_g)/\mcg(\no_g)$ (any value larger that the diameter of $\thick(\no_g)/\mcg(\no_g)$ will work though).
+
+Let $M_p(R)$ denote the counting function for concave lattice points.
 Let $h$ and $h_c$ be the exponential growth rates for $N_p(R)$ and $M_p(R)$.
 \begin{align*}
   h &\coloneqq \lim_{R \to \infty} \frac{\log\left( N_p(R) \right)}{R} \\
