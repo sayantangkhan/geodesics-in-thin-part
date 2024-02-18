@@ -37,7 +37,7 @@ However, we show that this failure of quasi-convexity is not a serious obstructi
 \begingroup
 \def\thetheorem{\ref{thm:weak-convexity}}
 \begin{theorem}
-  For any $\vepd > 0$, there exists a $\vept^{\prime}$, and a constant $c$, such that any geodesic segment $\gamma$, whose length is more than $c$, with endpoints in $\systole(\no_g)$, for $0 < \vept < \vept^{\prime}$, can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
+  For any $\vepd > 0$, there exists constants $\vept^{\prime}$ and $c$, such that any geodesic segment $\gamma$, whose length is more than $c$, with endpoints in $\systole(\no_g)$, for $0 < \vept < \vept^{\prime}$, can be homotoped to a segment relative to endpoints to lie entirely within $\systole(\no_g)$, such that the length of the homotoped segment $\gamma^{\prime}$ satisfies the following inequality.
   \begin{align*}
     \ell(\gamma^{\prime}) \leq \ell(\gamma) \cdot (1 + \vepd)
   \end{align*}
@@ -60,7 +60,7 @@ Since the action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolum
 % \emph{analogous} to
 {like}
 the action of lattices in $\mathrm{SL}_2(\mathbb{R})$ on $\mathbb{H}$.
-However, many of the results on lattices (and Teichmüller spaces of orientable surfaces) rely on having a measure preserving $\mathrm{SL}_2(\mathbb{R})$ action on the unit tangent bundle (respectively on the moduli space of quadratic differentials), and use the interplay between the geodesic flow and the horocycle flow.
+However, the results on lattices (and Teichmüller spaces of orientable surfaces) rely on having a measure preserving $\mathrm{SL}_2(\mathbb{R})$ action on the unit tangent bundle (respectively on the moduli space of quadratic differentials), and use the interplay between the geodesic flow and the horocycle flow.
 
 For non-orientable surfaces, we do not have an analog of the horocycle flow on the space of quadratic differentials, so we cannot hope to directly import the techniques from the orientable case.
 However, \textcite{10.1093/imrn/rny001} introduced a notion of \emph{statistically convex-cocompact action}, which can replace the notion of a lattice-like action for our setting.
@@ -73,7 +73,7 @@ Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no
 \end{theorem}
 % \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
-\textcite{gekhtman2023dynamics}, and \textcite{CGTY} (which is upcoming work) prove the following theorems about statistically convex cocompact actions of subgroups of mapping class groups on Teichmüller space.
+\textcite{gekhtman2023dynamics}, and \textcite{CGTY} (in upcoming work) prove the following theorems about statistically convex cocompact actions of subgroups of mapping class groups on Teichmüller space.
 
 \begin{theorem}[To appear in \textcite{CGTY}]
   \label{thm:bms-finite}
@@ -83,7 +83,7 @@ Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no
 
 \begin{theorem}[Theorem 4.9 of \cite{gekhtman2023dynamics}]
   \label{thm:mixing-bms}
-  If $\Gamma$ is a subgroup of the mapping class group such that the associated Bowen-Margulis is finite, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+  If $\Gamma$ is a subgroup of the mapping class group such that the associated Bowen-Margulis measure is finite, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
 \end{theorem}
 
 As a corollary of the Theorem \ref{thm:mixing-bms}, we get the following results about the Patterson-Sullivan measures and the action of $\Gamma$ on the limit set.
@@ -140,8 +140,12 @@ Understanding the dynamics of the geodesic flow over the moduli space of \emph{o
 \end{enumerate}
 
 For non-orientable surfaces, the counting function does not behave like the orientable version.
-\textcite{gendulphe2017whats} showed that the counting function for closed curves in $\no_g$ is $o(\exp((3g-6)R))$, and the counting function for simple closed curves in $o(R^{3g-6})$, where $3g-6$ is the dimension of $\teich(\no_g)$.
-This raises the question of whether there is an exponent $h < 3g-6$ for which the non-orientable versions of \eqref{eq:counting-closed} and \eqref{eq:counting-simple-closed} continue to hold.
+\textcite{gendulphe2017whats} showed that the counting function $N_{\mathrm{no}}(R)$ and $M_{\mathrm{no}}(R)$, which is the versions of the functions $N(R)$ and $M(R)$ for non-orientable surfaces satisfy the following asymptotic.
+\begin{align*}
+  N_{\mathrm{no}}(R) &= o\left( \frac{\exp((3g-6)R)}{(3g-6)R} \right) \\
+  M_{\mathrm{no}}(R) &= o(R^{3g-6})
+\end{align*}
+These asymptotics raise the question of whether there is an exponent $h < 3g-6$ for which the non-orientable versions of \eqref{eq:counting-closed} and \eqref{eq:counting-simple-closed} continue to hold.
 
 By establishing that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we can use the results of Coulon, Gekhtman, Ma, Tapie, and Yang to count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
 
@@ -162,8 +166,15 @@ To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might h
 
 To replicate this proof in the non-orientable setting, we pick the original simple closed curve $\gamma$ to be a \emph{two-sided} curve, and replace the exponent $6g-6$ with $h + 1$, where $h$ is the critical exponent of $\mcg(\no_g)$.
 With these replacements, we have that the measures $\mu_L$ converge to an $\mcg(\no_g)$-invariant measure supported on $\ml^+(\no_g)$ (this is a result of \textcite{erlandsson2023mapping}).
-Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we conjecture that there is an $\mcg(\no_g)$-ergodic measure supported on $\ml^+(\no_g)$, since $\ml^+(\no_g) = \pml^+(\no_g) \times \mathbb{R}$.
-If this holds, one will have completed Step 2 of the proof for non-orientable surfaces.
+Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
+\begin{question}
+  Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
+\end{question}
+
+\begin{question}
+  Is the limiting measure $\mu$ absolutely continuous with respect to an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$?
+\end{question}
+If the answer both the questions is yes, then one will have completed Step 2 of the proof for non-orientable surfaces.
 
 Making Step 3 work for non-orientable surfaces is still open: this would require coming up with a recursive formula for volumes of $\systole(\no_g)$ (or some other finite volume subset), and not all of $\teich(\no_g)$, since that has infinite $\nu_N$-volume.
 
