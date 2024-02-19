@@ -107,7 +107,7 @@ The count will also involve the exponential growth rate of the number of net poi
 Note that $\hNP(\core(\teich(\no_g)), \vept)$ does not depend on the choice of the actual net, nor does it depend on the parameter $\vepn$. Two different nets with different choices of $\vepn$ will have counting functions that differ by at most a constant multiplicative term, which will not change the value of $\hNP(\core(\teich(\no_g)), \vept)$.
 
 We will replicate the proof of Theorem 1.2 of \textcite{eskinmirzakhani}, where they construct a random walk on a net, and use that to count \concave trajectories.
-The key difficulty that comes up in our proof and which does not come up in their proof is the fact that they get an estimate for the cardinality of \concave trajectories (and therefore \concave lattice points) in terms of $\hNP(\teich(\os_g))$, which they know is the same as $\hLP(\teich(\os_g))$ (i.e. $6g-6$) by Theorem 1.2 of \textcite{10.1215/00127094-1548443}.
+The key difficulty that comes up in our proof and which does not come up in their proof is the fact that they get an estimate for the cardinality of \concave trajectories (and therefore \concave lattice points) in terms of $\hNP(\teich(\os_g))$, which they know is the same as $\hLP(\teich(\os_g))$ (i.e.\ $6g-6$) by Theorem 1.2 of \textcite{10.1215/00127094-1548443}.
 
 Since we are working with non-orientable surfaces, we cannot invoke Theorem 1.2 of \textcite{10.1215/00127094-1548443}, and instead need to relate $\hLP$ and $\hNP$ more directly: this is what we do in Sections \ref{sec:equal-latt-point} and \ref{sec:line-gap-compl}.
 
@@ -175,7 +175,7 @@ This function is a proper function, since the sub-level sets of this function ar
     Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
     It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
 
-    If we parameterize $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e. $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
+    If we parameterize $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e.\ $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
     The average of this function over a sphere is well-understood (see \cite[Lemma 4.2]{EskinMozes+2022+342+361}), and we can use the spherical average to compute the average over a ball by taking a weighted average of the spherical averages.
     Doing so gives us the following estimate for $(A_{\tau}\flm)(z)$ (where $c^{\prime}$ is some fixed constant).
     \begin{align*}
@@ -286,7 +286,7 @@ We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ t
   \end{align}
   Here, we go from \eqref{eq:recursive-ineq1} to \eqref{eq:recursive-ineq2} by integrating the indicator function supported in a ball of radius $\frac{\vepn}{2}$ around each net point, and using Proposition \ref{prop:uniform-volume-bound} to uniformly bound the integral of the indicator independent of the basepoint.
 
-  We then use the fact that all of the $r_{n-2}$ are \concave trajectory points, i.e. they lie outside $\thick(\no_g)$, and consequently, we have strong bounds on $(A_{\tau} \flm)(r_{n-2})$.
+  We then use the fact that all of the $r_{n-2}$ are \concave trajectory points, i.e.\ they lie outside $\thick(\no_g)$, and consequently, we have strong bounds on $(A_{\tau} \flm)(r_{n-2})$.
   \begin{align}
     \label{eq:margulis-estimate-strong-bound}
     (A_{\tau}\flm)(r_{n-2}) \leq c^{\prime} \tau \exp(-\tau) \flm(r_{n-2})
@@ -313,7 +313,7 @@ It does so by proving strong upper bounds on the probability that a random walk 
 \subsubsection{Why the random walk approach fails for $\teich(\no_g)$}
 \label{sec:why-approach-fails}
 
-If we wanted to make Proposition \ref{prop:rw-recurrence} work on $\teich(\no_g)$, we would need to similarly show the random walk on $\teich(\no_g)$ is recurrent in a similarly strong sense: i.e. the probability of a length $n$ trajectory staying in the thin part decays exponentially in $n$.
+If we wanted to make Proposition \ref{prop:rw-recurrence} work on $\teich(\no_g)$, we would need to similarly show the random walk on $\teich(\no_g)$ is recurrent in a similarly strong sense: i.e.\ the probability of a length $n$ trajectory staying in the thin part decays exponentially in $n$.
 A consequence of this requirement is that the expected return time to the thick part is finite.
 
 Unlike $\core(\teich(\no_g))$, $\teich(\no_g)$ has two kinds of thin regions.
@@ -326,7 +326,7 @@ It is the second kind of thin region that poses a problem for $\teich(\no_g)$.
 Minsky's product region theorem (Theorem \ref{thm:prno}) tells us that up to additive error, the metric on these thin regions looks like a product of metrics on some copies of $\mathbb{R}$ (corresponding to the one-sided short curves), some copies of $\mathbb{H}$ (corresponding to the two-sided short curves), and a Teichmüller space of lower complexity.
 Since the random walk is controlled by the metric, the random walk on this product metric space is a product of random walks on each of the components.
 
-In particular, the random walk on the $\mathbb{R}$ component is a symmetric random walk on a net in $\mathbb{R}$: i.e. a symmetric random walk on $\mathbb{Z}$.
+In particular, the random walk on the $\mathbb{R}$ component is a symmetric random walk on a net in $\mathbb{R}$: i.e.\ a symmetric random walk on $\mathbb{Z}$.
 Symmetric random walks on $\mathbb{Z}$ are known to be recurrent, but only in a weak sense: they recur to compact subsets infinitely often, but the expected return time is unbounded.
 
 This means we cannot hope to prove exponentially decaying upper bounds on the probability that a long random walk trajectory stays in the thin part, since that would lead to finite expected return times.
@@ -351,7 +351,7 @@ In this section, we reduce the problem of counting geodesic segments that travel
 
 \begin{proof}
   We begin our proof by fixing $\vept^{\prime}$.
-  We first pick $\vepn$, i.e. the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
+  We first pick $\vepn$, i.e.\ the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
   We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
 
   Let $\gamma$ be a mapping class such that $\gamma p$ is a concave lattice point.
