@@ -129,6 +129,8 @@ We recall the following objects that were defined in Section \ref{sec:weak-conv-
 \subsection{Uniform bounds for the volume of a ball}
 \label{sec:unif-bounds-volume}
 
+% \todo[inline]{Change $\tau$ for some other variable, so that it's less confusing.}
+
 In this section, , we show that the for balls of fixed radius in $\core(\teich(\no_g))$, the $\nu_N$ volume of the ball is bounded above and below by constants that are independent of the center of the ball.
 
 Let $\mathcal{P}$ be a pants decomposition for $\no_g$: recall the formula for $\nu_N$.
@@ -140,9 +142,9 @@ Here $\ell(\gamma_i)$ denotes the length of the curve $\gamma_i$, and $\tau(\gam
 
 \begin{proposition}
   \label{prop:uniform-volume-bound}
-  For any $\tau > 0$, and $\vept > 0$ small enough, there exist constants $c_1$ and $c_2$ (depending only on $\tau$ and $\vept$) such the $\nu_N$ volume of a ball $B_{\tau}^{\vept}(x)$ of radius $\tau$ centered at $x \in \systole(\no_g)$ are bounded below and above by $c_1$ and $c_2$.
+  For any $\kappa > 0$, and $\vept > 0$ small enough, there exist positive constants\footnote{We will also consider $c_1$ and $c_2$ as functions of $\kappa$ elsewhere in the paper.} $c_1$ and $c_2$ (depending only on $\kappa$ and $\vept$) such the $\nu_N$ volume of a ball $B_{\kappa}^{\vept}(x)$ of radius $\kappa$ centered at $x \in \systole(\no_g)$ are bounded below and above by $c_1$ and $c_2$.
   \begin{align*}
-    c_1 \leq \nu_N(B_{\tau}^{\vept}(x)) \leq c_2
+    c_1 \leq \nu_N(B_{\kappa}^{\vept}(x)) \leq c_2
   \end{align*}
 \end{proposition}
 \begin{proof}
@@ -151,20 +153,21 @@ Here $\ell(\gamma_i)$ denotes the length of the curve $\gamma_i$, and $\tau(\gam
     \label{eq:coth-bounds}
     1 \leq \coth(\ell(\gamma_i)) \leq \coth(\vept)
   \end{align}
-  In particular, the $\nu_N$ volume of a ball can be bounded above and below by $\coth(\vept)\nu_N^{\prime}$ and $\nu_N^{\prime}$, where $\nu_N^{\prime} = \left( \bigwedge_{\text{$\gamma_i$ one-sided}} d\ell(\gamma_i) \right) \wedge \left( \bigwedge_{\text{$\gamma_i$ two-sided}} d\tau(\gamma_i) \wedge d\ell(\gamma_i) \right)$.
+  In particular, the $\nu_N$ volume of a ball can be bounded above and below by $\coth(\vept)\nu_N^{\prime}$ and $\nu_N^{\prime}$, where $\nu_N^{\prime} = \left( \bigwedge_{\text{$\gamma_i$ one-sided}} d\ell(\gamma_i) \right) \wedge \left( \bigwedge_{\text{$\gamma_i$ two-sided}} d\kappa(\gamma_i) \wedge d\ell(\gamma_i) \right)$.
 
   We now split up $\systole(\no_g)$ into two regions: $\thick(\no_g)$, and the complementary region.
-  Since $\mcg(\no_g)$ acts cocompactly on $\thick(\no_g)$, and $\nu_N(B_{\tau}^{\vept}(x))$ is continuous in $x$, the desired bounds hold in this region.
+  Since $\mcg(\no_g)$ acts cocompactly on $\thick(\no_g)$, and $\nu_N(B_{\kappa}^{\vept}(x))$ is continuous in $x$, the desired bounds hold in this region.
   It will therefore suffice to prove the bounds in the complementary region.
 
   Note that for any $x$ in the complementary region, there is some two-sided curve $\gamma$ that is short.
-  By Theorem \ref{thm:prno}, the ball $B_{\tau}^{\vept}(x)$ is contained in a product of balls, one in $\mathbb{H}$, and one in $\systole(\no_g \setminus \gamma)$.
+  By Theorem \ref{thm:prno}, the ball $B_{\kappa}^{\vept}(x)$ is contained in a product of balls, one in $\mathbb{H}$, and one in $\systole(\no_g \setminus \gamma)$.
   We pick $\gamma$ to be part of a pants decomposition $\mathcal{P}$, and write $\nu_N$ as follows.
-  \begin{align*}
-    \nu_N = \left( d\tau(\gamma) \wedge d\ell(\gamma) \right) \wedge \nu_N^{\no_g \setminus \gamma}
-  \end{align*}
+  \begin{align}
+    \label{eq:measure-of-product-is-product-of-measure}
+    \nu_N = \left( d\kappa(\gamma) \wedge d\ell(\gamma) \right) \wedge \nu_N^{\no_g \setminus \gamma}
+  \end{align}
   Here, $\nu_N^{\no_g \setminus \gamma}$ denotes the volume form on $\teich(\no_g \setminus \gamma)$.
-  As a result, we have that the $\nu_N$ measure of a product of the two balls is the product of the correspond measures of those balls.
+  As a result, we have that the $\nu_N$ measure of a product of the two balls is the product of the corresponding measures of those balls.
 
   The measure of any ball of a fixed radius in $\mathbb{H}$ is constant, since $\mathbb{H}$ is homogeneous.
   The $\nu_N^{\no_g \setminus \gamma}$ measure of a ball in $\systole(\no_g \setminus \gamma)$ is again bounded above and below by fixed constants, by inducting on a surface of lower complexity.

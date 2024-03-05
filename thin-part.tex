@@ -42,9 +42,9 @@ We now define lattice point entropy, and entropy for \concave lattice points.
   The lattice point entropy is a well-defined quantity since we have that $N_p(R, \vept)$ is a sub-multiplicative function, and therefore $\log N_p(R, \vept)$ is sub-additive, and the limit is well defined by Fekete's lemma.
 \end{remark}
 
- We define a variable $t = 2 \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$, and recall the definition of $t$-\concave lattice points.
+ We define a variable $s = 2 \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$, and recall the definition of $s$-\concave lattice points.
 \begin{definition}[\Concave lattice points]
- A lattice point $\gamma p$ is $t$-concave if some geodesic segment $\kappa$ starting in a ball of radius $t$ centered at $p$ and ending in ball of radius $t$ centered at $\gamma p$ stays outside the set $\thick(\no_g)$.
+ A lattice point $\gamma p$ is $s$-concave if some geodesic segment $\kappa$ starting in a ball of radius $s$ centered at $p$ and ending in ball of radius $t$ centered at $\gamma p$ stays outside the set $\thick(\no_g)$.
 
   The path obtained by joining $p$ to the starting point of $\kappa$, then following $\kappa$, and then joining the end point of $\kappa$ to $\gamma p$ is called the \emph{concavity detecting path for $\gamma p$}.
 \end{definition}
@@ -52,7 +52,7 @@ We now define lattice point entropy, and entropy for \concave lattice points.
 \begin{definition}[Entropy for \concave lattice points]
   Let $M_p(R, \vept)$ be the counting function for \concave lattice points.
   \begin{align*}
-    M_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma$ is \concave}  \right)
+    M_p(R, \vept) \coloneqq \#\left( \gamma \in \mcg(\no_g) \mid \text{$d_{\vept}(p, \gamma p) \leq R$ and $\gamma p$ is \concave}  \right)
   \end{align*}
   The entropy for \concave lattice points $\hLPb(\core(\teich(\no_g)), \vept)$ is the following quantity.
   \begin{align*}
@@ -105,6 +105,22 @@ The count will also involve the exponential growth rate of the number of net poi
 \end{definition}
 
 Note that $\hNP(\core(\teich(\no_g)), \vept)$ does not depend on the choice of the actual net, nor does it depend on the parameter $\vepn$. Two different nets with different choices of $\vepn$ will have counting functions that differ by at most a constant multiplicative term, which will not change the value of $\hNP(\core(\teich(\no_g)), \vept)$.
+This follows from Proposition \ref{prop:uniform-volume-bound}: let $n_1$ and $n_2$ be the number of net points of two different nets contained in a ball $B_R(z)$ of radius $R$ centered at a point $z$.
+We get a lower bound for $\nu_N(B_{R+\vepn}(z))$ by adding up the $\nu_N$ volumes of balls of radius $\vepn$ around each point in the first net.
+\begin{align}
+  \label{eq:volume-lower-bound-net}
+  n_1 c_1(\vepn) \leq \nu_N(B_{R+\vepn}(z))
+\end{align}
+We get an upper bound for $\nu_N(B_{R+\vepn}(z))$ by adding up the $\nu_N$ volumes of radius $2 \vepn$ around each point in the second net.
+\begin{align}
+  \label{eq:volume-upper-bound-net}
+   \nu_N(B_{R+\vepn}(z)) \leq n_2 c_2(2 \vepn)
+\end{align}
+Here, $c_1$ and $c_2$ are functions that appear in the statement of Proposition \ref{prop:uniform-volume-bound}.
+Combining \eqref{eq:volume-lower-bound-net} and \eqref{eq:volume-upper-bound-net}, as well as using the fact that $c_1(\vepn)$ is positive gives us the claim.
+
+The above argument also shows that the number of net points in a ball of radius $R$ is (up to multiplicative errors) equal to the Norbury measure $\nu_N$.
+In Section \ref{sec:constr-marg-funct}, we will focus our attention on averaging functions with respect to this measure, instead of the uniform measure obtained via the net points.
 
 We will replicate the proof of Theorem 1.2 of \textcite{eskinmirzakhani}, where they construct a random walk on a net, and use that to count \concave trajectories.
 The key difficulty that comes up in our proof and which does not come up in their proof is the fact that they get an estimate for the cardinality of \concave trajectories (and therefore \concave lattice points) in terms of $\hNP(\teich(\os_g))$, which they know is the same as $\hLP(\teich(\os_g))$ (i.e.\ $6g-6$) by Theorem 1.2 of \textcite{10.1215/00127094-1548443}.
@@ -130,13 +146,13 @@ A Foster-Lyapunov-Margulis function is a function that has strong decay properti
 
 \begin{definition}[Foster-Lyapunov-Margulis function]
   \label{defn:flm}
-  A proper function $f$ on $\core(\teich(\no_g))$ is called a Foster-Lyapunov-Margulis function if $A_{\tau}f$ satisfies the following inequality.
+  A proper function $f$ on $\core(\teich(\no_g))/\mcg(\no_g)$ is called a Foster-Lyapunov-Margulis function if, if there exists a compact subset $W_0$ of $\core(\teich(\no_g))$, and functions $b(x)$ and $c(x)$, such that $A_{\tau}f$ satisfies the following inequality.
   \begin{align*}
     (A_{\tau}f)(x) \leq c(x) f(x) + b(x)
   \end{align*}
-  Here, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$ for some constant $c^{\prime}$ and polynomial $p$.
+  Furthermore, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$ for some polynomial $p$.
   \begin{align*}
-    c(x) \leq c^{\prime} \cdot p(\tau) \cdot \exp(-\tau)
+    c(x) \leq \cdot p(\tau) \cdot \exp(-\tau)
   \end{align*}
   % \todo[inline]{Might need to fix the exponent in the exponential function.}
 \end{definition}
@@ -145,11 +161,11 @@ Consider the function $\flm$, defined on $\core(\teich(\no_g))$ in terms of the 
 \begin{align*}
   \flm(x) \coloneqq \sqrt{\frac{1}{\inf_{\text{$\gamma$ two-sided}}\ell_{\gamma}(x)}}
 \end{align*}
-This function is a proper function, since the sub-level sets of this function are regions in $\teich(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
+This function is a proper function on $\systole(\no_g)/\mcg(\no_g)$, since the sub-level sets of this function are regions in $\systole(\no_g)$ where the hyperbolic lengths of all curves are bounded from below.
 
 \begin{proposition}
   \label{prop:flm-is-flm}
-  The function $\flm$ is a Foster-Lyapunov-Margulis function on $\core(\teich(\no_g))$ with respect to $A_{\tau}$, for large enough values of $\tau$.
+  The function $\flm$ is a Foster-Lyapunov-Margulis function on $\core(\teich(\no_g))$ with respect to $A_{\tau}$, for large values of $\tau$.
 \end{proposition}
 
 \begin{proof}
@@ -157,8 +173,16 @@ This function is a proper function, since the sub-level sets of this function ar
   We divide $\core(\teich(\no_g))$ into three regions, and prove the estimate for $(A_\tau \flm)(x)$ for $x$ in these three regions.
   The regions $R_1$, $R_2$ and $R_3$ are defined in the following manner.
   \begin{itemize}
-  \item[-] $R_1$: This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\delta$ for all points in $B_{\tau}^{\vept}(x)$.
-  \item[-] $R_2$: This is the set of points $x$ such that there can be multiple curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ such that each $\gamma_i$ is the shortest curve at some point in $B_{\tau}^{\vept}(x)$, but wherever they are the shortest curves, their length is less than $\delta$.
+  \item[-] $R_1$: The subset $R_1$ is defined in the following manner.
+    \begin{align*}
+      R_1 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ is $\gamma$ and $\ell(\gamma) < \delta$} \right\}
+    \end{align*}
+    This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\delta$ for all points in $B_{\tau}^{\vept}(x)$.
+  \item[-] $R_2$: This subset is $R_0 \setminus R_1$, where $R_0$ is defined in the following manner.
+    \begin{align*}
+      R_0 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ shorter than $\delta$} \right\}
+    \end{align*}
+    $R_2$ is the region where multiple curves can be simultaneously short.
   \item[-] $R_3$: This is all of $\core(\teich(\no_g))$ with $R_1$ and $R_2$ removed.
 \end{itemize}
   \begin{enumerate}[(i)]
@@ -169,15 +193,20 @@ This function is a proper function, since the sub-level sets of this function ar
       &\subset B_{\tau + c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau + c(\delta)}(\mathbb{H})
     \end{align*}
     Instead of computing the average of $f$ over $B_{\tau}^{\vept}(x)$, we can compute it over the product of the balls as described above.
-    To do so, we need to verify that the measure on the product of the two balls is the product of the measures on the individual balls: we do this in the proof of Proposition \ref{prop:uniform-volume-bound}.
+    To do so, we need to verify that the measure on the product of the two balls is the product of the measures on the individual balls: we do this in the proof of Proposition \ref{prop:uniform-volume-bound}: specifically \eqref{eq:measure-of-product-is-product-of-measure}.
     Since the volumes of these balls grow exponentially with respect to radius, computing the average over the product of balls will give us an average that differs from the true average by a bounded multiplicative constant (which can be made as close to $1$ as we like by picking a small enough $\delta$).
     This constant will be one of the terms that contribute to $c^{\prime}$ in Definition \ref{defn:flm}.
     Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
     It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
 
-    If we parameterize $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e.\ $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
-    The average of this function over a sphere is well-understood (see \cite[Lemma 4.2]{EskinMozes+2022+342+361}), and we can use the spherical average to compute the average over a ball by taking a weighted average of the spherical averages.
-    Doing so gives us the following estimate for $(A_{\tau}\flm)(z)$ (where $c^{\prime}$ is some fixed constant).
+    Parameterizing $\mathbb{H}$ as the upper half plane with coordinates $z = (z_{\mathrm{real}}, z_{\mathrm{im}})$, the function $\flm(z)$ is the square root of the second coordinate, i.e.\ $\flm(z) = \sqrt{z_{\mathrm{im}}}$.
+    The average of this function over a sphere is well-understood (see \cite[Lemma 4.2]{EskinMozes+2022+342+361}).
+    We recall the estimate here for the reader's convenience: denoting the averaging operator over a sphere of radius $\tau$ in $\mathbb{H}$ by $B_{\tau}$, the estimate is as follows.
+    \begin{align*}
+      (B_{\tau}\flm)(z) \leq c^{\prime \prime} \exp(-\tau) \flm(z)
+    \end{align*}
+    We use the spherical average to compute the average over a ball by taking a weighted average of the spherical averages.
+    Doing so gives the following estimate for $(A_{\tau}\flm)(z)$ (where $c^{\prime}$ is some fixed constant).
     \begin{align*}
       (A_{\tau}\flm)(z) \leq c^{\prime} \tau \exp(-\tau) \flm(z)
     \end{align*}
@@ -185,7 +214,7 @@ This function is a proper function, since the sub-level sets of this function ar
     \begin{align*}
       (A_{\tau}\flm)(x) \leq c^{\prime} \tau \exp(-\tau) \flm(x)
     \end{align*}
-  \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that get short at some point in $B_{\tau}^{\vept}(x)$.
+  \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that become shorter at some point in $B_{\tau}^{\vept}(x)$.
     We have that the ball lies in the product region where all the curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ are short simultaneously.
     If that is not the case, we pick a $\delta$ small enough such that this holds.
     We have that there exists some constant $c_g$, depending only on $g$, such that $k \leq c_g$, since we cannot have too many curves being short simultaneously.
@@ -195,11 +224,11 @@ This function is a proper function, since the sub-level sets of this function ar
     Let $z_{i, \mathrm{im}}$ be the imaginary part of the $i$\textsuperscript{th} copy of $\mathbb{H}$ in $\prod_{i=1}^k \mathbb{H}_i$.
     The function $\flm$ on $\prod_{i=1}^k \mathbb{H}_i$ is given by the following formula.
     \begin{align*}
-      \flm(x) = \max_{i} \sqrt{z_{(i, \mathrm{im})}}
+      \flm(x) = \max_{i} \sqrt{z_{i, \mathrm{im}}}
     \end{align*}
     Since averaging this function over a product of balls is somewhat tedious, we relate it to a different function $\flm^{\prime}$ that is easier to average.
     \begin{align*}
-      \flm^{\prime}(x) \coloneqq \sum_i \sqrt{z_{(i, \mathrm{im})}}
+      \flm^{\prime}(x) \coloneqq \sum_i \sqrt{z_{i, \mathrm{im}}}
     \end{align*}
     These two functions are equal, up to a constant multiplicative error.
     \begin{align*}
@@ -239,9 +268,9 @@ In this section, we will count the number of random walk trajectories that are \
 %and \emph{almost close up}.
 
 \begin{definition}[\Concave trajectories]
-  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be \concave if all the points in the trajectory except the first point (and possibly the last point) are outside $\thick(\no_g)$.
+  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be \concave if all the points in the trajectory except the first point and the last point are outside $\thick(\no_g)$.
 \end{definition}
-Since we picked $\vept < \delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the \concave trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
+Since we picked $\vept$ smaller than $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the \concave trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
 \begin{align*}
   (A_{\tau} \flm)(r_i) \leq c^{\prime} \tau \exp(-\tau) \flm(r_i)
 \end{align*}
@@ -339,7 +368,7 @@ In this section, we reduce the problem of counting geodesic segments that travel
 
 \begin{proposition}
   \label{prop:counting-geodesics}
-  For any $\veperr > 0$, there exists a $\vept^{\prime} > 0$ small enough, a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
+  For any $\veperr > 0$, there exists a $\vept^{\prime} > 0$ and $\vept^{\prime} > \vept > 0$, a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
   \begin{align*}
     M_{r_0}(R) \leq C^{\prime} \exp((\hNP - 1 + \veperr)R)
   \end{align*}
@@ -417,7 +446,7 @@ For convenience, we also define the undistorted versions of these entropy terms,
 
 Note that the net point entropy does not depend on the precise value of $\vept$, even though it is counting net-points in $\core(\teich(\no_g))$, since the different values of $\vept$ change the counting function by a multiplicative term that does not depend on $R$.
 
-Recall now Theorem \ref{thm:weak-convexity}, which for any $\vepd > 0$, provides a $\vept > 0$ such that the ratio $d_{\vept}$ and $d$ is bounded above by $1 + \vepd$.
+Recall now Theorem \ref{thm:weak-convexity}, which for any $\vepd > 0$, provides a $\vept > 0$ such that the ratio of $d_{\vept}$ and $d$ is bounded above by $1 + \vepd$.
 A consequence of this is that the distorted and the undistorted versions of the entropy terms differ by at most $\hNP(\core(\teich(\no_g))) \cdot \vepd$ and $\hLP(\teich(\no_g)) \cdot \vepd$.
 
 In particular, if we show $\hNP(\core(\teich(\no_g))) = \hLP(\teich(\no_g))$, \eqref{eq:net-and-lattice-condition} will follow (for small enough $\vept$), and so will Theorem \ref{thm:stat-convex}.
