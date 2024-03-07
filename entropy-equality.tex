@@ -67,7 +67,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     Observe that $d(p, \gamma p)$ is at most $R + \vepb R$, by the triangle inequality.
     We also have the following inequality for any $\gamma$, and for some polynomial $p$, by Lemma \ref{lem:fd-polynomial-growth}.
     \begin{align*}
-      \#\left( B_R(p) \cap \net_{\leq \vepb R} \right) \leq p(R)
+      \#\left( B_R(p) \cap \net_{\leq \vepb R}(\gamma) \right) \leq p(R)
     \end{align*}
     Using the two facts we stated, we get the following upper bound for $\#\left( B_R(p) \cap \net_{\leq \vepb R} \right)$.
     \begin{align*}
@@ -76,12 +76,20 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     This is precisely the bound we needed for the first term in \eqref{eq:net-point-decomposition-base-case}.
 
     Now we show that the second term of \eqref{eq:net-point-decomposition-base-case} grows slower than $\exp(R(1- \frac{ \vepb}{2}))$.
-    For any point $x$ in $\net_{> \vepb R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the [p, x] which stays within some bounded distance of a lattice point.
+    For any point $x$ in $\net_{> \vepb R}$, we can replace the geodesic $[p, x]$ with two shorter segments, $[p, x_0]$ and $[x_0, x]$, where $x_0$ is the net point closest to the last point on the $[p, x]$ which stays within some bounded distance of a lattice point.
     We also have that $d(p, x_0) \leq R(1-\vepb)$, by our assumption, which lets us count the number of such points $x_0$.
     There are at most $\exp(R(1-\vepb))$ such points.
     Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
-    Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ and a horoball $H$, where $x_0$ is a definite distance away from the boundary of horoball.
-    We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
+    Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ with a set $H$, where $H$ is the fundamental domain for the action of a parabolic element on a horoball which lies distance $\vepb R$ from $x_0$.
+    Working in the upper half plane model for $\mathbb{H}$, where $x_0 = i$, and the region $H$ is the set of points whose imaginary component is greater than $\exp(\vepb R)$, we get that the region of integration is a rectangle, bounded by $0 \leq \mathrm{Re}(z) \leq 1$ and $\exp(\vepb R) \leq  \mathrm{Im}(z) \leq \exp(R)$.
+    The volume of this region is given by the following integral.
+    \begin{align*}
+      \mathrm{Vol}(B_R(x_0) \cap H) &\leq \int_{\exp(\vepb R)}^{\exp(R)} \int_0^1 \frac{1}{y^2} dx dy \\
+                                    &= \exp(-\vepb R) - \exp(-R) \\
+      &\leq \exp(-\vepb R)
+    \end{align*}
+
+    % We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
     We thus have the following upper bound on $\#\left( B_R(p) \cap \net_{> \vepb R} \right) $ for large enough values of $R$.
     \begin{align*}
       \#\left( B_R(p) \cap \net_{> \vepb R} \right)  &\leq p(R) \cdot \exp(R(1-\vepb)) \\

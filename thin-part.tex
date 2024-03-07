@@ -76,7 +76,7 @@ We prove Theorem \ref{thm:stat-convex} by constructing a random walk on $\core(\
 \subsection{Construction of random walk}
 \label{sec:constr-rand-walk}
 
-Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\teich(\no_g)) / \mcg(\no_g)$.
+Let $\mathfrak{p}$ be the projection map from $\core(\teich(\no_g))$ to $\core(\teich(\no_g)) / \mcg(\no_g)$, and $\vepn > 0$ be a fixed constant.
 
 \begin{definition}[$(\vepn, 2\vepn)$-net in $\core(\teich(\no_g))$]
   Let $\mathfrak{M}$ be a subset of $\core(\teich(\no_g)) / \mcg(\no_g)$ satisfying the following two conditions.
@@ -119,7 +119,7 @@ We get an upper bound for $\nu_N(B_{R+\vepn}(z))$ by adding up the $\nu_N$ volum
 Here, $c_1$ and $c_2$ are functions that appear in the statement of Proposition \ref{prop:uniform-volume-bound}.
 Combining \eqref{eq:volume-lower-bound-net} and \eqref{eq:volume-upper-bound-net}, as well as using the fact that $c_1(\vepn)$ is positive gives us the claim.
 
-The above argument also shows that the number of net points in a ball of radius $R$ is (up to multiplicative errors) equal to the Norbury measure $\nu_N$.
+The above argument also shows that the number of net points in a ball of radius $R$ is equal (up to multiplicative errors) to the Norbury measure $\nu_N$.
 In Section \ref{sec:constr-marg-funct}, we will focus our attention on averaging functions with respect to this measure, instead of the uniform measure obtained via the net points.
 
 We will replicate the proof of Theorem 1.2 of \textcite{eskinmirzakhani}, where they construct a random walk on a net, and use that to count \concave trajectories.
@@ -146,13 +146,13 @@ A Foster-Lyapunov-Margulis function is a function that has strong decay properti
 
 \begin{definition}[Foster-Lyapunov-Margulis function]
   \label{defn:flm}
-  A proper function $f$ on $\core(\teich(\no_g))/\mcg(\no_g)$ is called a Foster-Lyapunov-Margulis function if, if there exists a compact subset $W_0$ of $\core(\teich(\no_g))$, and functions $b(x)$ and $c(x)$, such that $A_{\tau}f$ satisfies the following inequality.
+  A proper function $f$ on $\core(\teich(\no_g))/\mcg(\no_g)$ is called a Foster-Lyapunov-Margulis function if, if there exists a polynomial $p$, and a compact subset $W_0$ of $\core(\teich(\no_g))$, and functions $b(x)$ and $c(x)$, such that $A_{\tau}f$ satisfies the following inequality.
   \begin{align*}
     (A_{\tau}f)(x) \leq c(x) f(x) + b(x)
   \end{align*}
-  Furthermore, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$ for some polynomial $p$.
+  Furthermore, $b(x)$ is a bounded function that is supported within a compact set $W_0$, and $c(x)$ satisfies the following inequality for all $x$ outside of $W_0$.
   \begin{align*}
-    c(x) \leq \cdot p(\tau) \cdot \exp(-\tau)
+    c(x) \leq p(\tau) \cdot \exp(-\tau)
   \end{align*}
   % \todo[inline]{Might need to fix the exponent in the exponential function.}
 \end{definition}
@@ -169,32 +169,33 @@ This function is a proper function on $\systole(\no_g)/\mcg(\no_g)$, since the s
 \end{proposition}
 
 \begin{proof}
-  Let $W_0$ be the region of $\core(\teich(\no_g))$ where all two-sided curves are longer than $\delta$, for some value of $\delta$ we will fix later.
+  Let $W_0$ be the region of $\core(\teich(\no_g))$ where all two-sided curves are longer than $\vept$.
   We divide $\core(\teich(\no_g))$ into three regions, and prove the estimate for $(A_\tau \flm)(x)$ for $x$ in these three regions.
   The regions $R_1$, $R_2$ and $R_3$ are defined in the following manner.
   \begin{itemize}
   \item[-] $R_1$: The subset $R_1$ is defined in the following manner.
     \begin{align*}
-      R_1 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ is $\gamma$ and $\ell(\gamma) < \delta$} \right\}
+      R_1 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ is $\gamma$ and $\ell_z(\gamma) < \vept$ for $z \in B_{\tau}^{\vept}(x)$} \right\}
     \end{align*}
-    This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\delta$ for all points in $B_{\tau}^{\vept}(x)$.
+    This is the set of points $x$ such that there exists a unique curve $\gamma$ which is the shortest curve at all points in $B_{\tau}^{\vept}(x)$, and the length of $\gamma$ is less than $\vept$ for all points in $B_{\tau}^{\vept}(x)$.
   \item[-] $R_2$: This subset is $R_0 \setminus R_1$, where $R_0$ is defined in the following manner.
     \begin{align*}
-      R_0 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ shorter than $\delta$} \right\}
+      R_0 \coloneqq \left\{ x \mid \text{Shortest curve for any $z \in B_{\tau}^{\vept}(x)$ shorter than $\vept$} \right\}
     \end{align*}
     $R_2$ is the region where multiple curves can be simultaneously short.
   \item[-] $R_3$: This is all of $\core(\teich(\no_g))$ with $R_1$ and $R_2$ removed.
 \end{itemize}
   \begin{enumerate}[(i)]
   \item Proof for $x \in R_1$: In this case, the entire ball $B_{\tau}^{\vept}$ is contained in the product region where $\gamma$ stays short.
-    By Theorem \ref{thm:prno}, there exists a constant $c(\delta)$, which can be made arbitrarily small by picking $\delta$ small enough, such that the ball $B_{\tau}^{\vept}(x)$ contains, and is contained inside a product of balls in $\core(\teich(\no_g \setminus \gamma))$ and $\mathbb{H}$ (which corresponds to length and twist around $\gamma$).
+    By Theorem \ref{thm:prno}, there exists a constant $c(\vept)$ such that the ball $B_{\tau}^{\vept}(x)$ contains, and is contained inside a product of balls in $\core(\teich(\no_g \setminus \gamma))$ and $\mathbb{H}$ (which corresponds to length and twist around $\gamma$).
     \begin{align*}
-      B_{\tau - c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau - c(\delta)}(\mathbb{H}) &\subset B_{\tau}^{\vept}(x) \\
-      &\subset B_{\tau + c(\delta)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau + c(\delta)}(\mathbb{H})
+      B_{\tau - c(\vept)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau - c(\vept)}(\mathbb{H}) &\subset B_{\tau}^{\vept}(x) \\
+      &\subset B_{\tau + c(\vept)}(x, \core(\teich(\no_g \setminus \gamma))) \times B_{\tau + c(\vept)}(\mathbb{H})
     \end{align*}
     Instead of computing the average of $f$ over $B_{\tau}^{\vept}(x)$, we can compute it over the product of the balls as described above.
     To do so, we need to verify that the measure on the product of the two balls is the product of the measures on the individual balls: we do this in the proof of Proposition \ref{prop:uniform-volume-bound}: specifically \eqref{eq:measure-of-product-is-product-of-measure}.
-    Since the volumes of these balls grow exponentially with respect to radius, computing the average over the product of balls will give us an average that differs from the true average by a bounded multiplicative constant (which can be made as close to $1$ as we like by picking a small enough $\delta$).
+    Since the volumes of these balls grow exponentially with respect to radius, computing the average over the product of balls will give us an average that differs from the true average by a bounded multiplicative constant.
+    % (which can be made as close to $1$ as we like by picking a small enough $\vept$).
     This constant will be one of the terms that contribute to $c^{\prime}$ in Definition \ref{defn:flm}.
     Furthermore, note that the function $\flm$ is constant along the $\core(\teich(\no_g \setminus \gamma))$ component, since $\gamma$ is the shortest curve in the product of balls.
     It thus suffices to compute the average of $\flm$ on a ball in $\mathbb{H}$.
@@ -216,7 +217,7 @@ This function is a proper function on $\systole(\no_g)/\mcg(\no_g)$, since the s
     \end{align*}
   \item Proof for $x \in R_2$: In this case, let $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ be the two-sided curves that become shorter at some point in $B_{\tau}^{\vept}(x)$.
     We have that the ball lies in the product region where all the curves $\left\{ \gamma_1, \ldots, \gamma_k \right\}$ are short simultaneously.
-    If that is not the case, we pick a $\delta$ small enough such that this holds.
+    % If that is not the case, we pick a $\vept$ small enough such that this holds.
     We have that there exists some constant $c_g$, depending only on $g$, such that $k \leq c_g$, since we cannot have too many curves being short simultaneously.
 
     Similar to the previous case, changing only the $\core(\teich(\no_g \setminus \bigcup_{i=1}^k \gamma_i))$ coordinate will not change the value of the function $\flm$, so it suffices to focus our attention on the coordinates $\prod_{i=1}^k \mathbb{H}_i$, where each $\mathbb{H}_i$ corresponds to the length and twist around $\gamma_i$.
@@ -260,17 +261,20 @@ This function is a proper function on $\systole(\no_g)/\mcg(\no_g)$, since the s
 \subsection{Recurrence for random walks and geodesic segments}
 \label{sec:recurr-rand-walks-1}
 
+% \todo[inline]{Add table of constant dependencies}
+
 \subsubsection{Recurrence for random walks}
 \label{sec:recurr-rand-walks-2}
 
-We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
-In this section, we will count the number of random walk trajectories that are \emph{\concave}.
-%and \emph{almost close up}.
+% We now pick the parameter $\vept$ to be smaller than the $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}.
+In this section, we will count the number of random walk trajectories that are $\mathfrak{s}$-\emph{concave}, where $\mathfrak{s} = \lceil \frac{\diam(\thick(\no_g))}{\tau} \rceil + 1$.
 
 \begin{definition}[\Concave trajectories]
-  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be \concave if all the points in the trajectory except the first point and the last point are outside $\thick(\no_g)$.
+  A trajectory $\left( r_0, r_1, \ldots, r_{n-1} \right)$ is said to be $\mathfrak{s}$-\concave if all the points in the trajectory except the first $\mathfrak{s}$ points and the last $\mathfrak{s}$ points are at least $\tau$-distance away from $\thick(\no_g)$.
+
+  We call these middle points the \emph{concave trajectory points}.
 \end{definition}
-Since we picked $\vept$ smaller than $\delta$ that appears in the proof of Proposition \ref{prop:flm-is-flm}, for any of the \concave trajectory points $r_i$, we will get the following decay estimate for $A_{\tau}\flm(r_i)$.
+From Proposition \ref{prop:flm-is-flm}, we have that for any of the \concave trajectory points $r_i$, the following decay estimate for $A_{\tau}\flm(r_i)$ holds.
 \begin{align*}
   (A_{\tau} \flm)(r_i) \leq c^{\prime} \tau \exp(-\tau) \flm(r_i)
 \end{align*}
@@ -307,33 +311,46 @@ We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ t
   % Consider the function $q(m, s)$, obtained by doing an $m$-step random walk starting at $s$, and summing up the values of $\flm$ at the final step of the random walk.
 % \todo[inline]{Come back to this proof after removing the $\alpha$-dependence everywhere else and its downstream effects.}
   % The term we want to estimate $\sum_{\traj(n, \tau)}$ is equal to $q(n, r_0)$.
-  We have the following recursive inequality for $\sum_{r \in \traj(n, \tau)} \flm(r_{n-1})$.
+  We have the following recursive inequality for $\sum_{r \in \traj(n, \tau)} \flm(r_{n-i})$.
   \begin{align}
-    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &= \sum_{r \in \traj(n-1, \tau)} \left( \sum_{\substack{y \in \net \\  d_{\vept(y, r_{n-2}) \leq \tau} } } \flm(y) \right) \label{eq:recursive-ineq1} \\
-                                              &\leq \sum_{r \in \traj(n-1, \tau)} C \int_{B_{\tau}^{\vept}(r_{n-2})} \flm(y) d\nu_N(y) \label{eq:recursive-ineq2} \\
-    &= \sum_{r \in \traj(n-1, \tau)} C \nu_N(B_{\tau}^{\vept}(r_{n-2})) (A_{\tau}\flm)(r_{n-2})
+    \sum_{r \in \traj(n-i+1, \tau)} \flm(r_{n-1}) &= \sum_{r \in \traj(n-i, \tau)} \left( \sum_{\substack{y \in \net \\  d_{\vept(y, r_{n-i-1}) \leq \tau} } } \flm(y) \right) \label{eq:recursive-ineq1} \\
+                                              &\leq \sum_{r \in \traj(n-i, \tau)} C \int_{B_{\tau}^{\vept}(r_{n-i-1})} \flm(y) d\nu_N(y) \label{eq:recursive-ineq2} \\
+    &= \sum_{r \in \traj(n-i, \tau)} C \nu_N(B_{\tau}^{\vept}(r_{n-i-1})) (A_{\tau}\flm)(r_{n-i-1})
   \end{align}
   Here, we go from \eqref{eq:recursive-ineq1} to \eqref{eq:recursive-ineq2} by integrating the indicator function supported in a ball of radius $\frac{\vepn}{2}$ around each net point, and using Proposition \ref{prop:uniform-volume-bound} to uniformly bound the integral of the indicator independent of the basepoint.
 
-  We then use the fact that all of the $r_{n-2}$ are \concave trajectory points, i.e.\ they lie outside $\thick(\no_g)$, and consequently, we have strong bounds on $(A_{\tau} \flm)(r_{n-2})$.
+  If $n-i-1$ is one of the first $\mathfrak{s}$ or last $\mathfrak{s}$ indices, we have the following inequality.
+  \begin{align}
+    \label{eq:flm-bad}
+    (A_{\tau}\flm)(r_{n-i-1}) \leq b(r_{n-i-1}) \flm(r_{n-i-1})
+  \end{align}
+
+  Otherwise $r_{n-i-1}$ is a \concave trajectory point and we have strong bounds on $(A_{\tau} \flm)(r_{n-i-1})$.
   \begin{align}
     \label{eq:margulis-estimate-strong-bound}
-    (A_{\tau}\flm)(r_{n-2}) \leq c^{\prime} \tau \exp(-\tau) \flm(r_{n-2})
+    (A_{\tau}\flm)(r_{n-i-1}) \leq c^{\prime} \tau \exp(-\tau) \flm(r_{n-i-1})
   \end{align}
-  Combining \eqref{eq:recursive-ineq1} and \eqref{eq:margulis-estimate-strong-bound}, we get the estimate we need to repeat $n$ times.
+  Combining \eqref{eq:recursive-ineq1} and \eqref{eq:flm-bad} for the case of non concave trajectory points, we get an estimate we need to repeat $2 \mathfrak{s}$ times.
+  \begin{align}
+    \label{eq:to-iterate-bad}
+    \sum_{r \in \traj(n-i+1, \tau)} \flm(r_{n-i}) \leq B \exp((\hNP + \veperr^{\prime})\tau) \left( \sum_{r \in \traj(n-i, \tau)} \flm(r_{n-i-1}) \right)
+  \end{align}
+  Here, $B$ is the maximum value the function $b$ takes over its compact support.
+
+  Combining \eqref{eq:recursive-ineq1} and \eqref{eq:margulis-estimate-strong-bound}, we get the estimate we need to repeat $n - 2\mathfrak{s}$ times.
   \begin{align}
     \label{eq:to-iterate}
-    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) \leq C^{\prime} \tau \exp(-\tau) \exp((\hNP + \veperr^{\prime})\tau) \left( \sum_{r \in \traj(n-1, \tau)} \flm(r_{n-2}) \right)
+    \sum_{r \in \traj(n-i+1, \tau)} \flm(r_{n-i}) \leq C^{\prime} \tau \exp(-\tau) \exp((\hNP + \veperr^{\prime})\tau) \left( \sum_{r \in \traj(n-i, \tau)} \flm(r_{n-i-1}) \right)
   \end{align}
   Here, we upper bound the $\nu_N(B_{\tau}^{\vept}(r_{n-2}))$ with $C^{\prime \prime} \exp((\hNP + \veperr^{\prime})\tau)$, where $\veperr^{\prime}$ is a constant smaller than $\veperr$, and $C^{\prime \prime}$ is some large constant.
   The term $C^{\prime}$ is equal to $C C^{\prime \prime} c^{\prime}$.
 
-  We now iterate \eqref{eq:to-iterate} $n$ times.
+  We now iterate \eqref{eq:to-iterate-bad} $2\mathfrak{s}$ times and \eqref{eq:to-iterate} $n-2\mathfrak{s}$ times.
   \begin{align*}
-    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &\leq \left( C^{\prime} \tau \right)^n \exp((\hNP - 1 + \veperr^{\prime})n\tau) \flm(r_0) \\
-                                              &= \flm(r_0) \cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} \right) n\tau \right)
+    \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &\leq (Be)^{2\mathfrak{s}} \cdot \left( C^{\prime} \tau \right)^{n- 2 \mathfrak{s}} \exp((\hNP - 1 + \veperr^{\prime})n\tau) \flm(r_0) \\
+                                              &= \flm(r_0) \cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau  \right)\left(  \frac{n- 2\mathfrak{s}}{n} \right) + \log\left( Be \right)\left( \frac{2\mathfrak{s}}{n} \right)}{\tau} \right) n\tau \right)
   \end{align*}
-  By picking $\tau$ large enough so that $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau \right)}{\tau} < \veperr$, we get the claimed result.
+  By picking $\tau$ large enough so that $\mathfrak{s} \leq 4$ and  $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau  \right)\left(  \frac{n- 2\mathfrak{s}}{n} \right) + \log\left( Be \right)\left( \frac{2\mathfrak{s}}{n} \right)}{\tau} < \veperr$, we get the claimed result.
 \end{proof}
 
 Proposition \ref{prop:rw-recurrence} tells us that a random walk on $\core(\teich(\no_g))$ is biased away from the thin part of $\core(\teich(\no_g))$.
@@ -368,25 +385,27 @@ In this section, we reduce the problem of counting geodesic segments that travel
 
 \begin{proposition}
   \label{prop:counting-geodesics}
-  For any $\veperr > 0$, there exists a $\vept^{\prime} > 0$ and $\vept^{\prime} > \vept > 0$, a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
+  For any $\veperr > 0$,
+  % there exists a $\vept^{\prime} > 0$ and $\vept^{\prime} > \vept > 0$,
+  there exists a constant $C^{\prime}$, and a large enough $R$, such that the following estimate holds for the counting function $M_{r_0}(R)$.
   \begin{align*}
     M_{r_0}(R) \leq C^{\prime} \exp((\hNP - 1 + \veperr)R)
   \end{align*}
-  Here, $M_{r_0}(R)$  number of mapping classes $\gamma$ such that the geodesic joining $r_0$ and $\gamma r_0$ stay outside $\thickarg{\vept^{\prime}}(\no_g)$, and $r_0$ is a point in $\thickarg{\vept^{\prime}}(\no_g)$ at which we start our random walk, and $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
-  \begin{align*}
-    M_{r_0}(R) \coloneqq \#\left\{ \gamma \in \mcg(\no_g) \mid \text{$d_{\vept^{\prime}}(r_0, \gamma r_0) \leq R$  and $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$}   \right\}
-  \end{align*}
+  Here, $M_{r_0}(R)$ is the number of \concave lattice points in a ball of radius $R$ centered at $r_0$, where $r_0$ is a point in $\thickarg{\vept^{\prime}}(\no_g)$ at which we start our random walk, and $\hNP = \hNP(\core(\teich(\no_g)), \vept)$.
+  % \begin{align*}
+    % M_{r_0}(R) \coloneqq \#\left\{ \gamma \in \mcg(\no_g) \mid \text{$d_{\vept^{\prime}}(r_0, \gamma r_0) \leq R$  and $[r_0, \gamma r_0]$ travels outside $\thickarg{\vept^{\prime}}(\no_g)$}   \right\}
+  % \end{align*}
 \end{proposition}
 
 \begin{proof}
-  We begin our proof by fixing $\vept^{\prime}$.
-  We first pick $\vepn$, i.e.\ the net separation constant, such that $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$.
-  We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
+  % We begin our proof by fixing $\vept^{\prime}$.
+  We first check if $\tau$ we picked in the proof of Proposition \ref{prop:rw-recurrence} satisfies $\displaystyle \frac{2\vepn}{\tau} < \frac{\veperr}{2}$: if not, we pick a larger $\tau$.
+  % We then pick $\vept^{\prime}$ such that for any point $x$ outside $\thickarg{\vept^{\prime}}(\no_g)$ and any point inside $\thick(\no_g)$, $d_{\vept^{\prime}}(x, y) > \vepn$.
 
   Let $\gamma$ be a mapping class such that $\gamma p$ is a concave lattice point.
   We consider now the concavity detecting path for $\gamma p$: recall that this is a path that starts at $p$, and ends at $\gamma p$, and the middle segment obtained by deleting a prefix of length $2 \cdot \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$ and a suffix of length $2 \cdot \diam \left( \thick(\no_g)/\mcg(\no_g) \right)$ stays outside $\thick(\no_g)$.
-  We turn this path into a random walk trajectory by marking off points at distance $\tau\left( 1 - \frac{2\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
-  All the points in the interior of this trajectory lie outside $\thick(\no_g)$, by our construction of $\vept^{\prime}$.
+  We turn this path into an $\mathfrak{s}$-concave random walk trajectory by marking off points at distance $\tau\left( 1 - \frac{2\vepn}{\tau} \right)$ on the segment, and then replacing those points with the nearest net point.
+  All but the first $\mathfrak{s}$ and the last $\mathfrak{s}$ points in the trajectory lie outside $\thick(\no_g)$.
   Furthermore, the distance between the adjacent points on the trajectory are at most $\tau$.
   The number of steps in this trajectory is $\displaystyle n \coloneqq \left\lceil \frac{R}{\tau} \right\rceil$.
 
