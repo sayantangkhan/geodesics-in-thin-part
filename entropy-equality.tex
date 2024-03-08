@@ -80,19 +80,18 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     We also have that $d(p, x_0) \leq R(1-\vepb)$, by our assumption, which lets us count the number of such points $x_0$.
     There are at most $\exp(R(1-\vepb))$ such points.
     Now we fix an $x_0$, and we need to estimate the number of possibilities for $x$, given that $[x_0, x]$ stays entirely within the thin part of $\mathrm{SL}(2, \mathbb{R})/\mathrm{SL}(2, \mathbb{Z})$.
-    Note that this reduces to estimating the volume of the intersection of a ball $B_R(x_0)$ with a set $H$, where $H$ is the fundamental domain for the action of a parabolic element on a horoball which lies distance $\vepb R$ from $x_0$.
-    Working in the upper half plane model for $\mathbb{H}$, where $x_0 = i$, and the region $H$ is the set of points whose imaginary component is greater than $\exp(\vepb R)$, we get that the region of integration is a rectangle, bounded by $0 \leq \mathrm{Re}(z) \leq 1$ and $\exp(\vepb R) \leq  \mathrm{Im}(z) \leq \exp(R)$.
+    Note that this reduces to estimating the volume of the intersection of a ball $B_{\vepb R}(x_0)$ with a horoball $H$ which has $x_0$ in its boundary.
+    Working in the upper half plane model for $\mathbb{H}$, where $x_0 = i$, and the region $H$ is the set of points whose imaginary component is greater than $1$, we get that the region of integration is contained in a rectangle, bounded by $-C \exp\left( \frac{\vepb R}{2} \right) \leq \mathrm{Re}(z) \leq C \exp\left( \frac{\vepb R}{2} \right)$ and $1 \leq  \mathrm{Im}(z) \leq \exp(\vepb R)$, where $C$ is some fixed constant that we do not explicitly write down.
     The volume of this region is given by the following integral.
     \begin{align*}
-      \mathrm{Vol}(B_R(x_0) \cap H) &\leq \int_{\exp(\vepb R)}^{\exp(R)} \int_0^1 \frac{1}{y^2} dx dy \\
-                                    &= \exp(-\vepb R) - \exp(-R) \\
-      &\leq \exp(-\vepb R)
+      \mathrm{Vol}(B_R(x_0) \cap H) &\leq \int_{1}^{\exp(\vepb R)} \int_{-C \exp\left( \frac{\vepb R}{2} \right)}^{C \exp\left( \frac{\vepb R}{2} \right)} \frac{1}{y^2} dx dy \\
+      &\leq C^{\prime} \exp\left( \frac{\vepb R}{2} \right)
     \end{align*}
 
     % We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
     We thus have the following upper bound on $\#\left( B_R(p) \cap \net_{> \vepb R} \right) $ for large enough values of $R$.
     \begin{align*}
-      \#\left( B_R(p) \cap \net_{> \vepb R} \right)  &\leq p(R) \cdot \exp(R(1-\vepb)) \\
+      \#\left( B_R(p) \cap \net_{> \vepb R} \right)  &\leq \exp\left( \frac{\vepb R}{2} \right) \cdot \exp(R(1-\vepb)) \\
                                                         &\leq \exp\left(R\left(1 - \frac{\vepb}{2}\right)\right)
     \end{align*}
     This finishes proving the two claims we made about the terms of \eqref{eq:net-point-decomposition-base-case}, and proves the result for $\os_{1,1,0}$.
@@ -353,7 +352,7 @@ Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:line
 In the previous section, we saw that the key hypothesis we need for the complexity length estimate was that for any proper subsurface $V$ of $\os$, the following strict inequality held.
 \begin{align}
   \label{eq:net-point-entropy-gap}
-  \hNP(\core(\teich(V))) < \hNP(\coret(\os))
+  \hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))
 \end{align}
 
 In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by proving a similar inequality for the lattice point entropy, and using the fact that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$, by the inductive hypothesis.
