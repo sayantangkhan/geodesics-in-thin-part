@@ -83,10 +83,11 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     Note that this reduces to estimating the volume of the intersection of a ball $B_{\vepb R}(x_0)$ with a horoball $H$ which has $x_0$ in its boundary.
     Working in the upper half plane model for $\mathbb{H}$, where $x_0 = i$, and the region $H$ is the set of points whose imaginary component is greater than $1$, we get that the region of integration is contained in a rectangle, bounded by $-C \exp\left( \frac{\vepb R}{2} \right) \leq \mathrm{Re}(z) \leq C \exp\left( \frac{\vepb R}{2} \right)$ and $1 \leq  \mathrm{Im}(z) \leq \exp(\vepb R)$, where $C$ is some fixed constant that we do not explicitly write down.
     The volume of this region is given by the following integral.
-    \begin{align*}
+    \begin{align}
+      \label{eq:horocycle-np-lp-is-half}
       \mathrm{Vol}(B_R(x_0) \cap H) &\leq \int_{1}^{\exp(\vepb R)} \int_{-C \exp\left( \frac{\vepb R}{2} \right)}^{C \exp\left( \frac{\vepb R}{2} \right)} \frac{1}{y^2} dx dy \\
       &\leq C^{\prime} \exp\left( \frac{\vepb R}{2} \right)
-    \end{align*}
+    \end{align}
 
     % We estimate this volume using standard hyperbolic geometry identities, and this volume is polynomial in $R$.
     We thus have the following upper bound on $\#\left( B_R(p) \cap \net_{> \vepb R} \right) $ for large enough values of $R$.
@@ -135,11 +136,14 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     % \todo{Rework or compress this proof.}
   \item $\os_{1,0,1}$: This surface is very similar to the previous case: it's obtained by gluing together the boundary component of $\os_{1,1,0}$ via the antipodal map.
     It's a theorem of \textcite{scharlemann1982complex} and also \textcite{gendulphe2017whats} that there is a unique one-sided curve $\kappa$ in $\os_{1,0,1}$ whose complement is $\os_{1,1,0}$.
-    As a consequence, $\mcg(\os_{1,0,1}) \cong \mcg(\os_{1,1,0})$, and $\teich(\os_{1,1,0}) \hookrightarrow \teich(\os_{1,0,1})$.
+    As a consequence, $\mcg(\os_{1,0,1}) \cong \mcg(\os_{1,1,0})$, and $\teich(\os_{1,1,0}) \hookrightarrow \teich(\os_{1,0,1})$, where the inclusion map is given by considering a point in $\teich(\os_{1,1,0})$, where the boundary component has length $\vept$, and gluing it via the antipodal map to get a point in $\teich(\os_{1,0,1})$.
+    The inclusion map is also equivariant with respect to the action of $\mcg(\os_{1,1,0})$ and $\mcg(\os_{1,0,1})$.
 
     We consider now $\core(\teich(\os_{1,0,1}))$: the curve $\kappa$ cannot get shorter than the threshold specified by the core.
-    There is another curve $\kappa^{\prime}$ that intersects $\kappa$ exactly once (see \autoref{fig:base-case-2}).
-    It follows from hyperbolic trigonometry that if $\kappa$ cannot be too long either while staying in $\core(\teich(\os_{1,0,1}))$: if it is, then $\kappa^{\prime}$ becomes shorter than the threshold value.
+    We now show that $\kappa$ cannot be arbitrary long either.
+    At any point $z \in \core(\teich(\os_{1,0,1}))$, let $\kappa^{\prime}$ be the shortest curve that intersects $\kappa$ exactly once (see \autoref{fig:base-case-2}).
+    We have an upper bound for the length of $\kappa^{\prime}$: namely the length of the orthogeodesic arc on $\os_{1,0,1} \setminus \kappa$ that starts and ends at $\kappa$.
+    It follows from hyperbolic trigonometry that if the length of $\kappa$ goes to $\infty$, then the length of the orthogeodesic, hence the length of $\kappa^{\prime}$ will approach $0$, the point in $\teich(\os_{1,0,1})$ will leave $\core(\teich(\os_{1,0,1}))$.
 
     If we consider the pants decomposition of the surface along $\kappa$, and any two sided curve, we see that the length coordinates of $\kappa$ in $\core(\teich(\os_{1,0,1}))$ are contained in a compact interval $[t_1, t_2]$, where $t_1 > 0$.
     This means that $\core(\teich(\os_{1,0,1}))$ is a bounded neighbourhood of the image of $\teich(\os_{1,1,0})$.
@@ -193,8 +197,8 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     $ on $\mathbb{H}^2$.
 
     If we now consider $\core(\teich(\os_{0,1,2}))$, that consists of the points in $\mathbb{H}^2$ whose $y$-coordinate is greater than some threshold value, i.e.\ a horoball in $\mathbb{H}^2$.
-    We know from elementary hyperbolic geometry that the number of net points in a horoball grows with the same exponential growth rate as the number of net points in the boundary of the horoball, i.e.\ the horocycle.
-    The former exponential growth rate is precisely $\hNP(\core(\teich(\os_{0,1,2})))$, and the latter term is $\hLP(\teich(\os_{0,1,2}))$.
+    We showed in \eqref{eq:horocycle-np-lp-is-half} that for the action of $D_n$ on a horocycle, the volume growth entropy and the lattice point growth entropy are both equal to $\frac{1}{2}$.
+    The former exponential entropy is precisely $\hNP(\core(\teich(\os_{0,1,2})))$, and the latter entropy is $\hLP(\teich(\os_{0,1,2}))$.
   \end{itemize}
   This concludes the proof of the lemma for the $4$ surfaces with $\chi(S) = -1$.
 \end{proof}
@@ -246,12 +250,39 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
 \begin{proof}
   First of all, note that the above lemma holds for $S = \os_{1,1,0}$, since $\teich(\os_{1,1,0})$ is $\mathbb{H}^2$, which is homogeneous.
 
-  Next, note that the lemma also holds for compact metric spaces, because we can express $D$ as a continuous function of the point $p$, which will achieve a maximum on a compact metric space.
+  Next, note that the lemma also holds for compact metric spaces, because we can express $D$ as a upper semi-continuous function of the point $p$, which will achieve a maximum on a compact metric space.
 
-  Finally, note that if the lemma holds for metric spaces $X$ and $Y$, it also holds for $X \times Y$, where the metric on $X \times Y$ is the $\sup$ product with an additive error.
+  Next, note that if the lemma holds for metric spaces $X$ and $Y$, it also holds for $X \times Y$, where the metric on $X \times Y$ is the $\sup$ product without an additive error.
+  To see this, we consider the minimal number of balls $E(C, \vepn, X \times Y)$ of radius $\frac{\vepn}{2}$ needed to cover $X \times Y$.
+  The covering number and the packing number $D$ are related by the following standard inequality.
+  \begin{align*}
+    D(C, \vepn, X \times Y) \leq E(C, \vepn, X \times Y) \leq D(C, 2 \vepn, X \times Y)
+  \end{align*}
+  Furthermore, one can easily see that for a $\sup$-product $X \times Y$, we can bound the covering number of $X \times Y$ by a product of the covering number for $X$ and $Y$, by taking a product of coverings for $X$ and $Y$.
+  \begin{align*}
+    E(C, \vepn, X \times Y) \leq E(C, \vepn, X) \times E(C, \vepn, Y)
+  \end{align*}
+  Combining the two inequalities, get a bound for $D(C, \vepn, X \times Y)$ in terms of $D(C, 2\vepn, X)$ and $D(C, 2\vepn, Y)$.
+  \begin{align*}
+D(C, \vepn, X \times Y) \leq D(C, 2\vepn, X) \times D(C, 2\vepn, Y)
+  \end{align*}
+
+  We now show that the lemma also holds, with a worse constant, for metric spaces that are $\sup$-products with an additive error $c$, where $c$ is a constant smaller than $\vepn$.
+  Let $Z$ be a metric space for which the lemma holds, and $Z^{\prime}$ be a metric space with the same underlying points, but whose metric differs from $Z$ by an additive error $c$.
+  \begin{align*}
+    \left| d_Z(x,y) - d_{Z^{\prime}}(x,y) \right| \leq c
+  \end{align*}
+  Let $\mathcal{Z}$ be a set of points in a ball of radius $C$ in $Z^{\prime}$ that are pairwise distance at least $\vepn$ apart.
+  Consider $\mathcal{Z}$ as a subset of $Z$ instead, we have that they are contained in a ball of radius at most $C + c$, and are pairwise distance at least $\vepn - c$ apart.
+  We thus get the inequality relating the packing numbers for $Z$ and $Z^{\prime}$.
+  \begin{align*}
+    D(C, \vepn, Z^{\prime}) \leq D(C + c, \vepn - c, Z )
+  \end{align*}
 
   Suppose now that we have the lemma for the Teichmüller spaces of all surfaces with Euler characteristic at least $-n$.
-  To show the lemma for a Teichmüller space of a surface $S$ with Euler characteristic $-n-1$, we break up the Teichmüller space into the thick part, where the mapping class group acts co-compactly, so the first reduction applies, and the thin part, where we have by Minsky's product region theorem \cite[Theorem 6.1]{1077244446} (or Theorem \ref{thm:prno}), the metric is the $\sup$ product, so the second reduction applies.
+  To show the lemma for a Teichmüller space of a surface $S$ with Euler characteristic $-n-1$, we break up the Teichmüller space into the thick part, where all curves are at least $\varepsilon$ or longer, and the thin part.
+  We pick $\varepsilon$ such that the metric thin part on the thin part is equal to the $\sup$-product metric, up to an additive error $c$, where $c < \vepn$, by Minsky's product region theorem \cite[Theorem 6.1]{1077244446} (or Theorem \ref{thm:prno}).
+   The mapping class group acts co-compactly on the thick, so the first reduction applies, and on the thin part, the metric is the $\sup$ product up to an additive error of $c$, so the second reduction applies.
 \end{proof}
 
 \begin{proof}[Proof of Lemma \ref{lem:fd-polynomial-growth}]
@@ -271,23 +302,29 @@ Before we prove Lemma \ref{lem:fd-polynomial-growth}, we will need the following
   \end{claim*}
   To see why this suffices, suppose we have such a $\cZ$.
   Without loss of generality, we can assume that for all points $z \in \cZ$, the closest lattice point is $p$: otherwise we could replace such a point $z$ by $\kappa z$ for an appropriate choice of $\kappa$.
-We then have that for any $n \in \net(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq C$.
+We then have that for any $n \in \net(1) \cap B_p(R)$, there exists some $z \in \cZ$, such that $d(z, n) \leq 2C$.
 Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \net(1) \cap B_p(R) \right) \leq C^{\prime} R^{f(\chi(S))}$, for some other constant $C^{\prime}$, by Lemma \ref{lem:packing-argument}.
 % \todo[inline]{Need a lemma that states we can only pack in a uniformly bounded number of net points in a ball of fixed radius.
 % The proof can go via the uniform Lagrangian estimate for the volume of a ball, and use packing arguments.}
 
 \emph{Proof of claim:}
-  Let $\left\{ M_1, \ldots, M_J \right\}$ be all the topologically distinct markings on $p$ that are short.
-  We know that there are only finitely many of them, and the cardinality $J$ only depends on the topological type of the surface $S$.
-  We also know that for each of these short markings, the lengths of the pants curves in the marking are bounded above by some constant $T$.
-  Each of these markings has $N = -3 \chi(S) - b$ pants curves on them, where $b$ is the number of boundary components of $S$.
+We consider short markings on the point $p \in teich(S)$.
+Given a pants decomposition $\left\{ \alpha_1, \ldots, \alpha_{k} \right\}$ of a surface, a set of short transverse curves is a collection of curves $\left\{ \beta_1, \ldots , \beta_k \right\}$, such that $\beta_i$ only intersects $\alpha_i$, and is the shortest such curve amongst all the curves intersecting only $\alpha_i$.
+The set $\left\{ \alpha_1, \ldots, \alpha_k, \beta_1, \ldots, \beta_k \right\}$ is called a marking.
+A marking is said to be short if the total length of the pants curves $\alpha_i$ is minimized amongst the mapping class group orbit of $\left\{ \alpha_1, \ldots, \alpha_k \right\}$.
+
+Note that there are only many short markings at point $p$.
+  We  know that for each of these short markings, the lengths of the pants curves are bounded above by some constant $T$.
+  Each of these pants multicurves have $N = -3 \chi(S) - b$ pants curves on them, where $b$ is the number of boundary components of $S$.
+  Let $\left\{ M_1, \ldots, M_j \right\}$ denote the set of short markings.
 
   We construct the points $z \in \cZ$ by just varying the lengths of these pants curves: the set of lengths we will allow are the following.
   \begin{align*}
-    \text{Acceptable lengths} = \left\{ T, T \exp(-1), T\exp(-2), \ldots, T \exp(-\lceil R \rceil) \right\}
+    \text{Acceptable lengths} = \left\{ T, T \exp(-1), T\exp(-2), \ldots, T \left( \exp(-\lceil R \rceil) - \log (s) \right)  \right\}
   \end{align*}
+  Here $s$ is the length of the shortest curve on the point $p$ in $\teich(S)$.
   We define the point $z_{j, i_1, i_2, \ldots , i_N}$ to be the point in $\teich(S)$ obtained by considering the marking $M_j$ at $p$, and setting the length of the $k$\textsuperscript{th} pants curve to be $i_k$, where the $i_k$ is one of the acceptable lengths.
-  It's clear that the cardinality of $\cZ$ is at most $J \cdot R^N$, which is a polynomial only depending on the topological type of the surface $S$.
+  It's clear that the cardinality of $\cZ$ is at most $J \cdot R^N$, which is a polynomial only depending on the topological type of the surface $S$ and the basepoint $p$.
 
   Suppose now that $y$ is some other point in $B_R(p)$.
   We pick a $\kappa \in \mcg(S)$ such that the shortest marking on $\kappa y$ is one of the markings $M_j$ for $1 \leq j \leq J$.
@@ -308,7 +345,7 @@ Since $\# \cZ \leq R^{f(\chi(S))}$, we have that $\#\left( \net(1) \cap B_p(R) \
 \label{sec:using-compl-length}
 
 In this section we introduce an alternative to the Teichmüller metric, called the \emph{complexity length} (see Definition \ref{defn:complexity-length}).
-This metric was constructed by \textcite{dowdall2023lattice}, in order to get better estimates on net points contained in the thin part of Teichmüller space (for orientable surfaces).
+Complexity length (denoted by $\mathfrak{L}$) was constructed by \textcite{dowdall2023lattice}, in order to get better estimates on net points contained in the thin part of Teichmüller space (for orientable surfaces).
 We adapt the construction of complexity to the Teichmüller space of non-orientable surfaces in Section \ref{sec:line-gap-compl}.
 In this section, we state the main results about complexity length we need in order to prove Theorem \ref{thm:entropy-equality}.
 
@@ -344,7 +381,7 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
   \begin{align*}
     \hNP(\core(\teich(V))) < \hNP(\coret{\os})
   \end{align*}
-  Then for any $\vepb >0$, there exists $c > 0$, such that for any bad point $y$, i.e.\ a point in $\net_b(p, R, \vepb)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
+  Then for any $\vepb >0$, there exists $c > 0$, such that for all $R > 0$, and for any bad point $y$, i.e.\ a point in $\net_b(p, R, \vepb)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
   \begin{align*}
     \dcomp(p, y) \leq R(1 - c)
   \end{align*}
