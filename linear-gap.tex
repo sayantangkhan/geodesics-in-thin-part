@@ -165,7 +165,7 @@ We now look at an extreme example of a complete witness families to motivate fur
   The active subsurfaces for $[x, y]$ contain the surfaces $\os$, $V$, and $\gamma V$: however, we can pick $\Omega(x,y) = \left\{ \os \right\}$, and check that this is a complete witness family.
 \end{example}
 
-  In the above example, since we only have one subsurface in our witness family, we certainly don't overcount via overlapping product regions, but we do end up ignoring the fact that the geodesic $[x,y]$ travels in a smaller product region near the beginning of the segment, as well as the end.
+  In the above example, since we only have one subsurface in our witness family, we certainly do not overcount via overlapping product regions, but we do end up ignoring the fact that the geodesic $[x,y]$ travels in a smaller product region near the beginning of the segment, as well as the end.
   For the initial and the final segment of the geodesic, the witness $\os$ is too big for the subsurface the geodesic is actually traveling in.
   This suggest that a better choice of a witness family would be to include both $V$ and $\gamma V$ as witnesses too.
   We can take this approach further, and include every subsurface in $\Upsilon(x,y)$ as a witness: this will still form a complete witness family.
@@ -510,7 +510,7 @@ We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the p
     \#\left( y \mid \text{$\Omega(x,y)$ has combinatorial type $\mathcal{V}$} \right) &= \sum_{(h, s) \in \mathcal{V}} \exp\left( (h + \vepent)s \right) \\
     &\leq \exp\left( (1 + \veperr)r \right)
   \end{align*}
-  We get the second inequality by picking $\vepent$ small enough, and observing that $\sum hs = r$.
+  We get the second inequality by picking $\vepent$ small enough, and observing that $\sum hs \leq r$.
 \end{proof}
 
 \subsection{Linear gap for bad points}
