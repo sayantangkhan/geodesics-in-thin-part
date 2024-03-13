@@ -39,8 +39,8 @@ This example illustrates that in order to count net points accurately, it's not 
 In fact, the count will also depend on the type of the product region.
 In the above example, the product region had just one curve $\gamma$ becoming short, but in general, a product region can have multiple curves getting short, in which case, the net point count will be even smaller.
 
-We now consider a geodesic $[x,y]$ (where $x$ and $y$ are net points) that travels through several product regions $p_i$, and possibly the thick part, which we will also consider a product region, albeit a trivial one.
-Let $h_i$ be the exponent associated to the product region $p_i$: this is the exponent that will appear when we invoke Theorem \ref{thm:abem} to count net points in the product region $p_i$.
+We now consider a geodesic $[x,y]$ (where $x$ and $y$ are net points) that travels through several product regions $\pi_i$, and possibly the thick part, which we will also consider a product region, albeit a trivial one.
+Let $h_i$ be the exponent associated to the product region $\pi_i$: this is the exponent that will appear when we invoke Theorem \ref{thm:abem} to count net points in the product region $\pi_i$.
 The order in which $[x, y]$ travels through the product region is specified in \autoref{fig:schematic}.
 \begin{figure}[h]
   \centering
@@ -66,8 +66,8 @@ This is a primitive version of the \emph{complexity length} of $[x,y]$, and moti
 
 Before we define complexity length, we note two ways in which the above estimate overestimates the actual number of net points: that happens when a point in the geodesic is simultaneously in two or more product regions, which can happen in two ways.
 \begin{enumerate}[(i)]
-\item The product regions are disjoint: In this case, we are accounting the length of the geodesic segment multiple times: once for each product region we are in. However, this overcounting is still better than directly invoking Theorem \ref{thm:abem}, since the sums of the exponents $h_i$ associated to each of the disjoint product regions are smaller than the exponent associated to the entire surface.
-\item The product regions are nested: In this case as well, we are accounting for the length of a geodesic multiple times, once for each product region we are in.
+\item The active subsurfaces associated to product regions are disjoint: In this case, we are accounting the length of the geodesic segment multiple times: once for each product region we are in. However, this overcounting is still better than directly invoking Theorem \ref{thm:abem}, since the sums of the exponents $h_i$ associated to each of the disjoint product regions are smaller than the exponent associated to the entire surface.
+\item The active subsurfaces associated toproduct regions are nested: In this case as well, we are accounting for the length of a geodesic multiple times, once for each product region we are in.
   Unlike in the previous case, in this case, the exponents associated to each product region can add up to a quantity larger than the exponent associated to the entire surface, which means the presence of nested product regions can give a worse estimate than Theorem \ref{thm:abem}.
   We will get around this problem by looking only at product regions associated to special subsurfaces which are called \emph{witnesses}.
 \end{enumerate}
@@ -101,7 +101,7 @@ We also pick constants $N_V$, for each $V \sqsubset \os$, such that $N_V$ only d
 The precise values of the $N_V$'s is specified via Proposition 10.13 of \cite{dowdall2023lattice}.
 We will also abuse notation slightly and use $\hNP(V)$ to refer to $\hNP(\core(\teich(V)))$ whenever $V$ is a non-orientable surface: when $V$ is orientable, $\hNP(V)$ will refer to $\hNP(\teich(V))$.
 
-Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set of subsurfaces $\Upsilon(x, y)$ along which $[x, y]$ has large projections.
+Let $[x,y]$ be a geodesic segment in $\teich(\os)$: we describe the set $\Upsilon(x, y)$ of subsurfaces along which $[x, y]$ has large projections.
 % \todo{Figure out the latex for the symbol Dowdall-Masur use for active subsurfaces.}
 
 \begin{definition}[Active subsurfaces]
@@ -175,7 +175,9 @@ We now look at an extreme example of a complete witness families to motivate fur
   Informally, a witness family $\Omega(x,y)$ is insulated if all the maximal active subsurfaces that are active near the beginning or end of $[x,y]$ are also witnesses.
   \begin{definition}[Insulated witness family]
     \label{def:insulated}
-    A witness family $\Omega(x,y)$ is insulated if for every $E \in \Omega(x,y)$, the following subsurfaces $V \sqsubset E$ are also witnesses.
+    A witness family $\Omega(x,y)$ is insulated if for every $E \in \Omega(x,y)$,
+    all subsurfaces $V \sqsubset E$ satisfying the following properties are also witnesses.
+    % the following subsurfaces $V \sqsubset E$ are also witnesses.
     \begin{enumerate}[(i)]
     \item $V \in \Upsilon(x,y)$.
     \item $d_E(\cC(V), x) \leq 9\mathbf{C}$, or $d_E(\cC(V), y) \leq 9 \mathbf{C}$, where we consider $\cC(V)$ to be a subset of $\cC(E)$.
@@ -202,12 +204,17 @@ We now look at an extreme example of a complete witness families to motivate fur
     \end{enumerate}
   \end{definition}
 
+  Here $Z \pitchfork_V W$ refers to notion of two subsurfaces cutting each other relative to $V$.
+  \begin{definition}[Relative cutting]
+    Given a subsurface $V$ of $S$, we say two subsurfaces $Z$ and $W$ of $S$ \emph{cut relative} to $V$ if for any subsurfaces $Z^{\prime} \sqsubset Z$ and $W^{\prime} \sqsubset W$ that intersect $V$, $Z^{\prime} \pitchfork W^{\prime}$.
+  \end{definition}
+
   We now provide some motivation for the various conditions that appear in the above definition.
   First of all, when we see $Z \swarrow W$, we are to read that as \emph{the geodesic $[x,y]$ makes progress in the nested subsurface $Z$, before making progress in the supersurface $W$}.
   Similarly, when we see $W \searrow Z$, we are to read that as \emph{the geodesic $[x,y]$ make progress in the supersurface $W$ before making progress in the nested subsurface $Z$}.
   With this description of the subordering, conditions (i) and (iv) of the definition are easy to understand. The conditions (ii) and (iii) let us upgrade $\swarrow$ and $\searrow$ to transversality and time-ordering.
   A more intuitive reading of condition (ii) for instance would be, if $Z \swarrow V \searrow W$, that means the geodesic makes progress in $Z$ before $V$, and then makes progress in $W$.
-  That means if we just look at $V$ and $W$, it makes progress in $V$ and then $W$. And since neither of them are nested in the other, the only way they can be time-ordered is by being transverse relative to $V$.
+  That means if we just look at $V$ and $W$, it makes progress in $V$ and then $W$. And since neither of them are nested in the other, the only way they can be time-ordered is by cutting relative to $V$.
 
   We can also see how the subordering on a witness family interacts with the witness family being insulated: recall the pair of witnesses $V \sqsubset E$ from Definition \ref{def:insulated}.
   \begin{itemize}

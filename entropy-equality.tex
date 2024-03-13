@@ -8,7 +8,7 @@ In this, and the following section, we will prove that $\hLP = \hNP$, which will
   \label{thm:entropy-equality}
   For any surface $S$ of finite type, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
-    \hNP(\core(\teich(S))) = \hLP(\teich(S))
+    \hNP(\core(\teich(S)), \vept) = \hLP(\teich(S), \vept)
   \end{align*}
 \end{theorem}
 
@@ -36,7 +36,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
   \label{lem:entropy-equality-base-case}
   For a surface $S$ in $\left\{ \os_{1,1,0}, \os_{1,0,1}, \os_{0,2,1}, \os_{0,1,2} \right\}$, the following relationship holds between the $\hNP$ and $\hLP$.
   \begin{align*}
-    \hNP(\core(\teich(S))) = \hLP(\teich(S))
+    \hNP(\core(\teich(S)), \vept) = \hLP(\teich(S), \vept)
   \end{align*}
 \end{lemma}
 
@@ -154,8 +154,8 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
       \label{fig:base-case-2}
     \end{figure}
 
-    From the previous case, we already have $\hNP(\core(\teich(\os_{1,1,0}))) = \hLP(\teich(\os_{1,1,0}))$, and since their mapping class groups are isomorphic, we also have $\hLP(\teich(\os_{1,1,0})) = \hLP(\teich(\os_{1,0,1}))$.
-    We now need to prove that $\hNP(\core(\teich(\os_{1,1,0}))) = \hNP(\core(\teich(\os_{1,0,1})))$ to prove the result for this case.
+    From the previous case, we already have $\hNP(\core(\teich(\os_{1,1,0})), \vept) = \hLP(\teich(\os_{1,1,0}), \vept)$, and since their mapping class groups are isomorphic, we also have $\hLP(\teich(\os_{1,1,0}), \vept) = \hLP(\teich(\os_{1,0,1}), \vept)$.
+    We now need to prove that $\hNP(\core(\teich(\os_{1,1,0})), \vept) = \hNP(\core(\teich(\os_{1,0,1})), \vept)$ to prove the result for this case.
     We have that the net for $\core(\teich(\os_{1,0,1}))$ lies in a bounded neighbourhood of the net for $\core(\teich(\os_{1,1,0}))$: this implies that the cardinalities of the net points in a ball of radius $r$ differ by at most a multiplicative constant.
     \begin{align*}
       \#\left( B_R(p) \cap \net_{\core(\teich(\os_{1,0,1}))} \right) \leq c \cdot \#\left( B_R(p) \cap \net_{\core(\teich(\os_{1,1,0}))} \right)
@@ -163,7 +163,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
     Since the two cardinalities differ by at most a multiplicative constant, they have the same exponential growth rate.
     % The equality of $\hLP(\teich(\os_{1,0,1}))$ and $\hNP(\core(\teich(\os_{1,0,1})))$ follows from the equality for $\os_{1,1,0}$ {\color{red} (Maybe add a lemma here that states that the entropy stays equal if you take a bounded neighbourhood)}.
   \item $\os_{0,2,1}$: The mapping class group of this surface is finite: in fact, it is isomorphic to $\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}$ (see \textcite{gendulphe2017whats}).
-    This means $\hLP(\teich(\os_{0,2,1})) = 0$.
+    This means $\hLP(\teich(\os_{0,2,1}), \vept) = 0$.
     This surface has exactly two simple geodesics $\kappa$ and $\kappa^{\prime}$, which intersect each other exactly once, such that deleting either one of them results in a pair of pants (see \autoref{fig:s_021}).
     \begin{figure}[h]
       \centering
@@ -176,7 +176,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
 
     If we now consider $\core(\teich(\os_{0,2,1}))$, the lengths of $\kappa$ and $\kappa^{\prime}$ are bounded below by the threshold.
     But they are also bounded above, by an argument similar to the previous case, namely is either $\kappa$ or $\kappa^{\prime}$ are very long, the other one sided curve must be very short.
-    This proves that $\core(\teich(\os_{0,2,1}))$ is compact, and as a result $\hNP(\core(\os_{0,2,1})) = 0$.
+    This proves that $\core(\teich(\os_{0,2,1}))$ is compact, and as a result $\hNP(\core(\os_{0,2,1}), \vept) = 0$.
     This proves the lemma for $\os_{0,2,1}$.
   \item $\os_{0,1,2}$: This surface has a unique two-sided element, which we denote by $\gamma_{\infty}$.
     The one sided curves on this surface are indexed by $\mathbb{Z}$, where $\gamma_n = D_n \gamma_0$, and $D_n$ is the Dehn twist about $\gamma_\infty$ (see \autoref{fig:s_012}).
@@ -198,7 +198,7 @@ The $4$ base cases we need to check are the $3$ non-orientable surfaces, and one
 
     If we now consider $\core(\teich(\os_{0,1,2}))$, that consists of the points in $\mathbb{H}^2$ whose $y$-coordinate is greater than some threshold value, i.e.\ a horoball in $\mathbb{H}^2$.
     We showed in \eqref{eq:horocycle-np-lp-is-half} that for the action of $D_n$ on a horocycle, the volume growth entropy and the lattice point growth entropy are both equal to $\frac{1}{2}$.
-    The former exponential entropy is precisely $\hNP(\core(\teich(\os_{0,1,2})))$, and the latter entropy is $\hLP(\teich(\os_{0,1,2}))$.
+    The former entropy is precisely $\hNP(\core(\teich(\os_{0,1,2})), \vept)$, and the latter entropy is $\hLP(\teich(\os_{0,1,2}), \vept)$.
   \end{itemize}
   This concludes the proof of the lemma for the $4$ surfaces with $\chi(S) = -1$.
 \end{proof}
@@ -355,7 +355,7 @@ For this section, we will state the results with a rescaled version of complexit
   Let $S$ be a surface of finite type.
   The rescaled complexity length $\dcomp$ on $\core(\teich(S))$ is given by the following formula.
   \begin{align*}
-    \dcomp(x, y) = \frac{\mathfrak{L}(x,y)}{\hNP(\core(\teich(S)))}
+    \dcomp(x, y) = \frac{\mathfrak{L}(x,y)}{\hNP(\core(\teich(S)), \vept)}
   \end{align*}
   Here, $\mathfrak{L}(x,y)$ is the complexity length between points $x$ and $y$.
 \end{definition}
@@ -366,7 +366,7 @@ The first result we will need is a count of the net points with respect to the r
   \label{thm:counting-with-complexity-rescaled}
   There exists a polynomial function $p(R)$ that depends on the net $\net$, and a parameter $\veperr > 0$, such that the following inequality holds for any $\veperr > 0$.
   \begin{align*}
-    \#\left( y \in \net \mid \dcomp(p, x) \leq R \right) \leq p(R) \exp((\hNP(\core(\teich(S))) + \veperr) \cdot R)
+    \#\left( y \in \net \mid \dcomp(p, x) \leq R \right) \leq p(R) \exp((\hNP(\core(\teich(S)), \vept) + \veperr) \cdot R)
   \end{align*}
 \end{theorem}
 % \todo[inline]{Add the $\varepsilon_1$ parameter.}
@@ -379,7 +379,7 @@ We will establish that this hypothesis holds inductively in Section \ref{sec:pro
   \label{thm:linear-gap-rescaled}
   Suppose that for all proper subsurfaces $V$ of $\os$, the following inequality holds.
   \begin{align*}
-    \hNP(\core(\teich(V))) < \hNP(\coret{\os})
+    \hNP(\core(\teich(V)), \vept) < \hNP(\coret{\os})
   \end{align*}
   Then for any $\vepb >0$, there exists $c > 0$, such that for all $R > 0$, and for any bad point $y$, i.e.\ a point in $\net_b(p, R, \vepb)$, the following upper bound on the complexity distance between $p$ and $y$ holds.
   \begin{align*}
@@ -403,7 +403,7 @@ Combining Theorems \ref{thm:counting-with-complexity-rescaled} and \ref{thm:line
 In the previous section, we saw that the key hypothesis we need for the complexity length estimate was that for any proper subsurface $V$ of $\os$, the following strict inequality held.
 \begin{align}
   \label{eq:net-point-entropy-gap}
-  \hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))
+  \hNP(\core(\teich(V)), \vept) < \hNP(\core(\teich(\os)), \vept)
 \end{align}
 
 In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by proving a similar inequality for the lattice point entropy, and using the fact that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$, by the inductive hypothesis.
@@ -412,7 +412,7 @@ In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by pr
   \label{lem:entropy-inequality}
   Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their lattice point entropy.
   \begin{align*}
-    \hLP(\teich(V)) < \hLP(\teich(\os))
+    \hLP(\teich(V), \vept) < \hLP(\teich(\os), \vept)
   \end{align*}
 \end{lemma}
 
@@ -425,43 +425,45 @@ In this section, we will prove that \eqref{eq:net-point-entropy-gap} holds by pr
 
 \begin{proof}[Proof of Lemma \ref{lem:entropy-inequality}]
   Observe that $\mcg(V)$ is a subgroup of $\mcg(\os)$.
-  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(V)$, which is the free product of a psuedo-Ansov element in $\mcg(\os)$ with $\mcg(V)$, and show that $\hLP(H) > \hLP(\mcg(V))$.
-  This is enough to prove the result, since $H$ is a subgroup of $\mcg(\os)$, we have that $\hLP(\mcg(\os)) \geq \hLP(H)$.
+  We will first construct an intermediate subgroup $H = \mathbb{Z} * \mcg(V)$, which is the free product of a pseudo-Anosov element in $\mcg(\os)$ with $\mcg(V)$, and show that $\hLP(H, \vept) > \hLP(\mcg(V), \vept)$.
+  This is enough to prove the result, since $H$ is a subgroup of $\mcg(\os)$, we have that $\hLP(\mcg(\os), \vept) \geq \hLP(H, \vept)$.
 
   We now need to show that $\mcg(\os)$ contains a pseudo-Anosov element.
   We can invoke Penner's construction of pseudo-Anosov mapping classes (\cite[Theorem 4.1]{penner1988construction}), as long as we can construct a filling collection of \emph{two-sided} curves in $\os$.
   This may not be always possible for $\os$ where $\chi(\os) = -1$, but for $\os$ with $\chi(\os) \leq -2$, this is always possible (see \cite{Liechti2018MinimalPS} and \cite{khan2023pseudo} for explicit constructions).
   Let $\kappa$ denote the pseudo-Anosov mapping class we construct.
 
-  We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(V)$ in the Thurston boundary.
-  This is because the limit set of $\mcg(V)$ can only consist of foliations supported on the subsurface $V$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
-  We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(V)$ is the free product of $\mathbb{Z}$ and $\mcg(V)$: we let $H$ denote this group.
+  By \cite[Proposition 6.6]{10.1093/imrn/rny001}, there exists a large enough $n$ such that $\kappa^n$ and $\mcg(V)$ generate their free product in $\mcg(S)$: call this subgroup $H$.
+
+  % We have that the expanding and contracting foliations of $\kappa$ are disjoint fromt the limit set of $\mcg(V)$ in the Thurston boundary.
+  % This is because the limit set of $\mcg(V)$ can only consist of foliations supported on the subsurface $V$, whereas the expanding and contracting foliations of $\kappa$ fill the entire surface.
+  % We can now invoke the ping-pong lemma to conclude that the group generated by a large enough power of $\kappa$ and $\mcg(V)$ is the free product of $\mathbb{Z}$ and $\mcg(V)$: we let $H$ denote this group.
 
   We now need to show that the lattice point entropy for $H$ is strictly larger than the $\mcg(V)$.
   To see this, we recall an equivalent definition of the lattice point entropy.
   The lattice point entropy is the infimum of the set of exponents $h$ such that the following Poincaré series transitions converges for any $x \in \teich(\os)$.
   \begin{align}
     \label{eq:dirichlet}
-    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right)
+    \sum_{\gamma \in H} \exp\left( -h \cdot d_{\vept}(x, \gamma x) \right)
   \end{align}
   Since $H = \mathbb{Z} * \mcg(V)$, we can represent $\gamma \in H$ as $a_1 \cdot b_1 \cdot a_2 \cdots a_k \cdot b_k$, where $a_i$ belong in $\mathbb{Z}$ and $b_i$ belong in $\mcg(V)$.
   We use this along with the triangle inequality to get an upper bound for $d(x, \gamma x)$.
   \begin{align}
     \label{eq:triangle-inequality-1}
-    d(x, \gamma x) \leq \sum_{i=1}^k d(x, a_i x) + d(x, b_i x)
+    d_{\vept}(x, \gamma x) \leq \sum_{i=1}^k d_{\vept}(x, a_i x) + d_{\vept}(x, b_i x)
   \end{align}
   We plug inequality \eqref{eq:triangle-inequality-1} into \eqref{eq:dirichlet} to get a lower bound.
   \begin{align}
     \label{eq:dirichlet-lower-bound}
-    \sum_{\gamma \in H} \exp\left( -h \cdot d(x, \gamma x) \right) &= \sum_{k=1}^\infty \left(  \sum_{a_1}\cdots \sum_{a_k} \sum_{b_1}\cdots \sum_{b_k}  \exp(-h \cdot d(x, a_1 \cdot b_1 \cdots a_k \cdot b_k x)) \right) \\
-    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d(x, ax)) \right)^k \left( \sum_{b \in \mcg(V)} \exp(-h \cdot d(x, bx)) \right)^k
+    \sum_{\gamma \in H} \exp\left( -h \cdot d_{\vept}(x, \gamma x) \right) &= \sum_{k=1}^\infty \left(  \sum_{a_1}\cdots \sum_{a_k} \sum_{b_1}\cdots \sum_{b_k}  \exp(-h \cdot d_{\vept}(x, a_1 \cdot b_1 \cdots a_k \cdot b_k x)) \right) \\
+    &\geq \sum_{k=1}^{\infty} \left( \sum_{a \in \mathbb{Z}} \exp(-h \cdot d_{\vept}(x, ax)) \right)^k \left( \sum_{b \in \mcg(V)} \exp(-h \cdot d_{\vept}(x, bx)) \right)^k
     \label{eq:dirichlet-lower-bound-2}
   \end{align}
 
   We have that Theorem \ref{thm:entropy-equality} holds for $V$, which means that $\core(\teich(V))$ is SCC.
   Corollary 5.4 of \cite{10.1093/imrn/rny001} states that group actions that are SCC have Poincaré series that diverge at the critical exponent.
-  This means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(V)) + \varepsilon$, the series converges to a value greater than $1$.
-  But that means the Poincaré series for $H$ diverges at $\hLP(\teich(V)) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
+  This means there's small enough $\varepsilon > 0$ such that for $h = \hLP(\teich(V), \vept) + \varepsilon$, the series converges to a value greater than $1$.
+  But that means the Poincaré series for $H$ diverges at $\hLP(\teich(V), \vept) + \varepsilon$, since we have a lower bound by a geometric series whose ratio is greater than $1$.
   This proves that the critical exponent for $H$ is strictly greater than the critical exponent for $\mcg(V)$.
 \end{proof}
 
@@ -471,7 +473,7 @@ We can now prove the entropy gap result for $\hNP$.
   \label{lem:net-point-entropy-inequality}
   Let $\os$ be a surface, and $\chi(\os) \leq -2$. If $V$ is a proper subsurface and Theorem \ref{thm:entropy-equality} holds for $V$, then we have the following strict inequality between their net point entropy.
   \begin{align*}
-    \hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))
+    \hNP(\core(\teich(V)), \vept) < \hNP(\core(\teich(\os)), \vept)
   \end{align*}
 \end{lemma}
 
@@ -479,17 +481,17 @@ We can now prove the entropy gap result for $\hNP$.
   We have the following inequality, which follows trivially from the definition of $\hLP$ and $\hNP$.
   \begin{align}
     \label{eq:ineq1}
-    \hLP(\teich(\os)) \leq \hNP(\core(\teich(\os)))
+    \hLP(\teich(\os), \vept) \leq \hNP(\core(\teich(\os)), \vept)
   \end{align}
   From Lemma \ref{lem:entropy-inequality}, we get the following inequality.
   \begin{align}
     \label{eq:ineq2}
-    \hLP(\teich(V)) < \hLP(\teich(\os))
+    \hLP(\teich(V), \vept) < \hLP(\teich(\os), \vept)
   \end{align}
   Finally, since we have Theorem \ref{thm:entropy-equality} for $V$, we have the following equality.
   \begin{align}
     \label{eq:eq3}
-    \hLP(\teich(V)) = \hNP(\core(\teich(V)))
+    \hLP(\teich(V), \vept) = \hNP(\core(\teich(V)), \vept)
   \end{align}
   Chaining together \eqref{eq:ineq1}, \eqref{eq:ineq2}, and \eqref{eq:eq3} gives us the result.
 \end{proof}
@@ -507,7 +509,7 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
 
   We will establish that for any $\vepb > 0$, there exists a polynomial $q(R)$, and $R$ large enough, such that the following bound holds.
   \begin{align*}
-    \#\left( B_R(p) \cap \net \right) \leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
+    \#\left( B_R(p) \cap \net \right) \leq q(R) \cdot \exp(\hLP(\teich(\os), \vept) \cdot R \cdot (1 + 2 \vepb))
   \end{align*}
 
   We first count the good points in $B_R(p)$, by partitioning them according to the nearest lattice point.
@@ -523,25 +525,25 @@ We now have all the lemmas we need in order to prove Theorem \ref{thm:entropy-eq
   By Lemma \ref{lem:fd-polynomial-growth}, there exists a polynomial $q(R)$ such that each term in the above sum is at most $q(R)$.
   \begin{align}
     \#\left( \net_g(p, R, \vepb) \right) &\leq \sum_{\substack{\gamma \in \mcg(\os) \\ d(p, \gamma p) \leq R(1 + \vepb)}} q(R) \\
-     &\leq q(R) \cdot \exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))
+     &\leq q(R) \cdot \exp(\hLP(\teich(\os), \vept) \cdot R \cdot (1 + 2 \vepb))
     \label{eq:good-estimate-2}
   \end{align}
-  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\vepb)$ as at most $\exp(\hLP(\teich(\os)) \cdot R \cdot (1 + 2 \vepb))$, for large enough $R$.
+  Here, we estimated the cardinality of $\gamma$ such that $d(p, \gamma p) \leq R(1+\vepb)$ as at most $\exp(\hLP(\teich(\os), \vept) \cdot R \cdot (1 + 2 \vepb))$, for large enough $R$.
   We have the desired upper bound on the cardinality for the good points.
   Now we show that the number of bad points is much smaller than the total number of points in the ball, which will then prove the result.
 
   From the inductive hypothesis, we have that Theorem \ref{thm:entropy-equality} holds for all proper subsurfaces $V$.
-  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\core(\teich(V))) < \hNP(\core(\teich(\os)))$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
+  By Lemma \ref{lem:net-point-entropy-inequality}, we have that $\hNP(\core(\teich(V)), \vept) < \hNP(\core(\teich(\os)), \vept)$: this is precisely the hypothesis we need to apply Theorem \ref{thm:linear-gap-rescaled}.
   Applying the theorem, we see that if $y$ is a bad point, $\dcomp(p, y) \leq R(1 - c)$.
   We then apply Theorem \ref{thm:counting-with-complexity-rescaled} to get an upper bound on the number of bad points.
   \begin{align*}
-    \#\left( \net_b(p, R, \vepb) \right) \leq kR^k \cdot \exp((\hNP(\core(\teich(\os))) + \veperr) \cdot R \cdot (1 - c))
+    \#\left( \net_b(p, R, \vepb) \right) \leq kR^k \cdot \exp((\hNP(\core(\teich(\os)), \vept) + \veperr) \cdot R \cdot (1 - c))
   \end{align*}
   We pick $\veperr$ small enough such that the above term satisfies the following inequality for large enough $R$.
   \begin{align*}
-    \exp((\hNP(\core(\teich(\os))) + \veperr) \cdot R \cdot (1 - c)) < \exp\left(\hNP(\core(\teich(\os))) \cdot R \cdot \left(1 - \frac{2c}{3}\right)\right)
+    \exp((\hNP(\core(\teich(\os)), \vept) + \veperr) \cdot R \cdot (1 - c)) < \exp\left(\hNP(\core(\teich(\os)), \vept) \cdot R \cdot \left(1 - \frac{2c}{3}\right)\right)
   \end{align*}
-  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\core(\teich(\os))) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
+  On the other hand, we have that for large enough $R$, the total number of net points is at least $\exp\left(\hNP(\core(\teich(\os)),\vept) \cdot R \cdot \left(1 - \frac{c}{2}\right)\right)$.
   Combining these two facts, we see that the proportion of bad points goes to $0$ as $R$ goes to $\infty$, which proves the result.
 \end{proof}
 % \todo[inline]{Change wherever you've used $N$ to $\net$.}

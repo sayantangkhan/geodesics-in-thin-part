@@ -64,10 +64,10 @@
     \put(0.79987089,0.04313039){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z_7$\end{tabular}}}}%
     \put(0.86554008,0.04313039){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$z_8$\end{tabular}}}}%
     \put(0.97855209,0.04313039){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
-    \put(0.14551856,0.12624235){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_1$\end{tabular}}}}%
-    \put(0.34557057,0.00293218){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_2$\end{tabular}}}}%
-    \put(0.53671445,0.12457039){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_3$\end{tabular}}}}%
-    \put(0.80477575,0.00940047){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_4$\end{tabular}}}}%
-    \put(0.81879625,0.12511896){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p_5$\end{tabular}}}}%
+    \put(0.14551856,0.12624235){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi_1$\end{tabular}}}}%
+    \put(0.34557057,0.00293218){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi_2$\end{tabular}}}}%
+    \put(0.53671445,0.12457039){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi_3$\end{tabular}}}}%
+    \put(0.80477575,0.00940047){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi_4$\end{tabular}}}}%
+    \put(0.81879625,0.12511896){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pi_5$\end{tabular}}}}%
   \end{picture}%
 \endgroup%
