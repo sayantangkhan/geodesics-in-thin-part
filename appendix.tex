@@ -86,7 +86,7 @@ We recall the following objects that were defined in Section \ref{sec:weak-conv-
   % \todo[inline]{Explain this better. Maybe have a claim here.}
 
   \begin{proof}[Proof of claim]
-  We need to verify the claim on the three kinds of components of $\gamma$.
+  We need to verify the claim on the three kinds of factors of $X_\gamma$.
   \begin{enumerate}[(i)]
   \item $\no_g \setminus \gamma$: The lift of $\no_g \setminus \gamma$ to $\os_{g-1}$ will have two components if $\no_g \setminus \gamma$ is orientable, which we call $S_1$ and $S_2$. Both $S_1$ and $S_2$ are homeomorphic to $\no_g \setminus \gamma$.
     If $\no_g \setminus \gamma$ is non-orientable, then its lift in $\os_{g-1}$ is the orientation double cover.
@@ -183,7 +183,7 @@ The following lemma will be the main tool for the reduction to the orientable ca
 \begin{lemma}
   \label{lem:lifting-subsurfaces}
   Let $[x, y]$ be a Teichmüller geodesic segment in $\teich(\no)$, where $\no$ is a non-orientable surface, and $[\wt{x}, \wt{y}]$ be its image in $\teich(\os)$, where $\os$ is the orientable double cover of $\no$.
-  Let $V$ be a subsurface of $S$: then the following for $d_V(\wt{x}, \wt{y})$.
+  Let $V$ be a subsurface of $S$: then the following statements hold for $d_V(\wt{x}, \wt{y})$.
   \begin{enumerate}[(i)]
   \item If $V$ is the lift of an orientable subsurface $W$ in $\no$, then $d_V(\wt{x}, \wt{y}) = d_{\iota(V)}(\wt{x}, \wt{y}) = d_W(x, y)$.
   \item If $V$ is the lift of a non-orientable subsurface $W$ in $\no$, then $d_V(\wt{x}, \wt{y}) \emul d_W(x, y)$.
@@ -198,16 +198,31 @@ The following lemma will be the main tool for the reduction to the orientable ca
   \item If $V$ is not a lift at all, that means $V$ and $\iota(V)$ are transverse subsurfaces.
     By the Behrstock inequality, there exists a $k_0$ such that the following holds.
     \begin{align}
-      \label{ineq:min-of-equal}
-      \min(d_V(\wt{x}, \wt{y}), d_{\iota(V)}(\wt{x}, \wt{y})) \leq k_0
+      \label{ineq:min-of-equal-variant-one}
+      \min\left( d_V(\wt{x}, \partial \iota(V)), d_{\iota(V)}(\wt{x}, \partial V) \right) \leq \frac{k_0}{2}
     \end{align}
-    Note that we also have that $\wt{x}$ and $\wt{y}$ are fixed by $\iota^{\ast}$, the induced map on $\teich(\os)$, which gives us the following.
+    But we also have that $\wt{x}$ is fixed by $\iota$, which gives us the following equality of curve complex distances.
+    \begin{align}
+      \label{eq:x-fixed-curve-1}
+      d_V(\wt{x}, \partial \iota(V)) = d_{\iota(V)}(\wt{x}, \partial V)
+    \end{align}
+    Combining \eqref{ineq:min-of-equal-variant-one} and \eqref{eq:x-fixed-curve-1}, we get the following bound on the $\cC(V)$ distance between $\wt{x}$ and $\partial \iota(V)$.
     \begin{align*}
-      d_{\iota(V)}(\wt{x}, \wt{y}) &= d_{V}(\iota^{\ast}(\wt{x}), \iota^{\ast}(\wt{y})) \\
-                                   &= d_V(\wt{x}, \wt{y})
+      d_V(\wt{x}, \partial \iota(V)) \leq \frac{k_0}{2}
     \end{align*}
-    This means that both the terms appearing in the $\min$ in \eqref{ineq:min-of-equal} are equal, which gives us the result.
+    We have that the same bounds also hold for $\wt{y}$, so the result follows from the above inequality and the triangle inequality.
+    % \begin{align}
+    %   \label{ineq:min-of-equal}
+    %   \min(d_V(\wt{x}, \wt{y}), d_{\iota(V)}(\wt{x}, \wt{y})) \leq k_0
+    % \end{align}
+    % Note that we also have that $\wt{x}$ and $\wt{y}$ are fixed by $\iota^{\ast}$, the induced map on $\teich(\os)$, which gives us the following.
+    % \begin{align*}
+    %   d_{\iota(V)}(\wt{x}, \wt{y}) &= d_{V}(\iota^{\ast}(\wt{x}), \iota^{\ast}(\wt{y})) \\
+    %                                &= d_V(\wt{x}, \wt{y})
+    % \end{align*}
+    % This means that both the terms appearing in the $\min$ in \eqref{ineq:min-of-equal} are equal, which gives us the result.
   \end{enumerate}
+  This shows the result for all the cases and concludes the proof.
 \end{proof}
 
 % \todo[inline]{Set up some context.}
@@ -352,8 +367,9 @@ The following theorem (\textcite[Theorem 4.3]{behrstock2012geometry}) states tha
     For subsurfaces of $\wt{S}$ that arise as lifts, we use the map from Theorem \ref{thm:qi-embedding-curve-complex}.
     For the subsurfaces $W$ that are not lifts, we set $z_W = \pi_W(\partial(\iota(W)))$.
     The fact that this is a $\theta^{\prime}$-consistent tuple follows from the Behrstock inequality (for some $\theta^{\prime} > \theta$)\footnote{A longer but a more thorough way of seeing this would be to verify that the Teichmüller space of a non-orientable surface satisfies the $9$ axioms for hierarchical hyperbolicity that are enumerated in \textcite{behrstock2019hierarchically}.}.
-    We now use this point to construct $y \in \teich(\wt{S})$, and deduce that $y$ is coarsely fixed by $\iota^{\ast}$.
-    This means there is some $x \in \teich(S)$ whose image is coarsely $y$, and therefore the projection maps are coarsely $(z_V)$.
+    We now use this point to construct $y \in \teich(\wt{S})$, and deduce that $y$ is coarsely fixed by $\iota^{\ast}$, i.e. the distance between $y$ and $\iota^{\ast}(y)$ is bounded above by a uniform constant $C$.
+    Consider the midpoint $\wt{x}$ of the Teichmüller geodesic segment joining $y$ and $\iota^{\ast}(y)$: by Teichmüller's uniqueness theorem, $\wt{x}$ is fixed under the $\iota^{\ast}$-action.
+    This means there is some $x \in \teich(S)$ whose image is $\wt{x}$, and therefore the projection maps are coarsely $(z_V)$.
   \end{itemize}
 \end{proof}
 

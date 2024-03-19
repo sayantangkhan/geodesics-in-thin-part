@@ -272,7 +272,7 @@ We now look at an extreme example of a complete witness families to motivate fur
   \begin{definition}[Projection tuple]
     \label{def:projection-tuple}
     Let $\Omega(x,y)$ be a WISC witness family for a Teichmüller geodesic $[x,y]$ in $\teich(\os)$.
-    Let $w$ be a point in $\teich(\os)$ satisfying the following bound for every active subsurface $V$.
+    Let $w$ be a point in $\teich(\os)$ satisfying the following bound for every subsurface $V$.
     \begin{align*}
       d_{V}(x, w) + d_{V}(w, y) \leq d_{V}(x, y) + 9 \mathbf{C}
     \end{align*}
@@ -321,15 +321,21 @@ We now address why we used a modified version of the projection map in Definitio
   \label{ex:need-for-modified-projection}
   Let $\gamma$ be a pseudo-Anosov mapping class on $\os$, with large translation distance on $\cC(\os)$ and small projections elsewhere.
   Let $\delta$ be a reducible mapping class, which is psuedo-Anosov on a subsurface $V$, with large translation distance on $\cC(V)$ and small translation distance everywhere.
-  Let $x$ be a point in $\teich(\os)$, and $y = \delta \gamma \delta^{-1} x$.
+  Let $x$ be a point in $\teich(\os)$ such that $\partial V$ is a component of the short marking on $x$, and $y = \delta \gamma \delta^{-1} x$.
   We first verify that $\Upsilon(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
   To see this, we consider the following tuple of points $(x, \delta x, \delta \gamma x, \delta \gamma \delta^{-1}x)$.
-  We claim that each of the points in the tuple lies coarsely on the geodesic $[x,y]$, and computing the projections of adjacent pairs of points in tuple, we get the following.
+  We claim that each of the points in the tuple lies coarsely on the geodesic $[x,y]$.
+  To see this, we compute the projections of adjacent pairs of points in tuple to various curve complexes.
   \begin{itemize}
   \item[-] $[x, \delta x]$ has large projections on $\cC(V)$ and small projections on other curve complexes.
   \item[-] $[\delta x, \delta \gamma x]$ has large projections on the $\cC(\delta \os)$, which is the same as $\cC(\os)$, and small projections elsewhere.
   \item[-] $[\delta \gamma x, \delta \gamma \delta^{-1} x]$ has large projections on $\cC(\delta \gamma V)$, and small projections elsewhere.
   \end{itemize}
+  Consider the path $\kappa$ obtained by concatenating Teichmüller geodesics between $x$ and $\delta x$, $\delta x$ and $\delta \gamma x$, and $\delta \gamma x$ and $\delta \gamma \delta^{-1} x$.
+  The curve complex calculations above show that the projection of this path to any curve complex is a quasi-geodesic.
+  That indicates this path is a \emph{hierarchy path}, in the language of hierarchically hyperbolic spaces.
+  Furthermore, $\kappa$ does not have large projections on disjoint subsurfaces: this indicates the hierarchy path $\kappa$ fellow travels the geodesic $[x, y]$.
+
   Let $\Omega(x, y) = \Upsilon(x,y) = \left\{ \os, V, \delta \gamma V \right\}$.
   % \todo[inline]{Add more details about why $\delta \gamma V$ is the correct domain.}
   One can verify that this is a WISC witness family for $[x,y]$.
@@ -352,16 +358,19 @@ We now address why we used a modified version of the projection map in Definitio
     \widehat{y}_{\os}^{\Omega} = z
   \end{align*}
 
-  If we instead used the usual projection maps, $\widehat{x}_{\os}^{\Omega}$ would resolve to $x$, and $\widehat{y}_{\os}^{\Omega}$ would resolve to $y$.
-  Consequently, we would not have the following estimate for complexity in terms of Teichmüller distance.
+  With these resolutions, we get the following estimate for complexity in terms of Teichmüller distance.
   \begin{align*}
     \mathfrak{L}_{\Omega}(x,y) &= \hNP^{\ast}(V) \cdot d_{\teich(V)}(x, w) + \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(w, z) + \hNP^{\ast}(\gamma V) \cdot d_{\teich(\gamma V)}(z, y) \\
     &< \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(x, y)
   \end{align*}
+  Compare this to the complexity $\mathfrak{L}_{\Omega}^{\prime}$ we would have gotten if we used the usual projection map instead of the modified projection map.
+  \begin{align*}
+    \mathfrak{L}_{\Omega}^{\prime}(x,y) &= \hNP^{\ast}(V) \cdot d_{\teich(V)}(x, w) + \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(x, y) + \hNP^{\ast}(\gamma V) \cdot d_{\teich(\gamma V)}(z, y) \\
+                                        &> \hNP^{\ast}(\os) \cdot d_{\teich(\os)}(x, y)
+  \end{align*}
 \end{example}
 
-Constructing the resolution points $\widehat{x}_V^{\Omega}$ and $\widehat{x}_V^{\Omega}$ via the Realization theorem does not provide us very good bounds for $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{x}_V^{\Omega})$.
-At best, we accrue multiplicative and additive errors if we use Rafi's distance formula to estimate this distance from the curve complex distances.
+If we use Rafi's distance formula to estimate the distance between the resolution points $\widehat{x}_V^{\Omega}$ and $\widehat{x}_V^{\Omega}$ we do not get very good bounds for $d_{\teich(V)}(\widehat{x}_V^{\Omega}, \widehat{x}_V^{\Omega})$: at best, we accrue multiplicative and additive errors.
 For our applications however, the most we can tolerate is additive error.
 To do this, we will need to refine to notion of active interval for a subsurface to something more useful for the estimate: the \emph{contribution set} $\mathcal{A}_V^{\Omega}$ of a witness $V$.
 We first define two intermediate collections of subintervals of a geodesic segment $[x,y]$.
@@ -417,6 +426,7 @@ For our applications, we won't need to eliminate badness entirely, or even bound
 \textcite{dowdall2023lattice} prove that WISC witness families that are admissible and limited exist. They call these witness families WISCAL witness families.
 
 \begin{proposition}[Section 10.3 of \cite{dowdall2023lattice}]
+  \label{prop:existence-of-wiscal}
   For all $[x,y]$, there exists an associated WISC witness family that is also admissible and limited.
 \end{proposition}
 
@@ -471,7 +481,7 @@ With the machinery of complexity length set up, it is now possible to count net 
 %\todo[inline]{Make sure we're using consistent notation for net.}
 
 \begin{remark}
-  The above theorem is a slightly weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\veperr$.
+  The above theorem is a weaker version of the theorem that appears in \textcite{dowdall2023lattice}: their version does not have the $\veperr$.
   The reason we have the weaker version is that in the proof of their theorem, they count the number of net points in $\teich(V)$ in a ball of radius $R$, where $V$ is a witness, using Theorem \ref{thm:abem}, which gives them that the number of net points is equal, up to multiplicative error, to $\exp(\hNP(U) R)$.
   Since Theorem \ref{thm:abem} only holds orientable surfaces, and we want to state our results for non-orientable surfaces as well, we will need to use a weaker counting result to count net points in $\teich(V)$, namely the following bound, which holds for any $\vepent > 0$ and large enough $R$.
   \begin{align*}
@@ -509,8 +519,12 @@ We sketch out a proof of Theorem \ref{thm:counting-with-complexity} below: the p
   We then count the number of net points whose associated witness families have the combinatorial type $\mathcal{W} \cup \left\{ v \right\}$, after we fix one witness family associated to $\mathcal{W}$.
   More concretely, let $w$ be a point such that the combinatorial type of the witness family associated to $[x,w]$ is $\mathcal{W}$.
   Suppose now that we add a vertex $(h, r_0)$ to the graph $\mathcal{W}$.
-  To extend $\Omega(x,w)$ so that its combinatorial type is $\mathcal{W} \cup \left\{ (h, r_0) \right\}$, we need to add a witness $U$ whose net point entropy is $h$, and travel for distance $r_0$ in the Teichmüller space of $U$.
-  There are only finitely many choices for such subsurfaces $U$ (because their boundary curves must get short near $w$), and once we've made a choice of $U$, we have a choice $\exp\left( (\hNP(V) + \vepent) r_0 \right)$ points.
+  To extend $\Omega(x,w)$ so that its combinatorial type is $\mathcal{W} \cup \left\{ (h, r_0) \right\}$, we need to add a witness $U$ whose net point entropy is $h$, and a point $y \in \teich(U)$ such that the following holds.
+  \begin{align*}
+    d_{\teich(U)}(\widehat{x}_U^{\Omega}, y) \leq r_0
+  \end{align*}
+
+  There are only finitely many choices for such subsurfaces $U$ (because their boundary curves must get short near $w$), and once we've made a choice of $U$, we have a choice $\exp\left( (\hNP(V) + \vepent) r_0 \right)$ points for $y$.
 
   Multiplying out the counts for each vertex added, we get the following estimate for the cardinality associated to each combinatorial type.
   \begin{align*}
@@ -542,7 +556,7 @@ In this subsection, we will prove our main result involving complexity length: o
 
 Let $\Omega$ be a WISCAL witness family for $[p, y]$: the proof of Theorem \ref{thm:linear-gap} splits into two cases depending on whether the surface $\os$ is a witness in $\Omega$ or not.
 
-The former case is harder, so we deal with that first.
+The case where $\os$ is a witness is harder, so we deal with that first.
 % \begin{lemma}
 %   The triple $(p, \widehat{y}_{\os}^{\Omega}, y)$ is $\theta$-aligned, for some constant $\theta$ independent of $R$ and $y$.
 % \end{lemma}
@@ -578,10 +592,13 @@ By applying Proposition \ref{prop:complexity-length-inequality}, we get a bound 
 \end{align}
 
 We next estimate $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$: we claim that there exists a WISCAL witness family $\Omega^{\prime}$ for $[\widehat{y}_{\os}^{\Omega}, y]$ that does not have $\os$ as a witness.
-The witness family consists of all the witnesses $V$ such that $\os \searrow V$.
+The first thing we need in order to get such a witness family is verify that on the Teichmüller geodesic $[\widehat{y}_{\os}^{\Omega}, y]$, $\os$ is not an active subsurface.
+This follows from the fact that the $\os$-coordinate in the projection tuple of $y$ is equal to the $\os$-coordinate of the projection of $\widehat{y}_{\os}^{\Omega}$ to $\cC(\os)$, by construction of $\widehat{y}_{\os}^{\Omega}$.
+We now use Proposition \ref{prop:existence-of-wiscal} to get a witness family which does not contain $\os$, since $\os$ is not an active subsurface.
+% The witness family consists of all the witnesses $V$ such that $\os \searrow V$.
 
 Since the witness family $\Omega^{\prime}$ does not have $\os$ as a witness, we can do better than Proposition \ref{prop:complexity-length-inequality} when estimating $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
-We have from our hypothesis that $\hNP(\os) > \hNP(V)$, there exists a constant $h$ such that $h < \hNP(\os)$ but $h > \hNP(V)$.
+We have from our hypothesis that $\hNP(\os) > \hNP(V)$, so there exists a constant $h$ such that $h < \hNP(\os)$ but $h > \hNP(V)$.
 Using Theorem \ref{thm:contribution-set-resolution-distance}, we get the following estimate for $\mathfrak{L}(\widehat{y}_{\os}^{\Omega}, y)$.
 \begin{align}
   \label{eq:eq3p}
@@ -601,8 +618,18 @@ We plug in \eqref{eq:eq2} and \eqref{eq:eq3p} into \eqref{eq:eq4}.
   &+  2K \mathbf{C}
 \end{align*}
 
-Since $\widehat{y}_{\os}^\Omega$ is within a bounded distance of a point $q$ on $[p, y]$, we have $d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \leq R + J$, for some constant $J$.
-Furthermore, $d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \geq \vepb R$, by the hypothesis of $y$ being a bad point.
+We now claim that $\widehat{y}_{\os}^\Omega$ is within a bounded distance of a point $q$ on $[p, y]$.
+Consider the triple $(x, \widehat{y}_{\os}^{\Omega}, y)$: this is a strongly aligned tuple, i.e. its projections onto all curve complexes satisfy a coarse reverse triangle inequality (see Definition 3.21 of \cite{dowdall2023lattice}).
+Lemma 9.10 of \cite{dowdall2023lattice} asserts the existence of $q$ on $[x,y]$ that satisfies the following properties.
+\begin{itemize}
+\item[-] For any subsurface $V$ such that $\overline{V}^{\Omega} = \os$, $d_V(\widehat{y}_{\os}^{\Omega}, q) \leq M$ for some fixed constant $M$.
+\item[-] For any subsurfaces $V$ such that $\overline{V}^{\Omega} \swarrow \os$ or $\os \searrow \overline{V}^{\Omega}$, $q$ lies outside the active interval for $V$.
+\end{itemize}
+In the case where $\overline{V}^{\Omega} \swarrow \os$, we have that $d_V(q, y) \leq M$, since $q$ lies outside the active interval for $V$.
+But note that by construction of the projection tuple, $\pi_V(\widehat{y}_{\os}^\Omega) = y$, thus $d_V(\widehat{y}_{\os}^\Omega, q) \leq M$.
+Similarly, we have $d_V(\widehat{y}_{\os}^\Omega, q) \leq M$ for $\os \searrow \overline{V}^{\Omega}$ as well.
+Thus, by Rafi's distance formula, we have that $\widehat{y}_{\os}^\Omega$ is within a bounded distance of $q$ on $[p, y]$: we have $d_{\teich(\os)}(p, \widehat{y}_{\os}^{\Omega}) + d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \leq R + J$, for some constant $J$.
+Furthermore, $d_{\teich(\os)}(\widehat{y}_{\os}^{\Omega}, y) \geq \vepb R$, by the hypothesis of $y$ being a bad point, since $\widehat{y}_{\os}^{\Omega}$ is in the thick part of Teichmüller space.
 This simplifies the expression for $\mathfrak{L}(x,y)$.
 \begin{align*}
   \mathfrak{L}(x,y) &\leq \left( \hNP(\os) + \frac{K}{\mathbf{C}} \right) R - (\hNP(\os) - h)(\vepb) R + 2K \mathbf{C} \\
