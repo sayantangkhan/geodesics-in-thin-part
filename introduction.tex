@@ -73,39 +73,86 @@ Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no
 \end{theorem}
 % \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
-\textcite{gekhtman2023dynamics}, and \textcite{CGTY} (in upcoming work) prove the following theorems about statistically convex cocompact actions of subgroups of mapping class groups on Teichmüller space.
+Using Theorem \ref{thm:weak-convexity} and a result of \textcite{minsky1996quasi}, we have that the projection of balls disjoint from axes of the pseudo-Anosov elements have bounded diameter.
+This means pseudo-Anosov elements are \emph{strongly contracting}.
 
-\begin{theorem}[To appear in \textcite{CGTY}]
-  \label{thm:bms-finite}
-  Let $\Gamma$ be a subgroup of the mapping class group $\mcg(\os_g)$ whose action on $\teich(\no_g)$ is statistically convex-cocompact.
-  Then the Bowen-Margulis measure $\mu_{\mathrm{BMS}}$ on the unit cotangent bundle of $\teich(\os_g)/\Gamma$ is finite.
+Coulon (\cite{coulon2022patterson}, \cite{coulon2024ergodicity}) and Yang (\cite{10.1093/imrn/rny001}, \cite{yang2020genericity}) prove fairly general results in the setting of statistically convex cocompact group actions with strongly contracting elements.
+We state these results in our setting, where $\mcg(\no_g)$ plays the role of the group, $\systole(\no_g)$ is the metric space upon which $\mcg(\no_g)$ acts via a statistically convex cocompact action, and pseudo-Anosovs play the role of strongly contracting elements.
+
+\begin{theorem}[Purely exponential growth (Theorem B of \cite{10.1093/imrn/rny001})]
+  There exist positive constants $A$ and $B$ such that the following bounds hold for the cardinality of the $\mcg(\no_g)$ orbit of a point $p \in \systole(\no_g)$ in a ball of radius $R$.
+  \begin{align*}
+    A \exp(hR) \leq \#\left( \mcg(\no_g) \cdot p \cap B_R(p) \right) \leq B \exp(hR)
+  \end{align*}
+  Here, $h$ is the critical exponent for the group action.
 \end{theorem}
 
-\begin{theorem}[Theorem 4.9 of \cite{gekhtman2023dynamics}]
-  \label{thm:mixing-bms}
-  If $\Gamma$ is a subgroup of the mapping class group such that the associated Bowen-Margulis measure is finite, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+We also have that pseudo-Anosov elements are exponentially generic with respect to the induced metric on $\systole(\no_g)$.
+% (recall that the ratio of this metric to the standard Teichmüller metric is close to $1$)
+% .
+
+\begin{theorem}[Exponential genericity of pseudo-Anosovs (Theorem 1.4 of \cite{yang2020genericity})]
+  \label{thm:pure-exponential}
+  For a point $p \in \systole(\no_g)$, let $N(R)$ denote the number of mapping class elements $\gamma$ such that $d(p, \gamma p) \leq R$, and let $N_{nc}(R)$ denote the non pseudo-Anosov mapping class elements $\gamma$ such that $d(p, \gamma p) \leq R$.
+  Then there exists a positive constant $c$ such that the following holds for large enough $R$.
+  \begin{align*}
+    \frac{N_{nc}(R)}{N(R)} \leq \exp(-cR)
+  \end{align*}
 \end{theorem}
 
-As a corollary of the Theorem \ref{thm:mixing-bms}, we get the following results about the Patterson-Sullivan measures and the action of $\Gamma$ on the limit set.
-\begin{corollary}
-  \label{cor:niceness}
-  If $\Gamma$ is a subgroup of $\mcg(\os_g)$ such that the Bowen-Margulis measure associated to $\Gamma$ is finite, then the following results hold.
-  \begin{itemize}
-  \item There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\os_g)}$ on the limit set of $\Gamma$, given by the Patterson-Sullivan construction.
-  \item The action of $\Gamma$ on the limit set is ergodic.
-  \end{itemize}
-\end{corollary}
+After picking a basepoint $p \in \systole(\no_g)$, we can replicate the classical construction of Patterson-Sullivan measures \cite{sullivan1979density} to get a measure $\nu$ supported on the limit set $\pml^+(\no_g)$.
+Since we have that the action is statistically convex cocompact, and we have plenty of strongly contracting elements, the results of Coulon (\cite{coulon2022patterson},\cite{coulon2024ergodicity}) let us say a lot about the Patterson-Sullivan measure $\nu$.
+We have the Hopf-Tsuji-Sullivan dichotomy.
 
-We believe Theorem \ref{thm:bms-finite} also works when we consider the $\mcg(\no_g)$ action on $\systole(\no_g)$ instead of $\teich(\os_{g-1})$ (i.e.\ the Teichmüller space of the orientation double cover), since the proof of Theorem \ref{thm:bms-finite} relies on considering the limit set of the group, which is the same for the action on $\systole(\no_g)$ as it is for the action on the entire Teichmüller space (we proved this in \cite[Theorem 4.2]{limitsetkhan}).
+\begin{theorem}[Hopf-Tsuji-Sullivan dichotomy (Theorem 1.1 of \cite{coulon2024ergodicity})]
+  For the action of $\mcg(\no_g)$ on $\systole(\no_g)$, the following are equivalent.
+  \begin{enumerate}[(i)]
+  \item The Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent.
+  \item The measure $\nu$ gives full measure to the radial limit set.
+  \item The diagonal action on $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic with respect to the product measure $\nu \otimes \nu$.
+  \item The geodesic flow on the unit tangent bundle $(\pml^+(\no_g) \times \pml^+(\no_g) \times \mathbb{R})/\mcg(\no_g)$ is ergodic with respect to the Bowen-Margulis measure.
+  \end{enumerate}
+\end{theorem}
 
-Combining Theorem \ref{thm:statistical-convex-cocompactness} with Theorems \ref{thm:bms-finite} and \ref{thm:mixing-bms} lets us construct Patterson-Sullivan measures (with good dynamical properties) on the limit set, and a finite Bowen-Margulis measure on the unit cotangent bundle.
-% In particular, \textcite{CGTY} show that the construction of Patterson-Sullivan measures for statistically convex-cocompact subgroups of the mapping class groups leads to a finite geodesic flow invariant measure (i.e.\ the Bowen-Margulis measure) on the tangent bundle, and \textcite{gekhtman2023dynamics} show that finite Bowen-Margulis measure implies mixing of the geodesic flow in this setting.
-In particular, letting $\Gamma = \mcg(\no_g) < \mcg(\os_{g-1})$ gives us a version of Theorem \ref{thm:mixing-bms} and Corollary \ref{cor:niceness} for $\mcg(\no_g)$.
+It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent, and as a result, we have all the other equivalent criteria that appear in the Hopf-Tsuji-Sullivan dichotomy.
 
-\begin{corollary}
-  There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\no_g)}$ on the limit set $\pml^+(\no_g)$, given by the Patterson-Sullivan construction.
-  Furthermore, the action of $\mcg(\no_g)$ on $\pml^+(\no_g)$ is ergodic, and the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$ is mixing with respect to the Bowen-Margulis measure.
-\end{corollary}
+In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
+
+% {\color{red} Insert the new theorems here.}
+
+% \textcite{gekhtman2023dynamics}, and \textcite{CGTY} (in upcoming work) prove the following theorems about statistically convex cocompact actions of subgroups of mapping class groups on Teichmüller space.
+
+% \begin{theorem}[To appear in \textcite{CGTY}]
+%   \label{thm:bms-finite}
+%   Let $\Gamma$ be a subgroup of the mapping class group $\mcg(\os_g)$ whose action on $\teich(\no_g)$ is statistically convex-cocompact.
+%   Then the Bowen-Margulis measure $\mu_{\mathrm{BMS}}$ on the unit cotangent bundle of $\teich(\os_g)/\Gamma$ is finite.
+% \end{theorem}
+
+% \begin{theorem}[Theorem 4.9 of \cite{gekhtman2023dynamics}]
+%   \label{thm:mixing-bms}
+%   If $\Gamma$ is a subgroup of the mapping class group such that the associated Bowen-Margulis measure is finite, then the geodesic flow is mixing with respect to $\mu_{\mathrm{BMS}}$.
+% \end{theorem}
+
+% As a corollary of the Theorem \ref{thm:mixing-bms}, we get the following results about the Patterson-Sullivan measures and the action of $\Gamma$ on the limit set.
+% \begin{corollary}
+%   \label{cor:niceness}
+%   If $\Gamma$ is a subgroup of $\mcg(\os_g)$ such that the Bowen-Margulis measure associated to $\Gamma$ is finite, then the following results hold.
+%   \begin{itemize}
+%   \item There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\os_g)}$ on the limit set of $\Gamma$, given by the Patterson-Sullivan construction.
+%   \item The action of $\Gamma$ on the limit set is ergodic.
+%   \end{itemize}
+% \end{corollary}
+
+% We believe Theorem \ref{thm:bms-finite} also works when we consider the $\mcg(\no_g)$ action on $\systole(\no_g)$ instead of $\teich(\os_{g-1})$ (i.e.\ the Teichmüller space of the orientation double cover), since the proof of Theorem \ref{thm:bms-finite} relies on considering the limit set of the group, which is the same for the action on $\systole(\no_g)$ as it is for the action on the entire Teichmüller space (we proved this in \cite[Theorem 4.2]{limitsetkhan}).
+
+% Combining Theorem \ref{thm:statistical-convex-cocompactness} with Theorems \ref{thm:bms-finite} and \ref{thm:mixing-bms} lets us construct Patterson-Sullivan measures (with good dynamical properties) on the limit set, and a finite Bowen-Margulis measure on the unit cotangent bundle.
+% % In particular, \textcite{CGTY} show that the construction of Patterson-Sullivan measures for statistically convex-cocompact subgroups of the mapping class groups leads to a finite geodesic flow invariant measure (i.e.\ the Bowen-Margulis measure) on the tangent bundle, and \textcite{gekhtman2023dynamics} show that finite Bowen-Margulis measure implies mixing of the geodesic flow in this setting.
+% In particular, letting $\Gamma = \mcg(\no_g) < \mcg(\os_{g-1})$ gives us a version of Theorem \ref{thm:mixing-bms} and Corollary \ref{cor:niceness} for $\mcg(\no_g)$.
+
+% \begin{corollary}
+%   There exists a unique family of conformal densities $\left\{ \mu_x \right\}_{x \in \teich(\no_g)}$ on the limit set $\pml^+(\no_g)$, given by the Patterson-Sullivan construction.
+%   Furthermore, the action of $\mcg(\no_g)$ on $\pml^+(\no_g)$ is ergodic, and the geodesic flow on the restricted cotangent bundle over $\systole(\no_g)$ is mixing with respect to the Bowen-Margulis measure.
+% \end{corollary}
 
 % \begin{enumerate}[(i)]
 % \item Existence of a unique family of Patterson-Sullivan measures on the limit set $\pml^+(\no_g)$.
@@ -149,7 +196,7 @@ For non-orientable surfaces, the counting function does not behave like the orie
 \end{align*}
 These asymptotics raise the question of whether there is an exponent $h < 3g-6$ for which the non-orientable versions of \eqref{eq:counting-closed} and \eqref{eq:counting-simple-closed} continue to hold.
 
-By establishing that the action of $\mcg(\no_g)$ on $\teich(\no_g)$ is statistically convex-cocompact, we can use the results of Coulon, Gekhtman, Ma, Tapie, and Yang to count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
+If we can upgrade ergodicity of the geodesic flow to mixing of the geodesic flow, we can count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
 
 To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might help count simple closed curves on $\no_g$, we outline Mirzakhani's original proof of the fact for orientable surfaces (see \cite{mirzakhani2008growth} for the original proof, and \cite{2022arXiv220204156A} for a gentler exposition).
 
@@ -169,14 +216,14 @@ To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might h
 To replicate this proof in the non-orientable setting, we pick the original simple closed curve $\gamma$ to be a \emph{two-sided} curve, and replace the exponent $6g-6$ with $h + 1$, where $h$ is the critical exponent of $\mcg(\no_g)$.
 With these replacements, we have that the measures $\mu_L$ converge to an $\mcg(\no_g)$-invariant measure supported on $\ml^+(\no_g)$ (this is a result of \textcite{erlandsson2023mapping}).
 Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
-\begin{question}
-  Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
-\end{question}
+% \begin{question}
+%   Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
+% \end{question}
 
 \begin{question}
-  Is the limiting measure $\mu$ absolutely continuous with respect to an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$?
+  Is the limiting measure $\mu$ absolutely continuous with respect to the ergodic measure on $\ml^+(\no_g)$ obtained by taking a product of Patterson-Sullivan measure and the Lebesgue measure?
 \end{question}
-If the answer both the questions is yes, then one will have completed Step 2 of the proof for non-orientable surfaces.
+If the answer to the question is yes, then one will have completed Step 2 of the proof for non-orientable surfaces.
 
 Making Step 3 work for non-orientable surfaces is still open: this would require coming up with a recursive formula for volumes of $\systole(\no_g)$ (or some other finite volume subset), and not all of $\teich(\no_g)$, since that has infinite $\nu_N$-volume.
 
@@ -243,6 +290,7 @@ We do this by showing that $\hNP$ for a proper subsurface is strictly smaller th
 
 The author would like to thank his advisor Alex Wright for constant support for the duration of this project.
 The author would also like to thank Spencer Dowdall, Howard Masur, Kasra Rafi, and Jacob Russell for explaining various aspects of hierarchical hyperbolicity.
+The author would also like to thank Ilya Gekhtman for comments on an earlier draft of the paper.
 The work done in this paper was supported by the Rackham Predoctoral Fellowship for the academic year 2022-2023.
 
 % {\color{red} Figure out the name of the grant I should thank.}
