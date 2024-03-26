@@ -35,14 +35,15 @@ If we wish to show that $\mcg(\no_g)$ acts geometrically finitely, this is the q
 % For instance, one could define a subset $\wt{\systole}(\no_g)$, which is the subset of $\teich(\no_g)$ where the \emph{extremal length} of no one-sided curve is shorter than $\vept$.
 % This subset could pos
 
-Alternatively, if we wish to show that $\mcg(\no_g)$ acts statistically convex-cocompactly on $\teich(\no_g)$, where $\systole(\no_g)$ acts as the statistical convex core, this is the question we need to answer.
+Alternatively, if we wish to show that $\mcg(\no_g)$ acts statistically convex-cocompactly on $\teich(\no_g)$, where $\thick(\no_g)$ acts as the statistical convex core, this is the question we need to answer.
 
 \begin{question}
   \label{ques:full-stat-core}
-  Is $\systole(\no_g)$ statistically convex?
+  Is $\thick(\no_g)$ statistically convex?
 \end{question}
 
-We suspect the answer to Question \ref{ques:full-stat-core} is no, since our methods for proving statistical convexity rely on proving recurrence of random walks on $\teich(\no_g)$, and random walks on all of $\teich(\no_g)$ have poor recurrence properties when they enter regions where one-sided curves are short.
+We suspect the answer to Question \ref{ques:full-stat-core} is yes, despite our methods not working.
+Our methods for proving statistical convexity rely on proving recurrence of random walks on $\teich(\no_g)$, and random walks on all of $\teich(\no_g)$ have poor recurrence properties when they enter regions where one-sided curves are short.
 When the random walks enter these one-sided thin regions, they behave like symmetric random walks on $\mathbb{Z}$, which we know do not have very strong recurrence properties.
 We explain this in more detail in Section \ref{sec:why-approach-fails}, when we set up the machinery of Foster-Lyapunov-Margulis functions.
 
@@ -204,6 +205,52 @@ For the remainder of this paper, we fix $\vepd < \left(  \frac{1}{6g-12} \right)
   We call $\systole(\no_g)$ the weak convex core of $\teich(\no_g)$, and denote it $\core(\teich(\no_g))$.
   % The specific value of $\vept$ will usually not be important (as long as it is smaller than a threshold value), or clear from context.
 \end{definition}
+
+We now also provide a partial classification of the \emph{strongly contracting} elements of $\mcg(\no_g)$ for the metric space $\systole(\no_g)$.
+
+\begin{definition}[Strongly contracting element]
+  An infinite order element $\gamma$ in $\mcg(\no_g)$ is said to be strongly contracting if there exists a $p \in \systole(\no_g)$ such that the following two conditions hold.
+  \begin{enumerate}[(i)]
+  \item $\left\{ \gamma^i p \right\}_{i \in \mathbb{Z}}$ quasi-isometrically embeds in $\systole(\no_g)$.
+  \item For any ball of radius $R$ disjoint from $\left\{ \gamma^i p \right\}$, its projection onto $\left\{ \gamma^i p \right\}$ has uniformly bounded diameter.
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}[Partial classification of strongly contracting elements]
+  \label{lem:strongly-contract-class}
+  Let $\gamma$ be an infinite order element in $\mcg(\no_g)$.
+  \begin{enumerate}[(i)]
+  \item If $\gamma$ is pseudo-Anosov, then $\gamma$ is strongly contracting.
+  \item If $\gamma$ leaves a two-sided curve invariant, then $\gamma$ is not strongly contracting.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  We deal with the two cases separately.
+  \begin{description}
+  \item[Case (i)] In this case, we pick $p$ to lie along the axis of the pseudo-Anosov $\gamma$.
+    Passing to the orientable double cover, we have that the projection of any ball disjoint from the axis has bounded diameter, by \textcite{minsky1996quasi}.
+    Since $\teich(\no_g)$ isometrically embeds inside the Teichmüller space of the double cover, we have the claim for $\teich(\no_g)$.
+    To show now that the result holds for $\systole(\no_g)$, observe that the induced metric on $\systole(\no_g)$ is minimally distorted from the metric on $\teich(\no_g)$, by Lemma \ref{thm:weak-convexity}.
+    One of two things can happen: the axis of $\gamma$ lies in $\systole(\no_g)$, or it lies outside.
+    In the first case, we project as usual, and by Lemma ref{thm:weak-convexity}, the size of the projection increases by a bounded multiplicative factor.
+    In the second case, we first create a new axis, by projecting the old axis onto $\systole(\no_g)$.
+    We then get a projection of a ball by first projecting to the old axis, and then composing that with the second projection.
+    This composed projection still has bounded diameter because the first projection does, and the second projection increases distances by a multiplicative factor.
+  \item[Case (ii)] In this case, we need to show there is no choice of $p$ such that the projection onto $\left\{ \gamma^i p \right\}$ has bounded diameter.
+    Suppose there is such a $p$: we will construct a family of balls disjoint from $\gamma$ with arbitrarily large projections onto $\gamma$.
+    We can assume without loss of generality that at $p$, one of the invariant two-sided is short.
+    If not, we can create a new point $p^{\prime}$ where this is the case, and the orbits $\left\{ \gamma^i p \right\}$ and $\left\{ \gamma^i p^{\prime} \right\}$ have unbounded projections onto each other, and if a family of balls has unbounded projections on $\left\{ \gamma^i p^{\prime} \right\}$, it will also have unbounded projections on $\left\{ \gamma^i p \right\}$.
+
+    Since we have that some two-sided curve $\kappa$ is short at $p$, and $\gamma$ leaves $\kappa$ invariant, we have that the entire orbit $\left\{ \gamma^i p \right\}$ lies in the product region associated to $\kappa$.
+    In this product region, it is easy to verify that the projection of a ball of radius $R$ disjoint from $\left\{ \gamma^i p \right\}$ will have projection diameter approximately $2R$, by Minsky's product region theorem.
+  \end{description}
+  This proves the theorem in the two cases we specified.
+\end{proof}
+
+\begin{remark}
+  The only case the above classification does not deal with is the case where $\gamma$ is a pseudo-Anosov on a subsurface that is the complement of only one-sided curves.
+\end{remark}
 
 %%% Local Variables:
 %%% TeX-master: "main"

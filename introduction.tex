@@ -1,6 +1,11 @@
 \section{Introduction}
 \label{sec:introduction}
 
+% \todo[inline]{Mention to CGTY result anyways.}
+% \todo[inline]{Move the SCC convexity question to the intro.}
+% \todo[inline]{Could bias random walk in one sided region to prove stronger SCC results}
+% \todo[inline]{Add ``A Mirzakhani recursion for non-orientable surfaces'' reference}
+
 % {\color{red} Outline of introduction.}
 % \begin{enumerate}[(i)]
 % \item List similarities with IVGF surfaces, and point out where analogy breaks down.
@@ -18,9 +23,9 @@ Mapping class groups $\mcg(\no_g)$ of non-orientable surfaces $\no_g$ have many 
 
 \begin{enumerate}[(i)]
 \item The mapping class groups $\mcg(\no_g)$ are finitely presented.
-\item The action of $\mcg(\no_g)$ on the Teichmüller space $\teich(\no_g)$, has infinite $\nu_N$-covolume, where $\nu_N$ is the generalization of the Weil-Petersson volume form on Teichmüller spaces of non-orientable surfaces (\cite[Theorem 17.1]{gendulphe2017whats} and \cite{norbury2008lengths}).
+\item The action of $\mcg(\no_g)$ on the Teichmüller space $\teich(\no_g)$ has infinite $\nu_N$-covolume, where $\nu_N$ is the generalization of the Weil-Petersson volume form on Teichmüller spaces of non-orientable surfaces (\cite[Theorem 17.1]{gendulphe2017whats} and \cite{norbury2008lengths}).
 \item The limit set of $\mcg(\no_g)$ in the Thurston boundary of $\teich(\no_g)$ is $\pml^+(\no_g)$, i.e.\ the projective measured laminations that have no two-sided components  (\cite{erlandsson2023mapping} and \cite{limitsetkhan}), which is a subset of the boundary with zero Lebesgue measure (\cite{norbury2008lengths}).
-\item The Teichmüller geodesic flow is not ergodic with respect to any Borel measure on the unit cotangent bundle with full support (\cite[Proposition 17.5]{gendulphe2017whats})
+\item The Teichmüller geodesic flow is not ergodic with respect to any Borel measure on the unit cotangent bundle with full support (\cite[Proposition 17.5]{gendulphe2017whats}).
 \item There exists an $\mcg(\no_g)$-equivariant deformation retract of $\teich(\no_g)$ to $\systole(\no_g)$, the subset where no one-sided curve is shorter than $\vept > 0$. The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is finite $\nu_N$-covolume \cite[Proposition 19.1]{gendulphe2017whats}.
 \end{enumerate}
 
@@ -64,7 +69,7 @@ However, the results on lattices (and Teichmüller spaces of orientable surfaces
 
 For non-orientable surfaces, we do not have an analog of the horocycle flow on the space of quadratic differentials, so we cannot hope to directly import the techniques from the orientable case.
 However, \textcite{10.1093/imrn/rny001} introduced a notion of \emph{statistically convex-cocompact action}, which can replace the notion of a lattice-like action for our setting.
-In the setting of $\systole(\no_g)$, proving statistical convex-cocompactness is equivalent to proving that geodesic segments between $\mcg(\no_g)$ orbit points in $\systole(\no_g)$ enter the thin part (i.e.\ the region in $\systole(\no_g)$ where some two-sided curve is short) with exponentially low probabilities.
+In the setting of $\systole(\no_g)$, proving statistical convex-cocompactness is equivalent to proving that geodesic segments between $\mcg(\no_g)$ orbit points in $\systole(\no_g)$ enter the thin part (i.e.\ the region in $\systole(\no_g)$ where some two-sided curve is short) with low probabilities.
 
 Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no_g)$.
 \begin{theorem}[Corollary of Theorems \ref{thm:entropy-equality-implies-scc} and \ref{thm:entropy-equality}]
@@ -74,10 +79,11 @@ Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no
 % \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
 Using Theorem \ref{thm:weak-convexity} and a result of \textcite{minsky1996quasi}, we have that the projection of balls disjoint from axes of the pseudo-Anosov elements have bounded diameter.
-This means pseudo-Anosov elements are \emph{strongly contracting}.
+This means pseudo-Anosov elements are \emph{strongly contracting} and most reducible elements are not (see Lemma \ref{lem:strongly-contract-class}).
 
 Coulon (\cite{coulon2022patterson}, \cite{coulon2024ergodicity}) and Yang (\cite{10.1093/imrn/rny001}, \cite{yang2020genericity}) prove fairly general results in the setting of statistically convex cocompact group actions with strongly contracting elements.
-We state these results in our setting, where $\mcg(\no_g)$ plays the role of the group, $\systole(\no_g)$ is the metric space upon which $\mcg(\no_g)$ acts via a statistically convex cocompact action, and pseudo-Anosovs play the role of strongly contracting elements.
+We state these results in our setting, where $\mcg(\no_g)$ plays the role of the group, $\systole(\no_g)$ is the metric space (where $d_{\vept}$ denotes the distance function) upon which $\mcg(\no_g)$ acts via a statistically convex cocompact action, and pseudo-Anosovs play the role of strongly contracting elements.
+We also denote balls of radius $R$ with respect to the metric $d_{\vept}$ centered at $p$ as $B_R(p)$.
 
 \begin{theorem}[Purely exponential growth (Theorem B of \cite{10.1093/imrn/rny001})]
   There exist positive constants $A$ and $B$ such that the following bounds hold for the cardinality of the $\mcg(\no_g)$ orbit of a point $p \in \systole(\no_g)$ in a ball of radius $R$.
@@ -91,9 +97,9 @@ We also have that pseudo-Anosov elements are exponentially generic with respect 
 % (recall that the ratio of this metric to the standard Teichmüller metric is close to $1$)
 % .
 
-\begin{theorem}[Exponential genericity of pseudo-Anosovs (Theorem 1.4 of \cite{yang2020genericity})]
+\begin{theorem}[Exponential genericity of contracting elements (Theorem 1.4 of \cite{yang2020genericity})]
   \label{thm:pure-exponential}
-  For a point $p \in \systole(\no_g)$, let $N(R)$ denote the number of mapping class elements $\gamma$ such that $d(p, \gamma p) \leq R$, and let $N_{nc}(R)$ denote the non pseudo-Anosov mapping class elements $\gamma$ such that $d(p, \gamma p) \leq R$.
+  For a point $p \in \systole(\no_g)$, let $N(R)$ denote the number of mapping class elements $\gamma$ such that $d_{\vept}(p, \gamma p) \leq R$, and let $N_{nc}(R)$ denote the reducible mapping class elements $\gamma$ that leave a two-sided curve invariant, $d_{\vept}(p, \gamma p) \leq R$.
   Then there exists a positive constant $c$ such that the following holds for large enough $R$.
   \begin{align*}
     \frac{N_{nc}(R)}{N(R)} \leq \exp(-cR)
@@ -115,6 +121,13 @@ We have the Hopf-Tsuji-Sullivan dichotomy.
 \end{theorem}
 
 It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent, and as a result, we have all the other equivalent criteria that appear in the Hopf-Tsuji-Sullivan dichotomy.
+
+\begin{remark}
+  \textcite{coulon2024ergodicity} states the above theorem where the role of boundary is played by the horofunction boundary of the metric space, which for the Teichmüller space is \emph{not} the Thurston boundary $\pml(\no_g)$.
+  However, \textcite{miyachi2008teichmuller} proves that there is an $\mcg(\no_g)$ equivariant bijective map between the uniquely ergodic points in the horofunction boundary, and the uniquely ergodic points in the Thurston boundary.
+  Furthermore, by condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points have full measure, and Masur's criterion gives us that radial limit points are uniquely ergodic.
+  This lets us replace the horofunction boundary with the Thurston boundary in the statement of the result, since they agree on a full measure set.
+\end{remark}
 
 In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
 
@@ -195,8 +208,16 @@ For non-orientable surfaces, the counting function does not behave like the orie
   M_{\mathrm{no}}(R) &= o(R^{3g-6})
 \end{align*}
 These asymptotics raise the question of whether there is an exponent $h < 3g-6$ for which the non-orientable versions of \eqref{eq:counting-closed} and \eqref{eq:counting-simple-closed} continue to hold.
+For $g = 3$, \textcite{10.1093/imrn/rny112} obtained precise asymptotics, and in this case, the growth rate is a non-integer exponent smaller than $3g - 6 = 3$.
 
 If we can upgrade ergodicity of the geodesic flow to mixing of the geodesic flow, we can count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
+
+One way to do this would be to answer the following question.
+\begin{question}[Restatement of Question \ref{ques:full-stat-core}]
+  Is the action of $\mcg(\no_g)$ on $\teich(\no_g)$ statistically convex cocompact, where $\thick(\no_g)$ plays the role of statistical convex core?
+\end{question}
+We expect the answer to this question is yes, despite our random walk methods not working in this setting.
+If the answer is yes, we can use the results of \textcite{CGTY} to establish mixing of the geodesic flow with respect to the Bowen-Margulis measure, and use that to count lattice points.
 
 To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might help count simple closed curves on $\no_g$, we outline Mirzakhani's original proof of the fact for orientable surfaces (see \cite{mirzakhani2008growth} for the original proof, and \cite{2022arXiv220204156A} for a gentler exposition).
 
@@ -214,7 +235,12 @@ To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might h
 \end{proof}
 
 To replicate this proof in the non-orientable setting, we pick the original simple closed curve $\gamma$ to be a \emph{two-sided} curve, and replace the exponent $6g-6$ with $h + 1$, where $h$ is the critical exponent of $\mcg(\no_g)$.
-With these replacements, we have that the measures $\mu_L$ converge to an $\mcg(\no_g)$-invariant measure supported on $\ml^+(\no_g)$ (this is a result of \textcite{erlandsson2023mapping}).
+With this replacement, we have the following question.
+\begin{question}
+  Do the sequence of measures $\mu_L$ converge to a locally finite measure supported on $\ml^+(\no_g)$?
+\end{question}
+
+\textcite{erlandsson2023mapping} show that the $\mcg(\no_g)$ orbit closure of such a point indeed is $\ml^+(\no_g)$, but the question about convergence of measures is still open.
 Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
 % \begin{question}
 %   Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
@@ -225,7 +251,9 @@ Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)
 \end{question}
 If the answer to the question is yes, then one will have completed Step 2 of the proof for non-orientable surfaces.
 
-Making Step 3 work for non-orientable surfaces is still open: this would require coming up with a recursive formula for volumes of $\systole(\no_g)$ (or some other finite volume subset), and not all of $\teich(\no_g)$, since that has infinite $\nu_N$-volume.
+To make Step 3 work for non-orientable surfaces, one needs to construct a recursive formula for the volumes of $\systole(\no_g)$: this has been done by \textcite{stanford2023mirzakhani}.
+
+% Making Step 3 work for non-orientable surfaces is still open: this would require coming up with a recursive formula for volumes of $\systole(\no_g)$ (or some other finite volume subset), and not all of $\teich(\no_g)$, since that has infinite $\nu_N$-volume.
 
 % While just mixing of the geodesic flow is not strong enough to obtain the error terms for the counting function $N(R)$, exponential mixing is strong enough, and the error terms provide a way to count simple closed curves, and obtain a version of \eqref{eq:counting-simple-closed} for non-orientable surfaces.
 % \todo[inline]{State this as a question}
