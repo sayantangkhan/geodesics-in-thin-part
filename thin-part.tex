@@ -348,7 +348,8 @@ We will use the term $r$ to denote trajectories in $\traj(n, \tau)$, and $r_i$ t
   We now iterate \eqref{eq:to-iterate-bad} $2\mathfrak{s}$ times and \eqref{eq:to-iterate} $n-2\mathfrak{s}$ times.
   \begin{align*}
     \sum_{r \in \traj(n, \tau)} \flm(r_{n-1}) &\leq (Be)^{2\mathfrak{s}} \cdot \left( C^{\prime} \tau \right)^{n- 2 \mathfrak{s}} \exp((\hNP - 1 + \veperr^{\prime})n\tau) \flm(r_0) \\
-                                              &= \flm(r_0) \cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau  \right)\left(  \frac{n- 2\mathfrak{s}}{n} \right) + \log\left( Be \right)\left( \frac{2\mathfrak{s}}{n} \right)}{\tau} \right) n\tau \right)
+                                              &= \flm(r_0) \\
+                                              &\cdot \exp\left( \left( \hNP - 1 + \veperr^{\prime} + \frac{\log\left( C^{\prime} \tau  \right)\left(  \frac{n- 2\mathfrak{s}}{n} \right) + \log\left( Be \right)\left( \frac{2\mathfrak{s}}{n} \right)}{\tau} \right) n\tau \right)
   \end{align*}
   By picking $\tau$ large enough so that $\mathfrak{s} \leq 4$ and  $\veperr^{\prime} + \frac{\log\left( C^{\prime} \tau  \right)\left(  \frac{n- 2\mathfrak{s}}{n} \right) + \log\left( Be \right)\left( \frac{2\mathfrak{s}}{n} \right)}{\tau} < \veperr$, we get the claimed result.
 \end{proof}
