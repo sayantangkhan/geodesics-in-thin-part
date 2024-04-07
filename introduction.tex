@@ -82,7 +82,7 @@ Using Theorem \ref{thm:weak-convexity} and a result of \textcite{minsky1996quasi
 This means pseudo-Anosov elements are \emph{strongly contracting} and most reducible elements are not (see Lemma \ref{lem:strongly-contract-class}).
 
 Coulon (\cite{coulon2022patterson}, \cite{coulon2024ergodicity}) and Yang (\cite{10.1093/imrn/rny001}, \cite{yang2020genericity}) prove fairly general results in the setting of statistically convex cocompact group actions with strongly contracting elements.
-We state these results in our setting, where $\mcg(\no_g)$ plays the role of the group, $\systole(\no_g)$ is the metric space (where $d_{\vept}$ denotes the distance function) upon which $\mcg(\no_g)$ acts via a statistically convex cocompact action, and pseudo-Anosovs play the role of strongly contracting elements.
+We state these results in our setting, where $\mcg(\no_g)$ plays the role of the group, $\systole(\no_g)$ is the metric space upon which $\mcg(\no_g)$ acts via a statistically convex cocompact action (and $d_{\vept}$ denotes the distance function), and pseudo-Anosovs play the role of strongly contracting elements.
 We also denote balls of radius $R$ with respect to the metric $d_{\vept}$ centered at $p$ as $B_R(p)$.
 
 \begin{theorem}[Purely exponential growth (Theorem B of \cite{10.1093/imrn/rny001})]
@@ -99,7 +99,7 @@ We also have that pseudo-Anosov elements are exponentially generic with respect 
 
 \begin{theorem}[Exponential genericity of contracting elements (Theorem 1.4 of \cite{yang2020genericity})]
   \label{thm:pure-exponential}
-  For a point $p \in \systole(\no_g)$, let $N(R)$ denote the number of mapping class elements $\gamma$ such that $d_{\vept}(p, \gamma p) \leq R$, and let $N_{nc}(R)$ denote the reducible mapping class elements $\gamma$ that leave a two-sided curve invariant, $d_{\vept}(p, \gamma p) \leq R$.
+  For a point $p \in \systole(\no_g)$, let $N(R)$ denote the number of mapping class elements $\gamma$ such that $d_{\vept}(p, \gamma p) \leq R$, and let $N_{nc}(R)$ denote the reducible mapping class elements $\gamma$ that leave a two-sided curve invariant, and $d_{\vept}(p, \gamma p) \leq R$.
   Then there exists a positive constant $c$ such that the following holds for large enough $R$.
   \begin{align*}
     \frac{N_{nc}(R)}{N(R)} \leq \exp(-cR)
@@ -108,15 +108,16 @@ We also have that pseudo-Anosov elements are exponentially generic with respect 
 
 After picking a basepoint $p \in \systole(\no_g)$, we can replicate the classical construction of Patterson-Sullivan measures \cite{sullivan1979density} to get a measure $\nu$ supported on the limit set $\pml^+(\no_g)$.
 Since we have that the action is statistically convex cocompact, and we have plenty of strongly contracting elements, the results of Coulon (\cite{coulon2022patterson},\cite{coulon2024ergodicity}) let us say a lot about the Patterson-Sullivan measure $\nu$.
-We have the Hopf-Tsuji-Sullivan dichotomy.
+We have the Hopf-Tsuji-Sullivan dichotomy (or rather, the divergent half of the result).
 
 \begin{theorem}[Hopf-Tsuji-Sullivan dichotomy (Theorem 1.1 of \cite{coulon2024ergodicity})]
+  \label{thm:hts-dichotomy}
   For the action of $\mcg(\no_g)$ on $\systole(\no_g)$, the following are equivalent.
   \begin{enumerate}[(i)]
   \item The Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent.
   \item The measure $\nu$ gives full measure to the radial limit set.
   \item The diagonal action on $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic with respect to the product measure $\nu \otimes \nu$.
-  \item The geodesic flow on the unit tangent bundle $(\pml^+(\no_g) \times \pml^+(\no_g) \times \mathbb{R})/\mcg(\no_g)$ is ergodic with respect to the Bowen-Margulis measure.
+  \item The geodesic flow on the unit tangent bundle $((\pml^+(\no_g) \times \pml^+(\no_g) \setminus \Delta) \times \mathbb{R})/\mcg(\no_g)$ is ergodic with respect to the Bowen-Margulis measure (where $\Delta$ denotes the pairs of projective measured foliations that do not fill the surface).
   \end{enumerate}
 \end{theorem}
 
@@ -124,9 +125,15 @@ It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincar
 
 \begin{remark}
   \textcite{coulon2024ergodicity} states the above theorem where the role of boundary is played by the horofunction boundary of the metric space, which for the Teichmüller space is \emph{not} the Thurston boundary $\pml(\no_g)$.
-  However, \textcite{miyachi2008teichmuller} proves that there is an $\mcg(\no_g)$ equivariant bijective map between the uniquely ergodic points in the horofunction boundary, and the uniquely ergodic points in the Thurston boundary.
-  Furthermore, by condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points have full measure, and Masur's criterion gives us that radial limit points are uniquely ergodic.
-  This lets us replace the horofunction boundary with the Thurston boundary in the statement of the result, since they agree on a full measure set.
+  To state conditions (iii) and (iv) of Theorem \ref{thm:hts-dichotomy} for the Thurston boundary, rather than the horofunction boundary, we use the following sequence of results.
+  \begin{enumerate}[(i)]
+  \item \textcite{miyachi2008teichmuller} proves that there is an $\mcg(\no_g)$ equivariant bijective map between the uniquely ergodic points in the horofunction boundary, and the uniquely ergodic points in the Thurston boundary.
+  \item By condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points in the horofunction boundary have full measure.
+  \item A geodesic converging to a radial limit point stays within bounded distance of the mapping class group orbit, and by Masur's criterion for unique ergodicity \cite{masur1982interval}, we have that the corresponding limit point in the boundary must be uniquely ergodic.
+  \item Consequently, the uniquely ergodic limit points have full measure in the horofunction boundary, and we can thus replace that with the Thurston boundary, since they agree on a full measure subset.
+  \end{enumerate}
+  % Furthermore, by condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points have full measure, and Masur's criterion gives us that radial limit points are uniquely ergodic.
+  % This lets us replace the horofunction boundary with the Thurston boundary in the statement of the result, since they agree on a full measure set.
 \end{remark}
 
 In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
@@ -182,7 +189,7 @@ In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+
 
 \subsubsection*{Counting functions}
 
-Understanding the dynamics of the geodesic flow over the moduli space of \emph{orientable surfaces} has led to solutions for two counting problems: one on the moduli space of hyperbolic surfaces, and one on hyperbolic surfaces themselves.
+Understanding the dynamics of the geodesic flow over the moduli space of \emph{orientable surfaces} has led to solutions for two counting problems: one on the moduli space of orientable hyperbolic surfaces, and one on orientable hyperbolic surfaces themselves.
 
 \begin{enumerate}[(i)]
 \item Counting closed curves in moduli space: Via techniques originally introduced to Margulis in his thesis \cite{margulis2004some}, one can reduce counting closed curves, which are conjugacy classes of mapping class group orbit points, to understanding the geodesic flow over the moduli space.
