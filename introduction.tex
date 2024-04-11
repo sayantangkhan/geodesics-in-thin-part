@@ -52,7 +52,7 @@ However, we show that this failure of quasi-convexity is not a serious obstructi
 % \todo[inline]{Should not have $\vept$ and constant $t$ in the same theorem statement.}
 
 Theorem \ref{thm:weak-convexity} shows that $\systole(\no_g)$, despite not being convex, almost behaves like the convex core of $\teich(\no_g)$: it is a metric subset of $\teich(\no_g)$ (with respect to the induced path metric) which is distorted by an arbitrarily small amount.
-We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$, and focus our attention on this subspace as a metric space, where the metric is the induced path metric.
+We call $\systole(\no_g)$ the \emph{weak convex core} of $\teich(\no_g)$, and focus our attention on this subspace as a metric space, where the metric is the induced path metric, which we denote by $d_{\vept}$ (in all of our results that follow, we are using this metric on $\systole(\no_g)$, and not the Teichmüller metric).
 If we restrict our attention to the cotangent directions in $\teich(\no_g)$ along which the geodesic flow does not eventually leave $\systole(\no_g)$, we can use those cotangent directions to define a geodesic flow for $\systole(\no_g)$.
 We call this collection of restricted directions the restricted cotangent bundle over $\systole(\no_g)$.
 
@@ -74,7 +74,7 @@ In the setting of $\systole(\no_g)$, proving statistical convex-cocompactness is
 Our main result is that this holds for the $\mcg(\no_g)$ action on $\systole(\no_g)$.
 \begin{theorem}[Corollary of Theorems \ref{thm:entropy-equality-implies-scc} and \ref{thm:entropy-equality}]
   \label{thm:statistical-convex-cocompactness}
-  The action of $\mcg(\no_g)$ on $\systole(\no_g)$ is statistically convex-cocompact.
+  The action of $\mcg(\no_g)$ on $(\systole(\no_g), d_{\vept})$ is statistically convex-cocompact.
 \end{theorem}
 % \todo{Is stating that statistical convexity follows as a corollary of two theorems okay?}
 
@@ -107,6 +107,8 @@ We also have that pseudo-Anosov elements are exponentially generic with respect 
 \end{theorem}
 
 After picking a basepoint $p \in \systole(\no_g)$, we can replicate the classical construction of Patterson-Sullivan measures \cite{sullivan1979density} to get a measure $\nu$ supported on the limit set $\pml^+(\no_g)$.
+However, for Theorem \ref{thm:hts-dichotomy}, we need to consider the limit set in an alternative compactification, namely the horofunction compactification, and consider the Patterson-Sullivan measure on the limit set in this compactification.
+We will abuse notation, and denote the Patterson-Sullivan measure on this limit set by $\nu$ as well.
 Since we have that the action is statistically convex cocompact, and we have plenty of strongly contracting elements, the results of Coulon (\cite{coulon2022patterson},\cite{coulon2024ergodicity}) let us say a lot about the Patterson-Sullivan measure $\nu$.
 We have the Hopf-Tsuji-Sullivan dichotomy (or rather, the divergent half of the result).
 
@@ -146,11 +148,13 @@ It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincar
   % This lets us replace the horofunction boundary with the Thurston boundary in the statement of the result, since they agree on a full measure set.
 
   In our setting, i.e. the $\mcg(\no_g)$ action on $\systole(\no_g)$ with the $d_{\vept}$ metric, we do not know if there is an $\mcg(\no_g)$-equivariant map between the uniquely ergodic points in the Thurston boundary with a full measure subset of the horofunction boundary.
-  If there were such a map, we could use that map to state conditions (iii) and (iv) in Theorem \ref{thm:hts-dichotomy} where $\pml^+(\no_g)$ plays the role of the limit set.
-  \begin{question}[Analog of Miyachi's result for the $d_{\vept}$ horofunction boundary]
-  \label{ques:horoboundary}
-    Is there an $\mcg(\no_g)$-equivariant map from the uniquely ergodic points in $\pml^+(\no_g)$ to a full measure subset of the horofunction boundary associated to the metric $d_{\vept}$?
-  \end{question}
+  We do not even have a very good description of the horofunction boundary of $(\systole(\no_g), d_{\vept})$ in terms of measured foliations on $\no_g$.
+  One way to obtain ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ would be to get an affirmative answer to the following question.
+\begin{question}[Restatement of Question \ref{ques:full-stat-core}]
+  \label{ques:full-scc}
+  Is the action of $\mcg(\no_g)$ on $(\teich(\no_g), d_T)$ statistically convex cocompact, where $d_T$ is the Teichmüller metric?
+\end{question}
+We expect the answer to this question is yes, despite our random walk methods of our proof not working in this setting.
 \end{remark}
 
 % In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
@@ -236,13 +240,7 @@ For $g = 3$, \textcite{10.1093/imrn/rny112} obtained precise asymptotics, and in
 
 If we can upgrade ergodicity of the geodesic flow to mixing of the geodesic flow, we can count lattice points and their conjugacy classes to obtain a non-orientable version of \eqref{eq:counting-closed} where the role of $h$ is played by the critical exponent for the group action of $\mcg(\no_g)$ with respect to the Teichmüller metric.
 
-One way to do this would be to answer the following question.
-\begin{question}[Restatement of Question \ref{ques:full-stat-core}]
-  \label{ques:full-scc}
-  Is the action of $\mcg(\no_g)$ on $\teich(\no_g)$ statistically convex cocompact, where $\thick(\no_g)$ plays the role of statistical convex core?
-\end{question}
-We expect the answer to this question is yes, despite our random walk methods not working in this setting.
-If the answer is yes, we can use the results of \textcite{CGTY} to establish mixing of the geodesic flow with respect to the Bowen-Margulis measure, and use that to count lattice points.
+If the answer to Question \ref{ques:full-scc} is yes, we can use the results of \textcite{CGTY} to establish mixing of the geodesic flow with respect to the Bowen-Margulis measure, and use that to count lattice points.
 
 To explain how ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ might help count simple closed curves on $\no_g$, we outline Mirzakhani's original proof of the fact for orientable surfaces (see \cite{mirzakhani2008growth} for the original proof, and \cite{2022arXiv220204156A} for a gentler exposition).
 
@@ -266,7 +264,7 @@ With this replacement, we have the following question.
 \end{question}
 
 \textcite{erlandsson2023mapping} show that the $\mcg(\no_g)$ orbit closure of such a point indeed is $\ml^+(\no_g)$, but the question about convergence of measures is still open.
-Since our results suggest that the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ is ergodic with respect to the Patterson-Sullivan measures (and answering either Question \ref{ques:horoboundary} or \ref{ques:full-scc} would imply ergodicity), we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
+Since our results suggest that the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ is ergodic with respect to the Patterson-Sullivan measures (and answering Question \ref{ques:full-scc} would imply ergodicity), we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
 % \begin{question}
 %   Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
 % \end{question}

@@ -212,7 +212,7 @@ We now also provide a partial classification of the \emph{strongly contracting} 
   An infinite order element $\gamma$ in $\mcg(\no_g)$ is said to be strongly contracting if there exists a $p \in \systole(\no_g)$ such that the following two conditions hold.
   \begin{enumerate}[(i)]
   \item $\left\{ \gamma^i p \right\}_{i \in \mathbb{Z}}$ quasi-isometrically embeds in $\systole(\no_g)$.
-  \item For any ball of radius $R$ disjoint from $\left\{ \gamma^i p \right\}$, its projection onto $\left\{ \gamma^i p \right\}$ has uniformly bounded diameter.
+  \item For any ball of radius $R$ disjoint from $\left\{ \gamma^i p \right\}$, its closest point projection onto $\left\{ \gamma^i p \right\}$ has uniformly bounded diameter.
   \end{enumerate}
 \end{definition}
 
@@ -229,21 +229,29 @@ We now also provide a partial classification of the \emph{strongly contracting} 
   We deal with the two cases separately.
   \begin{description}
   \item[Case (i)] In this case, we pick $p$ to lie along the axis of the pseudo-Anosov $\gamma$.
-    Passing to the orientable double cover, we have that the projection of any ball disjoint from the axis has bounded diameter, by \textcite{minsky1996quasi}.
+    Passing to the orientable double cover, we have that the closest point projection of any ball disjoint from the axis has bounded diameter, by \textcite{minsky1996quasi}.
     Since $\teich(\no_g)$ isometrically embeds inside the Teichmüller space of the double cover, we have the claim for $\teich(\no_g)$.
     To show now that the result holds for $\systole(\no_g)$, observe that the induced metric on $\systole(\no_g)$ is minimally distorted from the metric on $\teich(\no_g)$, by Theorem \ref{thm:weak-convexity}.
     One of two things can happen: the axis of $\gamma$ lies in $\systole(\no_g)$, or it lies outside.
     In the first case, we project as usual, and by Theorem \ref{thm:weak-convexity}, the size of the projection increases by a bounded multiplicative factor.
-    In the second case, we first create a new axis, by projecting the old axis onto $\systole(\no_g)$.
-    We then get a projection of a ball by first projecting to the old axis, and then composing that with the second projection.
-    This composed projection still has bounded diameter because the first projection does, and the second projection increases distances by a bounded multiplicative factor.
+    In the second case, we first create a new axis, by increasing the lengths of all one-sided curves on the old axis to $\vept$ (while keeping all the other lengths and twists with respect to a Fenchel-Nielsen coordinate system constant): we call this map $\pi$.
+    This construction gives us a new axis that lies in $\systole(\no_g)$.
+    We then get a projection of a ball by first projecting to the old axis, and then composing that with the $\pi$.
+    This composed map still has bounded diameter because the first projection does, and the second projection increases distances by a bounded multiplicative factor.
   \item[Case (ii)] In this case, we need to show there is no choice of $p$ such that the projection onto $\left\{ \gamma^i p \right\}$ has bounded diameter.
-    Suppose there is such a $p$: we will construct a family of balls disjoint from $\gamma$ with arbitrarily large projections onto $\gamma$.
-    We can assume without loss of generality that at $p$, one of the invariant two-sided is short.
-    If not, we can create a new point $p^{\prime}$ where this is the case, and the orbits $\left\{ \gamma^i p \right\}$ and $\left\{ \gamma^i p^{\prime} \right\}$ have unbounded projections onto each other, and if a family of balls has unbounded projections on $\left\{ \gamma^i p^{\prime} \right\}$, it will also have unbounded projections on $\left\{ \gamma^i p \right\}$.
+    Suppose there is such a $p$: we will construct a family of balls disjoint from $\gamma$ with arbitrarily large closest point projections onto $\gamma$.
+    We can assume without loss of generality that at $p$, one of the invariant two-sided curves is short.
+    If not, we can create a new point $p^{\prime}$ where this is the case, and the orbits $\left\{ \gamma^i p \right\}$ and $\left\{ \gamma^i p^{\prime} \right\}$ have unbounded closed point projections onto each other, and if a family of balls has unbounded closest point projections on $\left\{ \gamma^i p^{\prime} \right\}$, it will also have unbounded closest point projections on $\left\{ \gamma^i p \right\}$.
 
     Since we have that some two-sided curve $\kappa$ is short at $p$, and $\gamma$ leaves $\kappa$ invariant, we have that the entire orbit $\left\{ \gamma^i p \right\}$ lies in the product region associated to $\kappa$.
-    In this product region, it is easy to verify that the projection of a ball of radius $R$ disjoint from $\left\{ \gamma^i p \right\}$ will have projection diameter approximately $2R$, by Minsky's product region theorem.
+    In this product region, we can verify via Minsky's product region theorem using a family of balls of radius $R$ centered at $q$, where $q$ is a point in the product region where the length of $\gamma$ is $\exp(-R)$ times smaller than the length of $\gamma$ at $p$.
+    For each $R$, such a ball is disjoint from $\left\{ \gamma^i p \right\}$ will have projection diameter $2R - c^{\prime}$, where $c^{\prime}$ is some constant that only depends on $\vept$ (see \autoref{fig:non-contracting}).
+    \begin{figure}[h]
+      \centering
+      \incfig[1]{non-contracting}
+      \caption{Ball in product region with large projection onto axis.}
+      \label{fig:non-contracting}
+    \end{figure}
   \end{description}
   This proves the theorem in the two cases we specified.
 \end{proof}
