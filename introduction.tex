@@ -116,16 +116,26 @@ We have the Hopf-Tsuji-Sullivan dichotomy (or rather, the divergent half of the 
   \begin{enumerate}[(i)]
   \item The Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent.
   \item The measure $\nu$ gives full measure to the radial limit set.
-  \item The diagonal action on $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic with respect to the product measure $\nu \otimes \nu$.
-  \item The geodesic flow on the unit tangent bundle $((\pml^+(\no_g) \times \pml^+(\no_g) \setminus \Delta) \times \mathbb{R})/\mcg(\no_g)$ is ergodic with respect to the Bowen-Margulis measure (where $\Delta$ denotes the pairs of projective measured foliations that do not fill the surface).
+  \item The diagonal action on $\Lambda \times \Lambda$ is ergodic with respect to the product measure $\nu \otimes \nu$, where $\Lambda$ is the limit set of $\mcg(\no_g)$ in the horofunction boundary.
+  \item The geodesic flow on the unit tangent bundle $(\Lambda \times \Lambda \times \mathbb{R})/\mcg(\no_g)$ is ergodic with respect to the Bowen-Margulis measure.
   \end{enumerate}
 \end{theorem}
 
 It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincaré series for $\mcg(\no_g)$ diverges at the critical exponent, and as a result, we have all the other equivalent criteria that appear in the Hopf-Tsuji-Sullivan dichotomy.
 
+% \begin{remark}
+%   Note that the limit set of $\mcg(\no_g)$ in the horofunction boundary is not (necessarily) the same as the limit set in the Thurston boundary, which is known to be $\pml^+(\no_g)$.
+%   The horofunction boundary is sensitive to the metric that one uses: in particular that means that looking at $\systole(\no_g)$ with the induced path metric $d_{\vept}$ will give us a possibly different horofunction boundary as opposed to looking at the horofunction boundary of $\systole(\no_g)$ with the Teichmüller metric.
+
+
+% \end{remark}
+
 \begin{remark}
-  \textcite{coulon2024ergodicity} states the above theorem where the role of boundary is played by the horofunction boundary of the metric space, which for the Teichmüller space is \emph{not} the Thurston boundary $\pml(\no_g)$.
-  To state conditions (iii) and (iv) of Theorem \ref{thm:hts-dichotomy} for the Thurston boundary, rather than the horofunction boundary, we use the following sequence of results.
+  % \textcite{coulon2024ergodicity} states the above theorem where the role of boundary is played by the horofunction boundary of the metric space, which for the Teichmüller space is \emph{not} the Thurston boundary $\pml(\no_g)$.
+  In practice, it is preferable to work with the Thurston boundary of Teichmüller space rather than the horofunction boundary, since the Thurston boundary is a much better understood object.
+
+  For statistically convex-cocompact actions of subgroups of mapping class groups (with respect to the Teichmüller metric) (see \textcite{gekhtman2023dynamics}, and \textcite{CGTY}), one can replace the horofunction boundary in the statement of the Hopf-Tsuji-Sullivan dichotomy with the Thurston boundary using the following sequence of results.
+  % To state conditions (iii) and (iv) of Theorem \ref{thm:hts-dichotomy} for the Thurston boundary, rather than the horofunction boundary, we use the following sequence of results.
   \begin{enumerate}[(i)]
   \item \textcite{miyachi2008teichmuller} proves that there is an $\mcg(\no_g)$ equivariant bijective map between the uniquely ergodic points in the horofunction boundary, and the uniquely ergodic points in the Thurston boundary.
   \item By condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points in the horofunction boundary have full measure.
@@ -134,9 +144,16 @@ It follows as a corollary of Theorem \ref{thm:pure-exponential} that the Poincar
   \end{enumerate}
   % Furthermore, by condition (ii) of the Hopf-Tsuji-Sullivan dichotomy, the radial limit points have full measure, and Masur's criterion gives us that radial limit points are uniquely ergodic.
   % This lets us replace the horofunction boundary with the Thurston boundary in the statement of the result, since they agree on a full measure set.
+
+  In our setting, i.e. the $\mcg(\no_g)$ action on $\systole(\no_g)$ with the $d_{\vept}$ metric, we do not know if there is an $\mcg(\no_g)$-equivariant map between the uniquely ergodic points in the Thurston boundary with a full measure subset of the horofunction boundary.
+  If there were such a map, we could use that map to state conditions (iii) and (iv) in Theorem \ref{thm:hts-dichotomy} where $\pml^+(\no_g)$ plays the role of the limit set.
+  \begin{question}[Analog of Miyachi's result for the $d_{\vept}$ horofunction boundary]
+  \label{ques:horoboundary}
+    Is there an $\mcg(\no_g)$-equivariant map from the uniquely ergodic points in $\pml^+(\no_g)$ to a full measure subset of the horofunction boundary associated to the metric $d_{\vept}$?
+  \end{question}
 \end{remark}
 
-In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
+% In particular, we have that the action of $\mcg(\no_g)$ on the limit set $\pml^+(\no_g)$, and the double limit set $\pml^+(\no_g) \times \pml^+(\no_g)$ is ergodic, and that the geodesic flow is ergodic with respect to the Bowen-Margulis measure.
 
 % {\color{red} Insert the new theorems here.}
 
@@ -221,6 +238,7 @@ If we can upgrade ergodicity of the geodesic flow to mixing of the geodesic flow
 
 One way to do this would be to answer the following question.
 \begin{question}[Restatement of Question \ref{ques:full-stat-core}]
+  \label{ques:full-scc}
   Is the action of $\mcg(\no_g)$ on $\teich(\no_g)$ statistically convex cocompact, where $\thick(\no_g)$ plays the role of statistical convex core?
 \end{question}
 We expect the answer to this question is yes, despite our random walk methods not working in this setting.
@@ -248,7 +266,7 @@ With this replacement, we have the following question.
 \end{question}
 
 \textcite{erlandsson2023mapping} show that the $\mcg(\no_g)$ orbit closure of such a point indeed is $\ml^+(\no_g)$, but the question about convergence of measures is still open.
-Since our results imply ergodicity of the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ with respect to the Patterson-Sullivan measures, we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
+Since our results suggest that the $\mcg(\no_g)$ action on $\pml^+(\no_g)$ is ergodic with respect to the Patterson-Sullivan measures (and answering either Question \ref{ques:horoboundary} or \ref{ques:full-scc} would imply ergodicity), we can ask the following questions about the limiting measure $\mu$ as well as the product of the Patterson-Sullivan measures with the Lebesgue measure.
 % \begin{question}
 %   Is there an $\mcg(\no_g)$ ergodic measure on $\ml^+(\no_g)$ that is absolutely continuous with the product of the Patterson-Sullivan measure and the Lebesgue measure, when $\ml^+(\no_g)$ is identified with $\pml^+(\no_g) \times \mathbb{R}$?
 % \end{question}
