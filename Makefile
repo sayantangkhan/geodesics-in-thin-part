@@ -14,6 +14,6 @@ web:
 
 arxiv: build-pdf
 	mkdir arxiv-build;
-	cp -r main.tex mathpreamble.sty references.bib build/main.bbl images/ arxiv-build/;
+	cp -r main.tex appendix.tex entropy-equality.tex introduction.tex linear-gap.tex preliminaries.tex thin-part.tex weak-convex-core.tex mathpreamble.sty references.bib build/main.bbl images/ arxiv-build/;
 	tar -czf arxiv-submission.tar.gz -C arxiv-build .;
 	rm -rf arxiv-build
